@@ -1,0 +1,24 @@
+# Cache rules for adrianarezende.com.br
+# Supported by Cloudflare Pages and Netlify.
+# 30 days = 2,592,000 seconds
+
+# HTML — always revalidate so updates are picked up immediately
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Images — immutable for 30 days (filenames change when content changes)
+/*.jpg
+  Cache-Control: public, max-age=2592000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=2592000, immutable
+
+# SEO / crawler files — 1 day
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/llms.txt
+  Cache-Control: public, max-age=86400
