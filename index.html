@@ -192,7 +192,7 @@
   </script>
 
   <!-- ─── Preload LCP image ─── -->
-  <link rel="preload" as="image" href="headshot.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="headshot.webp" type="image/webp" fetchpriority="high">
 
   <!-- ─── Fonts (async — non-render-blocking) ─── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -743,14 +743,17 @@
     <div class="grid">
 
       <div class="c4">
-        <img
-          src="headshot.jpg"
-          alt="Adriana Rezende — Perita Judicial e Assistente Técnica"
-          class="headshot"
-          fetchpriority="high"
-          width="400"
-          height="533"
-        >
+        <picture>
+          <source srcset="headshot.webp" type="image/webp">
+          <img
+            src="headshot.jpg"
+            alt="Adriana Rezende — Perita Judicial e Assistente Técnica"
+            class="headshot"
+            fetchpriority="high"
+            width="400"
+            height="533"
+          >
+        </picture>
         <div class="photo-meta">
           <div>
             <div class="meta-lbl">Formação</div>
@@ -856,13 +859,16 @@
      INDUSTRY PHOTO
 ════════════════════════════════════════════════ -->
 <div class="photo-break">
-  <img
-    src="visita.jpg"
-    alt="Ambiente industrial — Adriana Rezende Perícia Técnica"
-    loading="lazy"
-    width="1920"
-    height="800"
-  >
+  <picture>
+    <source srcset="visita.webp" type="image/webp">
+    <img
+      src="visita.jpg"
+      alt="Adriana Rezende em visita técnica a indústria"
+      loading="lazy"
+      width="1335"
+      height="754"
+    >
+  </picture>
 </div>
 
 
