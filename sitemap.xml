@@ -9,6 +9,13 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/"/>
   </url>
   <url>
+    <loc>https://adrianarezende.com.br/sobre/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/sobre/"/>
+  </url>
+  <url>
     <loc>https://adrianarezende.com.br/assistente-tecnica/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>

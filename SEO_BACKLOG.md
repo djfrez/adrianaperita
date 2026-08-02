@@ -68,8 +68,17 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Categoria:** E-E-A-T / Entity SEO
 - **Impacto:** 7 · **Esforço:** 3 · **Confiança:** 8 · **Valor de negócio:** 8
 - **Priority Score:** 149,3
-- **Status:** open
-- **Descoberto:** 2026-08-01
+- **Status:** done
+- **Descoberto:** 2026-08-01 · **Concluído:** 2026-08-03
+- **Implementado:**
+  - `ProfilePage` com `mainEntity` `Person` carregando `@id` canônico `https://adrianarezende.com.br/#adriana-rezende`, `hasCredential` duplo (registro CRQ + graduação UNICAMP), `hasOccupation` para os dois papéis, `knowsAbout` com 18 entidades e `workLocation` Brasil.
+  - O mesmo `@id` foi aplicado ao `Person` da home e ao `author` das duas páginas-pilar, e o `url` do autor passou a apontar para `/sobre/`. **Os quatro nós `Person` do site agora são um único nó no grafo**, em vez de quatro entidades soltas com o mesmo nome — que é exatamente o problema que o histórico do domínio (SEO-010) cria.
+  - `FAQPage` com 7 perguntas, todas espelhando o texto visível.
+  - Tabela de matéria técnica → o que se examina → órgãos/normas (7 linhas), e tabela perita × assistente (4 dimensões).
+  - Links internos: "Sobre" na navegação das quatro páginas (desktop e mobile na home), link contextual na seção de Qualificações da home, e entrada em "Continue lendo" das duas páginas-pilar. `/sobre/` recebe inbound das três páginas existentes.
+  - `sitemap.xml` e `llms.txt` atualizados.
+- **Decisão de conteúdo:** a página foi escrita apenas com fatos já verificáveis no site (UNICAMP, CRQ 04341673, 14 anos em multinacionais de alimentos/higiene/limpeza, área ambiental de águas e efluentes, Departamento de Processos Químicos da UNICAMP, tipos de processo). **Nenhuma data, empregador, número de casos ou publicação foi inventado para dar volume ao texto.** O valor da página vem da organização decisória — quais matérias, quais órgãos, qual papel, como começa — não de biografia inflada.
+- **Desambiguação — o que foi e o que não foi feito:** optou-se por âncoras positivas (número de registro, conselho correto, universidade, LinkedIn, `@id` único) em vez de uma nota na página dizendo "não confundir com outra profissional homônima". Uma negativa visível chamaria atenção para a ambiguidade sem resolvê-la. A ressalva explícita ficou apenas no `llms.txt`, que é lido por máquina e não por cliente.
 
 ### SEO-005 — `_headers` inerte no GitHub Pages
 - **Descrição:** O arquivo `_headers` não é interpretado pelo GitHub Pages (formato Cloudflare Pages/Netlify). O cache de imagens de 30 dias pretendido não está em vigor; o GH Pages serve `cache-control: max-age=600`. Decidir entre (a) colocar o domínio atrás do Cloudflare, (b) migrar a hospedagem, ou (c) remover o arquivo para não induzir a erro.
@@ -155,3 +164,26 @@ Status: `open` · `in progress` · `done` · `blocked`
 | Data | Item executado | Commit |
 |---|---|---|
 | 2026-08-01 | SEO-001 — página-pilar `/assistente-tecnica/` | `SEO: Add Assistente Técnico pillar page` |
+| 2026-08-02 | SEO-002 — página-pilar `/classificacao-fiscal-ncm/` | `SEO: Add NCM classification pillar page (SEO-002)` |
+| 2026-08-03 | SEO-004 — página `/sobre/` e unificação do nó `Person` | `SEO: Add /sobre/ profile page and unify Person entity` |
+
+---
+
+## Estado da medição — 2026-08-03
+
+Verificado por chamada direta às APIs nesta execução:
+
+- **Search Console — ainda zero linhas.** `searchAnalytics.query` para 2026-07-01 → 2026-08-02 retorna resposta vazia nas dimensões `query`, `page` e `date`. A propriedade foi verificada em 2026-08-01; a latência é esperada. **A priorização continua sendo por intenção comercial, não por dados.**
+- **Indexação (URL Inspection API):**
+
+  | URL | Veredito | Estado |
+  |---|---|---|
+  | `/` | PASS | Submitted and indexed (último rastreamento 2026-08-02) |
+  | `/assistente-tecnica/` | NEUTRAL | Discovered — currently not indexed |
+  | `/classificacao-fiscal-ncm/` | NEUTRAL | URL is unknown to Google |
+
+- **GA4** — 5 sessões no período 2026-07-25 → 2026-08-02, todas em `/`, canais `Unassigned` e `Direct`. Volume compatível com acessos próprios; sem valor analítico ainda.
+
+**Leitura:** as páginas novas ainda não entraram no índice, o que é normal para conteúdo de 1–2 dias em domínio de baixa autoridade. O sitemap já foi submetido e o caminho de rastreamento a partir da home (que *está* indexada) foi reforçado hoje com links de navegação. **Nada a fazer além de aguardar** — pedir indexação repetidamente não acelera o processo.
+
+**Para a próxima execução:** reconferir indexação e GSC *antes* de escolher a tarefa. Se as páginas continuarem fora do índice depois de ~7 dias (a partir de 2026-08-08), aí vira item de backlog técnico — e a hipótese a investigar é autoridade de domínio insuficiente para justificar o rastreamento, não erro de configuração, que já foi descartado (robots ALLOWED, canonical correto, sitemap aceito sem erros).
