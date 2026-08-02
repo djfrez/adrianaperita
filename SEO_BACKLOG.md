@@ -124,14 +124,16 @@ Status: `open` · `in progress` · `done` · `blocked`
   2. **Existe ambiguidade de entidade no nome "Adriana Rezende".** Há outra profissional com o mesmo nome, em outra área, que ocupou este domínio por anos. Isso aumenta o risco de o Google confundir as duas entidades e reforça a prioridade de sinais de desambiguação — ver SEO-004.
 
 ### SEO-011 — Desambiguação de entidade: `sameAs` e identificadores profissionais
-- **Descrição:** O schema `Person` da home não tem `sameAs` nem identificador profissional. Dado o histórico do domínio (SEO-010) e a existência de outra profissional homônima, faltam âncoras que digam ao Google e aos LLMs *qual* Adriana Rezende é esta. Adicionar `sameAs` (LinkedIn, Lattes, perfis profissionais), número de registro no conselho de classe (CREA) e, se houver, ORCID ou publicações.
+- **Descrição:** O schema `Person` não tinha `sameAs` nem identificador profissional. Dado o histórico do domínio (SEO-010) e a existência de outra profissional homônima, faltavam âncoras dizendo ao Google e aos LLMs *qual* Adriana Rezende é esta.
 - **URL:** `/` e `/assistente-tecnica/`
 - **Categoria:** Entity SEO / E-E-A-T
 - **Impacto:** 7 · **Esforço:** 2 · **Confiança:** 8 · **Valor de negócio:** 8
 - **Priority Score:** 224
-- **Status:** blocked
+- **Status:** in progress
 - **Descoberto:** 2026-08-02
-- **Bloqueio:** depende de informação que só a cliente tem — URL do LinkedIn, número do CREA, currículo Lattes, publicações. Assim que fornecidos, é uma alteração de 10 minutos com score alto.
+- **Feito em 2026-08-02:** `sameAs` com o LinkedIn (`adriana-rezende-5992554a`) adicionado ao `Person` da home, ao `provider` do `ProfessionalService` e ao `author` do Article. Corroborado por links visíveis na seção de contato e no rodapé — `sameAs` sem link real na página é sinal fraco.
+- **Pendente — registro no CRQ:** confirmado que a profissional é registrada no **CRQ** (Conselho Regional de Química), conselho pertinente para perícia em composição, contaminação e classificação fiscal. Falta o **número e a região** (ex.: CRQ IV Região — SP) para publicar. Registro de conselho de classe é informação pública por construção — o próprio CRQ mantém consulta aberta — e a exibição é prática padrão em perícia, onde habilitação é pressuposto. Implementar como `hasCredential` (`EducationalOccupationalCredential`) mais menção visível junto às qualificações.
+- **Ainda úteis, se existirem:** currículo Lattes, ORCID, publicações, associações de peritos.
 
 ---
 
