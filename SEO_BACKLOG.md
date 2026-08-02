@@ -105,7 +105,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Descoberto:** 2026-08-01
 
 ### SEO-009 — Perfil no Google Business e citações locais
-- **Descrição:** Nenhum sinal de perfil GBP para "perita judicial Campinas". Criar/reivindicar perfil, padronizar NAP e buscar citações (CREA-SP, associações de peritos, diretórios jurídicos).
+- **Descrição:** Nenhum sinal de perfil GBP para "perita judicial Campinas". Criar/reivindicar perfil, padronizar NAP e buscar citações (CRQ, associações de peritos, diretórios jurídicos).
 - **Categoria:** Local SEO / Autoridade
 - **Impacto:** 7 · **Esforço:** 5 · **Confiança:** 7 · **Valor de negócio:** 8
 - **Priority Score:** 78,4
