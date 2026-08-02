@@ -12,7 +12,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 - Metadados, Open Graph, canonical, hreflang, robots.txt, sitemap.xml e llms.txt já existem e estão corretos.
 - Schema já presente na home: `Person`, `ProfessionalService`, `FAQPage`, `BreadcrumbList`.
 - Imagens já em WebP com `width`/`height` e preload do LCP.
-- Sem acesso a Google Search Console nesta execução (não autenticado) — priorização feita por intenção comercial e cobertura semântica, não por dados de impressão.
+- Sem acesso a Google Search Console **no momento da auditoria** — priorização feita por intenção comercial e cobertura semântica, não por dados de impressão. GSC e GA4 foram conectados ainda em 2026-08-01 (ver SEO-007); os dados começam a ficar disponíveis a partir de ~2026-08-04.
 
 ### Maiores fraquezas encontradas
 
@@ -87,9 +87,13 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Categoria:** Medição
 - **Impacto:** 9 · **Esforço:** 2 · **Confiança:** 10 · **Valor de negócio:** 8
 - **Priority Score:** 360
-- **Status:** blocked
-- **Descoberto:** 2026-08-01
-- **Bloqueio:** exige autenticação do proprietário (OAuth). Não é executável em sessão não interativa. **É o item de maior score do backlog e deve ser feito manualmente pelo cliente.**
+- **Status:** done
+- **Descoberto:** 2026-08-01 · **Concluído:** 2026-08-01
+- **Notas:** Tag GA4 `G-NL5HWSTKPF` instalada nas duas páginas. Projeto Google Cloud `adriana-seo`, conta de serviço `adriana-seo@adriana-seo.iam.gserviceaccount.com`, credenciais em `~/.config/claude-seo/google-api.json` (tier 2 — API key + service account + GA4).
+  - Search Console: propriedade `sc-domain:adrianarezende.com.br`, permissão `siteFullUser` — verificado por chamada real à API.
+  - GA4: propriedade `properties/548153325` (BRL, America/Sao_Paulo) — Data API e Realtime API respondendo.
+  - **Ainda sem linhas de dados em ambos**: a propriedade GSC acabou de ser verificada (latência típica de 2–3 dias) e a tag GA4 entrou no ar em 2026-08-01. A partir da próxima execução com dados, a priorização deixa de ser por intenção comercial e passa a usar impressões, CTR e posição reais.
+  - **Pendente:** submeter `sitemap.xml` ao Search Console (não executado — é escrita na propriedade do cliente, aguarda autorização explícita).
 
 ### SEO-008 — Restantes "Insights" sem destino
 - **Descrição:** Três cartões da seção Insights ainda são títulos sem página. Serão resolvidos por SEO-002 e SEO-003; o quarto ("O papel do assistente técnico na impugnação de laudos periciais") foi absorvido pelo conteúdo de SEO-001 e deve ser substituído por outro tema do cluster ou removido.
