@@ -113,14 +113,25 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Descoberto:** 2026-08-01
 - **Bloqueio:** exige verificação de identidade do proprietário.
 
-### SEO-010 — Histórico do domínio: backlinks legados a recuperar
-- **Descrição:** Ao submeter o sitemap, o Search Console revelou um sitemap antigo registrado em `http://www.adrianarezende.com.br/sitemap.xml`, **enviado em 2010-03-03** e baixado pela última vez em 2018-01-27 (5 avisos, 2 erros). O domínio teve um site anterior por pelo menos 8 anos. Isso levanta a possibilidade de backlinks legados ainda apontando para URLs antigas. Levantar o perfil de backlinks do domínio, identificar links vivos para URLs que não existem mais e mapear redirecionamentos 301 para as páginas atuais.
-- **Categoria:** Autoridade / Backlinks
-- **Impacto:** 7 · **Esforço:** 4 · **Confiança:** 5 · **Valor de negócio:** 7
-- **Priority Score:** 61,3
-- **Status:** open
+### SEO-010 — Histórico do domínio: contexto de interpretação (não é oportunidade)
+- **Descrição:** O Search Console expôs um sitemap registrado em 2010-03-03 e baixado pela última vez em 2018-01-27, indicando site anterior no domínio. Investigado via Wayback Machine: entre ~2021 e 2023 o domínio hospedou um site de **consultoria de imagem e estilo** (coloração pessoal, análise de óculos, corte e cor, consultoria express — URLs como `/colocaraopessoal`, `/analiseoculos`, `/consultoria-express`, `/blog/hashtags/...`, padrão Wix). **Confirmado pelo cliente: não era a Adriana Rezende perita judicial** — é outra profissional de mesmo nome.
+- **Categoria:** Contexto / Medição
+- **Status:** done (investigado; sem ação de recuperação)
+- **Descoberto:** 2026-08-02 · **Concluído:** 2026-08-02
+- **Conclusão:** A hipótese original — recuperar backlinks legados via 301 — **fica descartada**. Links apontando para conteúdo de consultoria de imagem são topicamente irrelevantes para perícia em engenharia química; redirecioná-los não gera autoridade e apenas cria ruído. Os redirecionamentos de host já estão corretos (`www` → apex, `http` → `https`, ambos 301), então nada quebra.
+- **Por que continua registrado — dois efeitos práticos:**
+  1. **Ao ler os primeiros dados do GSC, esperar ruído residual.** Podem aparecer impressões para termos como "coloração pessoal", "consultoria de imagem", "análise de óculos". **Isso é herança do domínio, não sinal de demanda.** Sem este registro, uma execução futura poderia interpretar essas consultas como oportunidade e perseguir a vertical errada.
+  2. **Existe ambiguidade de entidade no nome "Adriana Rezende".** Há outra profissional com o mesmo nome, em outra área, que ocupou este domínio por anos. Isso aumenta o risco de o Google confundir as duas entidades e reforça a prioridade de sinais de desambiguação — ver SEO-004.
+
+### SEO-011 — Desambiguação de entidade: `sameAs` e identificadores profissionais
+- **Descrição:** O schema `Person` da home não tem `sameAs` nem identificador profissional. Dado o histórico do domínio (SEO-010) e a existência de outra profissional homônima, faltam âncoras que digam ao Google e aos LLMs *qual* Adriana Rezende é esta. Adicionar `sameAs` (LinkedIn, Lattes, perfis profissionais), número de registro no conselho de classe (CREA) e, se houver, ORCID ou publicações.
+- **URL:** `/` e `/assistente-tecnica/`
+- **Categoria:** Entity SEO / E-E-A-T
+- **Impacto:** 7 · **Esforço:** 2 · **Confiança:** 8 · **Valor de negócio:** 8
+- **Priority Score:** 224
+- **Status:** blocked
 - **Descoberto:** 2026-08-02
-- **Notas:** Confiança 5 porque não se sabe se o site anterior era da Adriana nem se acumulou links de qualidade — precisa ser verificado antes de investir esforço. Os redirecionamentos de host já estão corretos (`www` → apex e `http` → `https`, ambos 301), então nenhum link legado se perde por causa de host; a perda, se houver, é em caminhos de URL descontinuados.
+- **Bloqueio:** depende de informação que só a cliente tem — URL do LinkedIn, número do CREA, currículo Lattes, publicações. Assim que fornecidos, é uma alteração de 10 minutos com score alto.
 
 ---
 
