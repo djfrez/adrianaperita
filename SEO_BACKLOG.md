@@ -19,7 +19,8 @@ Status: `open` · `in progress` · `done` · `blocked`
 1. **Ausência total de conteúdo indexável além da home.** Nenhuma página de serviço, nenhum artigo. A seção "Insights" listava 4 títulos sem destino — promessa de conteúdo que não existia.
 2. **Zero clusters temáticos.** Nenhuma cobertura de perguntas de pré-contratação (prazos, custos, diferença perito × assistente, impugnação de laudo).
 3. **`_headers` inerte.** O arquivo segue o formato Cloudflare Pages/Netlify, mas o site é servido pelo GitHub Pages, que o ignora.
-4. **Inconsistência de E-E-A-T no llms.txt** — dizia "8 anos de experiência" enquanto o site diz "+20 anos técnicos / +8 anos em perícia". (corrigido em 2026-08-01)
+4. **CSS duplicado entre páginas.** Cada página traz seu próprio bloco `<style>` inline. Aos ~5 páginas, extrair para `/style.css` compartilhado; abaixo disso, o inline evita requisição extra e o risco de deriva é só cosmético.
+5. **Inconsistência de E-E-A-T no llms.txt** — dizia "8 anos de experiência" enquanto o site diz "+20 anos técnicos / +8 anos em perícia". (corrigido em 2026-08-01)
 
 ---
 
@@ -37,12 +38,20 @@ Status: `open` · `in progress` · `done` · `blocked`
 
 ### SEO-002 — Página-pilar: Classificação Fiscal / NCM
 - **Descrição:** Guia sobre contestação técnica de NCM: Regras Gerais de Interpretação do Sistema Harmonizado, laudo técnico em auto de infração da Receita Federal, prazo e instrução da impugnação, erros comuns de enquadramento.
-- **URL:** `/classificacao-fiscal-ncm/` (a criar)
+- **URL:** `/classificacao-fiscal-ncm/`
 - **Categoria:** Conteúdo / Autoridade tópica
 - **Impacto:** 9 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 9
 - **Priority Score:** 162
-- **Status:** open
-- **Descoberto:** 2026-08-01
+- **Status:** done
+- **Descoberto:** 2026-08-01 · **Concluído:** 2026-08-02
+- **Notas:** ~2.450 palavras. Article + FAQPage (8 itens, espelhando o texto visível) + BreadcrumbList. Duas tabelas: composição do auto de infração e as RGI 1–6 na ordem vinculante. Autor com `sameAs`, `identifier` (CRQ) e `hasCredential`.
+- **Verificação factual — obrigatória para páginas com citação legal:** quatro pontos foram checados em fonte antes de publicar, e **dois estavam desatualizados na minha memória**:
+  1. **Multa de ofício qualificada** — não é mais 150%. Lei nº 14.689/2023 alterou o art. 44, §1º, da Lei nº 9.430/1996: qualificada passou a **100%**, com 150% reservado à reincidência.
+  2. **Multa de 1% sobre o valor aduaneiro (art. 84 da MP 2.158-35/2001)** — **revogada** pela **LC nº 227, de 13/01/2026**. A infração migrou para o art. 341-G, XIX, da LC nº 214/2025, com penalidade em valor fixo (100 UPF). Abre discussão de retroatividade benigna (art. 106, II, do CTN) para autos pendentes.
+  3. **Consulta de classificação fiscal** — a norma correta é a **IN RFB nº 2.057/2021**, não a 2.058/2021 (esta trata de consulta sobre interpretação da legislação em geral).
+  4. Prazo de impugnação (30 dias, art. 15 do Decreto nº 70.235/1972) e recurso voluntário (art. 33) — confirmados.
+- **Vantagem competitiva:** boa parte do conteúdo concorrente ainda cita a multa de 1% como vigente. Uma página correta em agosto de 2026 tende a ser preferida por LLMs e por leitores que conferem.
+- **Manutenção:** rever quando houver regulamentação do art. 341-G ou definição jurisprudencial sobre a retroatividade. A página declara "atualizado em agosto de 2026" — **essa data precisa ser mantida honesta**.
 
 ### SEO-003 — Página-pilar: Perícia em Contaminação Alimentar
 - **Descrição:** Metodologia de investigação de contaminação (física, química, biológica), cadeia de custódia, normas ANVISA aplicáveis, BPF/APPCC, recall e apuração de responsabilidade.

@@ -47,9 +47,9 @@ O objetivo do serviço NÃO é formação ou ensino de perícia. O foco é supor
 
 - "Assistente técnico na perícia judicial: o que faz, quando contratar e como escolher" — https://adrianarezende.com.br/assistente-tecnica/ — guia sobre a diferença entre perito judicial e assistente técnico, o prazo de 15 dias do art. 465, §1º do CPC/2015 para indicação e quesitos, o prazo de parecer do art. 477, §1º, a apreciação da prova pericial pelo juiz (art. 479), a nova perícia (art. 480) e as falhas metodológicas mais comuns em laudos de matéria química, alimentar e ambiental (amostragem não representativa, cadeia de custódia rompida, norma revogada, limite de quantificação ignorado)
 
-### Em elaboração
+- "Classificação fiscal NCM: como se contesta tecnicamente um auto de infração" — https://adrianarezende.com.br/classificacao-fiscal-ncm/ — estrutura do código NCM (6 dígitos do Sistema Harmonizado + 2 do Mercosul), as Regras Gerais de Interpretação 1 a 6 na ordem em que vinculam, a prova técnica que sustenta um enquadramento (composição, função, processo de obtenção, teor, ensaio acreditado), composição do auto de infração (multa de ofício de 75%, qualificada de 100% e 150% por reincidência, na redação da Lei 14.689/2023), prazo de impugnação de 30 dias do Decreto 70.235/1972, consulta prévia pela IN RFB 2.057/2021, e a revogação da multa de 1% sobre o valor aduaneiro (art. 84 da MP 2.158-35/2001) pela Lei Complementar 227/2026, com a discussão de retroatividade benigna do art. 106, II, do CTN
 
-- "Erros comuns em classificações fiscais que geram autos de infração" — NCM e Tributação
+### Em elaboração
 - "Investigação técnica em casos de contaminação alimentar" — Indústria de Alimentos
 - "O papel do assistente técnico na impugnação de laudos periciais" — Perícia Judicial
 
