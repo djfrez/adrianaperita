@@ -129,10 +129,14 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Categoria:** Entity SEO / E-E-A-T
 - **Impacto:** 7 · **Esforço:** 2 · **Confiança:** 8 · **Valor de negócio:** 8
 - **Priority Score:** 224
-- **Status:** in progress
-- **Descoberto:** 2026-08-02
-- **Feito em 2026-08-02:** `sameAs` com o LinkedIn (`adriana-rezende-5992554a`) adicionado ao `Person` da home, ao `provider` do `ProfessionalService` e ao `author` do Article. Corroborado por links visíveis na seção de contato e no rodapé — `sameAs` sem link real na página é sinal fraco.
-- **Pendente — registro no CRQ:** confirmado que a profissional é registrada no **CRQ** (Conselho Regional de Química), conselho pertinente para perícia em composição, contaminação e classificação fiscal. Falta o **número e a região** (ex.: CRQ IV Região — SP) para publicar. Registro de conselho de classe é informação pública por construção — o próprio CRQ mantém consulta aberta — e a exibição é prática padrão em perícia, onde habilitação é pressuposto. Implementar como `hasCredential` (`EducationalOccupationalCredential`) mais menção visível junto às qualificações.
+- **Status:** done
+- **Descoberto:** 2026-08-02 · **Concluído:** 2026-08-02
+- **Implementado:**
+  - `sameAs` com o LinkedIn (`adriana-rezende-5992554a`) no `Person` da home, no `provider` do `ProfessionalService` e no `author` do Article.
+  - `identifier` (`PropertyValue`, propertyID `CRQ`, valor `04341673`) e `hasCredential` (`EducationalOccupationalCredential` reconhecida pelo CRQ-IV) nos dois `Person`.
+  - Menções visíveis: bloco "Registro Profissional" na seção de Qualificações com link para a consulta pública do CRQ, rodapé das duas páginas, e assinatura do autor na página de assistente técnico.
+  - `llms.txt` atualizado com registro e LinkedIn.
+- **Nota sobre o órgão:** o domínio canônico do CRQ-IV é `crqsp.org.br`; `crq4.org.br` redireciona para lá. Usado o canônico.
 - **Ainda úteis, se existirem:** currículo Lattes, ORCID, publicações, associações de peritos.
 
 ---
