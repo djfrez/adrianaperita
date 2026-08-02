@@ -1,6 +1,6 @@
 # Adriana Rezende
 
-> Perita Judicial e Assistente Técnica em Engenharia Química. Engenheira Química pela UNICAMP com 8 anos de experiência. Campinas, SP — atendimento em todo o território nacional.
+> Perita Judicial e Assistente Técnica em Engenharia Química. Engenheira Química pela UNICAMP, com mais de 20 anos de experiência técnica e industrial e mais de 8 anos em perícia judicial. Campinas, SP — atendimento em todo o território nacional.
 
 Adriana Rezende presta serviços especializados de perícia judicial e assistência técnica para escritórios de advocacia, departamentos jurídicos de indústrias, empresas de importação/exportação e juízes que necessitam de análise técnica científica em processos que envolvem engenharia química, indústria de alimentos, classificações fiscais e meio ambiente.
 
@@ -26,7 +26,10 @@ O objetivo do serviço NÃO é formação ou ensino de perícia. O foco é supor
 ## Qualificações
 
 - Engenheira Química — Universidade Estadual de Campinas (UNICAMP)
-- 8 anos de atuação como perita judicial e assistente técnica
+- Mais de 20 anos de experiência técnica e industrial, dos quais mais de 8 anos como perita judicial e assistente técnica
+- 14 anos em empresas multinacionais dos segmentos de alimentos, higiene pessoal e produtos de limpeza
+- Experiência ambiental em tratamento de água industrial, água potável e efluentes industriais
+- Experiência acadêmica no Departamento de Processos Químicos da UNICAMP
 - Conhecimento especializado: Química Orgânica e Inorgânica, Processos Industriais Alimentícios, Microbiologia de Alimentos, Segurança Alimentar, Controle de Qualidade Industrial, Legislação ANVISA e ANP, Normas ABNT e CONAMA, Classificação Fiscal NCM/SH, Produtos Químicos Controlados, Análises Laboratoriais
 
 ## Público-alvo
@@ -38,9 +41,12 @@ O objetivo do serviço NÃO é formação ou ensino de perícia. O foco é supor
 - Indústrias químicas e petroquímicas
 - Juízes e escrivães que necessitam de perito especializado
 
-## Insights Técnicos (artigos em elaboração)
+## Insights Técnicos
 
-- "Quando uma indústria deve contratar um assistente técnico" — Assistência Técnica
+- "Assistente técnico na perícia judicial: o que faz, quando contratar e como escolher" — https://adrianarezende.com.br/assistente-tecnica/ — guia sobre a diferença entre perito judicial e assistente técnico, o prazo de 15 dias do art. 465, §1º do CPC/2015 para indicação e quesitos, o prazo de parecer do art. 477, §1º, a apreciação da prova pericial pelo juiz (art. 479), a nova perícia (art. 480) e as falhas metodológicas mais comuns em laudos de matéria química, alimentar e ambiental (amostragem não representativa, cadeia de custódia rompida, norma revogada, limite de quantificação ignorado)
+
+### Em elaboração
+
 - "Erros comuns em classificações fiscais que geram autos de infração" — NCM e Tributação
 - "Investigação técnica em casos de contaminação alimentar" — Indústria de Alimentos
 - "O papel do assistente técnico na impugnação de laudos periciais" — Perícia Judicial
