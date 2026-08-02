@@ -59,8 +59,22 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Categoria:** Conteúdo / Autoridade tópica
 - **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 9
 - **Priority Score:** 144
-- **Status:** open
-- **Descoberto:** 2026-08-01
+- **Status:** done
+- **Descoberto:** 2026-08-01 · **Concluído:** 2026-08-03
+- **Implementado:**
+  - Tabela dos três tipos de contaminação (física, química, biológica) com exemplos e método de investigação de cada um.
+  - Cadeia de custódia: exigência de acreditação ABNT NBR ISO/IEC 17025 pela Cgcre/Inmetro, falhas típicas de amostragem e transporte.
+  - Tabela de normas ANVISA por escopo: RDC 275/2002 (indústria) × RDC 216/2004 (serviço de alimentação) × RDC 655/2022 (recolhimento/recall) × ISO 17025 (laboratório).
+  - APPCC como evidência de onde a falha ocorreu no processo produtivo.
+  - Tabela fato do produto (arts. 12–17 do CDC) × vício do produto (arts. 18–25).
+  - `Article` + `FAQPage` (7 itens, paridade texto visível confirmada por script) + `BreadcrumbList`. `author` usa o mesmo `@id` canônico criado em SEO-004 (o `Person` de todo o site).
+  - Links internos: nav nas 5 páginas, card da home (que antes era só texto sem link — corrigido), "Continue lendo" nas outras três páginas, `sitemap.xml` e `llms.txt` atualizados. Zero links quebrados (verificado por script).
+- **Verificação factual — obrigatória para páginas com citação regulatória:** quatro pontos checados por busca antes de publicar:
+  1. **RDC 275/2002 segue vigente** — não foi revogada pela RDC 216/2004 (hipótese que precisou ser descartada). São normas complementares de escopo distinto: 275 para indústria/produção, 216 para serviço de alimentação.
+  2. **Recolhimento (recall) é regido pela RDC nº 655/2022**, não por norma mais antiga.
+  3. **CDC arts. 12–17 (fato do produto) × 18–25 (vício do produto)** — regimes de responsabilidade distintos, confirmados na fonte primária.
+  4. **Consulta pública CP 1.362/2025** propõe substituir a RDC 275/2002 por marco único (BPF + POP + APPCC obrigatório em toda a cadeia). **Ainda não está em vigor** — tratada na página como "em andamento", não como norma vigente, seguindo o mesmo cuidado do SEO-002 com o art. 341-G.
+- **Manutenção:** revisar quando a CP 1.362/2025 for concluída — se resultar em nova RDC, a seção "Normas técnicas aplicáveis" precisa ser atualizada antes que fique desatualizada como a multa de 1% estava no SEO-002.
 
 ### SEO-004 — Página "Sobre" dedicada (E-E-A-T)
 - **Descrição:** Página própria de biografia profissional com trajetória detalhada, setores atendidos, formação, normas de domínio e tipos de processo — hoje esse conteúdo está comprimido em duas seções da home. Fortalece a entidade "Adriana Rezende" para o Knowledge Graph e para citação por LLMs.
@@ -166,6 +180,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-01 | SEO-001 — página-pilar `/assistente-tecnica/` | `SEO: Add Assistente Técnico pillar page` |
 | 2026-08-02 | SEO-002 — página-pilar `/classificacao-fiscal-ncm/` | `SEO: Add NCM classification pillar page (SEO-002)` |
 | 2026-08-03 | SEO-004 — página `/sobre/` e unificação do nó `Person` | `SEO: Add /sobre/ profile page and unify Person entity` |
+| 2026-08-03 | SEO-003 — página-pilar `/pericia-contaminacao-alimentos/` | `SEO: Add food contamination pillar page (SEO-003)` |
 
 ---
 
