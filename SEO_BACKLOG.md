@@ -93,7 +93,7 @@ Status: `open` · `in progress` · `done` · `blocked`
   - Search Console: propriedade `sc-domain:adrianarezende.com.br`, permissão `siteFullUser` — verificado por chamada real à API.
   - GA4: propriedade `properties/548153325` (BRL, America/Sao_Paulo) — Data API e Realtime API respondendo.
   - **Ainda sem linhas de dados em ambos**: a propriedade GSC acabou de ser verificada (latência típica de 2–3 dias) e a tag GA4 entrou no ar em 2026-08-01. A partir da próxima execução com dados, a priorização deixa de ser por intenção comercial e passa a usar impressões, CTR e posição reais.
-  - **Pendente:** submeter `sitemap.xml` ao Search Console (não executado — é escrita na propriedade do cliente, aguarda autorização explícita).
+  - `sitemap.xml` submetido ao Search Console em 2026-08-02 (autorizado pelo cliente); estado `isPending`, 0 avisos e 0 erros.
 
 ### SEO-008 — Restantes "Insights" sem destino
 - **Descrição:** Três cartões da seção Insights ainda são títulos sem página. Serão resolvidos por SEO-002 e SEO-003; o quarto ("O papel do assistente técnico na impugnação de laudos periciais") foi absorvido pelo conteúdo de SEO-001 e deve ser substituído por outro tema do cluster ou removido.
@@ -112,6 +112,15 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Status:** blocked
 - **Descoberto:** 2026-08-01
 - **Bloqueio:** exige verificação de identidade do proprietário.
+
+### SEO-010 — Histórico do domínio: backlinks legados a recuperar
+- **Descrição:** Ao submeter o sitemap, o Search Console revelou um sitemap antigo registrado em `http://www.adrianarezende.com.br/sitemap.xml`, **enviado em 2010-03-03** e baixado pela última vez em 2018-01-27 (5 avisos, 2 erros). O domínio teve um site anterior por pelo menos 8 anos. Isso levanta a possibilidade de backlinks legados ainda apontando para URLs antigas. Levantar o perfil de backlinks do domínio, identificar links vivos para URLs que não existem mais e mapear redirecionamentos 301 para as páginas atuais.
+- **Categoria:** Autoridade / Backlinks
+- **Impacto:** 7 · **Esforço:** 4 · **Confiança:** 5 · **Valor de negócio:** 7
+- **Priority Score:** 61,3
+- **Status:** open
+- **Descoberto:** 2026-08-02
+- **Notas:** Confiança 5 porque não se sabe se o site anterior era da Adriana nem se acumulou links de qualidade — precisa ser verificado antes de investir esforço. Os redirecionamentos de host já estão corretos (`www` → apex e `http` → `https`, ambos 301), então nenhum link legado se perde por causa de host; a perda, se houver, é em caminhos de URL descontinuados.
 
 ---
 
