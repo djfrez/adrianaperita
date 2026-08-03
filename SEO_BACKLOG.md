@@ -110,9 +110,16 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Categoria:** Conversão
 - **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 6 · **Valor de negócio:** 9
 - **Priority Score:** 108
-- **Status:** open
-- **Descoberto:** 2026-08-01
-- **Notas:** Alto valor de conversão, mas exige decisão do cliente sobre serviço de terceiros e privacidade dos dados enviados. Não executável de forma autônoma.
+- **Status:** done
+- **Descoberto:** 2026-08-01 · **Concluído:** 2026-08-03
+- **Decisão do cliente:** WhatsApp como canal primário, sem serviço de terceiros — com mensagem padrão para identificar que o contato veio do site.
+- **Implementado:**
+  - O formulário de contato da home não abre mais o cliente de e-mail do visitante. O `submit` agora monta o texto estruturado (nome, organização, e-mail, telefone, assunto, mensagem) e abre `wa.me` com o texto pré-preenchido via `?text=`, em nova aba. Zero dependência de terceiro, zero cadastro.
+  - Botão do formulário renomeado para "Enviar via WhatsApp"; e-mail (`mailto:`) permanece como alternativa secundária logo abaixo, para quem preferir.
+  - Na seção de contato da home, WhatsApp passou a ser o primeiro item (antes era e-mail), com o mesmo texto padrão pré-preenchido nos links "avulsos" (o telefone clicável fora do formulário) e no rodapé.
+  - Os botões de CTA "WhatsApp" nas quatro páginas de conteúdo (`/sobre/`, `/assistente-tecnica/`, `/classificacao-fiscal-ncm/`, `/pericia-contaminacao-alimentos/`) ganharam texto pré-preenchido identificando a página de origem (ex.: "vim pelo site (guia de Classificação Fiscal NCM)"), para que a cliente saiba de qual página veio o contato sem precisar de analytics.
+  - Handler testado em sandbox Node com três cenários (preenchimento completo, campos opcionais vazios, campos obrigatórios ausentes) — todos geram a URL `wa.me` esperada ou o alerta de validação, conforme o caso.
+- **Por que não um serviço de formulário de terceiros:** a alternativa (Formspree/Web3Forms) exigiria criar conta em serviço externo e decidir o que acontece com os dados enviados nos servidores dele — exatamente o tipo de decisão que travava este item. A escolha do cliente elimina essa dependência por completo.
 
 ### SEO-007 — Conectar Google Search Console e GA4
 - **Descrição:** Sem GSC não há dados de impressão, CTR nem posição média; toda a Prioridade 1 e 2 do mandato (melhorar páginas com impressão alta e palavras em 5–20) fica cega. Verificar propriedade e submeter o sitemap.
@@ -183,6 +190,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-03 | SEO-004 — página `/sobre/` e unificação do nó `Person` | `SEO: Add /sobre/ profile page and unify Person entity` |
 | 2026-08-03 | SEO-003 — página-pilar `/pericia-contaminacao-alimentos/` | `SEO: Add food contamination pillar page (SEO-003)` |
 | 2026-08-03 | SEO-008 — último cartão Insights sem destino | `SEO: Link last dead Insights card to existing content` |
+| 2026-08-03 | SEO-006 — formulário de contato via WhatsApp | `SEO: Route contact form through WhatsApp instead of mailto` |
 
 ---
 

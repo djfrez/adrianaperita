@@ -403,6 +403,8 @@
       border-color: var(--fg);
     }
     .btn-dark:hover { background: var(--sec); border-color: var(--sec); }
+    .form-alt { margin-top: 1rem; font-size: .875rem; color: var(--muted); }
+    .form-alt a { text-decoration: underline; text-underline-offset: 3px; }
     .btn-outline {
       background: transparent;
       color: var(--fg);
@@ -1116,12 +1118,12 @@
 
         <div class="contact-details">
           <div>
-            <div class="cd-lbl">E-mail</div>
-            <a href="mailto:adriana.rezende@gmail.com" class="cd-val">adriana.rezende@gmail.com</a>
+            <div class="cd-lbl">WhatsApp</div>
+            <a href="https://wa.me/5519992297507?text=Ol%C3%A1%2C%20vim%20pelo%20site%20adrianarezende.com.br%20e%20gostaria%20de%20discutir%20um%20caso%20t%C3%A9cnico." target="_blank" rel="noopener noreferrer" class="cd-val">(19) 99229-7507</a>
           </div>
           <div>
-            <div class="cd-lbl">Telefone / WhatsApp</div>
-            <a href="https://wa.me/5519992297507" target="_blank" rel="noopener noreferrer" class="cd-val">(19) 99229-7507</a>
+            <div class="cd-lbl">E-mail</div>
+            <a href="mailto:adriana.rezende@gmail.com" class="cd-val">adriana.rezende@gmail.com</a>
           </div>
           <div>
             <div class="cd-lbl">LinkedIn</div>
@@ -1172,7 +1174,8 @@
             <textarea id="msg" name="msg" rows="6" placeholder="Descreva brevemente as questões técnicas envolvidas..."></textarea>
           </div>
           <div>
-            <button type="submit" class="btn btn-dark">Enviar mensagem</button>
+            <button type="submit" class="btn btn-dark">Enviar via WhatsApp</button>
+            <p class="form-alt">Prefere e-mail? <a href="mailto:adriana.rezende@gmail.com">adriana.rezende@gmail.com</a></p>
           </div>
         </form>
       </div>
@@ -1197,7 +1200,7 @@
           <div class="foot-col-lbl">Contato</div>
           <div class="foot-links">
             <a href="mailto:adriana.rezende@gmail.com">adriana.rezende@gmail.com</a>
-            <a href="https://wa.me/5519992297507" target="_blank" rel="noopener noreferrer">(19) 99229-7507</a>
+            <a href="https://wa.me/5519992297507?text=Ol%C3%A1%2C%20vim%20pelo%20site%20adrianarezende.com.br%20e%20gostaria%20de%20discutir%20um%20caso%20t%C3%A9cnico." target="_blank" rel="noopener noreferrer">(19) 99229-7507</a>
             <a href="https://www.linkedin.com/in/adriana-rezende-5992554a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <span>Campinas, São Paulo</span>
           </div>
@@ -1230,7 +1233,7 @@
   });
   function closeMenu() { mobileNav.classList.remove('open'); burger.setAttribute('aria-expanded', false); }
 
-  // Contact form — composes mailto
+  // Contact form — opens WhatsApp with a prefilled, structured message
   document.getElementById('contactForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var name    = this.fname.value.trim();
@@ -1240,14 +1243,13 @@
     var subject = this.subject.value;
     var msg     = this.msg.value.trim();
     if (!name || !email) { alert('Por favor, preencha nome e e-mail.'); return; }
-    var body = 'Nome: ' + name
-      + '\nOrganização: ' + org
-      + '\nTelefone: ' + tel
+    var text = 'Vim pelo site adrianarezende.com.br — ' + subject
+      + '\nNome: ' + name
+      + (org ? '\nOrganização: ' + org : '')
       + '\nE-mail: ' + email
-      + '\n\n' + msg;
-    window.location.href = 'mailto:adriana.rezende@gmail.com'
-      + '?subject=' + encodeURIComponent(subject + ' — ' + name)
-      + '&body='    + encodeURIComponent(body);
+      + (tel ? '\nTelefone: ' + tel : '')
+      + (msg ? '\n\n' + msg : '');
+    window.open('https://wa.me/5519992297507?text=' + encodeURIComponent(text), '_blank', 'noopener');
   });
 </script>
 
