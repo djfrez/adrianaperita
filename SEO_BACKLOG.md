@@ -133,10 +133,11 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Categoria:** UX / Confiança
 - **Impacto:** 5 · **Esforço:** 2 · **Confiança:** 9 · **Valor de negócio:** 6
 - **Priority Score:** 135
-- **Status:** open
-- **Descoberto:** 2026-08-01
-
-### SEO-009 — Perfil no Google Business e citações locais
+- **Status:** done
+- **Descoberto:** 2026-08-01 · **Concluído:** 2026-08-03
+- **Implementado:** os três primeiros cartões já tinham destino (SEO-001, SEO-002, SEO-003). O quarto — "O papel do assistente técnico na impugnação de laudos periciais" — não virou página nova, porque o próprio conteúdo já existe dentro de `/assistente-tecnica/`, na seção "Como um parecer técnico derruba um laudo" (art. 479 do CPC, seis falhas metodológicas). Em vez de inventar uma página ou remover o cartão, adicionei `id="impugnacao-laudos"` a essa seção e apontei o cartão para `/assistente-tecnica/#impugnacao-laudos`, com título e resumo reescritos para refletir o conteúdo real de destino.
+- **Por que não virou página própria:** o mandato veda publicar conteúdo só para preencher um cartão. Como a matéria já estava integralmente coberta em outra página do site, criar uma segunda página só duplicaria conteúdo — a correção certa era linkar para o que já existe, não gerar mais uma URL.
+- **`llms.txt`:** a linha "Em elaboração" — que prometia exatamente essa página inexistente — foi removida, já que não há mais nenhum item pendente. — Perfil no Google Business e citações locais
 - **Descrição:** Nenhum sinal de perfil GBP para "perita judicial Campinas". Criar/reivindicar perfil, padronizar NAP e buscar citações (CRQ, associações de peritos, diretórios jurídicos).
 - **Categoria:** Local SEO / Autoridade
 - **Impacto:** 7 · **Esforço:** 5 · **Confiança:** 7 · **Valor de negócio:** 8
@@ -181,6 +182,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-02 | SEO-002 — página-pilar `/classificacao-fiscal-ncm/` | `SEO: Add NCM classification pillar page (SEO-002)` |
 | 2026-08-03 | SEO-004 — página `/sobre/` e unificação do nó `Person` | `SEO: Add /sobre/ profile page and unify Person entity` |
 | 2026-08-03 | SEO-003 — página-pilar `/pericia-contaminacao-alimentos/` | `SEO: Add food contamination pillar page (SEO-003)` |
+| 2026-08-03 | SEO-008 — último cartão Insights sem destino | `SEO: Link last dead Insights card to existing content` |
 
 ---
 

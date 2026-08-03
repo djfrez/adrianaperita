@@ -57,9 +57,6 @@ Desambiguação de entidade: esta é Adriana Rezende **engenheira química (UNIC
 
 - "Perícia em contaminação alimentar: metodologia de investigação e prova técnica" — https://adrianarezende.com.br/pericia-contaminacao-alimentos/ — os três tipos de contaminação (física, química, biológica) e como cada um se investiga; cadeia de custódia da amostra e acreditação de laboratório (ABNT NBR ISO/IEC 17025, Cgcre/Inmetro); normas ANVISA aplicáveis (RDC 275/2002 para indústria, RDC 216/2004 para serviços de alimentação, RDC 655/2022 para recolhimento/recall); o sistema APPCC como evidência de onde a falha ocorreu; e a diferença entre fato do produto (arts. 12–17 do CDC, responsabilidade objetiva) e vício do produto (arts. 18–25)
 
-### Em elaboração
-- "O papel do assistente técnico na impugnação de laudos periciais" — Perícia Judicial
-
 ## Contato
 
 - E-mail: adriana.rezende@gmail.com
