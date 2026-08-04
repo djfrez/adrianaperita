@@ -777,6 +777,14 @@
     gtag('js', new Date());
     gtag('config', 'G-NL5HWSTKPF');
   </script>
+
+  <!-- ─── Google Ads conversion: WhatsApp contact click ─── -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href*="wa.me/5519992297507"]');
+      if (link) { gtag('event', 'manual_event_CONTACT'); }
+    });
+  </script>
 </head>
 <body>
 
@@ -1315,6 +1323,7 @@
       + '\nE-mail: ' + email
       + (tel ? '\nTelefone: ' + tel : '')
       + (msg ? '\n\n' + msg : '');
+    gtag('event', 'manual_event_CONTACT');
     window.open('https://wa.me/5519992297507?text=' + encodeURIComponent(text), '_blank', 'noopener');
   });
 </script>
