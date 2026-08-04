@@ -191,6 +191,23 @@ Status: `open` · `in progress` · `done` · `blocked`
   - Nenhuma mudança na navegação visível do site (o menu do cabeçalho continua com sua estrutura atual); a mudança é inteiramente em dados estruturados, não em UI.
 - **Follow-up realista:** sitelinks tendem a aparecer só depois que o site acumula autoridade de domínio e volume de busca pelo nome da marca — normalmente meses, não dias. O item de maior alavancagem para isso continua sendo o SEO-009 (Google Business Profile, hoje bloqueado por verificação de identidade) e a indexação básica das páginas novas, que ainda não aconteceu.
 
+### SEO-013 — Páginas-pilar: Perícia Ambiental e Combustíveis
+- **Descrição:** Dois serviços com card próprio na home (`Perícias Ambientais` e `Combustíveis`) não tinham página de destino. Isso bloqueava dois ad groups do Google Ads (AG07 e AG08) e deixava dois dos cinco pilares de expertise sem conteúdo indexável.
+- **URLs:** `/pericia-ambiental/` · `/pericia-combustiveis/`
+- **Categoria:** Conteúdo / Autoridade tópica / Suporte a mídia paga
+- **Impacto:** 8 · **Esforço:** 5 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 115,2
+- **Status:** done
+- **Descoberto:** 2026-08-04 · **Concluído:** 2026-08-04
+- **Origem:** identificado durante a auditoria de Google Ads — o playbook de PPC bloqueou AG07/AG08 por ausência de landing page. Criar as páginas destrava mídia paga **e** cobre o cluster orgânico, com o mesmo esforço.
+- **Implementado:** `Article` + `FAQPage` (7 itens cada, paridade com texto visível verificada por script) + `BreadcrumbList`, com o `@id` canônico do `Person`. Links de entrada: cards de expertise da home, "Continue lendo" das quatro páginas existentes, sitemap e llms.txt. GA4 e o disparo de conversão `manual_event_CONTACT` presentes nas duas.
+- **Verificação factual — quatro pontos checados em fonte antes de publicar:**
+  1. **ABNT NBR 10004 foi revisada em 2024** — dividida em NBR 10004-1:2024 e 10004-2:2024, com Sistema Geral de Classificação de Resíduos. As classes **I / II-A / II-B foram substituídas por Classe 1 (Perigoso) e Classe 2 (Não Perigoso)**. Período de transição até **31/12/2026**; depois disso só a nova vale. Muito conteúdo concorrente ainda cita a versão de 2004 — vantagem competitiva real, com prazo.
+  2. **CONAMA 420/2009 segue vigente** (há proposta de revisão do IBAMA, ainda não aprovada). Em SP existe camada estadual da CETESB, revisada por decisão de diretoria para alinhar valores de intervenção em água subterrânea aos padrões de potabilidade.
+  3. **CONAMA 430/2011 vigente**, complementa/altera a 357/2005. **Consulta pública de revisão em andamento** — tratada como "em andamento", não como norma nova.
+  4. **ANP:** gasolina pela Resolução 807/2020; **diesel pela Resolução 968/2024, em vigor desde 31/07/2024** (alterou limites de S10/S500); marcação de solventes pela Resolução 902/2022. Súmula 618 do STJ (inversão do ônus da prova em degradação ambiental) e responsabilidade objetiva do art. 14, §1º da Lei 6.938/1981 confirmados.
+- **Manutenção — duas datas a acompanhar:** (a) **31/12/2026**, fim da transição da NBR 10004 — a tabela comparativa da página ambiental precisa ser revista; (b) conclusão da consulta pública da CONAMA 430/2011.
+
 ---
 
 ## Histórico de execuções
@@ -205,6 +222,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-03 | SEO-006 — formulário de contato via WhatsApp | `SEO: Route contact form through WhatsApp instead of mailto` |
 | 2026-08-03 | Ícone WhatsApp nos links de contato | `Add WhatsApp icon affordance to contact number links` |
 | 2026-08-03 | SEO-012 — sinais estruturais para sitelinks | `SEO: Add sitelinks structured data for four key destinations` |
+| 2026-08-04 | SEO-013 — páginas-pilar ambiental e combustíveis | `SEO: Add environmental and fuel pillar pages (SEO-013)` |
 
 ---
 

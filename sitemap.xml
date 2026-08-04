@@ -36,4 +36,18 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-contaminacao-alimentos/"/>
   </url>
+  <url>
+    <loc>https://adrianarezende.com.br/pericia-ambiental/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-ambiental/"/>
+  </url>
+  <url>
+    <loc>https://adrianarezende.com.br/pericia-combustiveis/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-combustiveis/"/>
+  </url>
 </urlset>

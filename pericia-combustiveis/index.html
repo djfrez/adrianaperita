@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ─── Primary SEO ─── -->
+  <title>Perícia em adulteração de combustíveis: como se prova tecnicamente</title>
+  <meta name="description" content="Guia técnico sobre perícia em combustíveis: diferença entre adulteração, contaminação e não conformidade, especificações da ANP (Resolução 807/2020 para gasolina e 968/2024 para diesel), o Programa de Marcação Compulsória (Resolução ANP 902/2022), ensaios e cadeia de custódia da amostra. Por Adriana Rezende, engenheira química pela UNICAMP e perita judicial.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="author" content="Adriana Rezende">
+  <link rel="canonical" href="https://adrianarezende.com.br/pericia-combustiveis/">
+
+  <meta name="language" content="pt-BR">
+  <meta name="geo.region" content="BR-SP">
+  <link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-combustiveis/">
+
+  <!-- ─── Open Graph ─── -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Adriana Rezende — Perícia Técnica">
+  <meta property="og:url" content="https://adrianarezende.com.br/pericia-combustiveis/">
+  <meta property="og:title" content="Perícia em adulteração de combustíveis: como se prova tecnicamente">
+  <meta property="og:description" content="Adulteração, contaminação ou não conformidade? Especificações da ANP, marcador de solvente, ensaios e cadeia de custódia.">
+  <meta property="og:image" content="https://adrianarezende.com.br/headshot.jpg">
+  <meta property="og:image:alt" content="Adriana Rezende — Perita Judicial e Assistente Técnica">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Perícia em adulteração de combustíveis: como se prova tecnicamente">
+  <meta name="twitter:description" content="Guia técnico sobre prova pericial em litígios de qualidade de combustível.">
+  <meta name="twitter:image" content="https://adrianarezende.com.br/headshot.jpg">
+
+  <!-- ─── Structured Data: Article ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Perícia em adulteração de combustíveis: como se prova tecnicamente",
+    "description": "Guia sobre perícia técnica em litígios de qualidade de combustível: distinção entre adulteração, contaminação e não conformidade, especificações da ANP, Programa de Marcação Compulsória, ensaios laboratoriais, cadeia de custódia da amostra e apuração de responsabilidade na cadeia de distribuição.",
+    "inLanguage": "pt-BR",
+    "mainEntityOfPage": "https://adrianarezende.com.br/pericia-combustiveis/",
+    "image": "https://adrianarezende.com.br/headshot.jpg",
+    "author": {
+      "@type": "Person",
+      "@id": "https://adrianarezende.com.br/#adriana-rezende",
+      "name": "Adriana Rezende",
+      "jobTitle": "Perita Judicial e Assistente Técnica em Engenharia Química",
+      "url": "https://adrianarezende.com.br/sobre/",
+      "sameAs": ["https://www.linkedin.com/in/adriana-rezende-5992554a/"],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "CRQ",
+        "name": "Registro no Conselho Regional de Química",
+        "value": "04341673"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Registro Profissional",
+        "name": "CRQ IV Região — SP nº 04341673",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Conselho Regional de Química IV Região (São Paulo)",
+          "alternateName": "CRQ-IV",
+          "url": "https://crqsp.org.br/"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://adrianarezende.com.br/#adriana-rezende",
+      "name": "Adriana Rezende",
+      "url": "https://adrianarezende.com.br/"
+    },
+    "about": [
+      { "@type": "Thing", "name": "Adulteração de Combustíveis" },
+      { "@type": "Thing", "name": "Agência Nacional do Petróleo" },
+      { "@type": "Thing", "name": "Qualidade de Combustível" }
+    ],
+    "datePublished": "2026-08-04",
+    "dateModified": "2026-08-04"
+  }
+  </script>
+
+  <!-- ─── Structured Data: FAQPage ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qual a diferença entre adulteração, contaminação e não conformidade de combustível?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "São três situações distintas, com consequências jurídicas diferentes. Adulteração é a adição intencional de substância estranha — solvente na gasolina, por exemplo — para obter ganho econômico. Contaminação é a introdução involuntária de material indesejado, tipicamente água ou resíduo de tanque. Não conformidade é o produto fora de algum parâmetro da especificação da ANP sem que tenha havido adição de terceiro, o que pode decorrer de degradação natural, armazenamento inadequado ou falha de processo. Um laudo que constata apenas 'produto fora de especificação' não demonstrou adulteração — e essa distinção costuma ser decisiva."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais resoluções da ANP definem a especificação dos combustíveis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para a gasolina automotiva, a Resolução ANP nº 807/2020. Para o óleo diesel, a Resolução ANP nº 968/2024, que entrou em vigor em 31 de julho de 2024 e alterou limites de parâmetros do diesel S10 e S500, entre eles estabilidade à oxidação, ponto de entupimento de filtro a frio, índice de acidez e teor de água. Verificar qual resolução estava vigente na data da coleta é etapa obrigatória: aplicar limite de norma posterior a fato anterior é erro que invalida a conclusão."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como o marcador da ANP detecta adulteração por solvente?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O Programa de Marcação Compulsória de Produtos, atualmente regulado pela Resolução ANP nº 902/2022, exige a adição de um marcador aos solventes. Se esse solvente for depois misturado à gasolina, o marcador aparece na análise e denuncia a adição, mesmo quando os demais parâmetros ainda estão dentro da faixa. É uma das provas mais robustas de adulteração intencional, porque o marcador não tem por que estar presente em gasolina regular."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Que ensaios são feitos em uma perícia de combustível?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende do produto e da hipótese investigada. Em gasolina, os mais frequentes são curva de destilação, massa específica, teor de etanol anidro e octanagem. Em diesel, teor de enxofre, ponto de fulgor, teor de biodiesel e teor de água. O ponto de fulgor tem valor investigativo particular: um resultado abaixo do esperado sugere presença de fração leve estranha ao produto, indicando adulteração antes mesmo de identificar qual substância foi adicionada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Por que a amostra-testemunha é decisiva nesse tipo de litígio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Porque sem ela não há como refazer a análise nem confrontar o resultado. A coleta em duplicata, com lacre e identificação de tanque, bico e data, é o que permite contraprova. Amostra única, sem lacre, sem registro de qual tanque ou bico originou o produto, ou coletada em recipiente inadequado, cria vulnerabilidade que se ataca independentemente do resultado analítico — e essa é uma das principais linhas de contestação de autuações."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quem responde quando o combustível está fora de especificação?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende de onde o desvio foi introduzido, e é justamente isso que a perícia precisa estabelecer. A cadeia vai da refinaria ou importador à distribuidora, ao transportador-revendedor-retalhista e ao posto revendedor. Água em tanque de posto aponta para armazenamento local; marcador de solvente aponta para adição deliberada em algum ponto anterior; degradação por estocagem prolongada aponta para giro de estoque. Cada hipótese técnica leva a um responsável diferente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais são as sanções por comercializar combustível adulterado?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Lei nº 9.847/1999 dispõe sobre a fiscalização das atividades relativas ao abastecimento nacional de combustíveis e prevê sanções administrativas que incluem multa, apreensão do produto, interdição e suspensão do fornecimento, aplicadas pela ANP. Além da esfera administrativa, o fato pode gerar repercussão cível — reparação de dano a consumidores e a veículos — e criminal, conforme a conduta apurada."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─── Structured Data: BreadcrumbList ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://adrianarezende.com.br/" },
+      { "@type": "ListItem", "position": 2, "name": "Perícia em Combustíveis", "item": "https://adrianarezende.com.br/pericia-combustiveis/" }
+    ]
+  }
+  </script>
+
+  <!-- ─── Fonts (async — non-render-blocking) ─── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500&display=swap"></noscript>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #FAFAF9;
+      --fg:     #0A1628;
+      --sec:    #4A5568;
+      --muted:  #64748B;
+      --border: #E5E5E3;
+      --white:  #FFFFFF;
+      --serif:  'Crimson Pro', Georgia, serif;
+      --sans:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--fg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
+    a { color: inherit; }
+    p a, li a { text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    @media (min-width: 1024px) { .wrap { padding: 0 3rem; } }
+
+    .narrow { max-width: 46rem; }
+
+    header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .header-row { display: flex; justify-content: space-between; align-items: center; padding: 1.375rem 0; gap: 1rem; }
+    .logo-name { font-family: var(--serif); font-size: 1.1875rem; font-weight: 600; }
+    .logo-sub { font-size: 0.8125rem; color: var(--muted); margin-top: 0.125rem; }
+    nav.desktop { display: none; gap: 2rem; font-size: 0.875rem; }
+    @media (min-width: 768px) { nav.desktop { display: flex; } }
+    nav.desktop a { text-decoration: none; }
+    nav.desktop a:hover { color: var(--sec); }
+
+    .crumbs { padding: 1.5rem 0 0; font-size: 0.8125rem; color: var(--muted); }
+    .crumbs a { text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+
+    .art-head { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 500; margin-bottom: 1.5rem; }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); max-width: 50rem; margin-bottom: 1.75rem; }
+    .standfirst { font-size: clamp(1.0625rem, 1.6vw, 1.1875rem); color: var(--sec); line-height: 1.75; max-width: 46rem; }
+    .byline { margin-top: 2rem; font-size: 0.875rem; color: var(--muted); }
+    .byline strong { color: var(--fg); font-weight: 500; }
+
+    main { padding: 3.5rem 0 5rem; }
+
+    h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 3.5rem 0 1.25rem; }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.1875rem; margin: 2rem 0 .75rem; }
+    p { font-size: 1.0625rem; color: var(--sec); line-height: 1.8; margin-bottom: 1.25rem; max-width: 46rem; }
+    strong { color: var(--fg); font-weight: 500; }
+
+    ul, ol { max-width: 46rem; margin: 0 0 1.5rem; padding-left: 0; list-style: none; }
+    li { font-size: 1.0625rem; color: var(--sec); line-height: 1.75; margin-bottom: .75rem; display: flex; }
+    li::before { content: "—"; color: var(--muted); margin-right: 1rem; flex-shrink: 0; }
+    ol { counter-reset: n; }
+    ol li { counter-increment: n; }
+    ol li::before { content: counter(n) "."; font-variant-numeric: tabular-nums; }
+
+    .box { background: var(--white); border: 1px solid var(--border); border-left: 2px solid var(--fg); padding: 1.75rem 1.75rem 1.5rem; margin: 0 0 2.5rem; max-width: 46rem; }
+    .box-lbl { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: .875rem; }
+    .box p:last-child { margin-bottom: 0; }
+
+    .table-scroll { overflow-x: auto; margin: 0 0 2.5rem; max-width: 52rem; }
+    table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: .9375rem; }
+    th, td { text-align: left; padding: .875rem 1rem .875rem 0; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+    th { font-family: var(--sans); font-weight: 500; color: var(--fg); font-size: .6875rem; text-transform: uppercase; letter-spacing: .1em; }
+    td { color: var(--sec); }
+    td:first-child { color: var(--fg); width: 24%; }
+
+    .faq { border-top: 1px solid var(--border); max-width: 46rem; }
+    .faq > div { padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
+    .faq h3 { margin: 0 0 .75rem; }
+    .faq p:last-child { margin-bottom: 0; }
+
+    .cta-sec { background: var(--white); border-top: 1px solid var(--border); padding: 4.5rem 0; }
+    .cta-sec h2 { margin-top: 0; }
+    .btn { display: inline-block; padding: .9375rem 2.25rem; font-size: .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: .09em; background: var(--fg); color: var(--bg); border: 1px solid var(--fg); text-decoration: none; transition: background .2s, border-color .2s; }
+    .btn:hover { background: var(--sec); border-color: var(--sec); }
+    .ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+    .btn-outline { background: transparent; color: var(--fg); border-color: var(--border); }
+    .btn-outline:hover { background: transparent; border-color: var(--fg); }
+
+    .related { border-top: 1px solid var(--border); padding: 3.5rem 0 4.5rem; }
+    .related-lbl { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .related ul li::before { content: "→"; }
+
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 0; font-size: .75rem; color: var(--muted); }
+  </style>
+
+  <!-- ─── Google Analytics 4 ─── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL5HWSTKPF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NL5HWSTKPF');
+  </script>
+
+  <!-- ─── Google Ads conversion: WhatsApp contact click ─── -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href*="wa.me/5519992297507"]');
+      if (link) { gtag('event', 'manual_event_CONTACT'); }
+    });
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="header-row">
+      <a href="/" style="text-decoration:none">
+        <div class="logo-name">Adriana Rezende</div>
+        <div class="logo-sub">Engenheira Química, UNICAMP</div>
+      </a>
+      <nav class="desktop">
+        <a href="/sobre/">Sobre</a>
+        <a href="/pericia-contaminacao-alimentos/">Alimentos</a>
+        <a href="/#expertise">Expertise</a>
+        <a href="/#qualifications">Qualificações</a>
+        <a href="/#insights">Insights</a>
+        <a href="/#contact">Contato</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Trilha de navegação">
+    <a href="/">Início</a> &nbsp;/&nbsp; Perícia em Combustíveis
+  </nav>
+</div>
+
+<div class="wrap">
+  <div class="art-head">
+    <p class="eyebrow">Combustíveis</p>
+    <h1>Perícia em adulteração de combustíveis: como se prova tecnicamente</h1>
+    <p class="standfirst">
+      "Produto fora de especificação" e "produto adulterado" não são a mesma coisa — e a diferença
+      entre as duas conclusões separa uma não conformidade técnica de uma acusação de fraude.
+      Boa parte dos litígios de combustível se decide exatamente aí: no que o laudo efetivamente
+      provou, e no que ele apenas presumiu.
+    </p>
+    <p class="byline">
+      Por <strong>Adriana Rezende</strong> — engenheira química pela UNICAMP, CRQ IV Região — SP nº 04341673,
+      com mais de 20 anos de experiência técnica e industrial e mais de 8 anos como perita judicial
+      e assistente técnica.
+    </p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <div class="box">
+      <div class="box-lbl">Em resumo</div>
+      <p>
+        A perícia em combustíveis precisa responder três perguntas em ordem:
+        <strong>o produto está fora da especificação vigente na data da coleta?</strong>
+        Se sim, <strong>o desvio decorre de adição intencional, de contaminação involuntária ou de
+        degradação natural?</strong> E, finalmente, <strong>em que elo da cadeia isso se introduziu?</strong>
+        Um laudo que responde só à primeira pergunta não sustenta imputação de adulteração.
+      </p>
+    </div>
+
+    <h2>Três situações que os laudos frequentemente confundem</h2>
+    <p>
+      Esta é a distinção que mais decide processos — e a que mais se vê tratada de forma imprecisa.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Situação</th>
+            <th>O que é</th>
+            <th>Indício técnico típico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Adulteração</td>
+            <td>Adição intencional de substância estranha para ganho econômico</td>
+            <td>Presença de marcador de solvente; curva de destilação deslocada; teor de etanol acima do autorizado</td>
+          </tr>
+          <tr>
+            <td>Contaminação</td>
+            <td>Introdução involuntária de material indesejado</td>
+            <td>Água livre no fundo de tanque; borra e particulado; resíduo de produto anterior</td>
+          </tr>
+          <tr>
+            <td>Não conformidade</td>
+            <td>Produto fora de parâmetro sem adição de terceiro</td>
+            <td>Degradação por estocagem prolongada; perda de estabilidade à oxidação; armazenamento inadequado</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      A consequência prática é direta: <strong>não conformidade e contaminação admitem explicações sem
+      dolo</strong>, enquanto adulteração pressupõe conduta deliberada. Um laudo que constata parâmetro
+      fora de faixa e conclui "combustível adulterado" deu um salto lógico — precisaria demonstrar
+      <em>o que</em> foi adicionado, e não apenas que algo está diferente do esperado.
+    </p>
+
+    <h2>Qual especificação da ANP se aplica</h2>
+    <p>
+      A especificação não é única nem permanente — muda por produto e é revisada periodicamente.
+      Verificar qual resolução estava vigente <strong>na data da coleta</strong> é etapa obrigatória.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Norma</th>
+            <th>Observação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gasolina automotiva</td>
+            <td>Resolução ANP nº 807/2020</td>
+            <td>Define especificação e obrigações de controle de qualidade</td>
+          </tr>
+          <tr>
+            <td>Óleo diesel</td>
+            <td>Resolução ANP nº 968/2024</td>
+            <td>Em vigor desde 31/07/2024. Alterou limites do S10 e S500 — entre eles estabilidade à oxidação, ponto de entupimento de filtro a frio, índice de acidez e teor de água</td>
+          </tr>
+          <tr>
+            <td>Marcação de solventes</td>
+            <td>Resolução ANP nº 902/2022</td>
+            <td>Regula o Programa de Marcação Compulsória de Produtos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      <strong>Aplicar limite de norma posterior a fato anterior invalida a conclusão.</strong> Como a
+      Resolução 968/2024 alterou parâmetros do diesel a partir de 31/07/2024, um laudo sobre coleta
+      anterior a essa data que aplique os novos limites está comparando o produto com uma régua que
+      ainda não existia. É verificação simples e frequentemente omitida.
+    </p>
+
+    <h2>O marcador: a prova mais direta de adição intencional</h2>
+    <p>
+      O <strong>Programa de Marcação Compulsória de Produtos</strong>, hoje regulado pela
+      <strong>Resolução ANP nº 902/2022</strong>, exige que solventes recebam um marcador. Se o solvente
+      for posteriormente misturado à gasolina, o marcador aparece na análise.
+    </p>
+    <p>
+      O valor probatório é alto por um motivo específico: <strong>o marcador não tem razão para estar
+      presente em gasolina regular.</strong> Diferentemente de parâmetros como massa específica ou
+      destilação — que podem variar por causas legítimas —, a detecção do marcador aponta diretamente
+      para a adição de solvente, mesmo quando os demais parâmetros ainda estão dentro da faixa. É o tipo
+      de evidência que dificilmente se explica por degradação ou erro de estocagem.
+    </p>
+
+    <h2>Ensaios e o que cada resultado sugere</h2>
+    <p>
+      A escolha dos ensaios deve seguir a hipótese investigada, não uma bateria genérica.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Ensaio</th>
+            <th>Produto</th>
+            <th>O que um desvio sugere</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Curva de destilação</td>
+            <td>Gasolina</td>
+            <td>Deslocamento indica presença de fração mais leve ou mais pesada que a esperada</td>
+          </tr>
+          <tr>
+            <td>Massa específica</td>
+            <td>Gasolina e diesel</td>
+            <td>Valor fora de faixa sugere mistura com produto de densidade diferente</td>
+          </tr>
+          <tr>
+            <td>Teor de etanol anidro</td>
+            <td>Gasolina</td>
+            <td>Acima do percentual autorizado indica adição além do permitido</td>
+          </tr>
+          <tr>
+            <td>Ponto de fulgor</td>
+            <td>Diesel</td>
+            <td>Resultado baixo sugere fração leve estranha ao produto — forte indício de adulteração</td>
+          </tr>
+          <tr>
+            <td>Teor de enxofre</td>
+            <td>Diesel</td>
+            <td>Distingue S10 de S500 e detecta produto vendido como categoria que não é</td>
+          </tr>
+          <tr>
+            <td>Teor de água e sedimentos</td>
+            <td>Ambos</td>
+            <td>Aponta contaminação por armazenamento, tipicamente local</td>
+          </tr>
+          <tr>
+            <td>Estabilidade à oxidação</td>
+            <td>Diesel</td>
+            <td>Degradação por estocagem prolongada — sugere giro de estoque, não fraude</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Cadeia de custódia e amostra-testemunha</h2>
+    <p>
+      Em litígio de combustível, a fragilidade da amostra é a linha de defesa mais explorada — e com
+      frequência a mais eficaz, porque independe do resultado analítico.
+    </p>
+    <p>
+      A coleta deve ser feita <strong>em duplicata, com lacre</strong>, registrando tanque, bico, data,
+      hora e responsável. A amostra-testemunha é o que permite a contraprova; sem ela, o resultado do
+      autor se torna inatacável por reanálise e o contraditório fica limitado à crítica de método.
+    </p>
+    <p>Os pontos que mais comprometem a prova:</p>
+    <ul>
+      <li><strong>Amostra única</strong>, sem testemunha lacrada para contraprova.</li>
+      <li><strong>Origem indeterminada</strong> — não se registra de qual tanque ou bico veio o produto, o que impede vincular o resultado a um lote.</li>
+      <li><strong>Recipiente inadequado</strong> — material que interage com o produto ou permite perda de frações voláteis, alterando destilação e ponto de fulgor.</li>
+      <li><strong>Intervalo excessivo</strong> entre coleta e análise, especialmente para parâmetros voláteis.</li>
+      <li><strong>Laboratório sem escopo acreditado</strong> para o ensaio específico realizado.</li>
+    </ul>
+
+    <h2>Em que elo da cadeia o desvio se introduziu</h2>
+    <p>
+      Estabelecer o responsável é normalmente o objeto real da perícia — e cada hipótese técnica aponta
+      para um elo diferente da cadeia, que vai da refinaria ou importador à distribuidora, ao
+      transportador-revendedor-retalhista e ao posto revendedor.
+    </p>
+    <ul>
+      <li><strong>Água livre em tanque de posto</strong> → armazenamento local: infiltração, tanque com avaria, falha de drenagem.</li>
+      <li><strong>Marcador de solvente presente</strong> → adição deliberada em algum ponto anterior ao abastecimento do tanque.</li>
+      <li><strong>Perda de estabilidade à oxidação</strong> → estoque parado por tempo excessivo; questão de giro, não de fraude.</li>
+      <li><strong>Resíduo de produto diverso</strong> → falha em operação de transferência ou compartimento de transporte mal higienizado.</li>
+      <li><strong>Não conformidade já na nota de origem</strong> → desvio anterior à entrega, deslocando a responsabilidade para o fornecedor.</li>
+    </ul>
+    <p>
+      Por isso a análise documental costuma pesar tanto quanto a laboratorial: notas fiscais, registros
+      de descarga, medições de tanque e laudos de origem do fornecedor frequentemente indicam o elo com
+      mais precisão do que o próprio ensaio.
+    </p>
+
+    <h2>Sanções aplicáveis</h2>
+    <p>
+      A <strong>Lei nº 9.847/1999</strong> dispõe sobre a fiscalização das atividades relativas ao
+      abastecimento nacional de combustíveis e prevê sanções administrativas aplicadas pela ANP —
+      entre elas multa, apreensão do produto, interdição e suspensão do fornecimento. Além da esfera
+      administrativa, o mesmo fato pode gerar repercussão cível, por dano a consumidores e a veículos, e
+      criminal, conforme a conduta apurada.
+    </p>
+    <p>
+      Como as três esferas partem da mesma base fática, <strong>a qualidade da prova técnica produzida
+      na fase administrativa costuma determinar o desfecho das demais</strong> — o que torna a atuação
+      técnica precoce especialmente valiosa neste tipo de caso.
+    </p>
+
+    <h2>Perguntas frequentes</h2>
+    <div class="faq">
+      <div>
+        <h3>Qual a diferença entre adulteração, contaminação e não conformidade de combustível?</h3>
+        <p>São três situações distintas, com consequências jurídicas diferentes. Adulteração é a adição intencional de substância estranha — solvente na gasolina, por exemplo — para obter ganho econômico. Contaminação é a introdução involuntária de material indesejado, tipicamente água ou resíduo de tanque. Não conformidade é o produto fora de algum parâmetro da especificação da ANP sem que tenha havido adição de terceiro, o que pode decorrer de degradação natural, armazenamento inadequado ou falha de processo. Um laudo que constata apenas "produto fora de especificação" não demonstrou adulteração — e essa distinção costuma ser decisiva.</p>
+      </div>
+      <div>
+        <h3>Quais resoluções da ANP definem a especificação dos combustíveis?</h3>
+        <p>Para a gasolina automotiva, a Resolução ANP nº 807/2020. Para o óleo diesel, a Resolução ANP nº 968/2024, que entrou em vigor em 31 de julho de 2024 e alterou limites de parâmetros do diesel S10 e S500, entre eles estabilidade à oxidação, ponto de entupimento de filtro a frio, índice de acidez e teor de água. Verificar qual resolução estava vigente na data da coleta é etapa obrigatória: aplicar limite de norma posterior a fato anterior é erro que invalida a conclusão.</p>
+      </div>
+      <div>
+        <h3>Como o marcador da ANP detecta adulteração por solvente?</h3>
+        <p>O Programa de Marcação Compulsória de Produtos, atualmente regulado pela Resolução ANP nº 902/2022, exige a adição de um marcador aos solventes. Se esse solvente for depois misturado à gasolina, o marcador aparece na análise e denuncia a adição, mesmo quando os demais parâmetros ainda estão dentro da faixa. É uma das provas mais robustas de adulteração intencional, porque o marcador não tem por que estar presente em gasolina regular.</p>
+      </div>
+      <div>
+        <h3>Que ensaios são feitos em uma perícia de combustível?</h3>
+        <p>Depende do produto e da hipótese investigada. Em gasolina, os mais frequentes são curva de destilação, massa específica, teor de etanol anidro e octanagem. Em diesel, teor de enxofre, ponto de fulgor, teor de biodiesel e teor de água. O ponto de fulgor tem valor investigativo particular: um resultado abaixo do esperado sugere presença de fração leve estranha ao produto, indicando adulteração antes mesmo de identificar qual substância foi adicionada.</p>
+      </div>
+      <div>
+        <h3>Por que a amostra-testemunha é decisiva nesse tipo de litígio?</h3>
+        <p>Porque sem ela não há como refazer a análise nem confrontar o resultado. A coleta em duplicata, com lacre e identificação de tanque, bico e data, é o que permite contraprova. Amostra única, sem lacre, sem registro de qual tanque ou bico originou o produto, ou coletada em recipiente inadequado, cria vulnerabilidade que se ataca independentemente do resultado analítico — e essa é uma das principais linhas de contestação de autuações.</p>
+      </div>
+      <div>
+        <h3>Quem responde quando o combustível está fora de especificação?</h3>
+        <p>Depende de onde o desvio foi introduzido, e é justamente isso que a perícia precisa estabelecer. A cadeia vai da refinaria ou importador à distribuidora, ao transportador-revendedor-retalhista e ao posto revendedor. Água em tanque de posto aponta para armazenamento local; marcador de solvente aponta para adição deliberada em algum ponto anterior; degradação por estocagem prolongada aponta para giro de estoque. Cada hipótese técnica leva a um responsável diferente.</p>
+      </div>
+      <div>
+        <h3>Quais são as sanções por comercializar combustível adulterado?</h3>
+        <p>A Lei nº 9.847/1999 dispõe sobre a fiscalização das atividades relativas ao abastecimento nacional de combustíveis e prevê sanções administrativas que incluem multa, apreensão do produto, interdição e suspensão do fornecimento, aplicadas pela ANP. Além da esfera administrativa, o fato pode gerar repercussão cível — reparação de dano a consumidores e a veículos — e criminal, conforme a conduta apurada.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<section class="cta-sec">
+  <div class="wrap">
+    <h2>Discuta seu caso técnico</h2>
+    <p class="narrow">
+      Análise preliminar de viabilidade técnica, elaboração de quesitos, acompanhamento de perícia e
+      parecer técnico em processos que envolvem adulteração e contaminação de combustíveis,
+      conformidade com especificações da ANP e apuração de responsabilidade na cadeia de distribuição.
+      Campinas, São Paulo — atendimento em todo o território nacional.
+    </p>
+    <div class="ctas">
+      <a href="/#contact" class="btn">Solicitar contato</a>
+      <a href="https://wa.me/5519992297507?text=Ol%C3%A1%2C%20vim%20pelo%20site%20%28guia%20de%20Per%C3%ADcia%20em%20Combust%C3%ADveis%29%20e%20gostaria%20de%20discutir%20um%20caso%20t%C3%A9cnico." target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp (19) 99229-7507</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="related">
+    <div class="related-lbl">Continue lendo</div>
+    <ul>
+      <li><a href="/assistente-tecnica/">Assistente técnico na perícia judicial: o que faz, quando contratar e como escolher</a></li>
+      <li><a href="/pericia-ambiental/">Perícia ambiental: contaminação de solo, água e passivos industriais</a></li>
+      <li><a href="/classificacao-fiscal-ncm/">Classificação fiscal NCM: como se contesta tecnicamente um auto de infração</a></li>
+      <li><a href="/sobre/">Quem é Adriana Rezende: formação, registro CRQ e tipos de processo em que atua</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Adriana Rezende — Perita Judicial e Assistente Técnica, Engenheira Química (UNICAMP),
+    CRQ IV Região — SP nº 04341673.
+    Este conteúdo tem finalidade informativa e não substitui análise técnica do caso concreto.
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+﻿Campaign,Keyword,Criterion Type
+Search | High Intent | BR,vaga,Campaign Negative Broad
+Search | High Intent | BR,vagas,Campaign Negative Broad
+Search | High Intent | BR,emprego,Campaign Negative Broad
+Search | High Intent | BR,empregos,Campaign Negative Broad
+Search | High Intent | BR,salário,Campaign Negative Broad
+Search | High Intent | BR,salario,Campaign Negative Broad
+Search | High Intent | BR,quanto ganha,Campaign Negative Phrase
+Search | High Intent | BR,quanto custa ser,Campaign Negative Phrase
+Search | High Intent | BR,piso salarial,Campaign Negative Phrase
+Search | High Intent | BR,remuneração,Campaign Negative Broad
+Search | High Intent | BR,concurso,Campaign Negative Broad
+Search | High Intent | BR,concurso público,Campaign Negative Phrase
+Search | High Intent | BR,edital,Campaign Negative Broad
+Search | High Intent | BR,carreira,Campaign Negative Broad
+Search | High Intent | BR,como ser,Campaign Negative Phrase
+Search | High Intent | BR,como se tornar,Campaign Negative Phrase
+Search | High Intent | BR,como virar,Campaign Negative Phrase
+Search | High Intent | BR,quero ser,Campaign Negative Phrase
+Search | High Intent | BR,formação para,Campaign Negative Phrase
+Search | High Intent | BR,cadastro,Campaign Negative Broad
+Search | High Intent | BR,cadastro perito,Campaign Negative Phrase
+Search | High Intent | BR,credenciamento,Campaign Negative Broad
+Search | High Intent | BR,credenciar,Campaign Negative Broad
+Search | High Intent | BR,inscrição,Campaign Negative Broad
+Search | High Intent | BR,nomeação como perito,Campaign Negative Phrase
+Search | High Intent | BR,ser perito,Campaign Negative Phrase
+Search | High Intent | BR,virar perito,Campaign Negative Phrase
+Search | High Intent | BR,trabalhar como,Campaign Negative Phrase
+Search | High Intent | BR,contratação clt,Campaign Negative Phrase
+Search | High Intent | BR,estágio,Campaign Negative Broad
+Search | High Intent | BR,estagiário,Campaign Negative Broad
+Search | High Intent | BR,trainee,Campaign Negative Broad
+Search | High Intent | BR,freelance,Campaign Negative Broad
+Search | High Intent | BR,freelancer,Campaign Negative Broad
+Search | High Intent | BR,home office,Campaign Negative Phrase
+Search | High Intent | BR,indeed,Campaign Negative Broad
+Search | High Intent | BR,catho,Campaign Negative Broad
+Search | High Intent | BR,glassdoor,Campaign Negative Broad
+Search | High Intent | BR,curso,Campaign Negative Broad
+Search | High Intent | BR,cursos,Campaign Negative Broad
+Search | High Intent | BR,faculdade,Campaign Negative Broad
+Search | High Intent | BR,graduação,Campaign Negative Broad
+Search | High Intent | BR,graduacao,Campaign Negative Broad
+Search | High Intent | BR,pós,Campaign Negative Broad
+Search | High Intent | BR,pós-graduação,Campaign Negative Broad
+Search | High Intent | BR,posgraduacao,Campaign Negative Broad
+Search | High Intent | BR,mba,Campaign Negative Broad
+Search | High Intent | BR,especialização,Campaign Negative Broad
+Search | High Intent | BR,especializacao,Campaign Negative Broad
+Search | High Intent | BR,mestrado,Campaign Negative Broad
+Search | High Intent | BR,doutorado,Campaign Negative Broad
+Search | High Intent | BR,certificação,Campaign Negative Broad
+Search | High Intent | BR,certificacao,Campaign Negative Broad
+Search | High Intent | BR,treinamento,Campaign Negative Broad
+Search | High Intent | BR,capacitação,Campaign Negative Broad
+Search | High Intent | BR,capacitacao,Campaign Negative Broad
+Search | High Intent | BR,aula,Campaign Negative Broad
+Search | High Intent | BR,aulas,Campaign Negative Broad
+Search | High Intent | BR,apostila,Campaign Negative Broad
+Search | High Intent | BR,apostilas,Campaign Negative Broad
+Search | High Intent | BR,pdf,Campaign Negative Broad
+Search | High Intent | BR,download,Campaign Negative Broad
+Search | High Intent | BR,ebook,Campaign Negative Broad
+Search | High Intent | BR,e-book,Campaign Negative Broad
+Search | High Intent | BR,livro,Campaign Negative Broad
+Search | High Intent | BR,livros,Campaign Negative Broad
+Search | High Intent | BR,material,Campaign Negative Broad
+Search | High Intent | BR,slides,Campaign Negative Broad
+Search | High Intent | BR,videoaula,Campaign Negative Broad
+Search | High Intent | BR,tutorial,Campaign Negative Broad
+Search | High Intent | BR,passo a passo,Campaign Negative Phrase
+Search | High Intent | BR,aprenda,Campaign Negative Broad
+Search | High Intent | BR,aprender,Campaign Negative Broad
+Search | High Intent | BR,estudar,Campaign Negative Broad
+Search | High Intent | BR,estudo dirigido,Campaign Negative Phrase
+Search | High Intent | BR,resumo,Campaign Negative Broad
+Search | High Intent | BR,monografia,Campaign Negative Broad
+Search | High Intent | BR,tcc,Campaign Negative Broad
+Search | High Intent | BR,artigo científico,Campaign Negative Phrase
+Search | High Intent | BR,dissertação,Campaign Negative Broad
+Search | High Intent | BR,o que é,Campaign Negative Phrase
+Search | High Intent | BR,o que e,Campaign Negative Phrase
+Search | High Intent | BR,o que faz,Campaign Negative Phrase
+Search | High Intent | BR,oque e,Campaign Negative Phrase
+Search | High Intent | BR,significado,Campaign Negative Broad
+Search | High Intent | BR,definição,Campaign Negative Broad
+Search | High Intent | BR,definicao,Campaign Negative Broad
+Search | High Intent | BR,conceito,Campaign Negative Broad
+Search | High Intent | BR,exemplo,Campaign Negative Broad
+Search | High Intent | BR,exemplos,Campaign Negative Broad
+Search | High Intent | BR,modelo,Campaign Negative Broad
+Search | High Intent | BR,modelos,Campaign Negative Broad
+Search | High Intent | BR,template,Campaign Negative Broad
+Search | High Intent | BR,formulário,Campaign Negative Broad
+Search | High Intent | BR,formulario,Campaign Negative Broad
+Search | High Intent | BR,planilha,Campaign Negative Broad
+Search | High Intent | BR,wikipedia,Campaign Negative Broad
+Search | High Intent | BR,wiki,Campaign Negative Broad
+Search | High Intent | BR,como fazer,Campaign Negative Phrase
+Search | High Intent | BR,como funciona,Campaign Negative Phrase
+Search | High Intent | BR,como elaborar,Campaign Negative Phrase
+Search | High Intent | BR,como redigir,Campaign Negative Phrase
+Search | High Intent | BR,como escrever,Campaign Negative Phrase
+Search | High Intent | BR,quais são,Campaign Negative Phrase
+Search | High Intent | BR,diferença entre,Campaign Negative Phrase
+Search | High Intent | BR,diferenca entre,Campaign Negative Phrase
+Search | High Intent | BR,para que serve,Campaign Negative Phrase
+Search | High Intent | BR,vantagens,Campaign Negative Broad
+Search | High Intent | BR,desvantagens,Campaign Negative Broad
+Search | High Intent | BR,história,Campaign Negative Broad
+Search | High Intent | BR,resumo de,Campaign Negative Phrase
+Search | High Intent | BR,pesquisa sobre,Campaign Negative Phrase
+Search | High Intent | BR,civil,Campaign Negative Broad
+Search | High Intent | BR,engenharia civil,Campaign Negative Phrase
+Search | High Intent | BR,estrutural,Campaign Negative Broad
+Search | High Intent | BR,mecânica,Campaign Negative Broad
+Search | High Intent | BR,mecanica,Campaign Negative Broad
+Search | High Intent | BR,engenharia mecânica,Campaign Negative Phrase
+Search | High Intent | BR,elétrica,Campaign Negative Broad
+Search | High Intent | BR,eletrica,Campaign Negative Broad
+Search | High Intent | BR,engenharia elétrica,Campaign Negative Phrase
+Search | High Intent | BR,eletrônica,Campaign Negative Broad
+Search | High Intent | BR,produção,Campaign Negative Broad
+Search | High Intent | BR,engenharia de produção,Campaign Negative Phrase
+Search | High Intent | BR,agronômica,Campaign Negative Broad
+Search | High Intent | BR,agronomia,Campaign Negative Broad
+Search | High Intent | BR,agrônomo,Campaign Negative Broad
+Search | High Intent | BR,florestal,Campaign Negative Broad
+Search | High Intent | BR,naval,Campaign Negative Broad
+Search | High Intent | BR,aeronáutica,Campaign Negative Broad
+Search | High Intent | BR,minas,Campaign Negative Broad
+Search | High Intent | BR,petróleo,Campaign Negative Broad
+Search | High Intent | BR,software,Campaign Negative Broad
+Search | High Intent | BR,computação,Campaign Negative Broad
+Search | High Intent | BR,telecomunicações,Campaign Negative Broad
+Search | High Intent | BR,segurança do trabalho,Campaign Negative Phrase
+Search | High Intent | BR,engenheiro de segurança,Campaign Negative Phrase
+Search | High Intent | BR,cipa,Campaign Negative Broad
+Search | High Intent | BR,médica,Campaign Negative Broad
+Search | High Intent | BR,medica,Campaign Negative Broad
+Search | High Intent | BR,perícia médica,Campaign Negative Phrase
+Search | High Intent | BR,perito médico,Campaign Negative Phrase
+Search | High Intent | BR,odontológica,Campaign Negative Broad
+Search | High Intent | BR,odontologia,Campaign Negative Broad
+Search | High Intent | BR,dentista,Campaign Negative Broad
+Search | High Intent | BR,psicológica,Campaign Negative Broad
+Search | High Intent | BR,psicologia,Campaign Negative Broad
+Search | High Intent | BR,psiquiátrica,Campaign Negative Broad
+Search | High Intent | BR,veterinária,Campaign Negative Broad
+Search | High Intent | BR,criminal,Campaign Negative Broad
+Search | High Intent | BR,perícia criminal,Campaign Negative Phrase
+Search | High Intent | BR,papiloscopia,Campaign Negative Broad
+Search | High Intent | BR,balística,Campaign Negative Broad
+Search | High Intent | BR,datiloscopia,Campaign Negative Broad
+Search | High Intent | BR,grafotécnica,Campaign Negative Broad
+Search | High Intent | BR,grafotecnica,Campaign Negative Broad
+Search | High Intent | BR,grafoscopia,Campaign Negative Broad
+Search | High Intent | BR,documentoscopia,Campaign Negative Broad
+Search | High Intent | BR,documentoscópica,Campaign Negative Broad
+Search | High Intent | BR,veicular,Campaign Negative Broad
+Search | High Intent | BR,automotiva,Campaign Negative Broad
+Search | High Intent | BR,perícia veicular,Campaign Negative Phrase
+Search | High Intent | BR,sinistro,Campaign Negative Broad
+Search | High Intent | BR,seguradora,Campaign Negative Broad
+Search | High Intent | BR,imobiliária,Campaign Negative Broad
+Search | High Intent | BR,imobiliario,Campaign Negative Broad
+Search | High Intent | BR,avaliação de imóveis,Campaign Negative Phrase
+Search | High Intent | BR,avaliação de imovel,Campaign Negative Phrase
+Search | High Intent | BR,engenharia diagnóstica,Campaign Negative Phrase
+Search | High Intent | BR,patologia das construções,Campaign Negative Phrase
+Search | High Intent | BR,infiltração,Campaign Negative Broad
+Search | High Intent | BR,contábil,Campaign Negative Broad
+Search | High Intent | BR,contabil,Campaign Negative Broad
+Search | High Intent | BR,perícia contábil,Campaign Negative Phrase
+Search | High Intent | BR,previdenciária,Campaign Negative Broad
+Search | High Intent | BR,previdenciaria,Campaign Negative Broad
+Search | High Intent | BR,inss,Campaign Negative Broad
+Search | High Intent | BR,auxílio doença,Campaign Negative Phrase
+Search | High Intent | BR,aposentadoria,Campaign Negative Broad
+Search | High Intent | BR,informática,Campaign Negative Broad
+Search | High Intent | BR,forense digital,Campaign Negative Phrase
+Search | High Intent | BR,perícia digital,Campaign Negative Phrase
+Search | High Intent | BR,pensão,Campaign Negative Broad
+Search | High Intent | BR,pensao,Campaign Negative Broad
+Search | High Intent | BR,pensão alimentícia,Campaign Negative Phrase
+Search | High Intent | BR,pensao alimenticia,Campaign Negative Phrase
+Search | High Intent | BR,ação de alimentos,Campaign Negative Phrase
+Search | High Intent | BR,acao de alimentos,Campaign Negative Phrase
+Search | High Intent | BR,execução de alimentos,Campaign Negative Phrase
+Search | High Intent | BR,revisional de alimentos,Campaign Negative Phrase
+Search | High Intent | BR,revisional,Campaign Negative Broad
+Search | High Intent | BR,alimentos gravídicos,Campaign Negative Phrase
+Search | High Intent | BR,exoneração de alimentos,Campaign Negative Phrase
+Search | High Intent | BR,guarda,Campaign Negative Broad
+Search | High Intent | BR,guarda compartilhada,Campaign Negative Phrase
+Search | High Intent | BR,divórcio,Campaign Negative Broad
+Search | High Intent | BR,divorcio,Campaign Negative Broad
+Search | High Intent | BR,separação,Campaign Negative Broad
+Search | High Intent | BR,união estável,Campaign Negative Phrase
+Search | High Intent | BR,paternidade,Campaign Negative Broad
+Search | High Intent | BR,dna,Campaign Negative Broad
+Search | High Intent | BR,visitação,Campaign Negative Broad
+Search | High Intent | BR,desconto em folha,Campaign Negative Phrase
+Search | High Intent | BR,prisão civil,Campaign Negative Phrase
+Search | High Intent | BR,inadimplemento pensão,Campaign Negative Phrase
+Search | High Intent | BR,vara de família,Campaign Negative Phrase
+Search | High Intent | BR,autorizada,Campaign Negative Broad
+Search | High Intent | BR,assistência autorizada,Campaign Negative Phrase
+Search | High Intent | BR,assistencia autorizada,Campaign Negative Phrase
+Search | High Intent | BR,conserto,Campaign Negative Broad
+Search | High Intent | BR,consertar,Campaign Negative Broad
+Search | High Intent | BR,reparo,Campaign Negative Broad
+Search | High Intent | BR,manutenção,Campaign Negative Broad
+Search | High Intent | BR,manutencao,Campaign Negative Broad
+Search | High Intent | BR,celular,Campaign Negative Broad
+Search | High Intent | BR,smartphone,Campaign Negative Broad
+Search | High Intent | BR,iphone,Campaign Negative Broad
+Search | High Intent | BR,notebook,Campaign Negative Broad
+Search | High Intent | BR,computador,Campaign Negative Broad
+Search | High Intent | BR,tv,Campaign Negative Broad
+Search | High Intent | BR,televisão,Campaign Negative Broad
+Search | High Intent | BR,geladeira,Campaign Negative Broad
+Search | High Intent | BR,fogão,Campaign Negative Broad
+Search | High Intent | BR,máquina de lavar,Campaign Negative Phrase
+Search | High Intent | BR,micro-ondas,Campaign Negative Broad
+Search | High Intent | BR,ar condicionado,Campaign Negative Phrase
+Search | High Intent | BR,eletrodoméstico,Campaign Negative Broad
+Search | High Intent | BR,eletrodomestico,Campaign Negative Broad
+Search | High Intent | BR,eletrônico,Campaign Negative Broad
+Search | High Intent | BR,samsung,Campaign Negative Broad
+Search | High Intent | BR,lg,Campaign Negative Broad
+Search | High Intent | BR,brastemp,Campaign Negative Broad
+Search | High Intent | BR,consul,Campaign Negative Broad
+Search | High Intent | BR,electrolux,Campaign Negative Broad
+Search | High Intent | BR,philips,Campaign Negative Broad
+Search | High Intent | BR,sony,Campaign Negative Broad
+Search | High Intent | BR,motorola,Campaign Negative Broad
+Search | High Intent | BR,xiaomi,Campaign Negative Broad
+Search | High Intent | BR,garantia,Campaign Negative Broad
+Search | High Intent | BR,troca de tela,Campaign Negative Phrase
+Search | High Intent | BR,consulta,Campaign Negative Broad
+Search | High Intent | BR,consultar,Campaign Negative Broad
+Search | High Intent | BR,consulta ncm,Campaign Negative Phrase
+Search | High Intent | BR,tabela,Campaign Negative Broad
+Search | High Intent | BR,tabela ncm,Campaign Negative Phrase
+Search | High Intent | BR,lista,Campaign Negative Broad
+Search | High Intent | BR,lista ncm,Campaign Negative Phrase
+Search | High Intent | BR,código,Campaign Negative Broad
+Search | High Intent | BR,codigo,Campaign Negative Broad
+Search | High Intent | BR,código ncm,Campaign Negative Phrase
+Search | High Intent | BR,buscar,Campaign Negative Broad
+Search | High Intent | BR,busca ncm,Campaign Negative Phrase
+Search | High Intent | BR,pesquisar ncm,Campaign Negative Phrase
+Search | High Intent | BR,qual ncm,Campaign Negative Phrase
+Search | High Intent | BR,qual o ncm,Campaign Negative Phrase
+Search | High Intent | BR,ncm de,Campaign Negative Phrase
+Search | High Intent | BR,nfe,Campaign Negative Broad
+Search | High Intent | BR,nota fiscal,Campaign Negative Phrase
+Search | High Intent | BR,sped,Campaign Negative Broad
+Search | High Intent | BR,sintegra,Campaign Negative Broad
+Search | High Intent | BR,cest,Campaign Negative Broad
+Search | High Intent | BR,cfop,Campaign Negative Broad
+Search | High Intent | BR,siscomex,Campaign Negative Broad
+Search | High Intent | BR,simples nacional,Campaign Negative Phrase
+Search | High Intent | BR,mei,Campaign Negative Broad
+Search | High Intent | BR,emissor,Campaign Negative Broad
+Search | High Intent | BR,sistema,Campaign Negative Broad
+Search | High Intent | BR,software fiscal,Campaign Negative Phrase
+Search | High Intent | BR,laboratório,Campaign Negative Broad
+Search | High Intent | BR,laboratorio,Campaign Negative Broad
+Search | High Intent | BR,análise laboratorial,Campaign Negative Phrase
+Search | High Intent | BR,analise laboratorial,Campaign Negative Phrase
+Search | High Intent | BR,onde analisar,Campaign Negative Phrase
+Search | High Intent | BR,onde fazer análise,Campaign Negative Phrase
+Search | High Intent | BR,exame,Campaign Negative Broad
+Search | High Intent | BR,exames,Campaign Negative Broad
+Search | High Intent | BR,ensaio,Campaign Negative Broad
+Search | High Intent | BR,coleta de amostra preço,Campaign Negative Phrase
+Search | High Intent | BR,análise de água preço,Campaign Negative Phrase
+Search | High Intent | BR,análise microbiológica preço,Campaign Negative Phrase
+Search | High Intent | BR,bromatológica,Campaign Negative Broad
+Search | High Intent | BR,cromatografia preço,Campaign Negative Phrase
+Search | High Intent | BR,espectrometria,Campaign Negative Broad
+Search | High Intent | BR,acreditado perto de mim,Campaign Negative Phrase
+Search | High Intent | BR,laboratório credenciado,Campaign Negative Phrase
+Search | High Intent | BR,enviar amostra,Campaign Negative Phrase
+Search | High Intent | BR,licenciamento,Campaign Negative Broad
+Search | High Intent | BR,licenciamento ambiental,Campaign Negative Phrase
+Search | High Intent | BR,licença ambiental,Campaign Negative Phrase
+Search | High Intent | BR,licenca ambiental,Campaign Negative Phrase
+Search | High Intent | BR,outorga,Campaign Negative Broad
+Search | High Intent | BR,condicionantes,Campaign Negative Broad
+Search | High Intent | BR,eia,Campaign Negative Broad
+Search | High Intent | BR,rima,Campaign Negative Broad
+Search | High Intent | BR,estudo de impacto,Campaign Negative Phrase
+Search | High Intent | BR,registro anvisa,Campaign Negative Phrase
+Search | High Intent | BR,registro de produto,Campaign Negative Phrase
+Search | High Intent | BR,regularização,Campaign Negative Broad
+Search | High Intent | BR,regularizacao,Campaign Negative Broad
+Search | High Intent | BR,alvará,Campaign Negative Broad
+Search | High Intent | BR,alvara,Campaign Negative Broad
+Search | High Intent | BR,rotulagem,Campaign Negative Broad
+Search | High Intent | BR,rotulagem nutricional,Campaign Negative Phrase
+Search | High Intent | BR,tabela nutricional,Campaign Negative Phrase
+Search | High Intent | BR,boas práticas implantação,Campaign Negative Phrase
+Search | High Intent | BR,implantar appcc,Campaign Negative Phrase
+Search | High Intent | BR,certificação iso,Campaign Negative Phrase
+Search | High Intent | BR,selo,Campaign Negative Broad
+Search | High Intent | BR,licença polícia federal,Campaign Negative Phrase
+Search | High Intent | BR,certificado de registro cadastral,Campaign Negative Phrase
+Search | High Intent | BR,grátis,Campaign Negative Broad
+Search | High Intent | BR,gratis,Campaign Negative Broad
+Search | High Intent | BR,gratuito,Campaign Negative Broad
+Search | High Intent | BR,gratuita,Campaign Negative Broad
+Search | High Intent | BR,free,Campaign Negative Broad
+Search | High Intent | BR,de graça,Campaign Negative Phrase
+Search | High Intent | BR,sem custo,Campaign Negative Phrase
+Search | High Intent | BR,barato,Campaign Negative Broad
+Search | High Intent | BR,mais barato,Campaign Negative Phrase
+Search | High Intent | BR,preço baixo,Campaign Negative Phrase
+Search | High Intent | BR,desconto,Campaign Negative Broad
+Search | High Intent | BR,promoção,Campaign Negative Broad
+Search | High Intent | BR,orçamento grátis,Campaign Negative Phrase
+Search | High Intent | BR,consulta gratuita,Campaign Negative Phrase
+Search | High Intent | BR,defensoria,Campaign Negative Broad
+Search | High Intent | BR,justiça gratuita,Campaign Negative Phrase
+Search | High Intent | BR,telefone,Campaign Negative Broad
+Search | High Intent | BR,endereço,Campaign Negative Broad
+Search | High Intent | BR,endereco,Campaign Negative Broad
+Search | High Intent | BR,horário de atendimento,Campaign Negative Phrase
+Search | High Intent | BR,protocolo,Campaign Negative Broad
+Search | High Intent | BR,2ª via,Campaign Negative Phrase
+Search | High Intent | BR,segunda via,Campaign Negative Phrase
+Search | High Intent | BR,boleto,Campaign Negative Broad
+Search | High Intent | BR,pagamento,Campaign Negative Broad
+Search | High Intent | BR,login,Campaign Negative Broad
+Search | High Intent | BR,entrar,Campaign Negative Broad
+Search | High Intent | BR,portal,Campaign Negative Broad
+Search | High Intent | BR,gov.br,Campaign Negative Broad
+Search | High Intent | BR,receita federal telefone,Campaign Negative Phrase
+Search | High Intent | BR,anvisa telefone,Campaign Negative Phrase
+Search | High Intent | BR,crq telefone,Campaign Negative Phrase
+Search | High Intent | BR,tribunal,Campaign Negative Broad
+Search | High Intent | BR,processo consulta,Campaign Negative Phrase
+Search | High Intent | BR,andamento processual,Campaign Negative Phrase
+Search | High Intent | BR,jusbrasil,Campaign Negative Broad
+Search | High Intent | BR,diário oficial,Campaign Negative Phrase
+Search | High Intent | BR,publicação,Campaign Negative Broad
+Search | High Intent | BR,getninjas,Campaign Negative Broad
+Search | High Intent | BR,99freelas,Campaign Negative Broad
+Search | High Intent | BR,workana,Campaign Negative Broad
+Search | High Intent | BR,olx,Campaign Negative Broad
+Search | High Intent | BR,mercado livre,Campaign Negative Phrase
+Search | High Intent | BR,linkedin,Campaign Negative Broad
+Search | High Intent | BR,facebook,Campaign Negative Broad
+Search | High Intent | BR,instagram,Campaign Negative Broad
+Search | High Intent | BR,youtube,Campaign Negative Broad
+Search | High Intent | BR,reclame aqui,Campaign Negative Phrase
+Search | High Intent | BR,melhores,Campaign Negative Broad
+Search | High Intent | BR,ranking,Campaign Negative Broad
+Search | High Intent | BR,lista de peritos,Campaign Negative Phrase
+Search | High Intent | BR,diretório,Campaign Negative Broad
+Search | High Intent | BR,receita,Campaign Negative Broad
+Search | High Intent | BR,receitas,Campaign Negative Broad
+Search | High Intent | BR,culinária,Campaign Negative Broad
+Search | High Intent | BR,restaurante,Campaign Negative Broad
+Search | High Intent | BR,nutricionista,Campaign Negative Broad
+Search | High Intent | BR,dieta,Campaign Negative Broad
+Search | High Intent | BR,suplemento,Campaign Negative Broad
+Search | High Intent | BR,cosmético,Campaign Negative Broad
+Search | High Intent | BR,farmacêutico,Campaign Negative Broad
+Search | High Intent | BR,medicamento,Campaign Negative Broad
+Search | High Intent | BR,agrotóxico venda,Campaign Negative Phrase
+Search | High Intent | BR,fertilizante venda,Campaign Negative Phrase
+Search | High Intent | BR,comprar,Campaign Negative Broad
+Search | High Intent | BR,venda,Campaign Negative Broad
+Search | High Intent | BR,fornecedor,Campaign Negative Broad
+Search | High Intent | BR,distribuidor,Campaign Negative Broad
+Search | High Intent | BR,atacado,Campaign Negative Broad
+Search | High Intent | BR,franquia,Campaign Negative Broad
+Search | High Intent | BR,abrir empresa,Campaign Negative Phrase
+Search | High Intent | BR,cnpj,Campaign Negative Broad
