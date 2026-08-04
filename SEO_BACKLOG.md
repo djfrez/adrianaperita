@@ -179,6 +179,18 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Nota sobre o órgão:** o domínio canônico do CRQ-IV é `crqsp.org.br`; `crq4.org.br` redireciona para lá. Usado o canônico.
 - **Ainda úteis, se existirem:** currículo Lattes, ORCID, publicações, associações de peritos.
 
+### SEO-012 — Sinais estruturais para sitelinks (pedido do cliente)
+- **Descrição:** Cliente pediu que quatro destinos existam como sitelinks no resultado de busca do Google: Assistente Técnica, Parecer Técnico, Classificação Fiscal, Contato.
+- **Categoria:** Técnico / Structured Data
+- **Status:** done (dentro do que é tecnicamente possível — ver ressalva)
+- **Descoberto:** 2026-08-03 · **Concluído:** 2026-08-03
+- **Ressalva importante, comunicada ao cliente antes de executar:** sitelinks do Google são gerados algoritmicamente. Não existe tag, schema ou configuração que force ou garanta sua exibição — a documentação do próprio Google afirma que não há como especificar ou influenciar diretamente quais aparecem. Eles também dependem de volume de busca pela marca e histórico de cliques, que este domínio ainda não tem (GSC seguia com zero linhas de impressão na última verificação). O que foi implementado é o preparo técnico de melhor prática, não uma garantia.
+- **Implementado:**
+  - `WebSite` + quatro nós `SiteNavigationElement` no `<head>` da home, cada um com `name`, `description` e `url` exatamente como pedido pelo cliente (Assistente Técnica, Parecer Técnico, Classificação Fiscal, "Solicite uma Consulta" → Contato).
+  - **"Parecer Técnico" não é uma página própria** — o conteúdo já existe dentro de `/assistente-tecnica/`, na seção "O que um assistente técnico efetivamente entrega". Perguntado ao cliente como tratar isso dado que a própria instrução condicionava a existência da página; decisão do cliente foi ancorar (`id="parecer-tecnico"`) em vez de criar conteúdo duplicado — mesmo padrão já usado no SEO-008.
+  - Nenhuma mudança na navegação visível do site (o menu do cabeçalho continua com sua estrutura atual); a mudança é inteiramente em dados estruturados, não em UI.
+- **Follow-up realista:** sitelinks tendem a aparecer só depois que o site acumula autoridade de domínio e volume de busca pelo nome da marca — normalmente meses, não dias. O item de maior alavancagem para isso continua sendo o SEO-009 (Google Business Profile, hoje bloqueado por verificação de identidade) e a indexação básica das páginas novas, que ainda não aconteceu.
+
 ---
 
 ## Histórico de execuções
@@ -191,6 +203,8 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-03 | SEO-003 — página-pilar `/pericia-contaminacao-alimentos/` | `SEO: Add food contamination pillar page (SEO-003)` |
 | 2026-08-03 | SEO-008 — último cartão Insights sem destino | `SEO: Link last dead Insights card to existing content` |
 | 2026-08-03 | SEO-006 — formulário de contato via WhatsApp | `SEO: Route contact form through WhatsApp instead of mailto` |
+| 2026-08-03 | Ícone WhatsApp nos links de contato | `Add WhatsApp icon affordance to contact number links` |
+| 2026-08-03 | SEO-012 — sinais estruturais para sitelinks | `SEO: Add sitelinks structured data for four key destinations` |
 
 ---
 
