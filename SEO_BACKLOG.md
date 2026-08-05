@@ -282,3 +282,52 @@ Verificado por chamada direta às APIs nesta execução:
   ```
 
 - **Consequência enquanto durar:** a priorização continua sendo por intenção comercial, sem dados de impressão. A verificação de indexação prevista para ~2026-08-08 (ver seção anterior) **fica pendente até a reautenticação**.
+
+---
+
+## Auditoria — 2026-08-05 (pós-publicação da SEO-014)
+
+Rodada sobre as 8 páginas em produção. **Sem GSC** (credencial expirada — ver "Estado da medição — 2026-08-05"), então a auditoria é de artefato e de cobertura semântica, não de desempenho.
+
+### O que está saudável — não mexer
+
+- **Técnico:** HTTP/2, TLS, `www` → apex 301, `http` → `https` 301, `robots.txt` liberando os crawlers de IA nominalmente, sitemap com as 8 URLs, canonical e hreflang corretos em todas.
+- **Estrutura:** 1 `<h1>` por página, 6–9 `<h2>`, **zero páginas órfãs**, zero links internos quebrados, zero imagens sem `alt`.
+- **Schema:** `Article` + `FAQPage` + `BreadcrumbList` nas seis páginas-pilar, `ProfilePage` em `/sobre/`, `Person`/`ProfessionalService`/`WebSite`/`SiteNavigationElement` na home. Nó `Person` único em todo o site.
+- **Peso:** 32–50 kB por página, CSS inline, sem JS de terceiros além do GA4. Não há problema de Core Web Vitals a resolver — otimizar isso agora seria trabalho sem ganho.
+
+### Fraquezas encontradas
+
+1. **Nenhum conteúdo de segundo nível.** As 7 páginas de conteúdo são todas **pilares**. Nenhum cluster tem spoke. A instrução "expandir clusters antes de criar novos" está sendo violada por omissão: o próximo pilar seria o sexto pilar raso, não profundidade.
+2. **Perguntas de decisão de compra mal cobertas.** "Quanto custa" e "honorários" aparecem só em `/assistente-tecnica/`, dentro do FAQ. **"Gratuidade de justiça" não aparece em nenhuma página** — e é exatamente o que trava a nomeação de perito e a contratação de assistente na prática forense.
+3. **Metadados acima do limite de exibição em 100% das páginas.** Títulos de 66–84 caracteres (corte em ~60) e meta descriptions de 259–445 (corte em ~155). O texto está bem front-loaded, então o dano é moderado — mas é dano gratuito.
+4. **Link interno faltante** — `/pericia-ambiental/` era a única página que não linkava `/pericia-combustiveis/`, seu vizinho tópico mais próximo. **Corrigido nesta execução** (uma linha).
+
+### SEO-015 — Spoke: impugnação de laudo pericial *(selecionada para 2026-08-06)*
+- **Descrição:** Página dedicada ao momento de maior urgência do cliente — o advogado com um laudo desfavorável na mão. Cobre o que torna um laudo tecnicamente atacável (vício de método, amostragem inválida, ausência de fundamentação, conclusão que extrapola os quesitos), a diferença entre **pedido de esclarecimentos** (art. 477, §§1º e 2º, do CPC), **impugnação** e **nova perícia** (art. 480), os prazos de cada via, e como o parecer divergente do assistente técnico é instrumentado para sustentar cada uma.
+- **URL:** `/impugnacao-laudo-pericial/` (a criar)
+- **Categoria:** Conteúdo / Spoke de cluster / Intenção transacional
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 10
+- **Priority Score:** 160
+- **Status:** open · **Descoberto:** 2026-08-05
+- **Por que esta e não um sexto pilar:** é o primeiro conteúdo de segundo nível do site e aprofunda o cluster de maior valor comercial (Assistência Técnica), em vez de abrir mais uma frente rasa. Quem busca "como impugnar laudo pericial" tem prazo correndo — é a consulta de maior urgência e menor concorrência qualificada de todo o mapa.
+- **Risco a administrar — canibalização:** `/assistente-tecnica/` já tem a seção "Como um parecer técnico derruba um laudo" e o FAQ "É possível ter assistente técnico depois de entregue o laudo?". A divisão precisa ser explícita: o **pilar** responde *quem, quando e por quê*; o **spoke** responde *como*, com o detalhamento processual e metodológico que não cabe no pilar. Ao publicar, a seção do pilar deve ser encurtada e passar a apontar para o spoke — não duplicada.
+- **Verificação factual obrigatória antes de publicar** (mesma regra dos SEO-002/003/013/014): arts. 477, 480 e 465 do CPC/2015 na redação vigente; prazo de 15 dias do art. 477, §1º; e se houve alteração processual posterior ao meu conhecimento interno. **Presumir nada.**
+
+### SEO-016 — Metadados dentro do limite de exibição
+- **Descrição:** Reescrever os 8 títulos para ≤ 60 caracteres e as 8 meta descriptions para 150–160, preservando o termo-cabeça no início e acrescentando um diferencial verificável (UNICAMP, CRQ, +8 anos) onde couber.
+- **URL:** todas as 8
+- **Categoria:** CTR / On-page
+- **Impacto:** 5 · **Esforço:** 2 · **Confiança:** 6 · **Valor de negócio:** 6
+- **Priority Score:** 90
+- **Status:** open · **Descoberto:** 2026-08-05
+- **Por que não é a tarefa de hoje:** otimizar CTR **antes de haver impressões** é otimizar no vazio. Este item ganha prioridade assim que o GSC voltar e mostrar páginas com impressão e clique baixo — que é literalmente a Prioridade 1 do playbook. Fica na fila esperando o dado que o justifica.
+
+### SEO-017 — Spoke: honorários, custos e gratuidade de justiça na prova pericial
+- **Descrição:** Como se formam os honorários do perito e do assistente técnico, quem adianta, o arbitramento judicial, e o que acontece quando a parte é beneficiária da gratuidade de justiça (hoje **ausente do site inteiro**). Consulta de fundo de funil pura.
+- **URL:** `/honorarios-pericia-judicial/` (a criar)
+- **Categoria:** Conteúdo / Spoke de cluster / Intenção transacional
+- **Impacto:** 7 · **Esforço:** 4 · **Confiança:** 7 · **Valor de negócio:** 9
+- **Priority Score:** 110,25
+- **Status:** open · **Descoberto:** 2026-08-05
+- **Ressalva:** a página **não deve publicar tabela de preços da Adriana** — honorários dependem de complexidade, e um número no ar vira âncora de negociação contra ela. O valor está em explicar *como o custo se forma e quem paga*, encaminhando para contato. Confirmar com o cliente antes de escrever.
