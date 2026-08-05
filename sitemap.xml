@@ -50,4 +50,11 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-combustiveis/"/>
   </url>
+  <url>
+    <loc>https://adrianarezende.com.br/pericia-industria-quimica/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-industria-quimica/"/>
+  </url>
 </urlset>

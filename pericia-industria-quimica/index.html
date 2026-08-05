@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ─── Primary SEO ─── -->
+  <title>Perícia em indústria química: acidente, falha de processo e produtos controlados</title>
+  <meta name="description" content="Guia técnico sobre perícia e assistência técnica em litígios da indústria química: análise de causa raiz de acidente e falha de processo, os documentos que decidem o caso (batch record, historiador, FDS), a nova Ficha com Dados de Segurança da ABNT NBR 14725:2023 e a fiscalização de produtos controlados pela Polícia Federal (IN DG/PF nº 338/2026) e pelo Exército (R-105). Por Adriana Rezende, engenheira química pela UNICAMP e perita judicial.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="author" content="Adriana Rezende">
+  <link rel="canonical" href="https://adrianarezende.com.br/pericia-industria-quimica/">
+
+  <meta name="language" content="pt-BR">
+  <meta name="geo.region" content="BR-SP">
+  <link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-industria-quimica/">
+
+  <!-- ─── Open Graph ─── -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Adriana Rezende — Perícia Técnica">
+  <meta property="og:url" content="https://adrianarezende.com.br/pericia-industria-quimica/">
+  <meta property="og:title" content="Perícia em indústria química: acidente, falha de processo e produtos controlados">
+  <meta property="og:description" content="Causa raiz de acidente industrial, desvio de lote, FDS pela NBR 14725:2023 e autuação por produto controlado (PF e Exército).">
+  <meta property="og:image" content="https://adrianarezende.com.br/headshot.jpg">
+  <meta property="og:image:alt" content="Adriana Rezende — Perita Judicial e Assistente Técnica">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Perícia em indústria química: acidente, falha de processo e produtos controlados">
+  <meta name="twitter:description" content="Guia técnico sobre prova pericial em litígios da indústria química.">
+  <meta name="twitter:image" content="https://adrianarezende.com.br/headshot.jpg">
+
+  <!-- ─── Structured Data: Article ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Perícia em indústria química: acidente, falha de processo e produtos controlados",
+    "description": "Guia sobre perícia e assistência técnica em litígios da indústria química: quatro famílias de disputa, análise de causa raiz, documentos que decidem o caso, a Ficha com Dados de Segurança da ABNT NBR 14725:2023 e a fiscalização de produtos químicos controlados pela Polícia Federal e pelo Exército.",
+    "inLanguage": "pt-BR",
+    "mainEntityOfPage": "https://adrianarezende.com.br/pericia-industria-quimica/",
+    "image": "https://adrianarezende.com.br/headshot.jpg",
+    "author": {
+      "@type": "Person",
+      "@id": "https://adrianarezende.com.br/#adriana-rezende",
+      "name": "Adriana Rezende",
+      "jobTitle": "Perita Judicial e Assistente Técnica em Engenharia Química",
+      "url": "https://adrianarezende.com.br/sobre/",
+      "sameAs": ["https://www.linkedin.com/in/adriana-rezende-5992554a/"],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "CRQ",
+        "name": "Registro no Conselho Regional de Química",
+        "value": "04341673"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Registro Profissional",
+        "name": "CRQ IV Região — SP nº 04341673",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Conselho Regional de Química IV Região (São Paulo)",
+          "alternateName": "CRQ-IV",
+          "url": "https://crqsp.org.br/"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://adrianarezende.com.br/#adriana-rezende",
+      "name": "Adriana Rezende",
+      "url": "https://adrianarezende.com.br/"
+    },
+    "about": [
+      { "@type": "Thing", "name": "Indústria Química" },
+      { "@type": "Thing", "name": "Análise de Causa Raiz" },
+      { "@type": "Thing", "name": "Produtos Químicos Controlados" },
+      { "@type": "Thing", "name": "Ficha com Dados de Segurança" }
+    ],
+    "datePublished": "2026-08-05",
+    "dateModified": "2026-08-05"
+  }
+  </script>
+
+  <!-- ─── Structured Data: FAQPage ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "O que uma perícia em indústria química investiga?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende da família do litígio, e são quatro. Acidente de processo — incêndio, explosão, vazamento, reação descontrolada — em que se investiga a sequência de eventos e a causa raiz. Falha de processo ou desvio de lote, em que se apura por que o produto saiu fora de especificação e em que etapa isso ocorreu. Dano a terceiro causado por produto químico, incluindo insumo fornecido a outra empresa. E autuação regulatória, quando um órgão de controle aplica penalidade e a defesa depende de demonstração técnica. Cada família exige documentos e método diferentes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que é análise de causa raiz em um acidente industrial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "É o exercício de reconstruir a cadeia causal até o ponto em que a intervenção teria evitado o evento, em vez de parar na última falha visível. A distinção importa juridicamente: \"a válvula falhou\" é um fato, não uma causa raiz. A pergunta seguinte — por que falhou, se havia plano de manutenção, se o instrumento estava calibrado, se a análise de risco previa esse modo de falha — é o que separa caso fortuito de falha de gestão, e é isso que define responsabilidade."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais documentos são decisivos numa perícia de processo químico?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O registro de lote (batch record) e os dados do historiador de processo, porque registram temperatura, pressão, vazão e dosagem no momento do evento. O certificado de análise da matéria-prima e a Ficha com Dados de Segurança do insumo. O fluxograma de processo e o P&ID. O estudo de análise de risco, tipicamente HAZOP. E as ordens de manutenção e certificados de calibração dos instrumentos envolvidos. Quando esses registros não existem ou não são preservados, a discussão migra da causa do evento para a suficiência do controle — o que raramente favorece quem deveria mantê-los."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A FISPQ foi substituída pela FDS? O que mudou com a ABNT NBR 14725:2023?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. A ABNT NBR 14725:2023, publicada em 3 de julho de 2023, consolidou em documento único as quatro partes anteriores da norma e substituiu o termo FISPQ por FDS — Ficha com Dados de Segurança —, alinhando a nomenclatura brasileira ao GHS. Houve período de adequação de 24 meses, já encerrado. Em perícia isso tem efeito prático direto: uma ficha ainda no formato antigo, ou com classificação de perigo desatualizada, é ponto de ataque tanto em litígio de dano quanto em autuação — e a data do documento precisa ser confrontada com a data do fato."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quem fiscaliza produtos químicos controlados no Brasil?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dois órgãos, com listas e regimes distintos. A Polícia Federal controla os produtos que podem ser desviados para a produção de drogas ilícitas, com base na Lei nº 10.357/2001 e no Decreto nº 4.262/2002; os procedimentos foram reeditados pela Instrução Normativa DG/PF nº 338/2026, de 29 de julho de 2026, que revogou as Instruções Normativas nº 166/2020 e nº 211/2021, e a relação de produtos segue a Portaria MJSP nº 204/2022. O Exército controla os Produtos Controlados pelo Exército (PCE) pelo R-105, aprovado pelo Decreto nº 10.030/2019. Uma mesma substância pode estar sujeita aos dois regimes ao mesmo tempo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Uma autuação por irregularidade em produto controlado admite defesa técnica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Admite, e frequentemente a defesa é técnica antes de ser jurídica. As autuações mais comuns são de natureza escritural: divergência entre o saldo dos mapas de controle e o estoque físico, movimentação não lançada, ou produto tratado como não controlado por erro de enquadramento. Demonstrar que a divergência decorre de perda de processo mensurável, de erro de conversão de unidade ou de classificação equivocada da substância é trabalho de engenharia química, e é o que dá substrato à impugnação administrativa."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quem responde por dano causado por produto químico fornecido a outra empresa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A resposta depende de onde o desvio se originou, e é isso que a perícia precisa estabelecer. As hipóteses típicas são insumo fora de especificação na origem, contaminação durante transporte ou armazenamento, uso fora das condições informadas na Ficha com Dados de Segurança, e falha no processo do próprio comprador. O certificado de análise do lote, a amostra-testemunha do fornecedor e o registro de recebimento do comprador são os documentos que costumam decidir a alocação — e a ausência de amostra-testemunha enfraquece a posição de quem deveria tê-la guardado."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─── Structured Data: BreadcrumbList ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://adrianarezende.com.br/" },
+      { "@type": "ListItem", "position": 2, "name": "Perícia em Indústria Química", "item": "https://adrianarezende.com.br/pericia-industria-quimica/" }
+    ]
+  }
+  </script>
+
+  <!-- ─── Fonts (async — non-render-blocking) ─── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500&display=swap"></noscript>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #FAFAF9;
+      --fg:     #0A1628;
+      --sec:    #4A5568;
+      --muted:  #64748B;
+      --border: #E5E5E3;
+      --white:  #FFFFFF;
+      --serif:  'Crimson Pro', Georgia, serif;
+      --sans:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--fg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
+    a { color: inherit; }
+    p a, li a { text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    @media (min-width: 1024px) { .wrap { padding: 0 3rem; } }
+
+    .narrow { max-width: 46rem; }
+
+    header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .header-row { display: flex; justify-content: space-between; align-items: center; padding: 1.375rem 0; gap: 1rem; }
+    .logo-name { font-family: var(--serif); font-size: 1.1875rem; font-weight: 600; }
+    .logo-sub { font-size: 0.8125rem; color: var(--muted); margin-top: 0.125rem; }
+    nav.desktop { display: none; gap: 2rem; font-size: 0.875rem; }
+    @media (min-width: 768px) { nav.desktop { display: flex; } }
+    nav.desktop a { text-decoration: none; }
+    nav.desktop a:hover { color: var(--sec); }
+
+    .crumbs { padding: 1.5rem 0 0; font-size: 0.8125rem; color: var(--muted); }
+    .crumbs a { text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+
+    .art-head { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 500; margin-bottom: 1.5rem; }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); max-width: 50rem; margin-bottom: 1.75rem; }
+    .standfirst { font-size: clamp(1.0625rem, 1.6vw, 1.1875rem); color: var(--sec); line-height: 1.75; max-width: 46rem; }
+    .byline { margin-top: 2rem; font-size: 0.875rem; color: var(--muted); }
+    .byline strong { color: var(--fg); font-weight: 500; }
+
+    main { padding: 3.5rem 0 5rem; }
+
+    h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 3.5rem 0 1.25rem; }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.1875rem; margin: 2rem 0 .75rem; }
+    p { font-size: 1.0625rem; color: var(--sec); line-height: 1.8; margin-bottom: 1.25rem; max-width: 46rem; }
+    strong { color: var(--fg); font-weight: 500; }
+
+    ul, ol { max-width: 46rem; margin: 0 0 1.5rem; padding-left: 0; list-style: none; }
+    li { font-size: 1.0625rem; color: var(--sec); line-height: 1.75; margin-bottom: .75rem; display: flex; }
+    li::before { content: "—"; color: var(--muted); margin-right: 1rem; flex-shrink: 0; }
+    ol { counter-reset: n; }
+    ol li { counter-increment: n; }
+    ol li::before { content: counter(n) "."; font-variant-numeric: tabular-nums; }
+
+    .box { background: var(--white); border: 1px solid var(--border); border-left: 2px solid var(--fg); padding: 1.75rem 1.75rem 1.5rem; margin: 0 0 2.5rem; max-width: 46rem; }
+    .box-lbl { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: .875rem; }
+    .box p:last-child { margin-bottom: 0; }
+
+    .table-scroll { overflow-x: auto; margin: 0 0 2.5rem; max-width: 52rem; }
+    table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: .9375rem; }
+    th, td { text-align: left; padding: .875rem 1rem .875rem 0; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+    th { font-family: var(--sans); font-weight: 500; color: var(--fg); font-size: .6875rem; text-transform: uppercase; letter-spacing: .1em; }
+    td { color: var(--sec); }
+    td:first-child { color: var(--fg); width: 24%; }
+
+    .faq { border-top: 1px solid var(--border); max-width: 46rem; }
+    .faq > div { padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
+    .faq h3 { margin: 0 0 .75rem; }
+    .faq p:last-child { margin-bottom: 0; }
+
+    .cta-sec { background: var(--white); border-top: 1px solid var(--border); padding: 4.5rem 0; }
+    .cta-sec h2 { margin-top: 0; }
+    .btn { display: inline-block; padding: .9375rem 2.25rem; font-size: .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: .09em; background: var(--fg); color: var(--bg); border: 1px solid var(--fg); text-decoration: none; transition: background .2s, border-color .2s; }
+    .btn:hover { background: var(--sec); border-color: var(--sec); }
+    .ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+    .btn-outline { background: transparent; color: var(--fg); border-color: var(--border); }
+    .btn-outline:hover { background: transparent; border-color: var(--fg); }
+
+    .related { border-top: 1px solid var(--border); padding: 3.5rem 0 4.5rem; }
+    .related-lbl { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .related ul li::before { content: "→"; }
+
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 0; font-size: .75rem; color: var(--muted); }
+  </style>
+
+  <!-- ─── Google Analytics 4 ─── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL5HWSTKPF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NL5HWSTKPF');
+  </script>
+
+  <!-- ─── Google Ads conversion: WhatsApp contact click ─── -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href*="wa.me/5519992297507"]');
+      if (link) { gtag('event', 'manual_event_CONTACT'); }
+    });
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="header-row">
+      <a href="/" style="text-decoration:none">
+        <div class="logo-name">Adriana Rezende</div>
+        <div class="logo-sub">Engenheira Química, UNICAMP</div>
+      </a>
+      <nav class="desktop">
+        <a href="/sobre/">Sobre</a>
+        <a href="/pericia-contaminacao-alimentos/">Alimentos</a>
+        <a href="/#expertise">Expertise</a>
+        <a href="/#qualifications">Qualificações</a>
+        <a href="/#insights">Insights</a>
+        <a href="/#contact">Contato</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Trilha de navegação">
+    <a href="/">Início</a> &nbsp;/&nbsp; Perícia em Indústria Química
+  </nav>
+</div>
+
+<div class="wrap">
+  <div class="art-head">
+    <p class="eyebrow">Indústria Química</p>
+    <h1>Perícia em indústria química: acidente, falha de processo e produtos controlados</h1>
+    <p class="standfirst">
+      Em litígio industrial, quase nunca falta a constatação do que aconteceu. O que falta é a
+      demonstração de <em>por que</em> aconteceu, e a partir de qual ponto alguém tinha o dever e a
+      possibilidade de evitar. É nessa distância entre o fato e a causa que a prova técnica decide o
+      processo — e é onde a maioria dos laudos para cedo.
+    </p>
+    <p class="byline">
+      Por <strong>Adriana Rezende</strong> — engenheira química pela UNICAMP, CRQ IV Região — SP nº 04341673,
+      com mais de 20 anos de experiência técnica e industrial e mais de 8 anos como perita judicial
+      e assistente técnica.
+    </p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <div class="box">
+      <div class="box-lbl">Em resumo</div>
+      <p>
+        Litígios da indústria química se dividem em quatro famílias — <strong>acidente de processo</strong>,
+        <strong>falha de processo ou desvio de lote</strong>, <strong>dano causado por produto químico</strong>
+        e <strong>autuação regulatória</strong>. Cada uma exige um conjunto próprio de documentos, e em
+        todas o desfecho depende de duas coisas: se os registros de processo foram preservados, e se a
+        conclusão técnica chega à causa raiz em vez de parar na última falha visível.
+      </p>
+    </div>
+
+    <h2>Quatro famílias de litígio, quatro métodos</h2>
+    <p>
+      Tratar todas como "perícia de engenharia química" é o erro inicial mais comum. O objeto da prova
+      muda, e com ele o que precisa ser requerido antes que se perca.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Família</th>
+            <th>Pergunta central</th>
+            <th>Prova que sustenta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Acidente de processo</td>
+            <td>Qual a sequência de eventos e em que ponto ela se tornou inevitável?</td>
+            <td>Evidência física preservada, dados do historiador, análise de risco prévia, plano de manutenção</td>
+          </tr>
+          <tr>
+            <td>Falha de processo ou desvio de lote</td>
+            <td>Em que etapa o produto saiu de especificação, e por quê?</td>
+            <td>Registro de lote, certificado de análise da matéria-prima, parâmetros operacionais, contraprova</td>
+          </tr>
+          <tr>
+            <td>Dano causado por produto químico</td>
+            <td>O produto estava conforme, e foi usado nas condições informadas?</td>
+            <td>Amostra-testemunha, certificado de análise, Ficha com Dados de Segurança, registro de recebimento</td>
+          </tr>
+          <tr>
+            <td>Autuação regulatória</td>
+            <td>A irregularidade apontada existe tecnicamente, ou é erro de enquadramento?</td>
+            <td>Escrituração de controle, balanço de massa, laudo de identidade da substância</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Causa raiz: onde a maior parte dos laudos para cedo</h2>
+    <p>
+      "A válvula falhou" é um fato, não uma causa. A pergunta que decide o processo vem depois:
+      <strong>por que falhou</strong>, se havia plano de manutenção para aquele item, se o instrumento
+      estava calibrado, se a análise de risco previa esse modo de falha, e se havia camada de proteção
+      independente para o caso de ele ocorrer.
+    </p>
+    <p>
+      A diferença é jurídica, não apenas técnica. Um evento cuja cadeia causal termina em falha
+      aleatória de componente conduz a uma discussão de caso fortuito; um evento cuja cadeia causal
+      atravessa manutenção não executada, instrumento fora de calibração ou risco identificado e não
+      tratado conduz a falha de gestão. <strong>É a profundidade da análise que define em qual dos dois
+      terrenos a discussão vai acontecer</strong> — e essa escolha, na prática, é feita por quem produz
+      a prova.
+    </p>
+    <p>Três verificações que costumam mudar o resultado:</p>
+    <ol>
+      <li><strong>O modo de falha estava previsto na análise de risco?</strong> Se estava e não foi tratado, o evento era conhecido. Se não estava, a discussão passa a ser sobre a suficiência do próprio estudo.</li>
+      <li><strong>Havia camada de proteção independente?</strong> Intertravamento, alívio de pressão, alarme com ação definida. Sua ausência ou seu bypass costuma ser o elo que efetivamente permitiu a progressão do evento.</li>
+      <li><strong>Os registros contradizem a narrativa?</strong> Historiador de processo, ordens de manutenção e certificados de calibração são gerados antes do litígio e por isso pesam mais do que declarações produzidas depois dele.</li>
+    </ol>
+
+    <h2>Os documentos que decidem o caso</h2>
+    <p>
+      Em perícia industrial, quem controla o pedido de documentos controla o alcance da prova. Esta é
+      a lista que, na prática, determina o que ainda será possível demonstrar:
+    </p>
+    <ul>
+      <li><strong>Registro de lote (batch record)</strong> — dosagens, ordem de adição, tempos, responsáveis e desvios anotados.</li>
+      <li><strong>Historiador de processo</strong> — temperatura, pressão, vazão e nível no intervalo do evento. É a única fonte que mostra a dinâmica, não apenas o estado final.</li>
+      <li><strong>Certificado de análise (CoA) da matéria-prima</strong> e <strong>amostra-testemunha</strong> do lote de insumo.</li>
+      <li><strong>Ficha com Dados de Segurança (FDS)</strong> do produto e dos insumos, na versão vigente à data do fato.</li>
+      <li><strong>Fluxograma de processo e P&amp;ID</strong>, para verificar se a instalação executada corresponde à projetada.</li>
+      <li><strong>Estudo de análise de risco</strong> — tipicamente HAZOP — e o registro de tratamento das recomendações.</li>
+      <li><strong>Ordens de manutenção e certificados de calibração</strong> dos equipamentos e instrumentos envolvidos.</li>
+      <li><strong>Registros de inspeção de equipamentos sob pressão</strong>, quando aplicável a NR-13.</li>
+    </ul>
+    <div class="box">
+      <div class="box-lbl">Consequência prática</div>
+      <p>
+        Quando esses registros não existem, ou existem mas não foram preservados, a discussão migra da
+        causa do evento para a <strong>suficiência do controle</strong>. Essa migração raramente favorece
+        quem tinha o dever de mantê-los — motivo pelo qual o requerimento de preservação deve ser um dos
+        primeiros atos, e não uma providência tomada quando a perícia já foi designada.
+      </p>
+    </div>
+
+    <h2>FDS: o que mudou com a ABNT NBR 14725:2023</h2>
+    <p>
+      A <strong>ABNT NBR 14725:2023</strong>, publicada em 3 de julho de 2023, consolidou em documento
+      único as quatro partes anteriores da norma e substituiu o termo <strong>FISPQ</strong> por
+      <strong>FDS — Ficha com Dados de Segurança</strong>, alinhando a nomenclatura brasileira ao GHS,
+      o Sistema Globalmente Harmonizado. Houve período de adequação de 24 meses, <strong>já
+      encerrado</strong>.
+    </p>
+    <p>
+      Em perícia, isso tem três efeitos diretos. Primeiro, <strong>a ficha precisa ser confrontada com a
+      data do fato</strong>: cobrar o formato de 2023 em evento anterior à norma é anacronismo, e aceitar
+      formato antigo em evento atual é omissão. Segundo, a classificação de perigo constante da ficha é
+      o parâmetro contra o qual se avalia se a informação prestada ao usuário era adequada — questão
+      central em dano a terceiro. Terceiro, divergência entre a FDS e o comportamento real observado do
+      produto é, por si só, um achado relevante: indica erro de classificação, alteração de formulação
+      não refletida no documento, ou produto diverso do declarado.
+    </p>
+
+    <h2>Produtos químicos controlados: dois órgãos, dois regimes</h2>
+    <p>
+      Uma parte relevante dos litígios da indústria química não nasce de acidente, mas de
+      <strong>escrituração</strong>. Há dois sistemas de controle federais, independentes entre si, e
+      uma mesma substância pode estar sujeita aos dois ao mesmo tempo.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Órgão</th>
+            <th>Base normativa</th>
+            <th>Objeto do controle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Polícia Federal</td>
+            <td>Lei nº 10.357/2001 e Decreto nº 4.262/2002; procedimentos na Instrução Normativa DG/PF nº 338/2026; relação de produtos na Portaria MJSP nº 204/2022</td>
+            <td>Produtos que podem ser desviados para a elaboração de drogas ilícitas — precursores e solventes de uso corrente na indústria</td>
+          </tr>
+          <tr>
+            <td>Comando do Exército</td>
+            <td>R-105, aprovado pelo Decreto nº 10.030/2019</td>
+            <td>Produtos Controlados pelo Exército (PCE) — entre eles substâncias de emprego dual em explosivos e produtos químicos de uso restrito</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      A <strong>Instrução Normativa DG/PF nº 338, de 29 de julho de 2026</strong>, reeditou os
+      procedimentos de controle e fiscalização e <strong>revogou as Instruções Normativas nº 166/2020 e
+      nº 211/2021</strong>. Mantém o SIPROQUIM como canal eletrônico, o Certificado de Registro Cadastral
+      e o Certificado de Licença de Funcionamento, e a entrega dos mapas mensais de controle até o
+      décimo quinto dia do mês subsequente, agora com previsão expressa de retificação — retificação que
+      não afasta, por si, a responsabilização pelo lançamento anterior. Do lado do Exército, o
+      instrumento equivalente é o <strong>Certificado de Registro (CR)</strong>, disciplinado pelo R-105.
+    </p>
+    <p>
+      Para quem responde a um processo administrativo em curso, dois pontos merecem verificação
+      imediata: <strong>qual norma regia o procedimento na data dos fatos</strong>, já que atos praticados
+      sob a instrução revogada não se avaliam pela nova; e se a irregularidade apontada é material ou
+      escritural, porque a defesa técnica de cada uma é inteiramente diferente.
+    </p>
+
+    <h3>As autuações mais comuns são escriturais — e admitem defesa técnica</h3>
+    <p>
+      Divergência entre o saldo declarado nos mapas de controle e o estoque físico raramente significa
+      desvio. Na maior parte dos casos investigados, decorre de causas mensuráveis e demonstráveis:
+    </p>
+    <ul>
+      <li><strong>Perda de processo não contabilizada</strong> — evaporação de solvente volátil, retenção em linha e em filtro, resíduo aderido a tanque. É quantificável por balanço de massa.</li>
+      <li><strong>Erro de conversão</strong> entre unidade de massa e de volume, especialmente quando a densidade adotada não corresponde à do produto na temperatura de medição.</li>
+      <li><strong>Enquadramento equivocado da substância</strong> — mistura tratada como produto controlado puro, ou o inverso, quando a concentração a exclui da lista.</li>
+      <li><strong>Movimentação interna lançada como saída</strong>, ou transferência entre unidades da mesma empresa registrada de forma incorreta.</li>
+    </ul>
+    <p>
+      Demonstrar qualquer uma dessas hipóteses é trabalho de engenharia química — balanço de massa,
+      identidade e concentração da substância, comportamento físico-químico do produto nas condições de
+      armazenamento — e é o que dá substrato factual à impugnação administrativa. Sem isso, a defesa
+      fica restrita a argumento jurídico sobre um fato que a fiscalização considera provado.
+    </p>
+
+    <div class="box">
+      <div class="box-lbl">Delimitação de escopo</div>
+      <p>
+        A atuação aqui descrita é <strong>pericial e de assistência técnica em litígio</strong> — perícia
+        judicial, parecer técnico, elaboração de quesitos e instrução de defesa em processo
+        administrativo. <strong>Não se trata de consultoria regulatória de rotina</strong>: obtenção de
+        licença, registro cadastral, cadastramento em sistema ou manutenção periódica de escrituração são
+        atividades de compliance, distintas da produção de prova técnica. A distinção importa porque as
+        duas demandas costumam ser confundidas, e quem procura a segunda não é bem atendido pela
+        primeira.
+      </p>
+    </div>
+
+    <h2>Segurança de processo: as normas que aparecem no laudo</h2>
+    <p>
+      Em acidente industrial, as normas regulamentadoras entram na perícia por dois caminhos: como
+      parâmetro do que era exigível e como fonte dos registros que comprovam o que foi feito.
+    </p>
+    <ul>
+      <li><strong>NR-13</strong> — caldeiras, vasos de pressão e tubulações. Define periodicidade de inspeção e documentação obrigatória; o prontuário do equipamento é peça frequente.</li>
+      <li><strong>NR-20</strong> — inflamáveis e líquidos combustíveis. Atualizada em 2024, estabelece requisitos de gestão de segurança para armazenamento, transferência e manuseio.</li>
+      <li><strong>NR-26</strong> — sinalização de segurança, com adoção do GHS na rotulagem preventiva de produto químico.</li>
+      <li><strong>ABNT NBR ISO/IEC 17025</strong> — competência do laboratório que executou os ensaios. Escopo acreditado incompatível com o ensaio realizado é vulnerabilidade que se ataca independentemente do resultado.</li>
+    </ul>
+    <p>
+      Vale a mesma ressalva que se aplica a qualquer citação normativa em laudo:
+      <strong>a versão relevante é a vigente na data do fato</strong>, não a atual. Confrontar um evento
+      de 2022 com a redação de 2026 de uma norma é erro que inverte a conclusão sobre exigibilidade.
+    </p>
+
+    <h2>Perguntas frequentes</h2>
+    <div class="faq">
+      <div>
+        <h3>O que uma perícia em indústria química investiga?</h3>
+        <p>Depende da família do litígio, e são quatro. Acidente de processo — incêndio, explosão, vazamento, reação descontrolada — em que se investiga a sequência de eventos e a causa raiz. Falha de processo ou desvio de lote, em que se apura por que o produto saiu fora de especificação e em que etapa isso ocorreu. Dano a terceiro causado por produto químico, incluindo insumo fornecido a outra empresa. E autuação regulatória, quando um órgão de controle aplica penalidade e a defesa depende de demonstração técnica. Cada família exige documentos e método diferentes.</p>
+      </div>
+      <div>
+        <h3>O que é análise de causa raiz em um acidente industrial?</h3>
+        <p>É o exercício de reconstruir a cadeia causal até o ponto em que a intervenção teria evitado o evento, em vez de parar na última falha visível. A distinção importa juridicamente: "a válvula falhou" é um fato, não uma causa raiz. A pergunta seguinte — por que falhou, se havia plano de manutenção, se o instrumento estava calibrado, se a análise de risco previa esse modo de falha — é o que separa caso fortuito de falha de gestão, e é isso que define responsabilidade.</p>
+      </div>
+      <div>
+        <h3>Quais documentos são decisivos numa perícia de processo químico?</h3>
+        <p>O registro de lote (batch record) e os dados do historiador de processo, porque registram temperatura, pressão, vazão e dosagem no momento do evento. O certificado de análise da matéria-prima e a Ficha com Dados de Segurança do insumo. O fluxograma de processo e o P&amp;ID. O estudo de análise de risco, tipicamente HAZOP. E as ordens de manutenção e certificados de calibração dos instrumentos envolvidos. Quando esses registros não existem ou não são preservados, a discussão migra da causa do evento para a suficiência do controle — o que raramente favorece quem deveria mantê-los.</p>
+      </div>
+      <div>
+        <h3>A FISPQ foi substituída pela FDS? O que mudou com a ABNT NBR 14725:2023?</h3>
+        <p>Sim. A ABNT NBR 14725:2023, publicada em 3 de julho de 2023, consolidou em documento único as quatro partes anteriores da norma e substituiu o termo FISPQ por FDS — Ficha com Dados de Segurança —, alinhando a nomenclatura brasileira ao GHS. Houve período de adequação de 24 meses, já encerrado. Em perícia isso tem efeito prático direto: uma ficha ainda no formato antigo, ou com classificação de perigo desatualizada, é ponto de ataque tanto em litígio de dano quanto em autuação — e a data do documento precisa ser confrontada com a data do fato.</p>
+      </div>
+      <div>
+        <h3>Quem fiscaliza produtos químicos controlados no Brasil?</h3>
+        <p>Dois órgãos, com listas e regimes distintos. A Polícia Federal controla os produtos que podem ser desviados para a produção de drogas ilícitas, com base na Lei nº 10.357/2001 e no Decreto nº 4.262/2002; os procedimentos foram reeditados pela Instrução Normativa DG/PF nº 338/2026, de 29 de julho de 2026, que revogou as Instruções Normativas nº 166/2020 e nº 211/2021, e a relação de produtos segue a Portaria MJSP nº 204/2022. O Exército controla os Produtos Controlados pelo Exército (PCE) pelo R-105, aprovado pelo Decreto nº 10.030/2019. Uma mesma substância pode estar sujeita aos dois regimes ao mesmo tempo.</p>
+      </div>
+      <div>
+        <h3>Uma autuação por irregularidade em produto controlado admite defesa técnica?</h3>
+        <p>Admite, e frequentemente a defesa é técnica antes de ser jurídica. As autuações mais comuns são de natureza escritural: divergência entre o saldo dos mapas de controle e o estoque físico, movimentação não lançada, ou produto tratado como não controlado por erro de enquadramento. Demonstrar que a divergência decorre de perda de processo mensurável, de erro de conversão de unidade ou de classificação equivocada da substância é trabalho de engenharia química, e é o que dá substrato à impugnação administrativa.</p>
+      </div>
+      <div>
+        <h3>Quem responde por dano causado por produto químico fornecido a outra empresa?</h3>
+        <p>A resposta depende de onde o desvio se originou, e é isso que a perícia precisa estabelecer. As hipóteses típicas são insumo fora de especificação na origem, contaminação durante transporte ou armazenamento, uso fora das condições informadas na Ficha com Dados de Segurança, e falha no processo do próprio comprador. O certificado de análise do lote, a amostra-testemunha do fornecedor e o registro de recebimento do comprador são os documentos que costumam decidir a alocação — e a ausência de amostra-testemunha enfraquece a posição de quem deveria tê-la guardado.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<section class="cta-sec">
+  <div class="wrap">
+    <h2>Discuta seu caso técnico</h2>
+    <p class="narrow">
+      Análise preliminar de viabilidade técnica, elaboração de quesitos, acompanhamento de perícia e
+      parecer técnico em processos que envolvem acidente e falha de processo químico, desvio de lote,
+      dano causado por produto químico e autuação por irregularidade em produto controlado.
+      Campinas, São Paulo — atendimento em todo o território nacional.
+    </p>
+    <div class="ctas">
+      <a href="/#contact" class="btn">Solicitar contato</a>
+      <a href="https://wa.me/5519992297507?text=Ol%C3%A1%2C%20vim%20pelo%20site%20%28guia%20de%20Per%C3%ADcia%20em%20Ind%C3%BAstria%20Qu%C3%ADmica%29%20e%20gostaria%20de%20discutir%20um%20caso%20t%C3%A9cnico." target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp (19) 99229-7507</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="related">
+    <div class="related-lbl">Continue lendo</div>
+    <ul>
+      <li><a href="/assistente-tecnica/">Assistente técnico na perícia judicial: o que faz, quando contratar e como escolher</a></li>
+      <li><a href="/pericia-contaminacao-alimentos/">Perícia em contaminação de alimentos: como se investiga e o que se prova</a></li>
+      <li><a href="/pericia-ambiental/">Perícia ambiental: contaminação de solo, água e passivos industriais</a></li>
+      <li><a href="/classificacao-fiscal-ncm/">Classificação fiscal NCM: como se contesta tecnicamente um auto de infração</a></li>
+      <li><a href="/pericia-combustiveis/">Perícia em adulteração de combustíveis: como se prova tecnicamente</a></li>
+      <li><a href="/sobre/">Quem é Adriana Rezende: formação, registro CRQ e tipos de processo em que atua</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Adriana Rezende — Perita Judicial e Assistente Técnica, Engenheira Química (UNICAMP),
+    CRQ IV Região — SP nº 04341673.
+    Este conteúdo tem finalidade informativa e não substitui análise técnica do caso concreto.
+  </div>
+</footer>
+
+</body>
+</html>

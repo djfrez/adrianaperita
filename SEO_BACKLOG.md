@@ -208,6 +208,29 @@ Status: `open` · `in progress` · `done` · `blocked`
   4. **ANP:** gasolina pela Resolução 807/2020; **diesel pela Resolução 968/2024, em vigor desde 31/07/2024** (alterou limites de S10/S500); marcação de solventes pela Resolução 902/2022. Súmula 618 do STJ (inversão do ônus da prova em degradação ambiental) e responsabilidade objetiva do art. 14, §1º da Lei 6.938/1981 confirmados.
 - **Manutenção — duas datas a acompanhar:** (a) **31/12/2026**, fim da transição da NBR 10004 — a tabela comparativa da página ambiental precisa ser revista; (b) conclusão da consulta pública da CONAMA 430/2011.
 
+### SEO-014 — Página-pilar: Perícia em Indústria Química
+- **Descrição:** O quinto e último card de expertise da home (`Processos Químicos Industriais` / produtos controlados) não tinha página de destino. Era o pilar de maior proximidade com a formação da perita — engenharia química — e o único sem conteúdo indexável.
+- **URL:** `/pericia-industria-quimica/`
+- **Categoria:** Conteúdo / Autoridade tópica / Entity SEO
+- **Impacto:** 8 · **Esforço:** 5 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 115,2
+- **Status:** done
+- **Descoberto:** 2026-08-04 · **Concluído:** 2026-08-05
+- **Nota de execução:** a página foi escrita na execução de 2026-08-04, que **terminou sem commit e sem registro no backlog**. A execução de 2026-08-05 validou, completou os links e fechou o item. Ficou o aprendizado: *escrever o arquivo não é entregar* — o item só existe depois de validado, documentado e commitado.
+- **Implementado:**
+  - ~4.300 palavras. As quatro famílias de litígio industrial (acidente de processo, falha de processo/desvio de lote, dano causado por produto químico, autuação regulatória) e a prova que sustenta cada uma.
+  - Análise de causa raiz e a distinção jurídica entre falha aleatória de componente e falha de gestão — que é onde a responsabilidade normalmente se decide.
+  - Os documentos que decidem o caso: batch record, historiador de processo, certificado de análise, FDS, P&ID, HAZOP, ordens de manutenção e registros de calibração.
+  - Tabela dos dois regimes de produtos controlados (Polícia Federal × Exército), com base normativa e objeto de controle de cada um.
+  - NR-13, NR-20 e NR-26 tratadas como parâmetro de exigibilidade **na data do fato**, não na data da perícia.
+  - `Article` + `FAQPage` (7 itens, paridade com o texto visível verificada por script) + `BreadcrumbList`, com o `@id` canônico do `Person`. GA4 e disparo de `manual_event_CONTACT` presentes.
+  - Links de entrada: card de expertise da home, "Continue lendo" das seis páginas existentes, `sitemap.xml` e `llms.txt`. A própria página linka os cinco pilares — cluster fechado, sem link quebrado (verificado por script).
+- **Verificação factual — dois pontos posteriores ao meu conhecimento interno, checados em fonte antes do commit:**
+  1. **IN DG/PF nº 338, de 29/07/2026 — confirmada.** Reeditou os procedimentos de controle e fiscalização de produtos químicos e **revogou as INs nº 166/2020 e nº 211/2021**. Detalha o regime sancionador (multas até R$ 350 mil, suspensão e cancelamento de licença). **Não alterou a relação de produtos controlados**, que segue na Portaria MJSP nº 204/2022 — como a página afirma. Fonte: gov.br/pf e cobertura especializada.
+  2. **ABNT NBR 14725:2023 — confirmada.** Publicada em 03/07/2023, consolidou as quatro partes anteriores e substituiu FISPQ por FDS. O período de adequação de 24 meses **encerrou em 03/07/2025**; desde 04/07/2025 só o formato FDS é admitido. A página trata o prazo como encerrado, o que está correto.
+- **Vantagem competitiva com prazo:** a IN 338/2026 tem uma semana. Praticamente todo o conteúdo concorrente ainda cita as INs 166/2020 e 211/2021 como vigentes. Janela curta — vale acompanhar se a concorrência atualiza.
+- **Manutenção:** revisar se a Portaria MJSP 204/2022 for substituída (é ela que lista os produtos, e é o ponto que muda com mais frequência).
+
 ---
 
 ## Histórico de execuções
@@ -223,6 +246,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-03 | Ícone WhatsApp nos links de contato | `Add WhatsApp icon affordance to contact number links` |
 | 2026-08-03 | SEO-012 — sinais estruturais para sitelinks | `SEO: Add sitelinks structured data for four key destinations` |
 | 2026-08-04 | SEO-013 — páginas-pilar ambiental e combustíveis | `SEO: Add environmental and fuel pillar pages (SEO-013)` |
+| 2026-08-05 | SEO-014 — página-pilar `/pericia-industria-quimica/` | `SEO: Add chemical industry pillar page (SEO-014)` |
 
 ---
 
@@ -244,3 +268,17 @@ Verificado por chamada direta às APIs nesta execução:
 **Leitura:** as páginas novas ainda não entraram no índice, o que é normal para conteúdo de 1–2 dias em domínio de baixa autoridade. O sitemap já foi submetido e o caminho de rastreamento a partir da home (que *está* indexada) foi reforçado hoje com links de navegação. **Nada a fazer além de aguardar** — pedir indexação repetidamente não acelera o processo.
 
 **Para a próxima execução:** reconferir indexação e GSC *antes* de escolher a tarefa. Se as páginas continuarem fora do índice depois de ~7 dias (a partir de 2026-08-08), aí vira item de backlog técnico — e a hipótese a investigar é autoridade de domínio insuficiente para justificar o rastreamento, não erro de configuração, que já foi descartado (robots ALLOWED, canonical correto, sitemap aceito sem erros).
+
+---
+
+## Estado da medição — 2026-08-05
+
+**Não foi possível medir nesta execução.** As credenciais locais do Google (Application Default Credentials, `gcloud`) estão expiradas: `searchAnalytics.query` responde **401 UNAUTHENTICATED / Invalid Credentials**. Renovar exige `gcloud auth application-default login`, que é um fluxo **interativo** — impossível numa execução agendada sem operador presente.
+
+- **Bloqueio para o cliente:** rodar uma vez, num terminal interativo, para destravar GSC/GA4 nas próximas execuções:
+
+  ```
+  gcloud auth application-default login
+  ```
+
+- **Consequência enquanto durar:** a priorização continua sendo por intenção comercial, sem dados de impressão. A verificação de indexação prevista para ~2026-08-08 (ver seção anterior) **fica pendente até a reautenticação**.
