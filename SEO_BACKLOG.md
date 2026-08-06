@@ -247,6 +247,9 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-03 | SEO-012 — sinais estruturais para sitelinks | `SEO: Add sitelinks structured data for four key destinations` |
 | 2026-08-04 | SEO-013 — páginas-pilar ambiental e combustíveis | `SEO: Add environmental and fuel pillar pages (SEO-013)` |
 | 2026-08-05 | SEO-014 — página-pilar `/pericia-industria-quimica/` | `SEO: Add chemical industry pillar page (SEO-014)` |
+| 2026-08-05 | Auditoria + seleção da próxima tarefa | `SEO: Record 2026-08-05 audit, select next task (SEO-015)` |
+| 2026-08-05 | Medição destravada (service account) | `SEO: Record first real Search Console data (measurement unblocked)` |
+| 2026-08-05 | SEO-015 — spoke `/impugnacao-laudo-pericial/` | `SEO: Add impugnação de laudo pericial spoke page (SEO-015)` |
 
 ---
 
@@ -309,10 +312,22 @@ Rodada sobre as 8 páginas em produção. **Sem GSC** (credencial expirada — v
 - **Categoria:** Conteúdo / Spoke de cluster / Intenção transacional
 - **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 10
 - **Priority Score:** 160
-- **Status:** open · **Descoberto:** 2026-08-05
+- **Status:** done
+- **Descoberto:** 2026-08-05 · **Concluído:** 2026-08-05
 - **Por que esta e não um sexto pilar:** é o primeiro conteúdo de segundo nível do site e aprofunda o cluster de maior valor comercial (Assistência Técnica), em vez de abrir mais uma frente rasa. Quem busca "como impugnar laudo pericial" tem prazo correndo — é a consulta de maior urgência e menor concorrência qualificada de todo o mapa.
 - **Risco a administrar — canibalização:** `/assistente-tecnica/` já tem a seção "Como um parecer técnico derruba um laudo" e o FAQ "É possível ter assistente técnico depois de entregue o laudo?". A divisão precisa ser explícita: o **pilar** responde *quem, quando e por quê*; o **spoke** responde *como*, com o detalhamento processual e metodológico que não cabe no pilar. Ao publicar, a seção do pilar deve ser encurtada e passar a apontar para o spoke — não duplicada.
-- **Verificação factual obrigatória antes de publicar** (mesma regra dos SEO-002/003/013/014): arts. 477, 480 e 465 do CPC/2015 na redação vigente; prazo de 15 dias do art. 477, §1º; e se houve alteração processual posterior ao meu conhecimento interno. **Presumir nada.**
+- **Implementado:** ~2.500 palavras. Tabela das três vias (base legal × defeito que resolve × prazo); árvore de decisão em três perguntas para escolher a via; as seis famílias de falha que tornam um laudo atacável, cada uma com *o que se demonstra* — o ângulo que o pilar não tinha; anatomia da manifestação em cinco partes; cinco erros que a enfraquecem; e o que resta quando o prazo já passou. `Article` (com `isPartOf` apontando para o pilar) + `FAQPage` (8 itens, paridade verificada por script) + `BreadcrumbList` de três níveis. Title 54 caracteres, description 153 — dentro do limite de exibição, ao contrário das oito páginas anteriores (ver SEO-016).
+- **Canibalização resolvida na origem:** a seção "Como um parecer técnico derruba um laudo" do pilar foi **encurtada** — a lista de seis falhas virou um parágrafo-resumo que aponta para o spoke. O pilar responde *quem, quando e por quê*; o spoke responde *como*. Nenhum texto duplicado entre as duas páginas.
+- **Card da home realocado:** o quarto card de Insights apontava para a âncora `/assistente-tecnica/#impugnacao-laudos` (solução do SEO-008, quando não havia página própria). Agora aponta para a página, com título e resumo próprios. A âncora continua existindo e não quebrou nada.
+- **Links de entrada:** 8 — card da home, "Continue lendo" das sete páginas, mais o link contextual dentro do próprio pilar. `sitemap.xml` e `llms.txt` atualizados.
+- **Verificação factual — cinco dispositivos conferidos em fonte antes de publicar:**
+  1. **Art. 477, §1º** — prazo **comum de 15 dias** para manifestação das partes; o parecer do assistente técnico é apresentado **no mesmo prazo**. Redação inalterada desde 2015.
+  2. **Art. 477, §2º** — dever do perito de esclarecer, em 15 dias, pontos divergentes apontados no parecer do assistente. É o que transforma o parecer em alavanca processual, não em peça decorativa.
+  3. **Art. 477, §3º e §4º** — esclarecimentos em audiência, com perguntas formuladas **desde logo sob forma de quesitos**, e intimação do perito com no mínimo **10 dias de antecedência**. Confirmados — é a via de recuperação para quem perdeu o prazo do §1º.
+  4. **Art. 480, §1º e §3º** — a segunda perícia tem o mesmo objeto da primeira e **não a substitui**, cabendo ao juiz apreciar o valor de uma e de outra. É a base da tese central da página: a via mais pedida é a mais fraca.
+  5. **Art. 479** — o juiz indica na sentença os motivos, **levando em conta o método utilizado pelo perito**. É o que sustenta a orientação de atacar o método, não a conclusão.
+- **Nenhuma surpresa nesta verificação** — ao contrário dos SEO-002 (dois pontos desatualizados) e SEO-014 (norma de uma semana). Direito processual civil é bem mais estável que regulação técnica; o custo da checagem foi baixo e continua valendo a pena como rotina.
+- **Manutenção:** baixa. Só muda se houver reforma do CPC na parte da prova pericial.
 
 ### SEO-016 — Metadados dentro do limite de exibição
 - **Descrição:** Reescrever os 8 títulos para ≤ 60 caracteres e as 8 meta descriptions para 150–160, preservando o termo-cabeça no início e acrescentando um diferencial verificável (UNICAMP, CRQ, +8 anos) onde couber.
