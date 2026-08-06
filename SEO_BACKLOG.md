@@ -251,6 +251,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-05 | Medição destravada (service account) | `SEO: Record first real Search Console data (measurement unblocked)` |
 | 2026-08-05 | SEO-015 — spoke `/impugnacao-laudo-pericial/` | `SEO: Add impugnação de laudo pericial spoke page (SEO-015)` |
 | 2026-08-05 | SEO-017 — spoke `/honorarios-pericia-judicial/` | `SEO: Add honorários periciais spoke page (SEO-017)` |
+| 2026-08-06 | SEO-018 — spoke `/quesitos-periciais/` | `SEO: Add quesitos periciais spoke page (SEO-018)` |
 
 ---
 
@@ -398,3 +399,76 @@ python3 ~/.config/adrianarezende/seo-report.py 30
 **Consequência para a priorização: nenhuma.** Três impressões não sustentam decisão alguma. O **SEO-016 (metadados)** continua parado esperando volume — a regra segue valendo: só vira Prioridade 1 quando houver página com impressão real e clique baixo. **SEO-015 permanece a tarefa selecionada.**
 
 **Pendência:** GA4 ainda não instrumentado no script — falta o ID numérico da propriedade em `~/.config/adrianarezende/ga4-property`. Search Console funciona sem isso.
+
+---
+
+## Estado da medição — 2026-08-06
+
+Coleta por service account (`python3 ~/.config/adrianarezende/seo-report.py 30`), período 2026-07-07 → 2026-08-06.
+
+- **6 impressões no acumulado de 30 dias**, zero cliques: home (3, posição 6,0), `/assistente-tecnica/` (2, posição 5,0), `/classificacao-fiscal-ncm` (1, posição 11,0). Dimensão `query` continua **sem linhas** — abaixo do limiar de anonimização.
+- **Indexação: 7 de 10.** Entraram desde 05/08 `/pericia-ambiental/` e `/pericia-combustiveis/` (eram *Discovered — not indexed*). Continuam fora `/pericia-industria-quimica/`, `/impugnacao-laudo-pericial/` e `/honorarios-pericia-judicial/` — todas publicadas há 1–2 dias, dentro da latência de 2 a 4 dias já medida. **Nenhuma ação.**
+- **GA4** ainda não instrumentado no script (falta o ID numérico da propriedade em `~/.config/adrianarezende/ga4-property`).
+
+**Consequência para a priorização: nenhuma.** Seis impressões não sustentam decisão. **SEO-016 (metadados) segue parado** — a regra continua sendo que ele só vira Prioridade 1 quando existir página com impressão real e clique baixo. Vale registrar que as três páginas mais novas já nascem com metadados dentro do limite, então o escopo do SEO-016 encolheu de 8 para 7 páginas e vai encolhendo sozinho.
+
+---
+
+## Auditoria — 2026-08-06
+
+Sobre as 10 páginas em produção. Sem dados de desempenho utilizáveis, então é auditoria de artefato e de cobertura semântica.
+
+### O que está saudável — não mexer
+
+- **Zero links internos quebrados, zero páginas órfãs, zero imagens sem `alt`, 1 `<h1>` por página, canonical correto em todas as 10, sitemap idêntico ao sistema de arquivos.** Verificado por script nesta execução.
+- **Schema** íntegro nas 10: `Article` + `FAQPage` + `BreadcrumbList` nas páginas de conteúdo, paridade texto-visível ↔ JSON-LD conferida por script.
+- **Peso e CWV:** sem JS de terceiros além do GA4, CSS inline. Nada a otimizar com ganho real.
+
+### Fraquezas encontradas
+
+1. **A promessa mais repetida do site não tinha página.** `/assistente-tecnica/` afirma em três lugares distintos que a redação dos quesitos é o momento de maior impacto e que "quesitos mal formulados limitam o alcance de toda a prova pericial" — e nenhuma página explicava **como se formula um quesito**. O site criava a demanda e não a atendia. Resolvido pela SEO-018.
+2. **Grafo interno completo (todos ligam a todos).** Com 10 páginas o bloco "Continue lendo" liga cada página a todas as outras, o que não distingue vizinhança tópica de vizinhança qualquer. Ainda não é problema em escala de 10 páginas, mas vira um por volta de 15. Registrado como SEO-019.
+3. **SEO-016 (metadados) segue aplicável a 7 páginas**, sem dado que o justifique. Continua parado por decisão, não por esquecimento.
+
+### SEO-018 — Spoke: quesitos periciais *(executada em 2026-08-06)*
+- **Descrição:** Como se formula um quesito que produz resposta utilizável — a única peça técnica que a parte escreve *antes* de a perícia existir, e a que define o alcance de tudo o que vem depois.
+- **URL:** `/quesitos-periciais/`
+- **Categoria:** Conteúdo / Spoke de cluster / Intenção transacional
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 10
+- **Priority Score:** 160
+- **Status:** done · **Descoberto:** 2026-08-06 · **Concluído:** 2026-08-06
+- **Por que esta:** "Quesitos Periciais" está na lista de serviços-alvo e é a consulta em que o cliente ideal (advogado com prazo de 15 dias correndo) tem urgência máxima. O pilar já vinha afirmando três vezes que é o momento decisivo sem nunca ensinar a fazê-lo — a lacuna mais gritante do site, e a única em que a própria página existente cria a demanda que não atende. Aprofunda o cluster de maior valor comercial em vez de abrir um sexto pilar raso.
+- **Implementado:** ~2.850 palavras. A tese organizadora é uma assimetria que o conteúdo concorrente (quase todo banco de modelos para copiar) não formula: **o art. 473, IV obriga o perito a dar resposta conclusiva a todos os quesitos, e o art. 473, §2º o proíbe de ultrapassar a designação e de opinar.** Daí decorre que a pergunta mais comum em processos técnicos — "houve negligência?" — não é apenas fraca: é uma pergunta que o perito está **legalmente impedido de responder**. Estrutura: tabela das três janelas para perguntar (inicial art. 465 §1º III / suplementar art. 469 / esclarecimento art. 477 §§1º-3º) com a assimetria explícita — só a primeira *define* o objeto, as outras duas *reagem* a ele; os dois limites legais que anulam uma pergunta (arts. 470, I e 473, §2º); as quatro partes de um quesito eficaz; **tabela de quatro quesitos reformulados, antes e depois**, um por matéria (alimentos, NCM, ambiental, combustíveis); a sequência de cinco perguntas que expõe o método; seis defeitos; e quando o problema não se resolve com quesitos (prova técnica simplificada do art. 464 §§2º-4º e dispensa da perícia pelo art. 472).
+- **Por que a tabela antes/depois é o ativo da página:** é a única seção que nenhum concorrente tem e que **serve os cinco clusters ao mesmo tempo** — cada linha demonstra domínio de uma matéria diferente com norma nomeada. Faz da página um hub que reforça todo o site, não só o cluster processual.
+- **Canibalização — sem sobreposição a resolver.** Ao contrário da SEO-015, o pilar não ensinava a formular quesitos; apenas afirmava que importava. Nada foi encurtado, porque não havia conteúdo duplicado — só uma promessa pendente, que agora aponta para a página que a cumpre. Os dois trechos do pilar que falavam de quesitos viraram links contextuais.
+- **Links de entrada:** 12 no total, vindos de 10 páginas — sexto card de Insights na home, "Continue lendo" das nove demais, mais dois links contextuais dentro do pilar (caixa "Ponto de atenção" e item "Quesitos suplementares" do calendário) e um dentro de `/impugnacao-laudo-pericial/`. `sitemap.xml` e `llms.txt` atualizados.
+- **Ligação de cluster deliberada:** a sequência de cinco perguntas que expõe o método corresponde quase uma a uma às seis famílias de falha da `/impugnacao-laudo-pericial/`, e o texto diz isso explicitamente — fazer a pergunta antes é o que viabiliza a crítica depois. As duas spokes passam a se sustentar mutuamente em vez de apenas coexistirem.
+- **Verificação factual — seis dispositivos conferidos no texto literal da lei antes de publicar** (o Planalto recusou a requisição; usado PDF oficial da Seção X do CPC, texto extraído e lido na íntegra):
+  1. **Art. 465, §1º, I a III** — os três atos (impedimento/suspeição, indicação de assistente, quesitos) vencem no **mesmo prazo de 15 dias**. É o detalhe de calendário que a página explora: a parte gasta o prazo escolhendo o assistente e redige os quesitos por último, sem que ele tenha lido os autos.
+  2. **Art. 469** — quesitos suplementares **durante a diligência**, respondidos previamente ou na AIJ; o escrivão dá ciência da juntada à parte contrária.
+  3. **Art. 470, I e II** — dever do juiz de indeferir quesitos impertinentes e faculdade de formular os que entender necessários.
+  4. **Art. 473, IV** — resposta **conclusiva a todos** os quesitos. É a base da tese central.
+  5. **Art. 473, §2º** — vedação de ultrapassar a designação e de emitir opiniões pessoais que excedam o exame técnico. Idem.
+  6. **Art. 473, III** — o laudo deve indicar o método **e demonstrar que é predominantemente aceito** pelos especialistas da área. É o que dá lastro à sequência de cinco perguntas.
+  - Conferidos ainda **art. 464, §§2º a 4º** (prova técnica simplificada, com a exigência de formação acadêmica específica do especialista) e **art. 472** (dispensa da perícia por pareceres técnicos juntados na inicial e na contestação).
+- **Normas técnicas citadas na tabela — conferidas em fonte e cruzadas com as páginas existentes:**
+  - **Alimentos:** a página cita **IN ANVISA nº 161/2022** (que carrega as tabelas de padrões microbiológicos) observada a **RDC nº 724/2022** (que dispõe sobre sua aplicação), ambas publicadas em 01/07/2022 e **em vigor desde 01/09/2022**. A distinção entre as duas é justamente o tipo de precisão que um quesito exige. Não conflita com `/pericia-contaminacao-alimentos/`, que trata de outras RDCs (275/2002, 216/2004, 655/2022) e não cobria o padrão microbiológico.
+  - **Ambiental:** **CONAMA nº 420/2009**, consistente com `/pericia-ambiental/`. O quesito acrescenta a ressalva dos **valores orientadores estaduais quando existentes e mais restritivos** — a camada CETESB que a página ambiental já documenta.
+  - **Combustíveis e NCM:** referências genéricas e estáveis ("especificação da ANP vigente na data da coleta", RGI e Notas de Seção/Capítulo), deliberadamente sem número de resolução, para não criar um ponto de manutenção redundante com as páginas que já os detalham.
+- **Nenhuma surpresa na verificação processual** — o CPC na parte da prova pericial segue sem alteração, confirmando o padrão registrado na SEO-015. As surpresas continuam concentradas em regulação técnica (SEO-002, SEO-014), não em direito processual.
+- **Validação executada:** title 59 caracteres, description 156 (dentro do limite de exibição); os três blocos JSON-LD parseiam; **paridade FAQ conferida por script** — as 8 perguntas e as 8 respostas do `FAQPage` são idênticas, caractere a caractere, ao texto visível; HTML balanceado (parser sem tags pendentes); zero links internos quebrados no site inteiro; sitemap idêntico ao sistema de arquivos; canonical correto nas 10 páginas; nenhuma página órfã; as duas tabelas cabem sem overflow horizontal em desktop e têm contêiner com rolagem em telas estreitas. Renderização conferida no navegador.
+- **Manutenção:** baixa no processual. O ponto a acompanhar é a **IN ANVISA nº 161/2022**, que é a única norma com número e ano citada na tabela e a mais sujeita a revisão.
+
+### SEO-019 — Diferenciar o bloco "Continue lendo" por proximidade tópica
+- **Descrição:** Hoje cada página lista **todas** as outras no "Continue lendo". Com 10 páginas ainda funciona como navegação, mas não transmite hierarquia: um link do pilar de alimentos para o de combustíveis pesa o mesmo que para sua própria spoke. Substituir por 3–4 links de vizinhança real (mesma matéria + spokes do cluster) e mover o restante para um índice compacto no rodapé.
+- **URL:** todas
+- **Categoria:** Links internos / Arquitetura de cluster
+- **Impacto:** 4 · **Esforço:** 3 · **Confiança:** 5 · **Valor de negócio:** 5
+- **Priority Score:** 33,3
+- **Status:** open · **Descoberto:** 2026-08-06
+- **Por que não é a tarefa de hoje:** score baixo e o problema ainda é teórico em 10 páginas — o grafo completo até ajuda a distribuir rastreamento num domínio novo. Vira relevante por volta de 15 páginas, ou antes disso se o GSC mostrar páginas recebendo tráfego irrelevante entre clusters.
+
+### Próxima execução — o que checar primeiro
+1. **Indexação das três pendentes** (`/pericia-industria-quimica/`, `/impugnacao-laudo-pericial/`, `/honorarios-pericia-judicial/`). Se `/pericia-industria-quimica/` continuar fora depois de ~09/08, aí sim investigar — passaria da latência medida de 2–4 dias.
+2. **Se aparecer qualquer página com impressão de dois dígitos e CTR baixo, o SEO-016 assume a Prioridade 1** e deixa de esperar.
+3. Se o quadro de dados continuar vazio, a próxima tarefa por intenção é **aprofundar um segundo cluster** — o de alimentos é o candidato natural (recall e recolhimento pela RDC 655/2022, ou prazo de validade e vida de prateleira), já que hoje só o cluster processual tem spokes.

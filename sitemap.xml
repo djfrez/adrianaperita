@@ -71,4 +71,11 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/honorarios-pericia-judicial/"/>
   </url>
+  <url>
+    <loc>https://adrianarezende.com.br/quesitos-periciais/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/quesitos-periciais/"/>
+  </url>
 </urlset>
