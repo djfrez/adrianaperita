@@ -250,6 +250,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-05 | Auditoria + seleção da próxima tarefa | `SEO: Record 2026-08-05 audit, select next task (SEO-015)` |
 | 2026-08-05 | Medição destravada (service account) | `SEO: Record first real Search Console data (measurement unblocked)` |
 | 2026-08-05 | SEO-015 — spoke `/impugnacao-laudo-pericial/` | `SEO: Add impugnação de laudo pericial spoke page (SEO-015)` |
+| 2026-08-05 | SEO-017 — spoke `/honorarios-pericia-judicial/` | `SEO: Add honorários periciais spoke page (SEO-017)` |
 
 ---
 
@@ -344,8 +345,20 @@ Rodada sobre as 8 páginas em produção. **Sem GSC** (credencial expirada — v
 - **Categoria:** Conteúdo / Spoke de cluster / Intenção transacional
 - **Impacto:** 7 · **Esforço:** 4 · **Confiança:** 7 · **Valor de negócio:** 9
 - **Priority Score:** 110,25
-- **Status:** open · **Descoberto:** 2026-08-05
-- **Ressalva:** a página **não deve publicar tabela de preços da Adriana** — honorários dependem de complexidade, e um número no ar vira âncora de negociação contra ela. O valor está em explicar *como o custo se forma e quem paga*, encaminhando para contato. Confirmar com o cliente antes de escrever.
+- **Status:** done
+- **Descoberto:** 2026-08-05 · **Concluído:** 2026-08-05
+- **Decisão do cliente:** **sem preços publicados.** Confirmada antes de escrever. A página explica *como o custo se forma e quem paga* e encaminha para contato. Verificado por script que não há nenhum valor em reais no texto.
+- **Implementado:** ~2.280 palavras. A tese organizadora é a distinção que nenhuma página concorrente faz com clareza: **"quanto custa a perícia" são duas contas independentes** — a do perito e a do assistente técnico —, com regimes, prazos e destinos distintos ao final do processo. Tabela comparativa das duas (quem define, quem adianta, quando, gratuidade, recuperação do vencido); o procedimento do art. 465 em quatro passos, com destaque para a **janela de 5 dias do §3º** como o momento mais barato de discutir valor; seção de gratuidade de justiça; o que faz o custo do assistente variar; **quando não vale a pena contratar** (quatro sinais); e checklist do que enviar para receber estimativa — que é o mecanismo de conversão, no lugar de uma promessa de análise gratuita, que não foi criada por ser compromisso de agenda da Adriana, não decisão de SEO.
+- **Lacuna fechada:** "gratuidade de justiça" **não aparecia em nenhuma página do site** antes desta. Era o item 2 das fraquezas da auditoria de 2026-08-05.
+- **Verificação factual — cinco dispositivos e uma resolução conferidos em fonte:**
+  1. **Art. 95, caput** — cada parte **adianta** a remuneração do assistente que indicou; a do perito é adiantada por quem requereu, ou rateada se de ofício/ambas. O verbo é *adiantar*, não pagar — a página explora isso.
+  2. **Art. 95, §3º, I e II** — servidor ou órgão público conveniado com recursos do ente público; ou particular pago com recursos da União/Estado/DF, **pela tabela do respectivo tribunal e, na omissão, a do CNJ**. **§5º** veda usar recursos do fundo da Defensoria. Após o trânsito em julgado, o valor é executado contra o condenado às despesas.
+  3. **Art. 465, §2º** (5 dias: proposta, currículo, contatos), **§3º** (partes se manifestam em 5 dias comuns, depois o juiz arbitra), **§4º** (até 50% no início, saldo ao final).
+  4. **Art. 98, §1º, V e VI** — a gratuidade cobre despesas com exames essenciais e honorários do perito.
+  5. **Resolução CNJ nº 232/2016 — vigente, e com uma pegadinha.** Os valores do anexo são **reajustados anualmente em janeiro pela variação do IPCA-E**, e há **grupo de trabalho do CNJ revisando a tabela, com prazo prorrogado em 2026**. Citar o valor nominal de 2016 como vigente é o erro mais comum do conteúdo concorrente — e foi mais uma razão para não publicar números: qualquer valor aqui estaria velho antes do próximo janeiro. A decisão comercial de não publicar preços e a decisão editorial de não citar a tabela nominal convergiram.
+- **Um ponto tratado como controverso, e não como pacífico:** o **reembolso dos honorários do assistente técnico pela parte vencida**. A jurisprudência diverge — há decisões que o tratam como consectário da sucumbência e decisões que o classificam como despesa extraprocessual de interesse privado. A página apresenta a divergência e registra o ponto praticamente pacífico (se não foi pedido e decidido no processo, não se cobra depois). **O FAQ do pilar já afirmava "não reembolsados automaticamente"** — continua correto graças ao advérbio, e agora aponta para o tratamento completo.
+- **Links de entrada:** 9 — quinto card de Insights na home, "Continue lendo" das oito páginas, mais o link contextual dentro do FAQ de custo do pilar. `sitemap.xml` e `llms.txt` atualizados.
+- **Manutenção — uma data a acompanhar:** a **conclusão do grupo de trabalho do CNJ** sobre a tabela de honorários. Se resultar em nova resolução, a seção da tabela precisa ser revista.
 
 ---
 
