@@ -275,10 +275,10 @@ Verificado por chamada direta às APIs nesta execução:
 
 **Não foi possível medir nesta execução.** As credenciais locais do Google (Application Default Credentials, `gcloud`) estão expiradas: `searchAnalytics.query` responde **401 UNAUTHENTICATED / Invalid Credentials**. Renovar exige `gcloud auth application-default login`, que é um fluxo **interativo** — impossível numa execução agendada sem operador presente.
 
-- **Bloqueio para o cliente:** rodar uma vez, num terminal interativo, para destravar GSC/GA4 nas próximas execuções:
+- **Bloqueio para o cliente:** rodar uma vez, num terminal interativo, para destravar GSC/GA4 nas próximas execuções. **Os escopos são obrigatórios** — o `login` sem `--scopes` autentica, mas o token sai só com `cloud-platform` e o Search Console responde `403 ACCESS_TOKEN_SCOPE_INSUFFICIENT` (foi o que aconteceu na primeira tentativa de 2026-08-05):
 
   ```
-  gcloud auth application-default login
+  gcloud auth application-default login --scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/webmasters.readonly,https://www.googleapis.com/auth/analytics.readonly"
   ```
 
 - **Consequência enquanto durar:** a priorização continua sendo por intenção comercial, sem dados de impressão. A verificação de indexação prevista para ~2026-08-08 (ver seção anterior) **fica pendente até a reautenticação**.
@@ -331,3 +331,42 @@ Rodada sobre as 8 páginas em produção. **Sem GSC** (credencial expirada — v
 - **Priority Score:** 110,25
 - **Status:** open · **Descoberto:** 2026-08-05
 - **Ressalva:** a página **não deve publicar tabela de preços da Adriana** — honorários dependem de complexidade, e um número no ar vira âncora de negociação contra ela. O valor está em explicar *como o custo se forma e quem paga*, encaminhando para contato. Confirmar com o cliente antes de escrever.
+
+---
+
+## Estado da medição — 2026-08-05 (segunda leitura, já com service account)
+
+**Medição destravada.** A autenticação agora é por **service account** (`seo-reader@adriana-seo.iam.gserviceaccount.com`, `siteFullUser`), não mais por ADC de usuário — não expira e funciona em execução agendada. Chave em `~/.config/adrianarezende/seo-sa.json` (fora do repositório, chmod 600). Script de coleta em `~/.config/adrianarezende/seo-report.py`:
+
+```
+python3 ~/.config/adrianarezende/seo-report.py 30
+```
+
+**Duas armadilhas que custaram tempo — registradas para não se repetirem:**
+
+1. **`gcloud auth application-default login` não resolve.** O ADC usa o client OAuth embutido do próprio gcloud (`764086051850-…`), então escopos adicionados ao consent screen de um client próprio **não têm efeito nenhum** sobre ele. Sem `--scopes`, o token sai só com `cloud-platform` e o Search Console responde `403 ACCESS_TOKEN_SCOPE_INSUFFICIENT`. O caminho que funciona é service account.
+2. **A propriedade é de domínio, não de prefixo de URL.** O identificador correto é **`sc-domain:adrianarezende.com.br`**; chamar a API com `https://adrianarezende.com.br/` devolve `403 User does not have sufficient permission`, que parece falta de permissão e **não é**. O script agora consulta `GET /webmasters/v3/sites` e detecta o identificador em vez de supor.
+
+### Indexação — 2026-08-05
+
+| URL | Veredito | Estado | Antes (03/08) |
+|---|---|---|---|
+| `/` | PASS | Submitted and indexed | PASS |
+| `/sobre/` | PASS | Submitted and indexed | — |
+| `/assistente-tecnica/` | PASS | Submitted and indexed | Discovered — not indexed |
+| `/classificacao-fiscal-ncm/` | PASS | Submitted and indexed | URL unknown to Google |
+| `/pericia-contaminacao-alimentos/` | PASS | Submitted and indexed | — |
+| `/pericia-ambiental/` | NEUTRAL | Discovered — not indexed | (publicada em 04/08) |
+| `/pericia-combustiveis/` | NEUTRAL | Discovered — not indexed | (publicada em 04/08) |
+| `/pericia-industria-quimica/` | NEUTRAL | URL unknown to Google | (publicada hoje) |
+
+**Leitura:** **cinco de oito páginas indexadas.** A hipótese registrada em 03/08 — de que a ausência de indexação após ~7 dias indicaria autoridade de domínio insuficiente para justificar o rastreamento — **fica descartada**. Era latência, e a latência observada é de **2 a 4 dias** entre publicação e indexação. Nenhuma ação técnica é necessária; as três páginas restantes devem entrar sozinhas até ~09/08. **Não pedir indexação manualmente** — não acelera e consome quota.
+
+### Desempenho — 2026-08-05
+
+- **3 impressões no período de 30 dias**, todas em 2026-08-03, todas na home, posição média 6,0, **zero cliques**.
+- Dimensão `query` **sem linhas** — abaixo do limiar de anonimização do GSC, então não dá para saber se foram buscas pelo nome dela ou ruído residual do histórico do domínio (SEO-010).
+
+**Consequência para a priorização: nenhuma.** Três impressões não sustentam decisão alguma. O **SEO-016 (metadados)** continua parado esperando volume — a regra segue valendo: só vira Prioridade 1 quando houver página com impressão real e clique baixo. **SEO-015 permanece a tarefa selecionada.**
+
+**Pendência:** GA4 ainda não instrumentado no script — falta o ID numérico da propriedade em `~/.config/adrianarezende/ga4-property`. Search Console funciona sem isso.
