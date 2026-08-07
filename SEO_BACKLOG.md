@@ -337,8 +337,8 @@ Rodada sobre as 8 páginas em produção. **Sem GSC** (credencial expirada — v
 - **Categoria:** CTR / On-page
 - **Impacto:** 5 · **Esforço:** 2 · **Confiança:** 6 · **Valor de negócio:** 6
 - **Priority Score:** 90
-- **Status:** open · **Descoberto:** 2026-08-05
-- **Por que não é a tarefa de hoje:** otimizar CTR **antes de haver impressões** é otimizar no vazio. Este item ganha prioridade assim que o GSC voltar e mostrar páginas com impressão e clique baixo — que é literalmente a Prioridade 1 do playbook. Fica na fila esperando o dado que o justifica.
+- **Status:** done · **Descoberto:** 2026-08-05 · **Concluído:** 2026-08-07
+- **Por que esperou dois dias:** otimizar CTR **antes de haver impressões** é otimizar no vazio. O item ficou parado por decisão registrada, esperando o gatilho explícito — "página com impressão de dois dígitos e CTR baixo". O gatilho disparou em 07/08 (ver medição abaixo). Ver `### SEO-016 — execução` para o que foi feito.
 
 ### SEO-017 — Spoke: honorários, custos e gratuidade de justiça na prova pericial
 - **Descrição:** Como se formam os honorários do perito e do assistente técnico, quem adianta, o arbitramento judicial, e o que acontece quando a parte é beneficiária da gratuidade de justiça (hoje **ausente do site inteiro**). Consulta de fundo de funil pura.
@@ -472,3 +472,67 @@ Sobre as 10 páginas em produção. Sem dados de desempenho utilizáveis, então
 1. **Indexação das três pendentes** (`/pericia-industria-quimica/`, `/impugnacao-laudo-pericial/`, `/honorarios-pericia-judicial/`). Se `/pericia-industria-quimica/` continuar fora depois de ~09/08, aí sim investigar — passaria da latência medida de 2–4 dias.
 2. **Se aparecer qualquer página com impressão de dois dígitos e CTR baixo, o SEO-016 assume a Prioridade 1** e deixa de esperar.
 3. Se o quadro de dados continuar vazio, a próxima tarefa por intenção é **aprofundar um segundo cluster** — o de alimentos é o candidato natural (recall e recolhimento pela RDC 655/2022, ou prazo de validade e vida de prateleira), já que hoje só o cluster processual tem spokes.
+
+---
+
+## Estado da medição — 2026-08-07
+
+Coleta por service account (`python3 ~/.config/adrianarezende/seo-report.py 30`), período 2026-07-08 → 2026-08-07.
+
+**Primeira leitura com dado acionável desde o início do trabalho.**
+
+- **24 impressões, zero cliques.** `/assistente-tecnica/` saltou de 2 para **20 impressões, posição média 8,1** — sozinha responde por 83% do volume do site. Home 3 (pos. 6,0) e `/classificacao-fiscal-ncm` 1 (pos. 11,0).
+- **Dimensão `query` retornou linhas pela primeira vez:** "assistente tecnico pericia" (1 imp., pos. 16,0) e "assistente técnico" (1 imp., pos. 18,0). Duas linhas só, o resto segue abaixo do limiar de anonimização — mas confirmam que o tráfego que existe é **exatamente o do cluster de maior valor comercial**, com intenção de contratação.
+- **Indexação: 11 de 11.** As três pendentes (`/pericia-industria-quimica/`, `/impugnacao-laudo-pericial/`, `/honorarios-pericia-judicial/`) entraram, e `/quesitos-periciais/` foi indexada em ~1 dia. Confirma de novo a latência de 1–4 dias e **encerra o item 1 da lista de checagem da execução anterior — sem ação necessária.**
+- **Concentração temporal:** 18 das 24 impressões caíram em 05/08. Não é tendência ainda; é ruído de um domínio novo entrando no índice.
+- **GA4** segue não instrumentado (falta o ID numérico em `~/.config/adrianarezende/ga4-property`).
+
+**Consequência para a priorização: o gatilho do SEO-016 disparou.** A regra registrada em 06/08 era literal — "se aparecer qualquer página com impressão de dois dígitos e CTR baixo, o SEO-016 assume a Prioridade 1". `/assistente-tecnica/` tem 20 impressões e CTR 0% na posição 8,1. É Prioridade 1 do playbook (converter impressão existente) e passa à frente de qualquer conteúdo novo.
+
+---
+
+## Auditoria — 2026-08-07
+
+### O que está saudável — não mexer
+
+- **11 de 11 indexadas**, zero links internos quebrados, zero órfãs, 1 `<h1>` por página, canonical correto nas 11, sitemap idêntico ao sistema de arquivos, JSON-LD parseando nas 11. Verificado por script nesta execução.
+- **Conteúdo:** cinco pilares e três spokes, todos com norma nomeada e verificada em fonte. Nada a corrigir.
+
+### Fraquezas encontradas
+
+1. **Metadados truncados na única página com impressão real.** `/assistente-tecnica/` estava com title de 74 caracteres e description de 259 — a description perdia **mais de 100 caracteres** no corte do SERP, incluindo a atribuição de autoridade ("engenheira química pela UNICAMP e perita judicial") que ficava fora da parte visível. A página aparece 20 vezes na posição 8,1 e o usuário nunca vê a frase que a diferencia. **Resolvido nesta execução (SEO-016).**
+2. **O problema era sistêmico, não pontual:** 8 das 11 páginas estavam fora do limite, com descriptions de 259 a **445** caracteres. As três páginas mais recentes já nasciam dentro do limite — o defeito era das oito primeiras, escritas antes da regra.
+3. **SEO-019 (grafo interno completo)** segue aberto e ainda teórico em 11 páginas. Sem mudança.
+
+### SEO-016 — execução *(2026-08-07)*
+
+- **Escopo real:** 8 páginas reescritas (as 3 recentes já estavam conformes) + 1 ajuste fino em `/honorarios-pericia-judicial/`, cuja description tinha 144 caracteres e desperdiçava faixa útil do snippet. Total: **9 páginas tocadas, 11 conformes ao final.**
+- **Regra aplicada:** title ≤ 60 caracteres com o termo-cabeça no início; description entre 150 e 160; `og:title` e `twitter:title` sincronizados com o `<title>` (era a convenção já usada nas páginas novas, agora uniforme nas 11).
+- **Antes → depois (title / description, em caracteres):**
+
+| Página | Antes | Depois |
+|---|---|---|
+| `/` | 76 / 261 | 54 / 154 |
+| `/assistente-tecnica/` | 74 / 259 | 59 / 156 |
+| `/classificacao-fiscal-ncm/` | 73 / 318 | 60 / 151 |
+| `/pericia-ambiental/` | 68 / 328 | 56 / 158 |
+| `/pericia-combustiveis/` | 66 / 360 | 52 / 157 |
+| `/pericia-contaminacao-alimentos/` | 78 / 326 | 52 / 157 |
+| `/pericia-industria-quimica/` | 80 / 445 | 58 / 151 |
+| `/sobre/` | 84 / 292 | 54 / 153 |
+| `/honorarios-pericia-judicial/` | 58 / 144 | 58 / 158 |
+
+- **Decisão de redação — o que entrou no espaço recuperado.** Cortar não é só encurtar: as descriptions antigas eram **listas de normas** ("RDC 275/2002, RDC 216/2004, RDC 655/2022, APPCC…"), que enchem o snippet com sinal para robô e não respondem a nada. As novas trocam a enumeração por **a pergunta que o leitor tem**: `/pericia-combustiveis/` abre com "Adulteração, contaminação e não conformidade não são a mesma coisa"; `/classificacao-fiscal-ncm/` com "A prova técnica que derruba uma reclassificação da Receita Federal". A norma continua na página; o snippet passa a vender a distinção que só quem domina a matéria faz.
+- **Onde a autoridade foi preservada e onde foi cortada.** O sufixo "Por Adriana Rezende, engenheira química pela UNICAMP e perita judicial" era repetido em 6 descriptions e **nunca aparecia no SERP** — estava sempre depois do corte. Foi removido das descriptions de conteúdo, onde não cabia, e concentrado onde a consulta é sobre a pessoa: `/sobre/` mantém UNICAMP + CRQ IV-SP nº 04341673 + os anos de experiência dentro dos 153 caracteres visíveis, e a home mantém UNICAMP. Trocou-se repetição invisível por presença real em duas páginas.
+- **`/assistente-tecnica/` — a mudança que motivou a execução.** Title de 74 → 59 ("Assistente técnico na perícia: o que faz e quando contratar"), com o termo-cabeça exato das duas consultas registradas no GSC na primeira posição. Saiu "(CPC 2015)", que consumia 11 caracteres do fim do title sem ser termo de busca. A description passou a caber inteira e a nomear os dois artigos que o advogado procura (arts. 465 e 477).
+- **O que deliberadamente NÃO mudou:** os `<h1>`, o texto âncora dos blocos "Continue lendo", as descrições do `llms.txt` e o `headline`/`description` do JSON-LD `Article`. Nenhum deles é limitado por largura de SERP, e a forma longa e descritiva é **melhor** nesses três contextos — âncora descritiva dá contexto tópico, e o `Article.description` longo é o que os LLMs consomem. Título curto e H1 longo divergirem é o comportamento correto, não uma inconsistência a corrigir.
+- **Verificação de escopo do diff:** conferido por script que as únicas linhas alteradas nos 9 arquivos são `<title>`, `meta description`, `og:title` e `twitter:title` — 33 inserções, 33 remoções, zero alteração colateral em conteúdo, schema ou links.
+- **Validação executada sobre as 11 páginas:** todos os titles ≤ 60 e descriptions em 150–160; `og:title` e `twitter:title` idênticos ao `<title>` em todas; **zero titles duplicados** entre páginas; os blocos JSON-LD parseiam; HTML balanceado (parser sem tags pendentes); canonical correto nas 11; 1 `<h1>` por página. Script de validação retornou `ALL PASS`.
+- **Por que o impacto é medível e em quanto tempo:** é a única mudança do site cujo efeito aparece numa métrica que já existe. Com 20 impressões em 30 dias a amostra ainda é pequena, mas a description agora legível é a condição para qualquer clique. **A leitura decisiva é o CTR de `/assistente-tecnica/` daqui a 7–14 dias**, depois de o Google recachear os snippets.
+
+### Próxima execução — o que checar primeiro
+
+1. **CTR e impressões de `/assistente-tecnica/`.** Se as impressões continuarem subindo e o CTR seguir em 0% com posição ≤ 10 depois de ~14/08, o problema deixa de ser metadado e passa a ser **intenção da página vs. intenção da consulta** — aí a tarefa vira revisar o topo da página, não o snippet.
+2. **A dimensão `query` agora retorna linhas.** É o dado mais valioso disponível: assim que houver 5+ consultas distintas, elas — e não a intuição de cluster — passam a definir a próxima página a escrever.
+3. **Se o quadro seguir sem clique**, a tarefa por intenção continua sendo **aprofundar o cluster de alimentos** (recolhimento/recall pela RDC 655/2022, ou prazo de validade e vida de prateleira), hoje o único pilar de alto valor sem spoke.
+4. SEO-005 (`_headers` inerte) e SEO-019 (grafo interno) seguem abertos, ambos de score baixo.
