@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ─── Primary SEO ─── -->
+  <title>Prazo de validade de alimentos: como se prova tecnicamente</title>
+  <meta name="description" content="Validade vencida, produto deteriorado dentro do prazo e estudo de vida útil mal feito são três disputas distintas, com provas e responsáveis diferentes.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="author" content="Adriana Rezende">
+  <link rel="canonical" href="https://adrianarezende.com.br/prazo-validade-alimentos/">
+
+  <meta name="language" content="pt-BR">
+  <meta name="geo.region" content="BR-SP">
+  <link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/prazo-validade-alimentos/">
+
+  <!-- ─── Open Graph ─── -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Adriana Rezende — Perícia Técnica">
+  <meta property="og:url" content="https://adrianarezende.com.br/prazo-validade-alimentos/">
+  <meta property="og:title" content="Prazo de validade de alimentos: como se prova tecnicamente">
+  <meta property="og:description" content="A data no rótulo não é prova sobre o alimento: é prova sobre o estudo de vida útil que a produziu. Quem determina, quem responde e como se contesta.">
+  <meta property="og:image" content="https://adrianarezende.com.br/headshot.jpg">
+  <meta property="og:image:alt" content="Adriana Rezende — Perita Judicial e Assistente Técnica">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prazo de validade de alimentos: como se prova tecnicamente">
+  <meta name="twitter:description" content="Vencido, deteriorado dentro do prazo ou prazo mal determinado: três disputas com provas diferentes, sob a RDC 727/2022 e o Guia 16 da ANVISA.">
+  <meta name="twitter:image" content="https://adrianarezende.com.br/headshot.jpg">
+
+  <!-- ─── Structured Data: Article ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Prazo de validade de alimentos: como se prova tecnicamente",
+    "description": "Guia técnico sobre prova pericial em disputas de prazo de validade e vida útil de alimentos no Brasil: por que produto vencido é impróprio por definição legal (art. 18, §6º, I, do CDC) e não admite refutação por ensaio, quem determina o prazo e sob quais regras (RDC ANVISA nº 727/2022 e Guia nº 16/2018 versão 3, de 2025), os tipos de estudo de vida útil aceitos e suas fragilidades, o dossiê que sustenta um prazo declarado, a quebra de cadeia de frio como deslocamento de responsabilidade e o regime sancionatório da reetiquetagem.",
+    "inLanguage": "pt-BR",
+    "mainEntityOfPage": "https://adrianarezende.com.br/prazo-validade-alimentos/",
+    "image": "https://adrianarezende.com.br/headshot.jpg",
+    "isPartOf": {
+      "@type": "Article",
+      "name": "Perícia em contaminação alimentar",
+      "url": "https://adrianarezende.com.br/pericia-contaminacao-alimentos/"
+    },
+    "author": {
+      "@type": "Person",
+      "@id": "https://adrianarezende.com.br/#adriana-rezende",
+      "name": "Adriana Rezende",
+      "jobTitle": "Perita Judicial e Assistente Técnica em Engenharia Química",
+      "url": "https://adrianarezende.com.br/sobre/",
+      "sameAs": [
+        "https://www.linkedin.com/in/adriana-rezende-5992554a/"
+      ],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "CRQ",
+        "name": "Registro no Conselho Regional de Química",
+        "value": "04341673"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Registro Profissional",
+        "name": "CRQ IV Região — SP nº 04341673",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Conselho Regional de Química IV Região (São Paulo)",
+          "alternateName": "CRQ-IV",
+          "url": "https://crqsp.org.br/"
+        }
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Universidade Estadual de Campinas",
+        "alternateName": "UNICAMP"
+      },
+      "knowsAbout": [
+        "Prazo de Validade de Alimentos",
+        "Vida Útil de Alimentos",
+        "Estudo de Estabilidade",
+        "Rotulagem de Alimentos",
+        "Perícia Judicial",
+        "Engenharia de Alimentos"
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://adrianarezende.com.br/#adriana-rezende",
+      "name": "Adriana Rezende",
+      "url": "https://adrianarezende.com.br/"
+    },
+    "about": [
+      { "@type": "Thing", "name": "Prazo de validade" },
+      { "@type": "Thing", "name": "Vida útil de alimentos" },
+      { "@type": "Thing", "name": "Estudo de estabilidade" },
+      { "@type": "Thing", "name": "ANVISA" }
+    ]
+  }
+  </script>
+
+  <!-- ─── Structured Data: FAQPage ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quem define o prazo de validade de um alimento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O fabricante. A ANVISA não estipula prazo de validade para alimentos — o Guia nº 16/2018, versão 3, é expresso ao dizer que o fabricante é o responsável pela garantia da segurança e da manutenção das características do produto dentro do prazo declarado no rótulo. O que a norma exige é que o prazo exista, esteja declarado (art. 7º, XI, da RDC nº 727/2022) e seja sustentado por um estudo. Dois produtos de mesma composição podem ter prazos diferentes, porque a validade depende também do processo, da embalagem e das condições de armazenamento de cada fabricante."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Um alimento vencido pode ser considerado próprio se a análise laboratorial der resultado normal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. O art. 18, §6º, I, do Código de Defesa do Consumidor diz que são impróprios ao uso e consumo os produtos cujos prazos de validade estejam vencidos. É uma qualificação por decurso de prazo, não por estado do produto: nenhum ensaio microbiológico ou físico-químico favorável reverte a impropriedade. Por isso, em autuação por produto vencido, discutir a qualidade do alimento é a defesa errada — a discussão possível é sobre a data, o lote, a identificação da amostra ou a competência da autoridade."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que é um estudo de vida útil e quais tipos são aceitos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "É o estudo que determina por quanto tempo o alimento permanece seguro e mantém as características declaradas, armazenado nas condições que o fabricante estabelece. O Guia nº 16 da ANVISA separa métodos diretos — estudo de longa duração (tempo real), estudo de acompanhamento, estudo de uso, estudo de transporte e teste-desafio, com inoculação intencional do micro-organismo-alvo conforme a ISO 20976-1 — e métodos indiretos, que são os modelos preditivos e os estudos acelerados. Os diretos são mais lentos e mais precisos; os indiretos são mais rápidos e menos precisos, e o próprio guia recomenda que seus resultados sejam confirmados por estudo de longa duração ou de acompanhamento."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Um estudo acelerado é suficiente para provar a validade de um alimento?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sozinho, quase nunca. O estudo acelerado parte da presunção de que a velocidade da reação química dobra a cada 10 °C de aumento de temperatura — presunção que o próprio Guia nº 16 relativiza, porque a degradação pode triplicar ou ser menor que o dobro. Ele estima o coeficiente Q10 ou aplica a equação de Arrhenius para extrapolar a validade a uma temperatura menor, e a extrapolação só vale sob pressupostos declarados: mesmo mecanismo de reação na faixa de temperatura estudada, energia de ativação dentro de um intervalo definido, modelo estatístico adequado. Além disso, testes acelerados têm aplicação limitada para deterioração microbiológica, que é justamente o que decide a maioria dos casos de alimento perecível."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quando o prazo de validade precisa ser refeito?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sempre que houver mudança significativa na composição ou nas condições do produto. O Guia nº 16 lista alteração de pH, de atividade de água, da quantidade e do tipo de conservantes, de ingredientes, do material de embalagem e das condições de processamento. Na prática pericial, esse é um dos achados mais frequentes: a empresa troca de fornecedor de filme, de conservante ou de linha de envase e mantém a validade determinada para a formulação antiga. O estudo existe, está documentado e não corresponde ao produto que foi ao mercado."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Todos os alimentos precisam declarar prazo de validade no rótulo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. A RDC nº 727/2022 traz no Anexo I a lista de isentos, que inclui frutas e hortaliças frescas, vinagre, vinhos e bebidas alcoólicas com 10% (v/v) ou mais de álcool, açúcar sólido, balas, caramelos e confeitos, gomas de mascar, e produtos de panificação e confeitaria que, pela natureza do conteúdo, sejam em geral consumidos em até 24 horas da fabricação. Há ainda a regra das embalagens pequenas: quando o painel principal tem menos de 10 cm², o prazo de validade pode ser omitido da embalagem individual, desde que a embalagem que a contém traga todas as informações obrigatórias."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "É crime alterar a data de validade de um produto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Há dois regimes distintos e cumuláveis. No administrativo, o art. 10, XVIII, da Lei nº 6.437/1977 define como infração sanitária importar ou exportar, expor à venda ou entregar ao consumo produto de interesse à saúde com prazo de validade expirado, ou apor-lhes novas datas após expirado o prazo, com penas que vão de advertência a apreensão, inutilização, interdição, cancelamento de registro e multa. No penal, o art. 7º, IX, da Lei nº 8.137/1990 tipifica vender, ter em depósito para vender, expor à venda ou entregar mercadoria em condições impróprias ao consumo, com pena de detenção de 2 a 5 anos ou multa — e o parágrafo único pune também a modalidade culposa."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Se o produto estragou dentro da validade, a culpa é sempre do fabricante?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não necessariamente, e é aqui que a perícia decide o caso. O prazo de validade vale sob as condições de conservação declaradas: o art. 32 da RDC nº 727/2022 exige que alimentos que precisem de condições especiais tragam as precauções necessárias, as temperaturas máxima e mínima de conservação e o tempo pelo qual o fabricante garante a durabilidade nessas condições. Se a cadeia de frio foi rompida no transporte, no centro de distribuição ou na gôndola, o prazo declarado deixou de ser aplicável àquele lote, e a questão técnica passa a ser em que elo a temperatura saiu da faixa — o que se prova com registradores de temperatura, romaneios, ordens de carga e registros de câmara, não com o rótulo."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─── Structured Data: BreadcrumbList ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://adrianarezende.com.br/" },
+      { "@type": "ListItem", "position": 2, "name": "Alimentos", "item": "https://adrianarezende.com.br/pericia-contaminacao-alimentos/" },
+      { "@type": "ListItem", "position": 3, "name": "Prazo de validade", "item": "https://adrianarezende.com.br/prazo-validade-alimentos/" }
+    ]
+  }
+  </script>
+
+  <!-- ─── Fonts (async — non-render-blocking) ─── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500&display=swap"></noscript>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #FAFAF9;
+      --fg:     #0A1628;
+      --sec:    #4A5568;
+      --muted:  #64748B;
+      --border: #E5E5E3;
+      --white:  #FFFFFF;
+      --serif:  'Crimson Pro', Georgia, serif;
+      --sans:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--fg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
+    a { color: inherit; }
+    p a, li a { text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    @media (min-width: 1024px) { .wrap { padding: 0 3rem; } }
+
+    .narrow { max-width: 46rem; }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .header-row { display: flex; justify-content: space-between; align-items: center; padding: 1.375rem 0; gap: 1rem; }
+    .logo-name { font-family: var(--serif); font-size: 1.1875rem; font-weight: 600; }
+    .logo-sub { font-size: 0.8125rem; color: var(--muted); margin-top: 0.125rem; }
+    nav.desktop { display: none; gap: 2rem; font-size: 0.875rem; }
+    @media (min-width: 768px) { nav.desktop { display: flex; } }
+    nav.desktop a { text-decoration: none; }
+    nav.desktop a:hover { color: var(--sec); }
+
+    /* Breadcrumb */
+    .crumbs { padding: 1.5rem 0 0; font-size: 0.8125rem; color: var(--muted); }
+    .crumbs a { text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+
+    /* Article */
+    .art-head { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 500; margin-bottom: 1.5rem; }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); max-width: 50rem; margin-bottom: 1.75rem; }
+    .standfirst { font-size: clamp(1.0625rem, 1.6vw, 1.1875rem); color: var(--sec); line-height: 1.75; max-width: 46rem; }
+    .byline { margin-top: 2rem; font-size: 0.875rem; color: var(--muted); }
+    .byline strong { color: var(--fg); font-weight: 500; }
+
+    main { padding: 3.5rem 0 5rem; }
+
+    h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 3.5rem 0 1.25rem; }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.1875rem; margin: 2rem 0 .75rem; }
+    p { font-size: 1.0625rem; color: var(--sec); line-height: 1.8; margin-bottom: 1.25rem; max-width: 46rem; }
+    strong { color: var(--fg); font-weight: 500; }
+
+    ul, ol { max-width: 46rem; margin: 0 0 1.5rem; padding-left: 0; list-style: none; }
+    li { font-size: 1.0625rem; color: var(--sec); line-height: 1.75; margin-bottom: .75rem; display: flex; }
+    li::before { content: "—"; color: var(--muted); margin-right: 1rem; flex-shrink: 0; }
+    ol { counter-reset: n; }
+    ol li { counter-increment: n; }
+    ol li::before { content: counter(n) "."; font-variant-numeric: tabular-nums; }
+
+    /* Definition / summary box */
+    .box { background: var(--white); border: 1px solid var(--border); border-left: 2px solid var(--fg); padding: 1.75rem 1.75rem 1.5rem; margin: 0 0 2.5rem; max-width: 46rem; }
+    .box-lbl { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: .875rem; }
+    .box p:last-child { margin-bottom: 0; }
+
+    /* Table */
+    .table-scroll { overflow-x: auto; margin: 0 0 2.5rem; max-width: 52rem; }
+    table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: .9375rem; }
+    th, td { text-align: left; padding: .875rem 1rem .875rem 0; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+    th { font-family: var(--sans); font-weight: 500; color: var(--fg); font-size: .6875rem; text-transform: uppercase; letter-spacing: .1em; }
+    td { color: var(--sec); }
+    td:first-child { color: var(--fg); width: 22%; }
+
+    /* FAQ */
+    .faq { border-top: 1px solid var(--border); max-width: 46rem; }
+    .faq > div { padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
+    .faq h3 { margin: 0 0 .75rem; }
+    .faq p:last-child { margin-bottom: 0; }
+
+    /* CTA */
+    .cta-sec { background: var(--white); border-top: 1px solid var(--border); padding: 4.5rem 0; }
+    .cta-sec h2 { margin-top: 0; }
+    .btn { display: inline-block; padding: .9375rem 2.25rem; font-size: .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: .09em; background: var(--fg); color: var(--bg); border: 1px solid var(--fg); text-decoration: none; transition: background .2s, border-color .2s; }
+    .btn:hover { background: var(--sec); border-color: var(--sec); }
+    .ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+    .btn-outline { background: transparent; color: var(--fg); border-color: var(--border); }
+    .btn-outline:hover { background: transparent; border-color: var(--fg); }
+
+    /* Related */
+    .related { border-top: 1px solid var(--border); padding: 3.5rem 0 4.5rem; }
+    .related-lbl { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .related ul li::before { content: "→"; }
+
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 0; font-size: .75rem; color: var(--muted); }
+  </style>
+
+  <!-- ─── Google Analytics 4 ─── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL5HWSTKPF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NL5HWSTKPF');
+  </script>
+
+  <!-- ─── Google Ads conversion: WhatsApp contact click ─── -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href*="wa.me/5519992297507"]');
+      if (link) { gtag('event', 'manual_event_CONTACT'); }
+    });
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="header-row">
+      <a href="/" style="text-decoration:none">
+        <div class="logo-name">Adriana Rezende</div>
+        <div class="logo-sub">Engenheira Química, UNICAMP</div>
+      </a>
+      <nav class="desktop">
+        <a href="/sobre/">Sobre</a>
+        <a href="/pericia-contaminacao-alimentos/">Alimentos</a>
+        <a href="/#expertise">Expertise</a>
+        <a href="/#qualifications">Qualificações</a>
+        <a href="/#insights">Insights</a>
+        <a href="/#contact">Contato</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Trilha de navegação">
+    <a href="/">Início</a> &nbsp;/&nbsp; <a href="/pericia-contaminacao-alimentos/">Alimentos</a> &nbsp;/&nbsp; Prazo de validade
+  </nav>
+</div>
+
+<div class="wrap">
+  <div class="art-head">
+    <p class="eyebrow">Perícia em Alimentos</p>
+    <h1>Prazo de validade de alimentos: como se prova tecnicamente</h1>
+    <p class="standfirst">
+      A data impressa no rótulo é a conclusão de um estudo de engenharia de alimentos, não uma
+      medição do produto que está na prateleira. Entender isso reorganiza a disputa: em quase todo
+      caso em que o prazo de validade vira ponto controvertido, o objeto do exame não é o alimento —
+      é o estudo que produziu a data, e as condições em que o produto foi mantido depois.
+    </p>
+    <p class="byline">
+      Por <strong>Adriana Rezende</strong> — engenheira química pela UNICAMP, CRQ IV Região — SP nº 04341673,
+      com mais de 20 anos de experiência técnica e industrial e mais de 8 anos como perita judicial
+      e assistente técnica.
+    </p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <div class="box">
+      <div class="box-lbl">O fato que reorganiza tudo</div>
+      <p>
+        O <strong>art. 18, §6º, I, do Código de Defesa do Consumidor</strong> estabelece que são
+        impróprios ao uso e consumo <strong>os produtos cujos prazos de validade estejam vencidos</strong>.
+        A impropriedade decorre do decurso do prazo, não do estado do alimento. A consequência prática
+        é contraintuitiva e decide muitas defesas mal montadas: <strong>um ensaio laboratorial
+        favorável não recupera um produto vencido</strong>. E, na direção oposta, um produto dentro
+        da validade que se deteriorou não fica próprio porque a data ainda não chegou. São duas
+        disputas diferentes, com provas diferentes — e confundi-las é o erro mais caro nesse tipo
+        de caso.
+      </p>
+    </div>
+
+    <h2>Quatro disputas que a expressão "prazo de validade" esconde</h2>
+
+    <p>
+      Antes de discutir método, é preciso saber qual dos quatro litígios está em jogo. Cada um tem
+      um objeto de prova distinto, e o exame correto para um é inútil nos outros três.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Disputa</th>
+            <th scope="col">Objeto de prova</th>
+            <th scope="col">O que se examina</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Produto vencido</td>
+            <td>A data, o lote e a identificação da amostra — não a qualidade do alimento</td>
+            <td>Auto de infração, termo de apreensão, correspondência entre o lote apreendido e o rótulo, legibilidade e conformidade da declaração de validade</td>
+          </tr>
+          <tr>
+            <td>Deterioração dentro da validade</td>
+            <td>Se as condições de conservação declaradas foram mantidas em toda a cadeia</td>
+            <td>Registros de temperatura, romaneios, ordens de carga, registros de câmara fria, exposição em gôndola, integridade da embalagem</td>
+          </tr>
+          <tr>
+            <td>Prazo mal determinado</td>
+            <td>A validade científica do estudo de vida útil que gerou a data</td>
+            <td>Protocolo do estudo, tipo de método, número de lotes, embalagem testada, critério de fim de vida útil, tratamento estatístico e extrapolação</td>
+          </tr>
+          <tr>
+            <td>Reetiquetagem</td>
+            <td>A aposição de nova data após a expiração, ou informação de validade que induz a erro</td>
+            <td>Registros de produção e envase, códigos de lote, camadas de impressão no rótulo, notas fiscais e estoque contra a data declarada</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Na primeira coluna está a razão pela qual tantos processos se perdem: a empresa autuada por
+      produto vencido contrata um laboratório para demonstrar que o alimento estava íntegro, e
+      apresenta um laudo tecnicamente correto e juridicamente irrelevante, porque o art. 18, §6º, I,
+      não admite refutação por ensaio. Já a empresa que teve produto deteriorado dentro do prazo
+      discute a qualidade do alimento quando deveria estar reconstituindo a cadeia de frio.
+    </p>
+
+    <h2>Quem determina o prazo — e o que isso significa em juízo</h2>
+
+    <p>
+      A ANVISA <strong>não estipula prazo de validade para alimentos</strong>. Quem determina é o
+      fabricante, e o <strong>Guia nº 16/2018 da ANVISA, hoje em sua versão 3 (de 02/04/2025,
+      vigente desde 03/04/2025)</strong>, é explícito ao atribuir a ele a responsabilidade pela
+      garantia da segurança e da manutenção das características do produto dentro do prazo declarado
+      no rótulo. O guia é instrumento regulatório <em>não normativo</em>, de caráter recomendatório
+      e não vinculante — sua inobservância, por si só, não configura infração sanitária, e abordagens
+      alternativas são admitidas desde que compatíveis com o caso concreto.
+    </p>
+
+    <p>
+      Esse duplo estatuto é decisivo em perícia e costuma ser mal explorado pelos dois lados.
+      O guia não pode ser invocado como norma cuja violação gera penalidade automática. Mas ele
+      <strong>é o parâmetro técnico de referência da autoridade sanitária brasileira</strong>: um
+      estudo que se afasta dele sem justificativa registrada perde muito da presunção de adequação,
+      e um estudo que o segue tem um argumento de conformidade metodológica difícil de derrubar.
+      A pergunta pericial correta não é "descumpriu o guia?", e sim "a abordagem adotada é
+      tecnicamente equivalente, e isso está documentado?".
+    </p>
+
+    <div class="box">
+      <div class="box-lbl">Ponto de atenção — de quem é a competência</div>
+      <p>
+        Nem todo alimento está sob a ANVISA. Produtos de origem animal sob inspeção federal seguem o
+        <strong>Decreto nº 9.013/2017 (RIISPOA)</strong>, cujo art. 443, VII, com a redação dada pelo
+        Decreto nº 10.468/2020, exige prazo de validade e identificação do lote no rótulo, sob
+        fiscalização do MAPA e do SIF. Determinar qual regime se aplica é o primeiro passo técnico —
+        o mesmo cuidado que a
+        <a href="/pericia-contaminacao-alimentos/">investigação de contaminação alimentar</a> exige ao
+        identificar se o caso é de indústria, de serviço de alimentação ou de distribuição.
+      </p>
+    </div>
+
+    <h2>O que a rotulagem obriga — e o que ela não obriga</h2>
+
+    <p>
+      A declaração do prazo de validade é obrigatória pelo <strong>art. 7º, XI, da RDC ANVISA
+      nº 727/2022</strong>, em vigor desde 1º de setembro de 2022. Três regras dessa resolução
+      aparecem com frequência em litígio e quase nunca são lidas por inteiro.
+    </p>
+
+    <h3>1. A precisão exigida na data depende da duração do prazo</h3>
+    <p>
+      O art. 31 permite que a declaração seja precedida por qualquer uma de nove expressões —
+      de "válido até" a "consumir preferencialmente antes de" — e exige, quanto à data:
+      <strong>dia e mês</strong> para produtos com prazo de validade igual ou inferior a três meses;
+      <strong>mês e ano</strong> para prazos superiores a três meses. Daí decorre um argumento
+      técnico corriqueiro e correto: em um produto de validade longa rotulado apenas com mês e ano,
+      não há como sustentar tecnicamente que o vencimento ocorreu em determinado dia daquele mês —
+      a norma não exigiu essa precisão. Alimentos com validade vencendo em dezembro podem, ainda,
+      ser declarados pela expressão "fim de…" seguida do ano.
+    </p>
+
+    <h3>2. Há alimentos isentos, e há embalagens isentas</h3>
+    <p>
+      O Anexo I da RDC nº 727/2022 lista os alimentos dispensados de declarar prazo de validade:
+      frutas e hortaliças frescas, vinagre, vinhos e demais bebidas alcoólicas com 10% (v/v) ou mais
+      de álcool, açúcar sólido, balas, caramelos, confeitos e pastilhas, gomas de mascar, e produtos
+      de panificação e confeitaria que, pela natureza do conteúdo, sejam em geral consumidos em até
+      24 horas da fabricação. Além disso, em embalagens cujo painel principal seja inferior a
+      <strong>10 cm²</strong>, a declaração pode ser omitida na unidade, desde que a embalagem que a
+      contém traga todas as informações obrigatórias.
+    </p>
+
+    <h3>3. O prazo é condicional às instruções de conservação</h3>
+    <p>
+      O art. 32 é o dispositivo que mais frequentemente decide a responsabilidade em cadeia. Quando
+      o alimento exige condições especiais de conservação ou pode sofrer alteração após a abertura,
+      a declaração de validade deve vir acompanhada das precauções necessárias, das
+      <strong>temperaturas máxima e mínima</strong> de conservação e do <strong>tempo pelo qual o
+      fabricante garante a durabilidade nessas condições</strong>. Em congelados, deve constar que o
+      prazo varia conforme a temperatura, admitindo-se declarações distintas para freezer, congelador
+      e refrigerador. Ou seja: a validade nunca é uma promessa incondicional — é uma promessa
+      condicionada a um regime térmico declarado no próprio rótulo.
+    </p>
+
+    <p>
+      Vale registrar também o <strong>art. 4º, I</strong>, que proíbe rótulo capaz de induzir o
+      consumidor a equívoco, erro, confusão ou engano quanto — entre outros elementos — à
+      <strong>validade</strong> do alimento. É o dispositivo que alcança a declaração ambígua, a
+      data ilegível e a impressão sobreposta, situações em que não houve produto vencido mas houve
+      informação defeituosa.
+    </p>
+
+    <h2>Como uma validade é determinada: os métodos e o que cada um prova</h2>
+
+    <p>
+      O Guia nº 16 separa métodos diretos, que observam o produto ao longo do tempo, e métodos
+      indiretos, que estimam por modelagem. A distinção importa porque cada família tem uma
+      fragilidade típica, e é sobre ela que a crítica técnica se constrói.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Estudo</th>
+            <th scope="col">O que faz</th>
+            <th scope="col">Fragilidade típica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Longa duração (tempo real)</td>
+            <td>Armazena o produto, sem inoculação, pelas condições reais de distribuição e consumo, por período igual ou maior que a validade pretendida</td>
+            <td>Custo e prazo. Quando encurtado, vira extrapolação disfarçada de observação</td>
+          </tr>
+          <tr>
+            <td>Acompanhamento</td>
+            <td>Verifica ao longo do tempo se o produto comercializado continua estável, confirmando a validade adotada</td>
+            <td>Costuma não existir. É o estudo que valida na prática o que os demais previram</td>
+          </tr>
+          <tr>
+            <td>Uso e transporte</td>
+            <td>Avaliam, respectivamente, o comportamento após a abertura e o efeito da distribuição — agitação, empilhamento, variação térmica</td>
+            <td>Raros nos dossiês, embora sejam os que reproduzem o que de fato acontece com o lote</td>
+          </tr>
+          <tr>
+            <td>Teste-desafio</td>
+            <td>Inocula intencionalmente um coquetel de cepas do micro-organismo-alvo e mede se há multiplicação, sobrevivência ou morte</td>
+            <td>Desenho complexo; exige protocolo reconhecido — a ISO 20976-1 é a referência citada pelo guia</td>
+          </tr>
+          <tr>
+            <td>Modelos preditivos</td>
+            <td>Estimam multiplicação, morte e probabilidade de sobrevivência microbiana por equações cinéticas ou probabilísticas</td>
+            <td>Só valem dentro da faixa de parâmetros usada para construir o modelo. Fora dela, a predição não tem lastro</td>
+          </tr>
+          <tr>
+            <td>Estabilidade acelerada</td>
+            <td>Submete o produto a temperatura, umidade ou luz mais severas para induzir a degradação em menos tempo, e extrapola por Q10 ou Arrhenius</td>
+            <td>Aplicação limitada em microbiologia; a extrapolação depende de pressupostos que raramente vêm declarados</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      O guia é direto sobre a hierarquia: os métodos diretos são mais demorados e mais precisos; os
+      indiretos são mais rápidos e menos precisos, e <strong>seus resultados devem ser confirmados
+      por estudo de longa duração ou de acompanhamento</strong>. Um dossiê construído só sobre
+      estudo acelerado, sem confirmação posterior, não é irregular por si — mas é frágil, e a
+      fragilidade tem nome técnico.
+    </p>
+
+    <div class="box">
+      <div class="box-lbl">A presunção que sustenta o estudo acelerado</div>
+      <p>
+        Estudos acelerados partem da presunção de que a velocidade da reação química
+        <strong>dobra a cada 10 °C</strong> de aumento de temperatura. O próprio Guia nº 16 adverte
+        que a degradação pode triplicar ou ser menor que o dobro. Daí o coeficiente
+        <strong>Q10</strong> — a razão entre as taxas de degradação em duas temperaturas separadas
+        por 10 °C — e a equação de <strong>Arrhenius</strong>, cujas previsões, segundo o guia,
+        pressupõem que o modelo vale para todas as reações estudadas, que o mecanismo de reação é o
+        mesmo em toda a faixa de temperatura, que a energia de ativação está em um intervalo definido
+        e que os efeitos da umidade se equivalem entre as condições. Em perícia, cada um desses
+        quatro pressupostos é uma pergunta a fazer — e a ausência de resposta é, ela mesma, o achado.
+      </p>
+    </div>
+
+    <h2>O dossiê que sustenta um prazo declarado</h2>
+
+    <p>
+      Quando a validade é o ponto controvertido, o documento a requerer não é o laudo do produto: é
+      o <strong>relatório do estudo de estabilidade</strong>. O Anexo VIII do Guia nº 16 lista o que
+      esse documento deve conter quando apresentado à autoridade sanitária. É a lista mais útil que
+      existe para instruir um pedido de exibição de documentos ou um quesito de perícia, porque cada
+      item ausente é uma lacuna nomeável:
+    </p>
+
+    <ul>
+      <li>Nome e endereço da empresa responsável pela execução do estudo</li>
+      <li>Formulação do produto incluído no estudo</li>
+      <li>Tipo de embalagem do produto submetido ao estudo</li>
+      <li>Tipo de estudo realizado, <strong>incluindo o racional para sua escolha</strong></li>
+      <li>Número dos lotes submetidos ao estudo e data de fabricação desses lotes</li>
+      <li>Condições de armazenamento das amostras e número total de amostras</li>
+      <li>Testes realizados, com especificações e limites ou critérios de aceitação numéricos ou descritivos</li>
+      <li>Frequência de testes, data de início e duração do estudo</li>
+      <li>Resultados e observações</li>
+      <li>Avaliação técnico-científica dos dados, <strong>incluindo avaliação estatística e de extrapolação</strong>, e a conclusão quanto ao prazo adotado</li>
+    </ul>
+
+    <p>
+      O guia acrescenta que, se alguma dessas informações não for apresentada, é recomendável
+      justificar sua não pertinência. Em disputa, essa recomendação vira alavanca: a ausência
+      injustificada de um item — em especial o racional da escolha do método e a avaliação
+      estatística da extrapolação — é exatamente o tipo de defeito que sustenta a
+      <a href="/impugnacao-laudo-pericial/">impugnação de um laudo que se apoiou nesse dossiê</a>.
+    </p>
+
+    <h2>Seis falhas que invalidam uma determinação de validade</h2>
+
+    <ul>
+      <li>
+        <strong>Amostra que não é produto comercial.</strong> O guia recomenda que a determinação
+        considere o produto fabricado em condições equivalentes às comerciais, com lotes e datas de
+        produção reais. Estudo feito com amostra de bancada ou lote-piloto não descreve o que vai ao
+        mercado.
+      </li>
+      <li>
+        <strong>Embalagem diferente da comercializada.</strong> Os testes devem usar embalagem com as
+        mesmas propriedades de barreira que a oferecida ao consumidor. Trocar o filme, a espessura
+        ou o sistema de fechamento muda a curva e invalida o resultado anterior.
+      </li>
+      <li>
+        <strong>Lote único.</strong> Sem repetição em lotes distintos, a variabilidade de composição
+        e de processamento fica invisível. O guia é expresso: se a variabilidade for inaceitável,
+        reduz-se a variabilidade ou <em>reduz-se a validade</em>.
+      </li>
+      <li>
+        <strong>Condições de estudo que não refletem a distribuição real.</strong> O Brasil é
+        enquadrado, pelas definições do ICH, na zona climática IVb (30 °C ± 2 °C e 75 % UR ± 5 % UR),
+        mas o guia observa a grande amplitude térmica do país e recomenda testar nas condições mais
+        extremas a que o produto provavelmente será exposto. Estudo conduzido em condição amena para
+        produto distribuído nacionalmente é um ponto de ataque legítimo.
+      </li>
+      <li>
+        <strong>Ausência de reestudo após mudança significativa.</strong> Alteração de pH, atividade
+        de água, tipo ou quantidade de conservantes, ingredientes, material de embalagem ou condições
+        de processamento obriga a repetir o teste. É o achado mais comum em auditoria de dossiê.
+      </li>
+      <li>
+        <strong>Critério de fim de vida útil não declarado.</strong> A validade corresponde ao menor
+        período em que <em>algum</em> atributo — de qualidade ou de segurança — deixa de atender ao
+        critério estabelecido. Se o critério não está escrito, não há como verificar a conclusão:
+        o estudo produz números e nenhuma decisão auditável.
+      </li>
+    </ul>
+
+    <h2>Quando o problema não é a data, é a cadeia de frio</h2>
+
+    <p>
+      Em disputa entre fabricante, transportadora, distribuidor e varejo, a pergunta útil quase nunca
+      é "o prazo estava correto?". É "as condições declaradas foram mantidas, e em que elo deixaram
+      de ser?". O art. 32 da RDC nº 727/2022 dá o fundamento: o fabricante garante durabilidade
+      <em>naquelas</em> condições, e o Guia nº 16 registra que, embora a determinação do prazo caiba
+      ao fabricante, <strong>os demais agentes da cadeia produtiva compartilham a responsabilidade
+      pela sua garantia</strong> ao longo da distribuição até a comercialização.
+    </p>
+
+    <p>
+      A prova, nesse caso, é documental e instrumental antes de ser laboratorial: registradores e
+      <em>dataloggers</em> de temperatura, gráficos de câmara fria, horários de carga e descarga em
+      romaneio, tempo de doca, registros de manutenção do sistema de refrigeração, posição e
+      temperatura de exposição em gôndola. Um único intervalo fora da faixa declarada, com duração e
+      magnitude conhecidas, permite estimar tecnicamente o consumo de vida útil daquele lote — e é o
+      que transfere a discussão do rótulo para o elo que efetivamente rompeu a condição.
+    </p>
+
+    <h2>O regime sancionatório da reetiquetagem</h2>
+
+    <p>
+      Aplicar nova data a produto vencido é conduta com dupla incidência, administrativa e penal, e
+      as duas correm de forma independente.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Regime</th>
+            <th scope="col">Dispositivo</th>
+            <th scope="col">Conduta e consequência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sanitário</td>
+            <td>Lei nº 6.437/1977, art. 10, XVIII</td>
+            <td>Importar ou exportar, expor à venda ou entregar ao consumo produto de interesse à saúde com prazo de validade expirado, <strong>ou apor-lhes novas datas após expirado o prazo</strong>. Penas: advertência, apreensão, inutilização, interdição, cancelamento do registro, da licença e da autorização, e/ou multa</td>
+          </tr>
+          <tr>
+            <td>Penal</td>
+            <td>Lei nº 8.137/1990, art. 7º, IX</td>
+            <td>Vender, ter em depósito para vender, expor à venda ou, de qualquer forma, entregar mercadoria em condições impróprias ao consumo. Pena de detenção de 2 a 5 anos, ou multa — e o parágrafo único pune também a <strong>modalidade culposa</strong></td>
+          </tr>
+          <tr>
+            <td>Consumerista</td>
+            <td>CDC, art. 18, §6º, I, e art. 4º, I, da RDC nº 727/2022</td>
+            <td>Produto vencido é impróprio por definição; rótulo que induz a erro quanto à validade é irregular ainda que o produto esteja no prazo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      A punição da modalidade culposa no art. 7º, parágrafo único, é o detalhe que muda o desenho da
+      defesa corporativa: não é preciso demonstrar intenção de fraudar para que o tipo se configure,
+      e falhas de controle de estoque — produto vencido não segregado, PVPS mal executado, inventário
+      sem bloqueio automático por data — passam a ser matéria técnica relevante, não mera desorganização
+      administrativa. A distinção entre defeito que causa dano e produto simplesmente impróprio segue
+      a mesma lógica dos dois regimes do CDC descritos na
+      <a href="/pericia-contaminacao-alimentos/">página sobre contaminação alimentar</a>.
+    </p>
+
+    <h2>Quesitos que funcionam em disputa de validade</h2>
+
+    <p>
+      Os quesitos abaixo seguem a estrutura que torna a resposta conclusiva e verificável — objeto
+      identificado, critério nomeado, método declarado —, detalhada na página sobre
+      <a href="/quesitos-periciais/">formulação de quesitos periciais</a>.
+    </p>
+
+    <ol>
+      <li>Qual estudo determinou o prazo de validade declarado para o produto e lote em questão, e qual o racional técnico registrado para a escolha desse tipo de estudo?</li>
+      <li>O estudo foi conduzido com produto fabricado em condições equivalentes às comerciais, na mesma embalagem oferecida ao consumidor, e em quantos lotes distintos?</li>
+      <li>Qual o critério de fim de vida útil adotado para cada atributo avaliado — microbiológico, físico-químico e sensorial — e qual atributo determinou o prazo final?</li>
+      <li>Caso o prazo tenha sido estimado por método indireto, quais os pressupostos da extrapolação, qual o modelo estatístico empregado e houve confirmação por estudo de longa duração ou de acompanhamento?</li>
+      <li>Houve alteração de formulação, embalagem ou processo entre a data do estudo e a fabricação do lote examinado? Em caso positivo, o estudo foi refeito?</li>
+      <li>As condições de conservação declaradas no rótulo, nos termos do art. 32 da RDC ANVISA nº 727/2022, foram mantidas em todos os elos da cadeia? Indique, com base nos registros de temperatura disponíveis, se houve desvio, sua duração e magnitude.</li>
+    </ol>
+
+    <div class="box">
+      <div class="box-lbl">Resumo operacional</div>
+      <p>
+        Se o produto <strong>venceu</strong>, o ensaio não ajuda: discuta data, lote e identificação.
+        Se o produto <strong>estragou dentro do prazo</strong>, o objeto do exame é a cadeia de frio,
+        não o alimento. Se o que se discute é <strong>o prazo em si</strong>, peça o relatório do
+        estudo de estabilidade e confira, item por item, a lista do Anexo VIII do Guia nº 16 — em
+        especial o racional do método, o número de lotes, a embalagem testada e a avaliação
+        estatística da extrapolação.
+      </p>
+    </div>
+
+    <h2>Perguntas frequentes</h2>
+
+    <div class="faq">
+      <div>
+        <h3>Quem define o prazo de validade de um alimento?</h3>
+        <p>O fabricante. A ANVISA não estipula prazo de validade para alimentos — o Guia nº 16/2018, versão 3, é expresso ao dizer que o fabricante é o responsável pela garantia da segurança e da manutenção das características do produto dentro do prazo declarado no rótulo. O que a norma exige é que o prazo exista, esteja declarado (art. 7º, XI, da RDC nº 727/2022) e seja sustentado por um estudo. Dois produtos de mesma composição podem ter prazos diferentes, porque a validade depende também do processo, da embalagem e das condições de armazenamento de cada fabricante.</p>
+      </div>
+      <div>
+        <h3>Um alimento vencido pode ser considerado próprio se a análise laboratorial der resultado normal?</h3>
+        <p>Não. O art. 18, §6º, I, do Código de Defesa do Consumidor diz que são impróprios ao uso e consumo os produtos cujos prazos de validade estejam vencidos. É uma qualificação por decurso de prazo, não por estado do produto: nenhum ensaio microbiológico ou físico-químico favorável reverte a impropriedade. Por isso, em autuação por produto vencido, discutir a qualidade do alimento é a defesa errada — a discussão possível é sobre a data, o lote, a identificação da amostra ou a competência da autoridade.</p>
+      </div>
+      <div>
+        <h3>O que é um estudo de vida útil e quais tipos são aceitos?</h3>
+        <p>É o estudo que determina por quanto tempo o alimento permanece seguro e mantém as características declaradas, armazenado nas condições que o fabricante estabelece. O Guia nº 16 da ANVISA separa métodos diretos — estudo de longa duração (tempo real), estudo de acompanhamento, estudo de uso, estudo de transporte e teste-desafio, com inoculação intencional do micro-organismo-alvo conforme a ISO 20976-1 — e métodos indiretos, que são os modelos preditivos e os estudos acelerados. Os diretos são mais lentos e mais precisos; os indiretos são mais rápidos e menos precisos, e o próprio guia recomenda que seus resultados sejam confirmados por estudo de longa duração ou de acompanhamento.</p>
+      </div>
+      <div>
+        <h3>Um estudo acelerado é suficiente para provar a validade de um alimento?</h3>
+        <p>Sozinho, quase nunca. O estudo acelerado parte da presunção de que a velocidade da reação química dobra a cada 10 °C de aumento de temperatura — presunção que o próprio Guia nº 16 relativiza, porque a degradação pode triplicar ou ser menor que o dobro. Ele estima o coeficiente Q10 ou aplica a equação de Arrhenius para extrapolar a validade a uma temperatura menor, e a extrapolação só vale sob pressupostos declarados: mesmo mecanismo de reação na faixa de temperatura estudada, energia de ativação dentro de um intervalo definido, modelo estatístico adequado. Além disso, testes acelerados têm aplicação limitada para deterioração microbiológica, que é justamente o que decide a maioria dos casos de alimento perecível.</p>
+      </div>
+      <div>
+        <h3>Quando o prazo de validade precisa ser refeito?</h3>
+        <p>Sempre que houver mudança significativa na composição ou nas condições do produto. O Guia nº 16 lista alteração de pH, de atividade de água, da quantidade e do tipo de conservantes, de ingredientes, do material de embalagem e das condições de processamento. Na prática pericial, esse é um dos achados mais frequentes: a empresa troca de fornecedor de filme, de conservante ou de linha de envase e mantém a validade determinada para a formulação antiga. O estudo existe, está documentado e não corresponde ao produto que foi ao mercado.</p>
+      </div>
+      <div>
+        <h3>Todos os alimentos precisam declarar prazo de validade no rótulo?</h3>
+        <p>Não. A RDC nº 727/2022 traz no Anexo I a lista de isentos, que inclui frutas e hortaliças frescas, vinagre, vinhos e bebidas alcoólicas com 10% (v/v) ou mais de álcool, açúcar sólido, balas, caramelos e confeitos, gomas de mascar, e produtos de panificação e confeitaria que, pela natureza do conteúdo, sejam em geral consumidos em até 24 horas da fabricação. Há ainda a regra das embalagens pequenas: quando o painel principal tem menos de 10 cm², o prazo de validade pode ser omitido da embalagem individual, desde que a embalagem que a contém traga todas as informações obrigatórias.</p>
+      </div>
+      <div>
+        <h3>É crime alterar a data de validade de um produto?</h3>
+        <p>Há dois regimes distintos e cumuláveis. No administrativo, o art. 10, XVIII, da Lei nº 6.437/1977 define como infração sanitária importar ou exportar, expor à venda ou entregar ao consumo produto de interesse à saúde com prazo de validade expirado, ou apor-lhes novas datas após expirado o prazo, com penas que vão de advertência a apreensão, inutilização, interdição, cancelamento de registro e multa. No penal, o art. 7º, IX, da Lei nº 8.137/1990 tipifica vender, ter em depósito para vender, expor à venda ou entregar mercadoria em condições impróprias ao consumo, com pena de detenção de 2 a 5 anos ou multa — e o parágrafo único pune também a modalidade culposa.</p>
+      </div>
+      <div>
+        <h3>Se o produto estragou dentro da validade, a culpa é sempre do fabricante?</h3>
+        <p>Não necessariamente, e é aqui que a perícia decide o caso. O prazo de validade vale sob as condições de conservação declaradas: o art. 32 da RDC nº 727/2022 exige que alimentos que precisem de condições especiais tragam as precauções necessárias, as temperaturas máxima e mínima de conservação e o tempo pelo qual o fabricante garante a durabilidade nessas condições. Se a cadeia de frio foi rompida no transporte, no centro de distribuição ou na gôndola, o prazo declarado deixou de ser aplicável àquele lote, e a questão técnica passa a ser em que elo a temperatura saiu da faixa — o que se prova com registradores de temperatura, romaneios, ordens de carga e registros de câmara, não com o rótulo.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<section class="cta-sec">
+  <div class="wrap">
+    <h2>Validade contestada, lote apreendido, dossiê a defender</h2>
+    <p class="narrow">
+      Auditoria de estudo de vida útil, análise de dossiê de estabilidade, reconstituição de cadeia
+      de frio, formulação de quesitos, acompanhamento de perícia e parecer técnico em processos que
+      envolvem prazo de validade, contaminação e adulteração de alimentos, rotulagem e conformidade
+      sanitária. Campinas, São Paulo — atendimento em todo o território nacional.
+    </p>
+    <div class="ctas">
+      <a href="/#contact" class="btn">Discutir o caso</a>
+      <a href="https://wa.me/5519992297507?text=Ol%C3%A1%2C%20vim%20pelo%20site%20%28prazo%20de%20validade%20de%20alimentos%29%20e%20gostaria%20de%20discutir%20um%20caso%20t%C3%A9cnico." target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp (19) 99229-7507</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="related">
+    <div class="related-lbl">Continue lendo</div>
+    <ul>
+      <li><a href="/pericia-contaminacao-alimentos/">Perícia em contaminação de alimentos: como se investiga e o que se prova</a></li>
+      <li><a href="/quesitos-periciais/">Quesitos periciais: como formular e por que a maioria falha</a></li>
+      <li><a href="/impugnacao-laudo-pericial/">Impugnação de laudo pericial: as três vias e qual usar</a></li>
+      <li><a href="/assistente-tecnica/">Assistente técnico na perícia judicial: o que faz, quando contratar e como escolher</a></li>
+      <li><a href="/pericia-industria-quimica/">Perícia em indústria química: acidente, falha de processo e produtos controlados</a></li>
+      <li><a href="/honorarios-pericia-judicial/">Honorários periciais: quem paga, quem adianta e gratuidade</a></li>
+      <li><a href="/classificacao-fiscal-ncm/">Classificação fiscal NCM: como se contesta tecnicamente um auto de infração</a></li>
+      <li><a href="/pericia-ambiental/">Perícia ambiental: contaminação de solo, água e passivos industriais</a></li>
+      <li><a href="/pericia-combustiveis/">Perícia em adulteração de combustíveis: como se prova tecnicamente</a></li>
+      <li><a href="/sobre/">Quem é Adriana Rezende: formação, registro CRQ e tipos de processo em que atua</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Adriana Rezende — Perita Judicial e Assistente Técnica, Engenheira Química (UNICAMP),
+    CRQ IV Região — SP nº 04341673.
+    Este conteúdo tem finalidade informativa e não substitui análise técnica do caso concreto.
+  </div>
+</footer>
+
+</body>
+</html>
