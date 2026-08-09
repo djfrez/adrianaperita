@@ -599,3 +599,66 @@ Coleta por service account (`python3 ~/.config/adrianarezende/seo-report.py 30`)
 3. **Dimensão `query`:** 3 linhas hoje. Ao chegar a 5+ consultas distintas, elas passam a definir a próxima página, substituindo a intuição de cluster.
 4. **SEO-019 passa a ser candidata real.** Com 12 páginas e 10 itens em cada "Continue lendo", o bloco deixou de transmitir hierarquia. Se nada com dado o superar, é a tarefa de arquitetura a executar antes da 15ª página.
 5. **Se o quadro de dados seguir vazio**, a próxima spoke por intenção é a segunda do cluster de alimentos — **recolhimento/recall pela RDC 655/2022**, que exigirá encurtar a seção correspondente do pilar (canibalização a resolver, ao contrário desta execução).
+
+---
+
+## Estado da medição — 2026-08-09
+
+Coleta por service account (`python3 ~/.config/adrianarezende/seo-report.py 30`), período 2026-07-10 → 2026-08-09.
+
+- **36 impressões, zero cliques** (eram 24 em 07/08). O volume cresce, o CTR não sai de 0%.
+- **`/assistente-tecnica/`: 22 impressões, posição 8,1** — ainda 61% do site, estável em posição.
+- **Cauda nova:** quatro páginas que não apareciam agora aparecem — `/honorarios-pericia-judicial/` (3 imp., pos. 6,7), `/quesitos-periciais/` (3 imp., pos. 6,7), `/pericia-combustiveis/` (2 imp., pos. 7,0), `/pericia-industria-quimica/` (1 imp., pos. 7,0). **Cinco das oito páginas com impressão estão na posição 6–8.** É exatamente a faixa 5–20 que o mandato marca como Prioridade 2, e o problema delas não é ranking, é snippet.
+- **Dimensão `query`: 3 linhas**, uma nova ("avaliações sobre quema química", pos. 32,0 — consulta de terceiro, sem intenção de contratação). Ainda abaixo do limiar de 5 que definiria a próxima página por dado.
+- **Indexação: 11 de 11** publicadas. A 12ª não constava porque **não estava publicada** — ver abaixo.
+- **GA4** segue não instrumentado (falta o ID numérico em `~/.config/adrianarezende/ga4-property`).
+
+---
+
+## Auditoria — 2026-08-09
+
+### A fraqueza que anulava as duas execuções anteriores
+
+**O repositório estava dois commits à frente do site publicado.** `git status` acusava `ahead 2` e o site ao vivo servia a versão de 06/08:
+
+| Commit | Data | O que continha | Estado ao vivo em 09/08 |
+|---|---|---|---|
+| `c539777` (SEO-016) | 07/08 | Metadados ajustados ao limite de exibição do SERP em 9 páginas | **não aplicado** — `/assistente-tecnica/` ainda servia description de **258 caracteres** |
+| `9b6caba` (SEO-020) | 08/08 | Página `/prazo-validade-alimentos/` (~2.900 palavras) | **404** |
+
+Consequência direta: a única página do site com impressão de dois dígitos passou **dois dias inteiros** aparecendo 22 vezes na posição 8,1 com o snippet truncado que a SEO-016 existia para corrigir — a atribuição de autoridade ("engenheira química pela UNICAMP e perita judicial") continuava caindo fora da parte visível. E a spoke de alimentos, cujo custo de produção e verificação factual já tinha sido pago, **não existia para o Google**.
+
+O trabalho estava correto, validado e commitado. Só não estava no ar. Nenhuma das duas execuções mentiu no relatório: ambas descreveram fielmente o que fizeram no repositório — **e nenhuma das duas verificou o site publicado depois**. O relatório da SEO-016 chegou a afirmar "a conformidade obtida ontem se manteve", conferida no arquivo local; ao vivo ela nunca chegou a existir.
+
+### Por que esta foi a tarefa de hoje
+
+Pelo próprio escore do mandato não havia competição. Publicar duas melhorias já prontas e já pagas custa **esforço 1** e entrega o valor integral de duas tarefas que somam 216 pontos de prioridade — enquanto qualquer página nova nasceria com o mesmo defeito e também não iria ao ar. É Prioridade 1 na definição literal do playbook: **aumentar conversão de páginas que já têm impressão**. Escrever uma 13ª página com a esteira de publicação quebrada seria acumular estoque, não entregar resultado.
+
+### SEO-021 — Deriva entre repositório e site publicado *(executada em 2026-08-09)*
+
+- **Descrição:** o commit era tratado como fim do processo, mas o site é servido pelo GitHub Pages a partir de `origin/main`. Sem `push`, a execução termina com relatório de sucesso e **nenhuma mudança ao ar**. Falha silenciosa por definição: nada no repositório local a denuncia.
+- **URL:** todas
+- **Categoria:** Processo / Entrega
+- **Impacto:** 10 · **Esforço:** 1 · **Confiança:** 10 · **Valor de negócio:** 9
+- **Priority Score:** 900
+- **Status:** done · **Descoberto:** 2026-08-09 · **Concluído:** 2026-08-09
+- **Implementado:**
+  1. **Publicado.** `git push origin main` (`8bd564b..9b6caba`). Verificado ao vivo depois do rebuild do GH Pages: `sitemap.xml` com **12 `<loc>`**, `/prazo-validade-alimentos/` respondendo **200** (era 404), description de `/assistente-tecnica/` ao vivo com **154 caracteres** (era 258).
+  2. **Guard automático.** `seo-report.py` ganhou a checagem `[deploy]`, que roda **antes** dos dados de Search Console em toda execução: faz `git fetch`, compara `origin/main..HEAD` e cruza os diretórios de página do repositório com as URLs do sitemap **publicado**. Havendo deriva, imprime cada commit sem push e cada página ausente ao vivo, com a ação a executar. Testado nos dois estados — acusou os dois commits e a página faltante antes do push, e passou a "em dia — 12 páginas publicadas, 0 commits pendentes" depois.
+- **Validação do site antes de publicar** (12 páginas, `ALL PASS`): titles ≤ 60 e sem duplicata; descriptions entre 150 e 160; `og:title` e `twitter:title` idênticos ao `<title>`; canonical correto nas 12; um `<h1>` por página; todos os blocos JSON-LD parseando; zero links internos quebrados; sitemap idêntico ao sistema de arquivos; nenhuma página órfã.
+- **Regra que passa a valer:** *uma execução só está concluída quando a mudança está ao vivo e verificada por requisição ao domínio* — não quando o commit existe. O relatório diário deve citar a evidência ao vivo (código HTTP, contagem do sitemap ou trecho do metadado servido), não o estado do arquivo local.
+- **Por que não virou hook de git ou CI:** o guard vive no script que a execução diária **já roda como primeiro passo**, então custa zero disciplina nova e aparece no ponto em que a decisão do dia é tomada. Um workflow do GitHub Actions só reportaria depois do push — exatamente o passo que estava faltando.
+
+### O que segue em aberto
+
+- **SEO-019** (grafo interno completo) — 12 páginas, 10 itens em cada "Continue lendo". Sem mudança.
+- **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
+- **SEO-009** (perfil no Google Business) — segue bloqueado por verificação de identidade da proprietária.
+
+### Próxima execução — o que checar primeiro
+
+1. **`[deploy]` no topo do relatório.** Se acusar deriva, publicar é a tarefa do dia, antes de qualquer outra coisa.
+2. **CTR das cinco páginas na posição 6–8.** Os snippets corrigidos só entraram no ar em 09/08 — a janela de recache do Google conta **a partir de agora**, não de 07/08, e fecha por volta de 16/08. Antes disso, nenhuma conclusão sobre metadado é válida. Se depois disso o CTR seguir em 0% com posição ≤ 10, o diagnóstico muda de snippet para **intenção da página vs. intenção da consulta**, e a tarefa passa a ser reescrever o topo de `/assistente-tecnica/`.
+3. **Indexação de `/prazo-validade-alimentos/`.** O relógio dela começou em 09/08, não em 08/08. Latência medida de 1 a 4 dias — investigar só depois de ~13/08.
+4. **Dimensão `query`:** 3 linhas. Ao chegar a 5+, as consultas passam a definir a próxima página no lugar da intuição de cluster.
+5. **Se o quadro seguir sem clique**, a próxima spoke por intenção continua sendo **recolhimento/recall pela RDC 655/2022**, que exigirá encurtar a seção correspondente do pilar de alimentos.
