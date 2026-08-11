@@ -649,16 +649,43 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 - **Regra que passa a valer:** *uma execução só está concluída quando a mudança está ao vivo e verificada por requisição ao domínio* — não quando o commit existe. O relatório diário deve citar a evidência ao vivo (código HTTP, contagem do sitemap ou trecho do metadado servido), não o estado do arquivo local.
 - **Por que não virou hook de git ou CI:** o guard vive no script que a execução diária **já roda como primeiro passo**, então custa zero disciplina nova e aparece no ponto em que a decisão do dia é tomada. Um workflow do GitHub Actions só reportaria depois do push — exatamente o passo que estava faltando.
 
+### SEO-022 — O guard do SEO-021 não era durável *(executada em 2026-08-11)*
+
+- **Descrição:** o `seo-report.py` criado no SEO-021 **não existe mais**. Ele foi escrito no diretório temporário da sessão daquele dia, não no repositório, e o diretório foi limpo. O controle criado para impedir falha silenciosa desapareceu silenciosamente — e nada no repositório denunciava isso. Nesta execução, cada checagem do SEO-021 (deriva de publicação, validação das 12 páginas, consulta ao Search Console) teve de ser reescrita à mão antes de qualquer decisão.
+- **URL:** `tools/seo-report.py`
+- **Categoria:** Processo / Medição / Entrega
+- **Impacto:** 9 · **Esforço:** 2 · **Confiança:** 10 · **Valor de negócio:** 8
+- **Priority Score:** 360
+- **Status:** done · **Descoberto:** 2026-08-11 · **Concluído:** 2026-08-11
+- **Por que esta tarefa e não conteúdo:** as duas frentes de conteúdo estavam bloqueadas por data. O veredito sobre snippets só é válido depois de ~16/08 (janela de recache aberta em 09/08), e a decisão orientada por consultas dependia do relatório que não existia mais. Publicar uma 13ª página com 58 impressões acumuladas em 28 dias acrescentaria cobertura marginal; restaurar o controle que já evitou um dia inteiro de trabalho commitado-e-não-publicado protege todas as 12 páginas e toda execução futura. Score 360 contra 33,3 do SEO-019 e ~120 de uma spoke nova.
+- **Implementado:** `tools/seo-report.py`, **versionado no repositório**, com três seções executáveis isoladamente (`deploy`, `valid`, `gsc`) e código de saída 1 em qualquer falha, para poder barrar uma publicação.
+  1. **`[deploy]`** — `git fetch`, commits em `origin/main..HEAD`, arquivos rastreados modificados sem commit, diretórios de página do repositório × URLs do **sitemap publicado**, e status HTTP das 12 URLs ao vivo.
+  2. **`[valid]`** — title ≤ 60 e sem duplicata, description entre 150 e 160, `og:title`/`twitter:title` idênticos ao `<title>`, canonical exato, um único `<h1>`, todo JSON-LD parseando, links internos resolvendo, sitemap local idêntico ao sistema de arquivos, nenhuma página órfã.
+  3. **`[gsc]`** — desempenho de 28 dias por página e por consulta, mais o estado de indexação de cada página pela URL Inspection API.
+- **Correção de um ponto cego durante a escrita:** a primeira versão reportava "0 commits pendentes" quando o próprio `git` falhava, porque só olhava a saída padrão. Isso reproduziria a falha do SEO-021 com outra causa — sucesso aparente sem informação real. Agora `git fetch` e `git log` têm o código de retorno verificado, e um `git` quebrado imprime **"estado de publicação DESCONHECIDO"** e falha.
+- **Validação por injeção de defeito** (cópia descartável do site, nunca no repositório real): nove defeitos plantados — title de 86 caracteres, description de 12, `og:title` e `twitter:title` divergentes, canonical sem barra final, link interno para página inexistente, JSON-LD com vírgula dupla, página fora do sitemap e sitemap apontando para página fantasma. **Os nove foram detectados, com saída 1.** Em seguida, uma página presente no repositório e ausente do sitemap publicado (o cenário exato do SEO-021) e um `git` inoperante — ambos acusados. O repositório real segue `ALL PASS` nas três seções.
+- **Interpretador:** rodar com `/usr/bin/python3`. As bibliotecas do Google estão instaladas ali, não nos pythons do Homebrew. Só a seção `[gsc]` depende delas; `deploy` e `valid` são stdlib puro.
+
+### Auditoria de 2026-08-11 — leitura dos dados
+
+- **Publicação:** sem deriva. 12 páginas no sitemap publicado, 12 respondendo 200, 0 commits pendentes no início da execução.
+- **Indexação: as 12 páginas estão indexadas** (`Enviada e indexada`, verdict `PASS`). Isso **resolve o item 3 da lista anterior antes do prazo**: `/prazo-validade-alimentos/` foi rastreada em 10/08 e já está indexada. Indexação deixa de ser hipótese de gargalo.
+- **Desempenho (28 dias): 58 impressões, 0 cliques, 9 das 12 páginas com impressão.** `/pericia-ambiental/` e `/pericia-contaminacao-alimentos/` ainda não apareceram nenhuma vez.
+- **Posições:** `/pericia-combustiveis/` 5,6 · `/` 6,0 · `/honorarios-pericia-judicial/` 6,2 · `/pericia-industria-quimica/` 7,0 · `/assistente-tecnica/` 8,1 · `/classificacao-fiscal-ncm/` 9,0 · `/quesitos-periciais/` 11,5 · `/impugnacao-laudo-pericial/` 31,2 · `/sobre/` 32,0.
+- **O gargalo não é posição nem CTR — é alcance.** Sete páginas já estão entre 5 e 12. O site aparece para **oito consultas distintas em 28 dias**. Com 58 impressões, 0 clique está dentro do ruído estatístico (a expectativa na posição 8 seria de 1 a 2 cliques); nenhuma conclusão sobre snippet se sustenta nesse volume, o que **reforça** a espera até ~16/08 em vez de contrariá-la.
+- **Dimensão `query` passou de 3 para 8 linhas**, cruzando o limiar que o próprio backlog fixou para as consultas passarem a decidir o conteúdo. O sinal de demanda é concentrado: **quatro das oito consultas são sobre impugnação de laudo pericial** — incluindo as grafias reais dos usuários, "impunação ao laudo pericial" e "como fazer impunação ao laudo pericial". A página dedicada responde por elas na posição 28–47, a pior do site, contra 6–12 das irmãs. A hipótese mais simples é idade: a página foi publicada em 06/08 e tinha cinco dias na data da medição. **Não agir sobre ela ainda** — reavaliar quando tiver duas semanas ao vivo, por volta de 20/08. Se continuar acima de 25 enquanto as irmãs seguem abaixo de 12, aí sim é defeito e não volatilidade.
+- **Descartadas nesta auditoria, com evidência:** cobertura geográfica (Campinas e São Paulo já aparecem nas 12 páginas), canibalização entre `/assistente-tecnica/#impugnacao-laudos` e `/impugnacao-laudo-pericial/` (apenas 2 ocorrências de "impugna\*" na primeira contra 18 na segunda — escopos distintos), conteúdo raso (3.373 a 6.166 palavras por página) e bloqueio a rastreadores de IA (`robots.txt` libera GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot e Amazonbot).
+
 ### O que segue em aberto
 
-- **SEO-019** (grafo interno completo) — 12 páginas, 10 itens em cada "Continue lendo". Sem mudança.
+- **SEO-019** (grafo interno completo) — 12 páginas, 10 itens em cada "Continue lendo". Sem mudança. Os inbounds medidos hoje ficaram entre 11 e 24 por página — grafo plano, sem hierarquia pilar → spoke.
 - **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
 - **SEO-009** (perfil no Google Business) — segue bloqueado por verificação de identidade da proprietária.
 
 ### Próxima execução — o que checar primeiro
 
-1. **`[deploy]` no topo do relatório.** Se acusar deriva, publicar é a tarefa do dia, antes de qualquer outra coisa.
-2. **CTR das cinco páginas na posição 6–8.** Os snippets corrigidos só entraram no ar em 09/08 — a janela de recache do Google conta **a partir de agora**, não de 07/08, e fecha por volta de 16/08. Antes disso, nenhuma conclusão sobre metadado é válida. Se depois disso o CTR seguir em 0% com posição ≤ 10, o diagnóstico muda de snippet para **intenção da página vs. intenção da consulta**, e a tarefa passa a ser reescrever o topo de `/assistente-tecnica/`.
-3. **Indexação de `/prazo-validade-alimentos/`.** O relógio dela começou em 09/08, não em 08/08. Latência medida de 1 a 4 dias — investigar só depois de ~13/08.
-4. **Dimensão `query`:** 3 linhas. Ao chegar a 5+, as consultas passam a definir a próxima página no lugar da intuição de cluster.
-5. **Se o quadro seguir sem clique**, a próxima spoke por intenção continua sendo **recolhimento/recall pela RDC 655/2022**, que exigirá encurtar a seção correspondente do pilar de alimentos.
+1. **Rodar `/usr/bin/python3 tools/seo-report.py` como primeiro passo.** Se `[deploy]` acusar deriva, publicar é a tarefa do dia, antes de qualquer outra coisa. Se qualquer seção falhar, corrigir antes de abrir frente nova.
+2. **CTR das páginas entre 5 e 12 — só a partir de ~16/08.** A janela de recache dos snippets abriu em 09/08. Antes disso nenhuma conclusão sobre metadado é válida, e com menos de ~200 impressões acumuladas 0 clique continua sendo ruído, não diagnóstico.
+3. **`/impugnacao-laudo-pericial/` — reavaliar por volta de 20/08**, quando tiver duas semanas ao vivo. É onde está a demanda real (4 das 8 consultas) e a pior posição do site. Se seguir acima de 25, tratar como defeito da página, não como idade.
+4. **`/pericia-ambiental/` e `/pericia-contaminacao-alimentos/`: zero impressão em 28 dias, apesar de indexadas.** Duas páginas indexadas que nunca apareceram é o achado mais concreto para investigar depois do item 3 — provável descasamento entre o que a página responde e o que se pesquisa nesses dois temas.
+5. **Só depois disso**, a próxima spoke por intenção continua sendo **recolhimento/recall pela RDC 655/2022**, que exigirá encurtar a seção correspondente do pilar de alimentos.
