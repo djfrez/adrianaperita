@@ -649,7 +649,61 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 - **Regra que passa a valer:** *uma execução só está concluída quando a mudança está ao vivo e verificada por requisição ao domínio* — não quando o commit existe. O relatório diário deve citar a evidência ao vivo (código HTTP, contagem do sitemap ou trecho do metadado servido), não o estado do arquivo local.
 - **Por que não virou hook de git ou CI:** o guard vive no script que a execução diária **já roda como primeiro passo**, então custa zero disciplina nova e aparece no ponto em que a decisão do dia é tomada. Um workflow do GitHub Actions só reportaria depois do push — exatamente o passo que estava faltando.
 
-### SEO-022 — O guard do SEO-021 não era descobrível *(executada em 2026-08-11)*
+### SEO-022 — Tratamento completo de "parecer técnico" no hub de assistência técnica
+
+- **Descrição:** a âncora `/assistente-tecnica/#parecer-tecnico` — destino de campanha paga de correspondência exata e de um sitelink — entregava uma lista de seis marcadores. Nenhuma página do site definia o parecer técnico, o distinguia do laudo pericial, descrevia seu conteúdo ou mencionava os dois usos anteriores à perícia (arts. 471 e 472 do CPC).
+- **URL:** `/assistente-tecnica/`
+- **Categoria:** Conversão / Semântica / Autoridade tópica
+- **Impacto:** 9 · **Esforço:** 3 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 216
+- **Status:** done · **Descoberto:** 2026-08-10 · **Concluído:** 2026-08-10
+- **Implementado:**
+  - **Nova seção `#parecer-tecnico`** (a âncora foi movida para cá; a lista de entregáveis que a ocupava recebeu `id="entregaveis"`, sem quebrar nada): caixa de definição, **tabela laudo pericial × parecer técnico em seis dimensões** (quem assina, base legal, objeto, alcance, momento, efeito) e **as sete partes de um parecer utilizável**. Fecha com os poderes instrutórios do art. 473, §3º — perito *e assistentes* podem ouvir testemunhas, obter informações e requisitar documentos de terceiros e de repartições públicas. É um ponto que a concorrência quase não explora e que muda o que o cliente entende ser possível contratar.
+  - **Nova seção `#parecer-antes-da-pericia`** — o argumento comercial mais forte da página, que não existia: **art. 472** (o juiz pode dispensar a prova pericial diante de pareceres técnicos apresentados na inicial e na contestação) e **art. 471** (perícia consensual; partes plenamente capazes, causa que admita autocomposição, assistentes indicados desde logo, e o §3º — substitui para todos os efeitos a perícia por perito nomeado). Terceira sub-seção sobre uso extrajudicial e administrativo, com links contextuais para NCM e ambiental.
+  - **Nova seção `#analise-preliminar`** — cinco itens que o advogado deve enviar para uma avaliação inicial, incluindo a declaração de que a resposta pode ser que a técnica não favorece o caso. Converte a CTA de "solicite contato" em um pedido concreto.
+  - **Detalhe do art. 466, §2º** no calendário: a comunicação das diligências aos assistentes exige **antecedência mínima de 5 dias**, comprovada nos autos. Antes a página dizia apenas "acesso e acompanhamento".
+  - **Quatro novas perguntas frequentes** (de 9 para 13), espelhadas no `FAQPage` com paridade textual exata verificada por script: o que é um parecer técnico; laudo × parecer; parecer antes da perícia; poderes de investigação do assistente.
+  - **Schema:** `description` do `Article` reescrita; `about` ganhou `Parecer Técnico` e `Laudo Pericial`; `knowsAbout` do autor idem.
+  - **Links internos:** `/impugnacao-laudo-pericial/` passou a apontar para `#parecer-tecnico` no item em que descreve o parecer como peça autônoma; `/quesitos-periciais/` passou a apontar para `#parecer-antes-da-pericia` exatamente onde discute o art. 472. Âncoras precisas em vez de link genérico para a raiz da página.
+  - Página de 34 KB → **48,6 KB**. `sitemap.xml` (`lastmod` 2026-08-10) e `llms.txt` atualizados.
+- **Não tocado de propósito:** `<title>` e `<meta name="description">`. O teste de CTR dos snippets corrigidos em 09/08 só é legível a partir de ~16/08.
+- **Verificação factual — cinco dispositivos checados em fonte antes de publicar:**
+  1. **Art. 472** — texto confirmado literalmente ("pareceres técnicos ou documentos elucidativos que considerar suficientes"). Confirmado também que o uso é raro na prática, o que a página reflete em vez de esconder.
+  2. **Art. 471** — os dois requisitos (partes plenamente capazes; causa que admita autocomposição), o §1º (assistentes indicados desde logo) e o §3º ("substitui, para todos os efeitos") confirmados.
+  3. **Art. 473, §3º** — confirmado que o dispositivo alcança expressamente **o perito *e* os assistentes técnicos**, e não só o perito. Era o ponto de maior risco de erro de memória do texto todo.
+  4. **Art. 466, §2º** — antecedência mínima de 5 dias, com comunicação comprovada nos autos. Confirmado.
+  5. **Art. 477** — laudo protocolado ao menos 20 dias antes da audiência; prazo comum de 15 dias para manifestação e para o parecer do assistente. Confirmado.
+- **Validação do site inteiro antes de publicar** (12 páginas): todos os blocos JSON-LD parseando; titles ≤ 60 sem duplicata; descriptions entre 150 e 160; `og:title` e `twitter:title` idênticos ao `<title>`; canonical correto nas 12; um `<h1>` por página; **zero links internos quebrados e zero âncoras inexistentes** (o verificador passou a conferir o fragmento `#`, não só o caminho — foi acrescentado hoje justamente porque a tarefa criou e moveu âncoras); sitemap idêntico ao sistema de arquivos; balanceamento de tags conferido nas três páginas editadas.
+
+### SEO-023 — Paridade imperfeita entre FAQ visível e `FAQPage` em duas páginas
+
+- **Descrição:** duas divergências encontradas pela validação de hoje, ambas anteriores a esta execução e nenhuma delas quebrando a marcação. Em `/sobre/`, as sete perguntas do schema usam redação ligeiramente diferente da visível ("Como verificar o registro profissional de Adriana Rezende?" no schema × "Como verificar o registro profissional?" na página). Em `/assistente-tecnica/`, a resposta sobre custo tem, na página, uma frase final com link que o schema omite — o schema é subconjunto do visível, que é a direção inofensiva.
+- **URL:** `/sobre/`, `/assistente-tecnica/`
+- **Categoria:** Structured data
+- **Impacto:** 3 · **Esforço:** 1 · **Confiança:** 7 · **Valor de negócio:** 3
+- **Priority Score:** 63
+- **Status:** open · **Descoberto:** 2026-08-10
+- **Notas:** a diretriz do Google exige que a resposta do schema esteja visível na página — o que é verdade nos dois casos. O risco é de rigor, não de penalidade. Resolver junto com a próxima edição dessas páginas, não isoladamente.
+- **Nota de 2026-08-11:** a avaliação acima está correta para as duas páginas citadas, e a checagem automática criada no SEO-024 confirma que ambas passam pelo critério que importa (a resposta está visível). A busca por essa mesma divergência, porém, revelou um **terceiro caso, de natureza diferente e bem mais grave — a home** —, que esta entrada não alcançou. Ver **SEO-025**.
+
+### O que segue em aberto
+
+- **SEO-019** (grafo interno diferenciado por proximidade tópica) — sem mudança. Os dois links de âncora precisa adicionados hoje são um começo na direção certa.
+- **SEO-023** (paridade de FAQ) — novo, baixa prioridade.
+- **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
+- **SEO-009** (perfil no Google Business) — segue bloqueado por verificação de identidade da proprietária.
+
+### Próxima execução — o que checar primeiro
+
+1. **`[deploy]` no topo do relatório.** Regra inalterada: se acusar deriva, publicar é a tarefa do dia.
+2. **A partir de 16/08, o CTR das páginas em posição 6–8 finalmente é interpretável.** Se seguir em 0% com posição ≤ 10 e impressões acumuladas acima de ~100, o diagnóstico deixa de ser snippet e passa a ser intenção — e a tarefa vira reescrever o topo de `/assistente-tecnica/`.
+3. **Vigiar as consultas que a nova seção deve abrir:** `parecer técnico`, `parecer técnico judicial`, `diferença entre laudo e parecer técnico`, `art. 472 CPC`. Se aparecerem no relatório dentro de 7 a 14 dias, a tese de aprofundar o hub em vez de criar página nova se confirma, e o mesmo tratamento deve ser aplicado aos outros hubs rasos. Se não aparecerem, a próxima expansão volta a ser página dedicada.
+4. **Google Ads:** o grupo AG03 agora tem destino à altura do lance. Vale conferir a taxa de conversão dele separadamente, já que a landing mudou de lista de marcadores para seção de referência.
+5. **Se o quadro seguir sem clique orgânico**, a próxima spoke por intenção continua sendo recolhimento/recall pela RDC 655/2022.
+
+### SEO-024 — O guard do SEO-021 não era descobrível *(executada em 2026-08-11)*
+
+> **Renumerada de SEO-022 para SEO-024.** A execução de 2026-08-10 já havia usado SEO-022 e SEO-023, mas o trabalho dela estava sem commit e portanto invisível quando esta entrada foi escrita. Os commits `d4b7d8b`, `fc082f0` e `8f31cba` citam "SEO-022" na mensagem e não podem ser reescritos — são estes daqui.
 
 - **Descrição:** o `seo-report.py` criado no SEO-021 vivia **fora do repositório**, em `~/.config/adrianarezende/seo-report.py`, sem nenhuma menção no repositório que permitisse encontrá-lo. Na prática, indescobrível: cada checagem do SEO-021 (deriva de publicação, validação das 12 páginas, consulta ao Search Console) teve de ser reescrita à mão nesta execução antes de qualquer decisão.
 - **Correção de rumo durante a execução:** a primeira versão desta entrada afirmava que o script **havia sido apagado** com o diretório temporário da sessão. Está errado — uma busca no sistema de arquivos, concluída depois, encontrou o arquivo intacto no caminho acima. O remédio (versionar no repositório) continua correto, e o arquivo antigo foi preservado onde está; o diagnóstico é que era invisível para quem executa a tarefa, não que tinha sido destruído.
@@ -664,6 +718,12 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
   2. **`[valid]`** — title ≤ 60 e sem duplicata, description entre 150 e 160, `og:title`/`twitter:title` idênticos ao `<title>`, canonical exato, um único `<h1>`, todo JSON-LD parseando, links internos resolvendo, sitemap local idêntico ao sistema de arquivos, nenhuma página órfã.
   3. **`[gsc]`** — desempenho de 28 dias por página e por consulta, mais o estado de indexação de cada página pela URL Inspection API.
   4. **`[ga4]`** — sessões por página e por canal, que é o que separa "ninguém chega" de "chega e sai".
+  5. **Paridade FAQ ↔ `FAQPage`** (acrescentada depois, ver abaixo) — falha quando **nem a pergunta nem a resposta** do schema aparecem na página, e quando a contagem de perguntas visíveis difere da do schema. Foi essa checagem que encontrou o **SEO-025**.
+- **A checagem de FAQ errou três vezes antes de acertar, e as três merecem registro** — todas eram falsos negativos ou falsos positivos que teriam passado por revisão superficial:
+  1. **Regex frágil.** `<div class="faq">(.*?)</div>` não-guloso parava no primeiro `</div>` interno, subcontando as perguntas visíveis. Trocado por corte por índice até `</section>`.
+  2. **Comparação por redação da pergunta.** Exigir que o texto do `<h3>` fosse idêntico ao `name` do schema acusava `/sobre/`, onde a diferença é só copywriting ("Em que tipos de processo atua?" × "…Adriana Rezende atua?"), e enterrava o achado real em ruído. O critério passou a ser o que a diretriz do Google de fato exige: pergunta **ou** resposta presente na página.
+  3. **O extrator de texto não removia o corpo de `<script>`.** Só as tags. O JSON-LD virava "texto visível", então "a resposta está na página?" respondia sempre sim — a checagem era incapaz de falhar. Provado por injeção: uma pergunta reescrita para algo inexistente na página **não** era acusada. Depois da correção, é.
+- **Teste de injeção da checagem nova:** pergunta de schema sem contrapartida visível → acusada; `<h3>` visível removido do FAQ mantendo o schema (13 × 12) → acusado; as redações legítimas de `/sobre/` → **não** acusadas. As 12 páginas do repositório passam, exceto a home, que é o SEO-025.
 - **Duas capacidades recuperadas do script antigo depois de encontrá-lo** — a reescrita à mão as havia perdido, e ambas foram portadas:
   - **Detecção da propriedade do Search Console** em vez de assumir a forma `sc-domain:`. O script antigo trazia um comentário registrando que essa suposição gerou **403 na primeira execução, em 2026-08-05**. A nova versão pergunta à API qual propriedade a conta lê e imprime o nível de permissão (`sc-domain:adrianarezende.com.br`, `siteFullUser`).
   - **Seção GA4**, que a reescrita não tinha. Foi ela que revelou o achado mais importante do dia (abaixo).
@@ -671,6 +731,18 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 - **Correção de um ponto cego durante a escrita:** a primeira versão reportava "0 commits pendentes" quando o próprio `git` falhava, porque só olhava a saída padrão. Isso reproduziria a falha do SEO-021 com outra causa — sucesso aparente sem informação real. Agora `git fetch` e `git log` têm o código de retorno verificado, e um `git` quebrado imprime **"estado de publicação DESCONHECIDO"** e falha.
 - **Validação por injeção de defeito** (cópia descartável do site, nunca no repositório real): nove defeitos plantados — title de 86 caracteres, description de 12, `og:title` e `twitter:title` divergentes, canonical sem barra final, link interno para página inexistente, JSON-LD com vírgula dupla, página fora do sitemap e sitemap apontando para página fantasma. **Os nove foram detectados, com saída 1.** Em seguida, uma página presente no repositório e ausente do sitemap publicado (o cenário exato do SEO-021) e um `git` inoperante — ambos acusados. O repositório real segue `ALL PASS` nas três seções.
 - **Interpretador:** rodar com `/usr/bin/python3`. As bibliotecas do Google estão instaladas ali, não nos pythons do Homebrew. Só a seção `[gsc]` depende delas; `deploy` e `valid` são stdlib puro.
+
+### SEO-025 — `FAQPage` da home é dado estruturado oculto
+
+- **Descrição:** a home declara um `FAQPage` com **cinco perguntas cujo texto não existe na página** — nem a pergunta, nem a resposta. Verificado no HTML bruto, ignorando os blocos `<script>`: nenhuma das cinco perguntas nem dos cinco trechos de resposta aparece no `<body>`. Não há `<details>`, `<summary>` ou acordeão que as renderize, e nada é injetado por JavaScript. É marcação de conteúdo que o visitante nunca vê.
+- **Por que é diferente do SEO-023:** ali o schema é subconjunto do texto visível, ou a pergunta está reescrita — direções inofensivas. Aqui o conteúdo **não está na página**, que é exatamente o que a diretriz de dados estruturados do Google proíbe. A consequência esperada não é perder o rich result: é o markup ser desconsiderado, com risco de ação manual por *structured data* enganoso na propriedade inteira.
+- **URL:** `/`
+- **Categoria:** Structured data / Risco de conformidade
+- **Impacto:** 7 · **Esforço:** 2 · **Confiança:** 9 · **Valor de negócio:** 6
+- **Priority Score:** 189
+- **Status:** open · **Descoberto:** 2026-08-11
+- **Idade do defeito:** está no ar desde 2026-08-01, quando o schema da home foi criado. Passou por todas as auditorias anteriores porque nenhuma comparava schema com texto visível — e a primeira versão da checagem nova também não pegou, por um motivo instrutivo registrado no SEO-024 (o extrator de texto removia as *tags* `<script>` mas não o conteúdo delas, de modo que o próprio JSON-LD entrava no "texto visível" e a comparação passava sempre).
+- **Duas saídas, e a escolha não é óbvia:** (a) **tornar as cinco perguntas visíveis** na home, como seção de FAQ — ganha o conteúdo, o rich result e material citável por LLM, mas alonga uma home que hoje é enxuta e concentra em `/` respostas que já existem, melhor desenvolvidas, nas páginas de cluster; (b) **remover o `FAQPage` da home**, mantendo `Person`, `ProfessionalService` e `BreadcrumbList` — resolve a conformidade em uma linha e deixa o FAQ onde ele tem profundidade. **Recomendação: (b)**, porque as cinco perguntas são versões resumidas de conteúdo que as páginas de cluster já respondem melhor, e duplicá-las na home criaria concorrência interna pelas mesmas consultas. Decidir com a cliente antes de executar — é remoção de markup em página pública.
 
 ### Auditoria de 2026-08-11 — leitura dos dados
 
@@ -694,7 +766,9 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 
 ### O que segue em aberto
 
-- **SEO-019** (grafo interno completo) — 12 páginas, 10 itens em cada "Continue lendo". Sem mudança. Os inbounds medidos hoje ficaram entre 11 e 24 por página — grafo plano, sem hierarquia pilar → spoke.
+- **SEO-025** (`FAQPage` oculto na home) — **novo, e o de maior prioridade em aberto: 189.** Precisa de decisão da cliente entre tornar visível e remover o markup; a recomendação registrada é remover.
+- **SEO-019** (grafo interno completo) — 12 páginas, 10 itens em cada "Continue lendo". Sem mudança. Os inbounds medidos hoje ficaram entre 11 e 24 por página — grafo plano, sem hierarquia pilar → spoke. Os dois links de âncora do SEO-022 são um começo na direção certa.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — baixa prioridade, 63. Agora coberto por checagem automática, que confirma: nas duas o critério que importa é atendido.
 - **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
 - **SEO-009** (perfil no Google Business) — segue bloqueado por verificação de identidade da proprietária.
 
@@ -706,4 +780,31 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 4. **CTR das páginas entre 5 e 12 — só a partir de ~16/08.** A janela de recache dos snippets abriu em 09/08. Antes disso nenhuma conclusão sobre metadado é válida, e com menos de ~200 impressões acumuladas 0 clique continua sendo ruído, não diagnóstico. **Lembrete metodológico:** confirmar sempre até que data a série do GSC vai antes de tratar um zero como resultado.
 5. **`/impugnacao-laudo-pericial/` — reavaliar por volta de 20/08**, quando tiver duas semanas ao vivo. É onde está a demanda real (4 das 8 consultas) e a pior posição do site. Se seguir acima de 25, tratar como defeito da página, não como idade.
 6. **`/pericia-ambiental/` e `/pericia-contaminacao-alimentos/`: zero impressão em 28 dias, apesar de indexadas.** Duas páginas indexadas que nunca apareceram é o achado mais concreto para investigar depois do item 5 — provável descasamento entre o que a página responde e o que se pesquisa nesses dois temas.
-7. **Só depois disso**, a próxima spoke por intenção continua sendo **recolhimento/recall pela RDC 655/2022**, que exigirá encurtar a seção correspondente do pilar de alimentos.
+7. **Vigiar as consultas que a seção do SEO-022 deve abrir** (herdado da execução de 10/08, que não pôde publicar): `parecer técnico`, `parecer técnico judicial`, `diferença entre laudo e parecer técnico`, `art. 472 CPC`. **O relógio delas começa em 12/08**, data em que a seção foi de fato publicada — não em 10/08. Se aparecerem em 7 a 14 dias, a tese de aprofundar hub existente em vez de criar página nova se confirma e deve ser aplicada aos outros hubs rasos.
+8. **Google Ads (herdado de 10/08):** o grupo AG03 agora tem destino à altura do lance. Conferir a taxa de conversão dele separadamente, já que a landing mudou de lista de marcadores para seção de referência — também a partir de 12/08.
+9. **Só depois disso**, a próxima spoke por intenção continua sendo **recolhimento/recall pela RDC 655/2022**, que exigirá encurtar a seção correspondente do pilar de alimentos.
+
+---
+
+## Execução 2026-08-10
+
+### Dados
+
+Coleta por service account (`python3 ~/.config/adrianarezende/seo-report.py 30`), período 2026-07-11 → 2026-08-10.
+
+- **`[deploy]` em dia** — 12 páginas publicadas, 0 commits pendentes. O guard criado ontem (SEO-021) rodou como primeiro passo e passou.
+- **Indexação: 12 de 12 `PASS`.** Inclui `/prazo-validade-alimentos/`, o item que ficou em observação ontem — `Submitted and indexed`, último rastreamento em 2026-08-10T15:11Z. A latência real foi de ~1 dia após o push, dentro da faixa medida. **Item encerrado.**
+- **Impressões:** 46 no período, 0 cliques. `/assistente-tecnica/` sozinha responde por 22 (posição média 8,1) — quase metade de todo o site. Depois: `/quesitos-periciais/` 8 (pos. 13,5), `/pericia-combustiveis/` 5 (pos. 5,6), home 3 (pos. 6,0), `/honorarios-pericia-judicial/` 3 (pos. 6,7).
+- **Consultas: 5 linhas** — chegou ao limiar que ontem foi fixado para as consultas passarem a decidir a próxima tarefa no lugar da intuição de cluster. `assistente tecnico pericia` (pos. 16), `assistente técnico` (pos. 18), `impugnação laudo pericial` (pos. 28), `apresentação de quesitos` (pos. 49), `avaliações sobre quema química` (pos. 32 — consulta espúria).
+
+**Sobre o zero de cliques:** com 46 impressões, o número esperado de cliques a um CTR de 3% é 1,4. Zero não é sinal de nada. Além disso, a janela de recache dos snippets corrigidos só fecha por volta de 16/08. **Título e meta description não foram tocados hoje**, de propósito — mexer neles agora destruiria o único teste em curso.
+
+### Por que esta foi a tarefa de hoje
+
+Três fatos apontaram para o mesmo lugar.
+
+1. Os dados de consulta, agora utilizáveis, dizem que o cluster de assistência técnica é o único que o Google está exibindo. As duas consultas de cabeça (`assistente técnico`, `assistente tecnico pericia`) caem na faixa 16–18 — **Prioridade 2 do mandato**, a de retorno mais rápido.
+2. `/assistente-tecnica/` é ao mesmo tempo a página com mais impressões e **a mais rasa do site**: 34 KB contra 41 KB de `/quesitos-periciais/` e 53 KB de `/prazo-validade-alimentos/`. O hub estava sendo superado em profundidade pelos próprios spokes.
+3. O que decidiu: a âncora `#parecer-tecnico` dessa página é **destino de tráfego pago**. O grupo `AG03 | Parecer e Laudo – Eng Química` compra `parecer técnico engenharia química` e `parecer técnico pericial engenharia química` em correspondência exata (`google-ads-import/1-keywords.csv`, linhas 33–34) e manda o clique para lá. O `index.html` também aponta um sitelink para a mesma âncora. **O que existia nesse destino era uma lista de seis marcadores.** Clique com intenção comercial máxima, pago, caindo em conteúdo de passagem — isso é Prioridade 1 na definição literal do playbook, não Prioridade 3.
+
+Escrever uma 13ª página teria adicionado superfície nova sem corrigir o destino que já recebe tráfego pago e orgânico.

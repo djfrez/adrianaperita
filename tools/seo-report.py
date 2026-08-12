@@ -180,6 +180,76 @@ def meta(doc, **attrs):
     return None
 
 
+def text_of(fragment):
+    """Visible text. Drops <script>/<style> bodies first — stripping only the
+    tags would leave the JSON-LD itself in the text, which makes any
+    "is this in the visible text?" check pass unconditionally."""
+    fragment = re.sub(r"<(script|style)\b[^>]*>.*?</\1>", " ", fragment, flags=re.S | re.I)
+    return " ".join(html.unescape(re.sub(r"<[^>]*>", " ", fragment)).split())
+
+
+def check_faq_parity(label, doc, parsed):
+    """Every visible FAQ question must exist in FAQPage, and vice versa.
+
+    A schema question with no visible counterpart is what Google treats as
+    hidden structured data; a visible question missing from the schema simply
+    forfeits the rich result. The site has required this parity since SEO-003,
+    but it was verified by throwaway scripts — so a FAQ could be extended
+    without the schema and nothing would notice.
+    """
+    entries = []
+    def walk(node):
+        if isinstance(node, list):
+            for n in node:
+                walk(n)
+        elif isinstance(node, dict):
+            if node.get("@type") == "FAQPage":
+                for e in node.get("mainEntity", []) or []:
+                    if isinstance(e, dict) and e.get("name"):
+                        ans = (e.get("acceptedAnswer") or {}).get("text", "")
+                        entries.append((" ".join(html.unescape(e["name"]).split()),
+                                        text_of(html.unescape(ans))))
+            for v in node.values():
+                if isinstance(v, (list, dict)):
+                    walk(v)
+    walk(parsed)
+
+    # The visible FAQ runs from the container to the end of its <section>.
+    # Slice by index rather than a non-greedy regex: the container holds nested
+    # <div>s, and `.*?</div>` stops at the first one, silently under-counting.
+    start = doc.find('<div class="faq">')
+    visible = []
+    if start != -1:
+        end = doc.find("</section>", start)
+        block = doc[start:end if end != -1 else len(doc)]
+        visible = [text_of(q) for q in re.findall(r"<h3[^>]*>(.*?)</h3>", block, re.S)]
+
+    if not entries and not visible:
+        return
+
+    # What Google actually requires: the question and its answer must be on the
+    # page. Match on a prefix — whitespace and inline markup make a full-string
+    # comparison brittle. This direction is the one that carries a penalty, so
+    # it runs on every page regardless of how the FAQ is marked up.
+    # Fail only when NEITHER the question nor the answer is on the page — that
+    # is hidden structured data. A heading worded more briefly than the schema
+    # question ("Em que tipos de processo atua?" vs "...Adriana Rezende atua?")
+    # is normal copywriting, not a defect, so requiring both to match would
+    # bury the real finding under noise.
+    page_text = text_of(doc)
+    for name, answer in entries:
+        if name[:40] not in page_text and not (answer[:60] and answer[:60] in page_text):
+            fail("valid", f"{label}: FAQPage oculto — nem a pergunta nem a resposta "
+                          f"aparecem na página: {name[:55]!r}")
+
+    # The reverse direction — a FAQ extended in the HTML but not in the schema —
+    # only forfeits a rich result, and can only be counted where the markup
+    # actually delimits the FAQ. The home page renders its FAQ without the
+    # container, so counting there would be a false alarm, not a finding.
+    if visible and len(visible) != len(entries):
+        fail("valid", f"{label}: {len(visible)} perguntas visíveis × {len(entries)} no FAQPage")
+
+
 def section_valid():
     head("[valid] validação on-page dos arquivos locais")
 
@@ -230,11 +300,14 @@ def section_valid():
             r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>', doc, re.S | re.I)
         if not blocks:
             fail("valid", f"{label}: sem JSON-LD")
+        parsed = []
         for i, b in enumerate(blocks, 1):
             try:
-                json.loads(b)
+                parsed.append(json.loads(b))
             except json.JSONDecodeError as e:
                 fail("valid", f"{label}: JSON-LD #{i} não parseia — {e}")
+
+        check_faq_parity(label, doc, parsed)
 
         for href in re.findall(r'href="(/[^"#?]*)', doc):
             all_targets.add(href if href.endswith("/") or "." in os.path.basename(href)
