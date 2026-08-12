@@ -16,6 +16,8 @@ Sections, in the order the daily mandate needs them:
             links resolve, sitemap matches the filesystem, no orphan pages.
   [gsc]     Search Console: 28-day page/query performance and the index
             coverage state of every page (needs the service account).
+  [ga4]     Sessions by page and channel, to tell "nobody arrives" apart from
+            "they arrive and leave". Skipped when no GA4 property is resolved.
 
 Pass section names to run a subset: `seo-report.py deploy valid`.
 
@@ -38,8 +40,18 @@ from collections import defaultdict
 
 SITE = "https://adrianarezende.com.br"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CREDS = os.path.expanduser("~/.config/claude-seo/google-api.json")
-CREDS_ALT = os.path.expanduser("~/.config/claude-seo/service-account.json")
+
+# Service-account keys, in the order to try. Three paths because three separate
+# runs each created their own; any one of them works.
+CRED_PATHS = [os.path.expanduser(p) for p in (
+    "~/.config/claude-seo/google-api.json",
+    "~/.config/claude-seo/service-account.json",
+    "~/.config/adrianarezende/seo-sa.json",
+)]
+# GA4 property behind the tag G-NL5HWSTKPF (SEO-007). Override with $GA4_PROPERTY.
+GA4_PROPERTY = os.environ.get("GA4_PROPERTY", "548153325")
+SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly",
+          "https://www.googleapis.com/auth/analytics.readonly"]
 
 # SERP display limits. Descriptions shorter than MIN read as truncated stubs;
 # longer than MAX get cut mid-sentence. See SEO-016.
@@ -262,32 +274,48 @@ def section_valid():
 # [gsc]
 # --------------------------------------------------------------------------
 
-def section_gsc(days=28):
-    head(f"[gsc] Search Console — últimos {days} dias")
+def credentials():
+    """Service-account credentials, or None with the reason printed."""
     try:
         from google.oauth2 import service_account
-        from googleapiclient.discovery import build
     except ImportError:
         print("  pulado — bibliotecas Google ausentes neste interpretador.")
         print("  Rode com /usr/bin/python3 (é onde elas estão instaladas).")
-        return
-
-    info = None
-    for path in (CREDS, CREDS_ALT):
+        return None
+    for path in CRED_PATHS:
         if os.path.exists(path):
             data = json.load(open(path))
             if data.get("type") == "service_account":
-                info = data
-                break
-    if not info:
-        print(f"  pulado — nenhuma service account em {CREDS} ou {CREDS_ALT}")
+                return service_account.Credentials.from_service_account_info(
+                    data, scopes=SCOPES)
+    print("  pulado — nenhuma service account em: " + ", ".join(CRED_PATHS))
+    return None
+
+
+def gsc_property(sc):
+    """Ask Search Console which property this account can read, instead of
+    assuming the sc-domain: form — assuming it caused a 403 on 2026-08-05."""
+    host = SITE.split("//", 1)[1]
+    for e in sc.sites().list().execute().get("siteEntry", []):
+        if host in e["siteUrl"]:
+            print(f"  propriedade: {e['siteUrl']} ({e['permissionLevel']})")
+            return e["siteUrl"]
+    fail("gsc", f"a service account não tem acesso a nenhuma propriedade de {host}")
+    return None
+
+
+def section_gsc(days=28):
+    head(f"[gsc] Search Console — últimos {days} dias")
+    creds = credentials()
+    if not creds:
         return
+    from googleapiclient.discovery import build
 
     import datetime
-    creds = service_account.Credentials.from_service_account_info(
-        info, scopes=["https://www.googleapis.com/auth/webmasters.readonly"])
     sc = build("searchconsole", "v1", credentials=creds, cache_discovery=False)
-    site = "sc-domain:adrianarezende.com.br"
+    site = gsc_property(sc)
+    if not site:
+        return
     end = datetime.date.today()
     start = end - datetime.timedelta(days=days)
 
@@ -323,8 +351,45 @@ def section_gsc(days=28):
 
 
 # --------------------------------------------------------------------------
+# [ga4]
+# --------------------------------------------------------------------------
 
-SECTIONS = {"deploy": section_deploy, "valid": section_valid, "gsc": section_gsc}
+def section_ga4(days=28):
+    head(f"[ga4] sessões — últimos {days} dias")
+    if not GA4_PROPERTY:
+        print("  pulado — nenhuma propriedade GA4 configurada ($GA4_PROPERTY)")
+        return
+    creds = credentials()
+    if not creds:
+        return
+
+    import datetime
+    import google.auth.transport.requests as gt
+    s = gt.AuthorizedSession(creds)
+    end = datetime.date.today()
+    start = end - datetime.timedelta(days=days)
+    r = s.post(
+        f"https://analyticsdata.googleapis.com/v1beta/properties/{GA4_PROPERTY}:runReport",
+        json={"dateRanges": [{"startDate": str(start), "endDate": str(end)}],
+              "dimensions": [{"name": "pagePath"}, {"name": "sessionDefaultChannelGroup"}],
+              "metrics": [{"name": "sessions"}], "limit": 50})
+    if r.status_code != 200:
+        fail("ga4", f"HTTP {r.status_code}: {r.text[:200]}")
+        return
+    rows = r.json().get("rows", [])
+    total = sum(int(x["metricValues"][0]["value"]) for x in rows)
+    print(f"  {len(rows)} linhas · {total} sessões")
+    for row in rows:
+        page, channel = (v["value"] for v in row["dimensionValues"])
+        print(f'    {page:40.40} {channel:22.22} {row["metricValues"][0]["value"]:>5}')
+    if not rows:
+        print("    (nenhuma sessão — consistente com 0 cliques no Search Console)")
+
+
+# --------------------------------------------------------------------------
+
+SECTIONS = {"deploy": section_deploy, "valid": section_valid,
+            "gsc": section_gsc, "ga4": section_ga4}
 
 if __name__ == "__main__":
     wanted = [a for a in sys.argv[1:] if a in SECTIONS] or list(SECTIONS)
