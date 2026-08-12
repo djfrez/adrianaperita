@@ -378,7 +378,12 @@ def section_ga4(days=28):
         return
     rows = r.json().get("rows", [])
     total = sum(int(x["metricValues"][0]["value"]) for x in rows)
-    print(f"  {len(rows)} linhas · {total} sessões")
+    # pagePath, not landingPage: this shows which content gets consumed. One
+    # session that views three pages produces three rows, so DO NOT read the
+    # row count or this total as a session count — it double-counts. Use
+    # landingPagePlusQueryString when you need sessions. (Misread on 2026-08-11:
+    # 4 pagePath rows were reported as "4 organic sessions"; there were 2.)
+    print(f"  {len(rows)} linhas · {total} sessões-página (≠ sessões)")
     for row in rows:
         page, channel = (v["value"] for v in row["dimensionValues"])
         print(f'    {page:40.40} {channel:22.22} {row["metricValues"][0]["value"]:>5}')
