@@ -36,7 +36,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Assistente Técnico: o que faz, quando contratar e como escolher",
-    "description": "Guia sobre a atuação do assistente técnico na perícia judicial brasileira: diferenças em relação ao perito judicial, prazos do CPC/2015, entregáveis e impugnação de laudos periciais.",
+    "description": "Guia sobre a atuação do assistente técnico na perícia judicial brasileira: diferenças em relação ao perito judicial, prazos do CPC/2015, anatomia do parecer técnico e o que o distingue do laudo, uso do parecer antes da perícia (arts. 471 e 472), entregáveis e impugnação de laudos periciais.",
     "inLanguage": "pt-BR",
     "mainEntityOfPage": "https://adrianarezende.com.br/assistente-tecnica/",
     "image": "https://adrianarezende.com.br/headshot.jpg",
@@ -74,6 +74,8 @@
       "knowsAbout": [
         "Perícia Judicial",
         "Assistência Técnica",
+        "Parecer Técnico",
+        "Laudo Pericial",
         "Engenharia Química",
         "Indústria de Alimentos",
         "Classificação Fiscal NCM",
@@ -88,6 +90,8 @@
     },
     "about": [
       { "@type": "Thing", "name": "Assistente Técnico" },
+      { "@type": "Thing", "name": "Parecer Técnico" },
+      { "@type": "Thing", "name": "Laudo Pericial" },
       { "@type": "Thing", "name": "Perícia Judicial" },
       { "@type": "Thing", "name": "Código de Processo Civil" }
     ]
@@ -106,6 +110,38 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Acompanha a perícia judicial em nome da parte que o indicou: formula quesitos, participa das diligências e vistorias, analisa criticamente o laudo do perito nomeado pelo juízo e apresenta parecer técnico. Não tem dever de imparcialidade e não está sujeito a impedimento ou suspeição (art. 466, §1º, do CPC/2015)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que é um parecer técnico?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "É a peça escrita pelo assistente técnico da parte, na qual ele examina a matéria técnica da causa e, quando já existe laudo, o método pelo qual o perito chegou às conclusões. É apresentado no prazo comum de 15 dias contados da intimação das partes sobre o laudo (art. 477, §1º, do CPC/2015). Um parecer utilizável indica o que foi efetivamente examinado, o método e a norma de referência vigente na data do fato, a análise que confronta dado medido e critério nomeado, as falhas do laudo separadas por família e a resposta conclusiva aos pontos controvertidos, além da qualificação e do registro profissional de quem assina."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual a diferença entre laudo pericial e parecer técnico?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O laudo é do perito nomeado pelo juízo, segue os requisitos do art. 473 e não pode ultrapassar os limites da designação (§2º). O parecer é do assistente técnico da parte, é apresentado no prazo do art. 477, §1º, e pode tratar de tudo que seja tecnicamente pertinente à tese que defende. Nenhum dos dois vincula o juiz: o art. 479 determina que ele indique na sentença os motivos que o levaram a considerar ou a deixar de considerar as conclusões do laudo, levando em conta o método utilizado — e é justamente aí que um parecer centrado em método produz efeito."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso apresentar parecer técnico antes de o juiz determinar a perícia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pode, e é o uso mais econômico da prova técnica. O art. 472 do CPC autoriza o juiz a dispensar a prova pericial quando as partes, na inicial e na contestação, apresentarem pareceres técnicos ou documentos elucidativos que considerar suficientes. Há ainda o art. 471, que permite às partes plenamente capazes, em causa que admita autocomposição, escolherem o perito de comum acordo indicando desde logo seus assistentes — perícia que substitui, para todos os efeitos, a que seria feita por perito nomeado pelo juiz (§3º)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O assistente técnico pode buscar documentos e ouvir pessoas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. O art. 473, §3º, coloca o perito e os assistentes técnicos no mesmo patamar instrutório: ambos podem valer-se de todos os meios necessários, ouvindo testemunhas, obtendo informações, solicitando documentos em poder da parte, de terceiros ou de repartições públicas, e instruindo a peça com planilhas, mapas, plantas, desenhos e fotografias. O assistente não está restrito a comentar o material que o perito juntou."
         }
       },
       {
@@ -441,8 +477,10 @@
       </li>
       <li>
         <strong>Diligências e vistorias.</strong> O perito deve assegurar aos assistentes das partes
-        acesso e acompanhamento às diligências e exames que realizar (art. 466, §2º). É aqui que se
-        registra o que a fotografia do laudo não vai mostrar.
+        o acesso e o acompanhamento das diligências e dos exames que realizar, mediante comunicação
+        prévia comprovada nos autos, com <strong>antecedência mínima de 5 dias</strong>
+        (art. 466, §2º). É aqui que se registra o que a fotografia do laudo não vai mostrar — e a
+        ausência dessa comunicação é um dos pontos que se documenta na hora, não depois.
       </li>
       <li>
         <strong>Quesitos suplementares.</strong> Durante a diligência, a parte pode apresentar
@@ -487,7 +525,132 @@
       <li>Há necessidade de coleta de amostras: cadeia de custódia e representatividade amostral, uma vez perdidas, não se recuperam.</li>
     </ul>
 
-    <h2 id="parecer-tecnico">O que um assistente técnico efetivamente entrega</h2>
+    <h2 id="parecer-tecnico">Parecer técnico: o que é, o que contém e o que o separa do laudo</h2>
+
+    <div class="box">
+      <div class="box-lbl">Definição</div>
+      <p>
+        <strong>Parecer técnico</strong> é a peça escrita pelo assistente técnico da parte, na qual
+        ele examina a matéria técnica da causa — e, quando já existe laudo, o método pelo qual o
+        perito chegou às suas conclusões. É apresentado no <strong>prazo comum de 15 dias</strong>
+        contados da intimação das partes sobre o laudo (art. 477, §1º, do CPC/2015), e não se
+        confunde com o laudo: o laudo instrui o juízo, o parecer instrui a parte e submete o laudo
+        a controle técnico.
+      </p>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Laudo pericial</th>
+            <th scope="col">Parecer técnico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quem assina</td>
+            <td>O perito nomeado pelo juízo</td>
+            <td>O assistente técnico indicado pela parte</td>
+          </tr>
+          <tr>
+            <td>Base legal</td>
+            <td>Art. 473 — requisitos de conteúdo</td>
+            <td>Art. 477, §1º — apresentação no prazo da manifestação</td>
+          </tr>
+          <tr>
+            <td>Objeto</td>
+            <td>Os quesitos deferidos e o objeto fixado pelo juízo</td>
+            <td>A matéria técnica e, havendo laudo, o método que o sustenta</td>
+          </tr>
+          <tr>
+            <td>Alcance</td>
+            <td>Não pode ultrapassar os limites da designação (art. 473, §2º)</td>
+            <td>Pode tratar de tudo que seja tecnicamente pertinente à tese da parte</td>
+          </tr>
+          <tr>
+            <td>Momento</td>
+            <td>Até 20 dias antes da audiência de instrução (art. 477)</td>
+            <td>15 dias da intimação sobre o laudo — ou antes da perícia (art. 472)</td>
+          </tr>
+          <tr>
+            <td>Efeito</td>
+            <td>Não vincula o juiz, mas é a base declarada da apreciação (art. 479)</td>
+            <td>Não vincula o juiz; obriga-o a enfrentar a divergência de método</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>As sete partes de um parecer que o juízo consegue usar</h3>
+
+    <p>
+      Um parecer que só afirma discordância não movimenta nada. O que produz efeito é a peça que
+      permite ao juiz, sem formação técnica, verificar por conta própria onde está o desacordo.
+      Sete elementos fazem esse trabalho:
+    </p>
+
+    <ol>
+      <li><strong>Objeto e controvérsia técnica delimitados</strong> — o que exatamente se examina, em uma frase que um leigo entenda.</li>
+      <li><strong>Relação do que foi efetivamente examinado</strong> — documentos com indicação de folhas, laudos anteriores, amostras, dados brutos, registros de processo. O que não foi examinado também se declara.</li>
+      <li><strong>Método e norma de referência</strong>, com a <strong>vigência na data do fato</strong> — não na data do parecer. É o ponto em que mais laudos se rompem.</li>
+      <li><strong>A análise propriamente dita</strong>: confronto entre dado medido e critério nomeado, com incerteza de medição e limite de quantificação quando houver resultado analítico.</li>
+      <li><strong>As falhas do laudo, separadas por família</strong> — escopo do método, amostragem, cadeia de custódia, vigência da norma, salto entre dado e conclusão. Misturar tudo em um bloco de crítica dilui as que são objetivas.</li>
+      <li><strong>Resposta conclusiva aos pontos controvertidos</strong>, na mesma ordem dos quesitos, para que a comparação com o laudo seja imediata.</li>
+      <li><strong>Qualificação e registro profissional do signatário</strong> — formação, conselho e número de registro. Parecer sem registro verificável perde peso antes de ser lido.</li>
+    </ol>
+
+    <p>
+      Vale registrar um poder pouco explorado: o <strong>art. 473, §3º</strong>, coloca perito
+      <em>e assistentes técnicos</em> no mesmo patamar instrutório — ambos podem ouvir testemunhas,
+      obter informações, solicitar documentos em poder da parte, de terceiros ou de repartições
+      públicas, e instruir a peça com planilhas, plantas, fotografias e demais elementos. O
+      assistente técnico não está limitado a comentar o que o perito juntou; ele pode ir buscar o
+      que falta.
+    </p>
+
+    <h2 id="parecer-antes-da-pericia">Antes da perícia: o parecer que a evita</h2>
+
+    <p>
+      O parecer técnico é tratado como resposta a um laudo, e por isso quase sempre chega tarde.
+      O CPC prevê dois usos anteriores, ambos mais baratos do que a perícia que substituem.
+    </p>
+
+    <h3>Dispensa da perícia pelo art. 472</h3>
+    <p>
+      O <strong>art. 472</strong> autoriza o juiz a <strong>dispensar a prova pericial</strong>
+      quando as partes, na inicial e na contestação, apresentarem sobre as questões de fato
+      pareceres técnicos ou documentos elucidativos que considerar suficientes. Na prática é pouco
+      usado — em boa medida porque a análise técnica costuma só ser contratada depois da nomeação
+      do perito, quando a janela do artigo já se fechou. Para quem tem a tese técnica a favor, é o
+      caminho que economiza honorários periciais, meses de prazo e a incerteza de quem vai ser
+      nomeado.
+    </p>
+
+    <h3>Perícia consensual pelo art. 471</h3>
+    <p>
+      O <strong>art. 471</strong> permite que as partes, de comum acordo, <strong>escolham o
+      perito</strong>, desde que sejam plenamente capazes e a causa admita autocomposição. Ao fazer
+      o requerimento, indicam desde logo seus assistentes técnicos, e o §3º é categórico: a perícia
+      consensual <strong>substitui, para todos os efeitos, a que seria realizada por perito nomeado
+      pelo juiz</strong>. Em matéria muito especializada — um processo químico específico, uma
+      cadeia de custódia de amostras alimentares — escolher alguém que domina a matéria costuma
+      valer mais do que discutir depois a competência de quem foi sorteado.
+    </p>
+
+    <h3>Fora do processo judicial</h3>
+    <p>
+      O mesmo trabalho técnico também instrui defesa administrativa: impugnação de auto de infração
+      em <a href="/classificacao-fiscal-ncm/">disputa de classificação fiscal NCM</a>, defesa perante
+      a vigilância sanitária, manifestação em processo de
+      <a href="/pericia-ambiental/">licenciamento ou de passivo ambiental</a>, resposta a
+      notificação de recolhimento de produto. Nessas instâncias não há perito nomeado — o parecer
+      técnico é a única prova técnica que a empresa apresenta, e a decisão administrativa que dela
+      resulta é o documento que depois será levado ao Judiciário, por uma parte ou pela outra.
+    </p>
+
+    <h2 id="entregaveis">O que um assistente técnico efetivamente entrega</h2>
 
     <ul>
       <li><strong>Análise preliminar de viabilidade técnica</strong> — antes de investir na prova, saber o que a técnica sustenta e o que não sustenta.</li>
@@ -530,12 +693,49 @@
       <li>Apresenta desde o início uma leitura honesta dos pontos fracos do caso? Assistente que só confirma a tese do cliente é passivo processual.</li>
     </ul>
 
+    <h2 id="analise-preliminar">O que enviar para uma análise preliminar</h2>
+
+    <p>
+      A primeira pergunta útil não é "quanto custa", é <em>o que a técnica sustenta neste caso</em>.
+      Para responder a isso não é preciso o processo inteiro. Cinco itens costumam bastar:
+    </p>
+
+    <ol>
+      <li><strong>A descrição do ponto controvertido em duas ou três linhas</strong> — o que uma parte afirma e a outra nega, no plano dos fatos.</li>
+      <li><strong>O laudo, auto de infração ou relatório desfavorável</strong>, se existir, com os anexos analíticos — os resultados brutos importam mais do que a conclusão.</li>
+      <li><strong>Os quesitos já apresentados</strong> ou, se o prazo ainda corre, a informação de quando termina.</li>
+      <li><strong>A fase do processo</strong>: perícia deferida, perito nomeado, laudo entregue, prazo do art. 477, §1º em curso.</li>
+      <li><strong>A norma ou especificação invocada pela outra parte</strong>, quando ela nomeia alguma.</li>
+    </ol>
+
+    <p>
+      Com isso é possível dizer, antes de qualquer contratação, se há tese técnica, qual é o
+      caminho de prova e qual o esforço envolvido — inclusive quando a resposta honesta é que a
+      matéria técnica não favorece o caso.
+    </p>
+
     <h2>Perguntas frequentes</h2>
 
     <div class="faq">
       <div>
         <h3>O que faz um assistente técnico?</h3>
         <p>Acompanha a perícia judicial em nome da parte que o indicou: formula quesitos, participa das diligências e vistorias, analisa criticamente o laudo do perito nomeado pelo juízo e apresenta parecer técnico. Não tem dever de imparcialidade e não está sujeito a impedimento ou suspeição (art. 466, §1º, do CPC/2015).</p>
+      </div>
+      <div>
+        <h3>O que é um parecer técnico?</h3>
+        <p>É a peça escrita pelo assistente técnico da parte, na qual ele examina a matéria técnica da causa e, quando já existe laudo, o método pelo qual o perito chegou às conclusões. É apresentado no prazo comum de 15 dias contados da intimação das partes sobre o laudo (art. 477, §1º, do CPC/2015). Um parecer utilizável indica o que foi efetivamente examinado, o método e a norma de referência vigente na data do fato, a análise que confronta dado medido e critério nomeado, as falhas do laudo separadas por família e a resposta conclusiva aos pontos controvertidos, além da qualificação e do registro profissional de quem assina.</p>
+      </div>
+      <div>
+        <h3>Qual a diferença entre laudo pericial e parecer técnico?</h3>
+        <p>O laudo é do perito nomeado pelo juízo, segue os requisitos do art. 473 e não pode ultrapassar os limites da designação (§2º). O parecer é do assistente técnico da parte, é apresentado no prazo do art. 477, §1º, e pode tratar de tudo que seja tecnicamente pertinente à tese que defende. Nenhum dos dois vincula o juiz: o art. 479 determina que ele indique na sentença os motivos que o levaram a considerar ou a deixar de considerar as conclusões do laudo, levando em conta o método utilizado — e é justamente aí que um parecer centrado em método produz efeito.</p>
+      </div>
+      <div>
+        <h3>Posso apresentar parecer técnico antes de o juiz determinar a perícia?</h3>
+        <p>Pode, e é o uso mais econômico da prova técnica. O art. 472 do CPC autoriza o juiz a dispensar a prova pericial quando as partes, na inicial e na contestação, apresentarem pareceres técnicos ou documentos elucidativos que considerar suficientes. Há ainda o art. 471, que permite às partes plenamente capazes, em causa que admita autocomposição, escolherem o perito de comum acordo indicando desde logo seus assistentes — perícia que substitui, para todos os efeitos, a que seria feita por perito nomeado pelo juiz (§3º).</p>
+      </div>
+      <div>
+        <h3>O assistente técnico pode buscar documentos e ouvir pessoas?</h3>
+        <p>Sim. O art. 473, §3º, coloca o perito e os assistentes técnicos no mesmo patamar instrutório: ambos podem valer-se de todos os meios necessários, ouvindo testemunhas, obtendo informações, solicitando documentos em poder da parte, de terceiros ou de repartições públicas, e instruindo a peça com planilhas, mapas, plantas, desenhos e fotografias. O assistente não está restrito a comentar o material que o perito juntou.</p>
       </div>
       <div>
         <h3>Qual a diferença entre perito judicial e assistente técnico?</h3>
