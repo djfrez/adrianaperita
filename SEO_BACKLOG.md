@@ -465,8 +465,9 @@ Sobre as 10 páginas em produção. Sem dados de desempenho utilizáveis, então
 - **Categoria:** Links internos / Arquitetura de cluster
 - **Impacto:** 4 · **Esforço:** 3 · **Confiança:** 5 · **Valor de negócio:** 5
 - **Priority Score:** 33,3
-- **Status:** open · **Descoberto:** 2026-08-06
-- **Por que não é a tarefa de hoje:** score baixo e o problema ainda é teórico em 10 páginas — o grafo completo até ajuda a distribuir rastreamento num domínio novo. Vira relevante por volta de 15 páginas, ou antes disso se o GSC mostrar páginas recebendo tráfego irrelevante entre clusters.
+- **Status:** done · **Descoberto:** 2026-08-06 · **Concluído:** 2026-08-12 (segunda execução do dia) · **Reavaliado:** Impacto 7 · Esforço 4 · Confiança 6 · Valor 8 → **Priority Score 84**
+- **Por que não era a tarefa de 06/08 (avaliação original, mantida para registro):** score baixo e o problema ainda é teórico em 10 páginas — o grafo completo até ajuda a distribuir rastreamento num domínio novo. Vira relevante por volta de 15 páginas, ou antes disso se o GSC mostrar páginas recebendo tráfego irrelevante entre clusters.
+- **Ver a execução de 2026-08-12 (segunda)** mais abaixo para o que foi implementado e por que o score subiu de 33,3 para 84.
 
 ### Próxima execução — o que checar primeiro
 1. **Indexação das três pendentes** (`/pericia-industria-quimica/`, `/impugnacao-laudo-pericial/`, `/honorarios-pericia-judicial/`). Se `/pericia-industria-quimica/` continuar fora depois de ~09/08, aí sim investigar — passaria da latência medida de 2–4 dias.
@@ -811,3 +812,126 @@ Três fatos apontaram para o mesmo lugar.
 3. O que decidiu: a âncora `#parecer-tecnico` dessa página é **destino de tráfego pago**. O grupo `AG03 | Parecer e Laudo – Eng Química` compra `parecer técnico engenharia química` e `parecer técnico pericial engenharia química` em correspondência exata (`google-ads-import/1-keywords.csv`, linhas 33–34) e manda o clique para lá. O `index.html` também aponta um sitelink para a mesma âncora. **O que existia nesse destino era uma lista de seis marcadores.** Clique com intenção comercial máxima, pago, caindo em conteúdo de passagem — isso é Prioridade 1 na definição literal do playbook, não Prioridade 3.
 
 Escrever uma 13ª página teria adicionado superfície nova sem corrigir o destino que já recebe tráfego pago e orgânico.
+
+---
+
+## Execução 2026-08-12 (segunda do dia)
+
+> A execução anterior terminou às 22:16; esta começou às 22:17. Mesmo dia, dados novos — o Search Console avançou a série de 09/08 para 10/08 entre uma e outra, e é isso que muda a leitura.
+
+### Dados
+
+`/usr/bin/python3 tools/seo-report.py`, período 2026-07-15 → 2026-08-12.
+
+- **`[deploy]` em dia** — 0 commits pendentes, 12 páginas no sitemap publicado, 12 respondendo 200.
+- **`[valid]` ALL PASS** nas 12 páginas.
+- **Indexação: 12 de 12 `PASS`.**
+- **Desempenho (28 dias): 90 impressões, 1 clique.** Eram 58 impressões e 0 cliques na leitura anterior.
+- **Consultas: 9 linhas, 9 impressões, 0 cliques.** As 81 impressões restantes (90%) seguem em consultas anonimizadas.
+
+### O primeiro clique orgânico apareceu no Search Console — e a pergunta sobre a consulta está encerrada
+
+A série por data agora vai até **10/08** (ainda 2 dias de latência). O clique está lá:
+
+- **10/08 · `/quesitos-periciais/` · 25 impressões · 1 clique · posição 9,4.**
+
+O site inteiro teve 32 impressões naquele dia; 25 foram dessa página. É o pico diário do site e a origem do único clique.
+
+**A consulta do clique não aparece e não vai aparecer.** A dimensão `query` no período soma 9 impressões contra 90 pelas dimensões `date` e `page` — **90% anonimizado**, pior que os 86% medidos em 11/08. Nenhuma das 9 linhas visíveis tem clique. O item 3 da lista da execução anterior mandava conferir uma vez e, não aparecendo, encerrar a pergunta. **Encerrada.**
+
+Correção de um número da execução anterior: ela registrou que os dois cliques do GA4 de 10/08 caíram em `/pericia-industria-quimica/` e `/quesitos-periciais/`. O GSC confirma clique orgânico **apenas em `/quesitos-periciais/`**. A sessão de `/pericia-industria-quimica/` é real no GA4, mas não tem clique correspondente no GSC — provavelmente atribuição de sessão a uma segunda página vista, não uma segunda entrada.
+
+### Por que esta foi a tarefa de hoje
+
+As duas frentes de conteúdo continuam travadas por data, e uma terceira foi descartada por evidência.
+
+1. **CTR de `/assistente-tecnica/` (25 impressões, posição 8,2, 0 cliques):** a janela de recache dos snippets só é legível a partir de ~16/08. Mexer em title ou description hoje destrói o único teste em curso. **Bloqueada por data.**
+2. **`/impugnacao-laudo-pericial/` (posição 24,8, pior do site, e 4 das 9 consultas visíveis):** reavaliação marcada para ~20/08, quando completar duas semanas ao vivo. **Bloqueada por data.**
+3. **Próxima spoke (recolhimento/recall pela RDC 655/2022):** **descartada por evidência nova.** O cluster de alimentos tem duas páginas indexadas — `/pericia-contaminacao-alimentos/` (publicada em 02/08) e `/prazo-validade-alimentos/` (08/08) — e **as duas somam zero impressão em 28 dias**. Acrescentar uma terceira página a um cluster que não produz uma única impressão é acumular estoque, não entregar alcance. O cluster de alimentos precisa de diagnóstico antes de mais conteúdo.
+
+O que sobrou, e que a medição de hoje promoveu, foi o **SEO-019**.
+
+**Por que o score subiu de 33,3 para 84.** A entrada original (06/08) tratava o grafo plano como problema estético que só viraria relevante por volta de 15 páginas. Três medições de hoje mudam isso:
+
+- **Sete páginas estão entre as posições 5 e 12** (`/pericia-combustiveis/` 5,6 · `/honorarios-pericia-judicial/` 5,8 · `/` 6,0 · `/pericia-industria-quimica/` 7,0 · `/assistente-tecnica/` 8,2 · `/classificacao-fiscal-ncm/` 9,0 · `/quesitos-periciais/` 10,1). Essa é a faixa que o mandato define como **Prioridade 2, a de retorno mais rápido** — e o grafo interno é o único instrumento disponível hoje para empurrá-la, já que metadado está sob teste.
+- **`/quesitos-periciais/` está em 10,1**, exatamente na fronteira entre a primeira e a segunda página de resultados, e é a única página que já converteu impressão em clique.
+- **O grafo estava literalmente completo.** Medido: cada uma das 11 páginas trazia um bloco "Continue lendo" com ~10 links apontando para praticamente todas as outras, com **o título completo da página como âncora, idêntico em todo lugar**. Doze nós, todos ligados a todos, sem hierarquia pilar → spoke e sem uma única variação de texto-âncora. Bloco repetido em todo o site com âncora constante é exatamente o padrão que os buscadores tratam como navegação e descontam.
+
+### O que foi implementado
+
+Substituição do bloco boilerplate por um bloco **curado por página, em dois grupos rotulados**, com âncoras em forma de consulta e variadas conforme a página de origem.
+
+- **Hierarquia explícita em três clusters.** Processo pericial (hub `/assistente-tecnica/` → spokes `/quesitos-periciais/`, `/impugnacao-laudo-pericial/`, `/honorarios-pericia-judicial/`); alimentos (hub `/pericia-contaminacao-alimentos/` → spoke `/prazo-validade-alimentos/`); indústria e ambiente (hub `/pericia-industria-quimica/` → `/pericia-combustiveis/`, `/pericia-ambiental/`, `/classificacao-fiscal-ncm/`). Spoke aponta para o próprio hub e para os irmãos; hub aponta para os próprios spokes e para os outros hubs.
+- **Segundo grupo em toda página de área técnica: "Como essa prova entra no processo"**, ligando o conteúdo técnico ao cluster processual, que é o que de fato recebe impressão. É a aplicação do único padrão que os dados sustentam: neste site as consultas que aparecem são **procedimentais** (quesitos, assistente técnico, impugnação, honorários), não temáticas.
+- **Âncoras em forma de consulta, de 1 a 5 variantes por destino** em vez de um título repetido 10 vezes. Exemplos para `/quesitos-periciais/`: "Como formular quesitos que o perito não pode deixar de responder", "Quesitos periciais: prazos, limites e erros que os anulam", "Como redigir os quesitos da perícia", "Como formular os quesitos de uma perícia ambiental", "Como formular os quesitos de uma perícia de alimentos".
+- **Grafo com forma, medido antes e depois.** Antes: todo destino recebia ~10 links do bloco, com 1 texto-âncora. Depois (links do bloco + links contextuais no corpo + home):
+
+  | Página | Antes (bloco) | Depois (bloco) | Total | Âncoras distintas |
+  |---|---|---|---|---|
+  | `/sobre/` | 10 | 10 | 25 | 2 |
+  | `/assistente-tecnica/` | 10 | 10 | 22 | 5 |
+  | `/pericia-contaminacao-alimentos/` | 7 | 4 | 22 | 2 |
+  | `/quesitos-periciais/` | 10 | 9 | 15 | 5 |
+  | `/impugnacao-laudo-pericial/` | 9 | 7 | 12 | 4 |
+  | `/pericia-industria-quimica/` | 10 | 7 | 9 | 3 |
+  | `/classificacao-fiscal-ncm/` | 10 | 2 | 8 | 2 |
+  | `/honorarios-pericia-judicial/` | 10 | 4 | 7 | 3 |
+  | `/pericia-ambiental/` | 10 | 4 | 7 | 2 |
+  | `/prazo-validade-alimentos/` | 10 | 1 | 6 | 1 |
+  | `/pericia-combustiveis/` | 10 | 2 | 4 | 2 |
+
+- **Uma regra de CSS** (`.related ul + .related-lbl { margin-top: 2.25rem; }`) para separar os dois grupos. Nenhuma outra mudança de estilo — a estrutura `related` / `related-lbl` / `ul` foi reaproveitada.
+- **`sitemap.xml`:** `lastmod` de 2026-08-12 nas 11 páginas alteradas. A home não foi tocada.
+- **Gerado por script** em vez de 11 edições à mão, para que a definição do grafo fique num só lugar e o bloco não divirja entre páginas.
+
+### Nenhuma página ficou órfã, e isso foi medido, não presumido
+
+A home linka para as 11 páginas, então mesmo os destinos que perderam links do bloco continuam com entrada. O menor total é `/pericia-combustiveis/` com 4 (2 do bloco, 1 no corpo, 1 da home) — e é a página de **melhor posição do site (5,6)**, que não precisa de reforço. O verificador de páginas órfãs do `[valid]` passa.
+
+### Ressalva honesta sobre `/pericia-ambiental/` e `/pericia-contaminacao-alimentos/`
+
+As duas seguem com **zero impressão em 28 dias apesar de indexadas**, e esta tarefa **não resolve isso**. Duas evidências dizem que o problema delas não é volume de links internos:
+
+- `/pericia-contaminacao-alimentos/` tinha **24 links internos, o 2º maior do site**, e zero impressão.
+- A idade está controlada: `/pericia-contaminacao-alimentos/` foi publicada em 02/08, no mesmo dia de `/classificacao-fiscal-ncm/` e `/sobre/`, que têm impressão; `/pericia-ambiental/` foi publicada em 04/08, no mesmo dia de `/pericia-combustiveis/`, que está na posição 5,6.
+
+A hipótese em pé é de **descasamento de intenção**: as duas são as únicas páginas do site que disputam substantivo temático de alta concorrência ("perícia ambiental", "contaminação de alimentos"), enquanto todas as que recebem impressão disputam consulta procedimental ou nicho estreito. O que esta tarefa faz por elas é modesto e proposital — o novo grupo "Como essa prova entra no processo" liga as duas ao cluster que de fato aparece. **A correção de fundo (reposicionar as duas sobre consultas de decisão, tipo "como provar contaminação de solo em juízo") fica registrada como próxima tarefa de conteúdo, e não foi feita hoje** para não misturar duas mudanças na mesma medição.
+
+### Validação
+
+- `[valid]` **ALL PASS** nas 12 páginas depois da mudança: title ≤ 60 sem duplicata, description entre 150 e 160, `og:title`/`twitter:title` idênticos ao `<title>`, canonical correto, um `<h1>` por página, todo JSON-LD parseando, **zero link interno quebrado e zero âncora inexistente**, sitemap idêntico ao sistema de arquivos, nenhuma página órfã, paridade FAQ ↔ `FAQPage` mantida.
+- **Balanceamento de tags conferido por parser** (`html.parser`) nas 12 páginas: nenhuma tag desbalanceada, nenhuma pendente. Foi checado porque a mudança recorta e reescreve um bloco de `<div>` aninhado em 11 arquivos por script — é o defeito que um `grep` não pega.
+- `llms.txt` não referencia o bloco; nada a atualizar.
+
+### Nada de metadado foi tocado
+
+Nenhum `<title>` e nenhuma `<meta name="description">` mudou. O teste de recache aberto em 09/08 segue íntegro para leitura a partir de ~16/08.
+
+### O que segue em aberto
+
+- **`/pericia-ambiental/` e `/pericia-contaminacao-alimentos/` sem impressão** — agora o item de conteúdo mais concreto do backlog. Ver a ressalva acima. Entra como **SEO-026**.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, baixa prioridade, coberto por checagem automática.
+- **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
+- **SEO-009** (perfil no Google Business) — bloqueado por verificação de identidade da proprietária.
+
+### SEO-026 — Duas páginas indexadas com zero impressão em 28 dias
+
+- **Descrição:** `/pericia-ambiental/` e `/pericia-contaminacao-alimentos/` estão indexadas (`PASS`), têm 34 KB e 35 KB, FAQ, schema e links internos, e **nunca apareceram em uma busca**. Idade e volume de links internos estão descartados por medição (ver ressalva acima). A hipótese em pé é descasamento de intenção: são as duas únicas páginas do site que disputam substantivo temático de alta concorrência, enquanto as que recebem impressão disputam consulta procedimental.
+- **URL:** `/pericia-ambiental/`, `/pericia-contaminacao-alimentos/`
+- **Categoria:** Intenção de busca / Alcance
+- **Impacto:** 7 · **Esforço:** 5 · **Confiança:** 6 · **Valor de negócio:** 7
+- **Priority Score:** 58,8
+- **Status:** open · **Descoberto:** 2026-08-12
+- **Notas:** a correção provável é dar a cada uma uma porta de entrada procedimental — seções e FAQ sobre "como se prova contaminação de solo em juízo", "quesitos para perícia ambiental", "como contestar um laudo ambiental administrativo" — em vez de disputar o substantivo temático. **Fazer uma página de cada vez**, para que a medição consiga separar o efeito. Não executar antes de ~19/08: o grafo interno mudou hoje e precisa de uma janela limpa.
+
+### Próxima execução — o que checar primeiro
+
+1. **`/usr/bin/python3 tools/seo-report.py` como primeiro passo.** `[deploy]` acusando deriva ⇒ publicar é a tarefa do dia. Qualquer seção falhando ⇒ corrigir antes de abrir frente nova.
+2. **~~A consulta do primeiro clique~~ — encerrada em 12/08.** 90% das impressões são anonimizadas; não há fonte alternativa. Não gastar execução nisso.
+3. **CTR das páginas entre 5 e 12 — a partir de ~16/08**, e só com a série do GSC confirmada até uma data que cubra a janela. Lembrete que já custou uma conclusão errada: **confirmar até que data a série vai antes de tratar um zero como resultado.**
+4. **`/quesitos-periciais/` é a página a vigiar.** 38 impressões, posição 10,1, o único clique do site e o pico diário de 25 impressões em 10/08. Se a posição cair abaixo de 10 e estabilizar, o grafo novo é a explicação mais provável e o padrão deve ser reforçado. É também a primeira leitura possível do efeito desta tarefa.
+5. **`/impugnacao-laudo-pericial/` — reavaliar por volta de 20/08**, com duas semanas ao vivo. Posição 24,8 contra 5–12 das irmãs, e 4 das 9 consultas visíveis são dela.
+6. **Efeito do grafo interno: não ler antes de ~19/08.** Mudança de links internos leva de uma a três semanas para reprecificar. Ler cedo demais produz ruído, e ruído lido como sinal gera a próxima tarefa errada.
+7. **SEO-026** (as duas páginas mudas), uma página por vez, depois de 19/08.
+8. **Vigiar as consultas da seção do SEO-022** — `parecer técnico`, `parecer técnico judicial`, `diferença entre laudo e parecer técnico`, `art. 472 CPC`. Relógio começou em 12/08.
+9. **Google Ads:** conferir a taxa de conversão do grupo AG03 separadamente, a landing mudou em 12/08.
