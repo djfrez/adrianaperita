@@ -740,7 +740,9 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 - **Categoria:** Structured data / Risco de conformidade
 - **Impacto:** 7 · **Esforço:** 2 · **Confiança:** 9 · **Valor de negócio:** 6
 - **Priority Score:** 189
-- **Status:** open · **Descoberto:** 2026-08-11
+- **Status:** done · **Descoberto:** 2026-08-11 · **Concluído:** 2026-08-12
+- **Resolvido pela opção (b), decidida pela cliente:** o bloco `FAQPage` inteiro foi removido de `index.html` — 5 perguntas, 2.564 caracteres. Preservados na home: `Person`, `ProfessionalService` (com o `OfferCatalog` de 6 serviços), `BreadcrumbList`, `WebSite` e os quatro `SiteNavigationElement`. Nenhuma referência pendente ao FAQ da home no `llms.txt` nem no HTML. A validação das 12 páginas voltou a `ALL PASS`.
+- **Por que remover foi o certo aqui:** as cinco perguntas eram versões abreviadas de matéria que `/assistente-tecnica/`, `/pericia-contaminacao-alimentos/`, `/classificacao-fiscal-ncm/` e `/impugnacao-laudo-pericial/` já respondem com profundidade. Torná-las visíveis na home resolveria a conformidade criando concorrência interna pelas mesmas consultas — pior remédio que a doença.
 - **Idade do defeito:** está no ar desde 2026-08-01, quando o schema da home foi criado. Passou por todas as auditorias anteriores porque nenhuma comparava schema com texto visível — e a primeira versão da checagem nova também não pegou, por um motivo instrutivo registrado no SEO-024 (o extrator de texto removia as *tags* `<script>` mas não o conteúdo delas, de modo que o próprio JSON-LD entrava no "texto visível" e a comparação passava sempre).
 - **Duas saídas, e a escolha não é óbvia:** (a) **tornar as cinco perguntas visíveis** na home, como seção de FAQ — ganha o conteúdo, o rich result e material citável por LLM, mas alonga uma home que hoje é enxuta e concentra em `/` respostas que já existem, melhor desenvolvidas, nas páginas de cluster; (b) **remover o `FAQPage` da home**, mantendo `Person`, `ProfessionalService` e `BreadcrumbList` — resolve a conformidade em uma linha e deixa o FAQ onde ele tem profundidade. **Recomendação: (b)**, porque as cinco perguntas são versões resumidas de conteúdo que as páginas de cluster já respondem melhor, e duplicá-las na home criaria concorrência interna pelas mesmas consultas. Decidir com a cliente antes de executar — é remoção de markup em página pública.
 
@@ -766,7 +768,7 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 
 ### O que segue em aberto
 
-- **SEO-025** (`FAQPage` oculto na home) — **novo, e o de maior prioridade em aberto: 189.** Precisa de decisão da cliente entre tornar visível e remover o markup; a recomendação registrada é remover.
+- ~~**SEO-025** (`FAQPage` oculto na home)~~ — **resolvido em 12/08 por remoção do markup**, conforme decisão da cliente.
 - **SEO-019** (grafo interno completo) — 12 páginas, 10 itens em cada "Continue lendo". Sem mudança. Os inbounds medidos hoje ficaram entre 11 e 24 por página — grafo plano, sem hierarquia pilar → spoke. Os dois links de âncora do SEO-022 são um começo na direção certa.
 - **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — baixa prioridade, 63. Agora coberto por checagem automática, que confirma: nas duas o critério que importa é atendido.
 - **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
