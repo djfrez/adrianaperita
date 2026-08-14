@@ -302,6 +302,64 @@ def check_dates(label, doc, parsed):
             fail("valid", f"{label}: data {d} no schema e ausente do texto visível")
 
 
+def check_schema_refs(label, doc, parsed):
+    """URLs do JSON-LD absolutas, e toda referência `@id` resolvendo na página.
+
+    Dois defeitos encontrados na home em 2026-08-14 (SEO-028), ambos invisíveis
+    para as checagens anteriores, que só exigiam que o JSON-LD parseasse:
+
+    1. `"image": "headshot.jpg"` — caminho relativo em `Person` e em
+       `ProfessionalService`. A documentação do Google pede URL absoluta; um
+       parser que resolva contra outra base simplesmente não acha a imagem.
+    2. `ProfessionalService.provider` era um segundo nó `Person` raso (nome +
+       sameAs) em vez de referência ao nó canônico. Numa propriedade cujo risco
+       estrutural declarado é ambiguidade de entidade (SEO-010 — existe outra
+       profissional homônima que ocupou este domínio), publicar duas Adrianas
+       Rezende meio descritas trabalha contra o objetivo do próprio schema.
+
+    A regra do `@id`: um nó que traga só `@id` é *referência* e precisa que
+    algum bloco da mesma página *defina* aquele `@id` (mesmo `@id`, com mais
+    coisas). Blocos JSON-LD distintos da mesma página são fundidos pelo Google,
+    então a definição pode estar em outro `<script>`.
+    """
+    defined, referenced, relative = set(), {}, []
+    named, anonymous = {}, []
+
+    def walk(node, path="$"):
+        if isinstance(node, list):
+            for i, n in enumerate(node):
+                walk(n, f"{path}[{i}]")
+        elif isinstance(node, dict):
+            nid = node.get("@id")
+            if nid:
+                if len(node) == 1:
+                    referenced.setdefault(nid, path)
+                else:
+                    defined.add(nid)
+                    if node.get("@type") in ("Person", "Organization") and node.get("name"):
+                        named[node["name"]] = nid
+            elif node.get("@type") in ("Person", "Organization") and node.get("name"):
+                anonymous.append((node["name"], path))
+            for k, v in node.items():
+                if k in ("url", "image", "logo", "sameAs"):
+                    for val in (v if isinstance(v, list) else [v]):
+                        if isinstance(val, str) and not val.startswith(("http://", "https://")):
+                            relative.append(f"{path}.{k} = {val!r}")
+                walk(v, f"{path}.{k}")
+
+    walk(parsed)
+
+    for r in relative:
+        fail("valid", f"{label}: URL relativa no JSON-LD — {r}")
+    for nid, path in sorted(referenced.items()):
+        if nid.startswith(SITE) and nid not in defined:
+            fail("valid", f"{label}: referência @id {nid} em {path} não é definida na página")
+    for name, path in anonymous:
+        if name in named:
+            fail("valid", f"{label}: nó duplicado sem @id para {name!r} em {path} "
+                          f"— use {{\"@id\": \"{named[name]}\"}}")
+
+
 def section_valid():
     head("[valid] validação on-page dos arquivos locais")
 
@@ -361,6 +419,7 @@ def section_valid():
 
         check_faq_parity(label, doc, parsed)
         check_dates(label, doc, parsed)
+        check_schema_refs(label, doc, parsed)
 
         for href in re.findall(r'href="(/[^"#?]*)', doc):
             all_targets.add(href if href.endswith("/") or "." in os.path.basename(href)

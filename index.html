@@ -48,7 +48,7 @@
     "mainEntityOfPage": "https://adrianarezende.com.br/sobre/",
     "description": "Engenheira Química pela UNICAMP com mais de 20 anos de experiência técnica e industrial, incluindo mais de 8 anos como perita judicial e assistente técnica em engenharia química, indústria de alimentos, classificações fiscais (NCM), perícias ambientais e conformidade regulatória.",
     "url": "https://adrianarezende.com.br",
-    "image": "headshot.jpg",
+    "image": "https://adrianarezende.com.br/headshot.jpg",
     "email": "adriana.rezende@gmail.com",
     "telephone": "+55-19-99229-7507",
     "sameAs": [
@@ -111,12 +111,13 @@
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://adrianarezende.com.br/#servico",
     "name": "Adriana Rezende — Perícia Judicial e Assistência Técnica",
     "description": "Serviços especializados de perícia judicial e assistência técnica em engenharia química, indústria de alimentos, classificações fiscais (NCM), perícias ambientais e conformidade técnica. Atendimento em todo o território nacional.",
     "url": "https://adrianarezende.com.br",
     "telephone": "+55-19-99229-7507",
     "email": "adriana.rezende@gmail.com",
-    "image": "headshot.jpg",
+    "image": "https://adrianarezende.com.br/headshot.jpg",
     "priceRange": "Consulte",
     "address": {
       "@type": "PostalAddress",
@@ -132,21 +133,81 @@
       "@type": "OfferCatalog",
       "name": "Áreas de Atuação",
       "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perícia em Indústria de Alimentos" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perícia em Indústrias Químicas" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Análise e Impugnação de Classificações Fiscais (NCM)" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perícia Ambiental" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perícia em Adulteração de Combustíveis" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Assistência Técnica em Processos Judiciais" } }
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Assistência Técnica em Processos Judiciais",
+            "url": "https://adrianarezende.com.br/assistente-tecnica/",
+            "description": "Atuação como assistente técnica da parte (art. 465, §1º, do CPC): acompanhamento dos trabalhos do perito, elaboração de parecer técnico e crítica metodológica do laudo.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } },
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Impugnação de Laudo Pericial",
+            "url": "https://adrianarezende.com.br/impugnacao-laudo-pericial/",
+            "description": "Análise crítica de laudo pericial e escolha da via cabível — esclarecimentos, parecer divergente ou nova perícia — com fundamento metodológico.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } },
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Elaboração de Quesitos Periciais",
+            "url": "https://adrianarezende.com.br/quesitos-periciais/",
+            "description": "Formulação de quesitos e quesitos suplementares tecnicamente respondíveis, dentro dos limites dos arts. 470 e 473, §2º, do CPC.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } },
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Perícia em Contaminação de Alimentos",
+            "url": "https://adrianarezende.com.br/pericia-contaminacao-alimentos/",
+            "description": "Investigação de contaminação física, química e biológica em alimentos: cadeia de custódia, BPF/APPCC, normas ANVISA e apuração de responsabilidade.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } },
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Perícia em Prazo de Validade e Vida Útil de Alimentos",
+            "url": "https://adrianarezende.com.br/prazo-validade-alimentos/",
+            "description": "Verificação técnica de prazo de validade, estudos de vida útil, condições de armazenamento e alegações de deterioração.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } },
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Perícia em Indústria Química e Produtos Controlados",
+            "url": "https://adrianarezende.com.br/pericia-industria-quimica/",
+            "description": "Análise de causa raiz de acidente e falha de processo, Ficha com Dados de Segurança (ABNT NBR 14725:2023) e autuação por produto controlado pela Polícia Federal e pelo Exército.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } },
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Análise e Impugnação de Classificação Fiscal (NCM)",
+            "url": "https://adrianarezende.com.br/classificacao-fiscal-ncm/",
+            "description": "Laudo técnico de enquadramento de mercadoria pelas Regras Gerais de Interpretação do Sistema Harmonizado e suporte a impugnação de auto de infração da Receita Federal.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } },
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Perícia Ambiental",
+            "url": "https://adrianarezende.com.br/pericia-ambiental/",
+            "description": "Contaminação de solo e água subterrânea, passivos ambientais, resíduos e efluentes, com referência às resoluções CONAMA aplicáveis.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } },
+        { "@type": "Offer", "itemOffered": {
+            "@type": "Service",
+            "name": "Perícia em Adulteração de Combustíveis",
+            "url": "https://adrianarezende.com.br/pericia-combustiveis/",
+            "description": "Verificação de conformidade de combustíveis frente às especificações da ANP e caracterização técnica de adulteração.",
+            "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" },
+            "areaServed": { "@type": "Country", "name": "Brasil" }
+          } }
       ]
     },
-    "provider": {
-      "@type": "Person",
-      "name": "Adriana Rezende",
-      "sameAs": [
-        "https://www.linkedin.com/in/adriana-rezende-5992554a/"
-      ]
-    }
+    "provider": { "@id": "https://adrianarezende.com.br/#adriana-rezende" }
   }
   </script>
 
@@ -172,7 +233,9 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Adriana Rezende — Perícia Técnica",
-    "url": "https://adrianarezende.com.br/"
+    "url": "https://adrianarezende.com.br/",
+    "inLanguage": "pt-BR",
+    "publisher": { "@id": "https://adrianarezende.com.br/#servico" }
   }
   </script>
   <script type="application/ld+json">

@@ -1012,3 +1012,83 @@ A auditoria de hoje encontrou um defeito que não estava no backlog, que atinge 
 4. **`/impugnacao-laudo-pericial/`** — reavaliar por volta de 20/08. Posição 18,1 (era 24,8) e 5 das 12 consultas visíveis são dela, três delas com o mesmo erro de grafia (*"impunação"*). Se a página continuar em página 2, cobrir a variante mal escrita no corpo do texto é uma opção legítima — é como o cliente real escreve.
 5. **SEO-026**, uma página por vez, depois de 19/08 e com o título liberado.
 6. **Não repetir a premissa de tráfego pago.** Antes de usar "essa página recebe clique pago" como argumento, consultar a API do Ads — hoje a resposta é zero.
+
+---
+
+## Execução 2026-08-14
+
+### Dados
+
+`/usr/bin/python3 tools/seo-report.py`, período 2026-07-17 → 2026-08-14.
+
+- **`[deploy]` em dia** — 0 commits pendentes, 12 páginas no sitemap publicado, 12 respondendo 200.
+- **`[valid]` ALL PASS** nas 12 páginas (antes da mudança de hoje).
+- **Indexação: 12 de 12 `PASS`.**
+- **Desempenho (28 dias): 121 impressões, 1 clique.** Eram 115 e 1 ontem.
+- **Consultas: 12 linhas, 12 impressões, 0 cliques.** Segue ~90% anonimizado.
+
+| Página | impr. | pos. |
+|---|---|---|
+| `/quesitos-periciais/` | 49 (1 clique) | 10,3 |
+| `/assistente-tecnica/` | 29 | 8,6 |
+| `/impugnacao-laudo-pericial/` | 15 | 17,5 |
+| `/honorarios-pericia-judicial/` | 9 | 10,4 |
+| `/pericia-combustiveis/` | 8 | 6,5 |
+| `/` | 3 | 6,0 |
+| `/classificacao-fiscal-ncm/` | 3 | 9,0 |
+| `/prazo-validade-alimentos/` | 3 | **4,7** |
+| `/pericia-industria-quimica/` | 1 | 7,0 |
+| `/sobre/` | 1 | 32,0 |
+
+**`/prazo-validade-alimentos/` deixou de ser muda** — 3 impressões na melhor posição média do site (4,7). O "cluster mudo" do SEO-026 volta a ser **duas** páginas (`/pericia-ambiental/`, `/pericia-contaminacao-alimentos/`), não três. A nota de ontem que o chamava de padrão de cluster inteiro fica corrigida por esta medição.
+
+### Por que esta foi a tarefa de hoje
+
+As três frentes de maior valor seguem congeladas por data, e as datas continuam certas: CTR/metadados só a partir de 16/08, grafo interno a partir de 19/08, SEO-026 a partir de 19/08 e dependente de título. Restava achar trabalho que **não tocasse em título, description, texto de corpo nem um único link interno** — e que não fosse cosmético.
+
+**Duas hipóteses foram levantadas e descartadas por verificação, antes de escolher:**
+
+1. **"Produtos Químicos Controlados" seria a maior lacuna do mandato sem página.** Falso. O tema já é tratado em profundidade dentro de `/pericia-industria-quimica/` — tabela dos dois regimes (PF pela Lei 10.357/2001 e IN DG/PF 338/2026; Exército pelo R-105/Decreto 10.030/2019), FAQ própria e menção no `llms.txt`. Criar página dedicada seria duplicar conteúdo, contra o padrão já firmado em SEO-008 e SEO-012 (ancorar, não duplicar).
+2. **"O grafo de entidades estaria desconectado."** Também falso, e essa é a correção mais útil: as 12 páginas **já** trazem o `Person` canônico com `@id`, `sameAs`, `identifier` (CRQ) e `hasCredential`. O trabalho do SEO-011 se sustentou. O defeito real era muito mais estreito — e por isso mesmo tinha sobrevivido a treze auditorias.
+
+### SEO-028 — Entidade de negócio da home: referência quebrada, imagem relativa e catálogo sem destino *(executada em 2026-08-14)*
+
+- **Descrição:** três defeitos no JSON-LD da home, nenhum deles detectável pelas checagens existentes, que só exigiam que o bloco parseasse.
+  1. **`"image": "headshot.jpg"` — caminho relativo**, em `Person` **e** em `ProfessionalService`. A documentação do Google pede URL absoluta. As tags `og:image` e `twitter:image` do mesmo arquivo já usavam a forma absoluta desde sempre, o que torna a divergência um lapso, não uma escolha.
+  2. **`ProfessionalService.provider` era um segundo nó `Person` raso** — nome + `sameAs`, sem `@id` — em vez de referência ao nó canônico `#adriana-rezende` definido 60 linhas acima, no mesmo `<head>`. Numa propriedade cujo risco estrutural declarado é **ambiguidade de entidade** (SEO-010: existe outra profissional homônima que ocupou este domínio entre ~2021 e 2023), publicar duas Adrianas Rezende meio descritas trabalha exatamente contra o que o schema deveria resolver.
+  3. **`hasOfferCatalog` com 6 serviços, nenhum com `url`.** O site documenta 9 serviços em 9 páginas indexadas, e nada no schema dizia que o serviço "Perícia Ambiental" é o mesmo assunto de `/pericia-ambiental/`. Em dados estruturados, os 10 guias eram dez `Article` soltos, sem vínculo com o negócio que os oferece.
+- **URL:** `/`, `/pericia-contaminacao-alimentos/`
+- **Categoria:** Structured data / Entity SEO / AI citation
+- **Impacto:** 6 · **Esforço:** 2 · **Confiança:** 8 · **Valor de negócio:** 7
+- **Priority Score:** 168
+- **Status:** done · **Descoberto:** 2026-08-14 · **Concluído:** 2026-08-14
+- **Implementado:**
+  - `image` absoluta nos dois nós, idêntica à `og:image` já existente.
+  - `@id` `#servico` no `ProfessionalService`; `provider` passou a ser `{"@id": "…#adriana-rezende"}`.
+  - `WebSite` ganhou `inLanguage` e `publisher` → `#servico`, fechando a cadeia **site → negócio → pessoa**. Antes, os três nós eram ilhas.
+  - **`hasOfferCatalog` reescrito: 9 serviços**, cada um com `url` para a página que o documenta, `description` própria, `areaServed` e `provider` por `@id`. É a primeira afirmação legível por máquina de que estes 9 serviços existem, são oferecidos por esta pessoa e estão documentados nestes 9 endereços.
+- **O catálogo foi mantido honesto.** `/honorarios-pericia-judicial/` e `/sobre/` **não** entraram: honorários é informação de preço e "sobre" é a página da autora — nenhum dos dois é serviço contratável. Inflar o catálogo para 11 itens porque existem 11 páginas seria o mesmo vício que o SEO-027 corrigiu nas datas. "Perícia em Indústria de Alimentos" foi dividida em duas (contaminação e prazo de validade/vida útil) porque são duas páginas substantivas e dois tipos de contratação distintos.
+- **Guard:** `check_schema_refs()` no `[valid]` do `tools/seo-report.py`, que reprova (a) qualquer `url`/`image`/`logo`/`sameAs` relativo dentro de JSON-LD, (b) referência `@id` do próprio domínio que nenhum bloco da página defina, e (c) nó `Person`/`Organization` com nome igual ao de uma entidade canônica da página mas **sem** `@id` — o defeito nº 2 acima, generalizado.
+- **O guard foi testado contra quatro defeitos plantados, não só contra o estado bom:** imagem relativa reintroduzida → reprova; `provider` apontando para `#fantasma` inexistente → reprova; o defeito original (`provider` como `Person` duplicado e raso) → reprova; `url` relativa dentro de um `Service` do catálogo → reprova. Arquivo restaurado depois de cada injeção.
+- **O guard encontrou um defeito que a inspeção manual não tinha achado.** Na primeira execução contra o repositório limpo, reprovou `/pericia-contaminacao-alimentos/`: o `Article.publisher` era um `Person` com **apenas nome**, sem `@id`. As outras 9 páginas de guia trazem `@id` + `name` + `url` no `publisher`. Era deriva de uma página só, invisível a olho nu num arquivo de 35 KB — e é precisamente o tipo de achado que justifica escrever guard em vez de conserto pontual. Corrigida para a forma das outras nove.
+- **Validação:** `[valid]` ALL PASS nas 12 páginas; JSON-LD de ambos os arquivos parseia; `sitemap.xml` parseia com `lastmod` 2026-08-14 nas duas páginas alteradas.
+- **Nenhuma medição em curso foi tocada — verificado por diff, não por intenção.** Um comparativo antes/depois das 12 páginas confirmou: nenhum `<title>`, nenhuma `meta description` e **nenhum link interno** (`href="/…"`) mudou em página alguma. Todas as linhas do diff das duas páginas HTML estão dentro de blocos JSON-LD.
+- **`dateModified` deliberadamente não alterado.** A mudança é de dados estruturados, sem alteração de conteúdo visível. Declarar frescor por edição de schema seria inflar data por edição cosmética — o vício que o SEO-027 corrigiu. O `lastmod` do sitemap **foi** para 14/08, porque ali a pergunta é outra: o arquivo mudou.
+
+### O que segue em aberto
+
+- **SEO-026** (cluster mudo — **duas** páginas: `/pericia-ambiental/`, `/pericia-contaminacao-alimentos/`) — depois de 19/08, junto com título, que destrava em 16/08.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, coberto por checagem automática.
+- **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
+- **SEO-009** (perfil no Google Business) — bloqueado por verificação de identidade da proprietária.
+- **Google Ads sem entrega** — segue: uma campanha habilitada, zero impressão em 90 dias, estrutura de grupos nunca importada. Fora do mandato de SEO, mas é a maior perda de alcance do negócio hoje. **Vale um aviso à cliente.**
+
+### Próxima execução — o que checar primeiro
+
+1. **`/usr/bin/python3 tools/seo-report.py` como primeiro passo.** `[deploy]` acusando deriva ⇒ publicar é a tarefa do dia. O `[valid]` agora também reprova URL relativa e referência `@id` órfã no schema.
+2. **CTR das páginas entre 5 e 12 — destravado a partir de 16/08.** Confirmar até que data a série do GSC vai **antes** de tratar um zero como resultado. Esta é a frente de maior valor assim que abrir: são ~50 impressões em posição ≤ 8,6 com 0 clique.
+3. **`/prazo-validade-alimentos/` em posição 4,7** — a melhor do site, e nova. Vigiar: se sustentar a posição e ganhar volume, é o modelo de intenção a replicar nas duas páginas mudas do SEO-026.
+4. **`/quesitos-periciais/`** — 49 impressões, posição 10,3, o único clique. Primeira leitura possível do efeito do grafo a partir de 19/08.
+5. **`/impugnacao-laudo-pericial/`** — reavaliar por volta de 20/08. Posição 17,5 (era 18,1, era 24,8): melhora consistente em três medições.
+6. **SEO-026**, uma página por vez, depois de 19/08 e com o título liberado.
+7. **Não repetir a premissa de tráfego pago.** Consultar a API do Ads antes de usar esse argumento — hoje a resposta segue zero.
