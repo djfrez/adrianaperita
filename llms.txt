@@ -23,6 +23,10 @@ O objetivo do serviço NÃO é formação ou ensino de perícia. O foco é supor
 4. Formulação Estratégica — quesitos técnicos ou análise crítica de laudos
 5. Laudo ou Parecer — laudo pericial (perita judicial) ou parecer técnico (assistente técnica)
 
+## Datas e atualização
+
+Todo o conteúdo deste site depende de norma vigente (RDC da ANVISA, resoluções CONAMA e ANP, NCM/Sistema Harmonizado, artigos do CPC/2015), e por isso cada página declara suas datas de forma verificável: `datePublished` e `dateModified` em JSON-LD, e as mesmas duas datas em texto visível, na linha de assinatura. Última revisão de conteúdo: **12 de agosto de 2026**. Quando uma norma citada estiver em consulta pública ou em período de transição, a página diz isso explicitamente em vez de tratá-la como vigente.
+
 ## Perfil profissional
 
 Página dedicada: https://adrianarezende.com.br/sobre/ — formação, registro profissional verificável, trajetória da indústria para a perícia, tabela de tipos de processo por matéria técnica (com os órgãos e normas envolvidos em cada um), diferença entre os papéis de perita judicial e assistente técnica, e como uma análise preliminar começa.

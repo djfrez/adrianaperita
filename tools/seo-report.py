@@ -250,6 +250,58 @@ def check_faq_parity(label, doc, parsed):
         fail("valid", f"{label}: {len(visible)} perguntas visíveis × {len(entries)} no FAQPage")
 
 
+def check_dates(label, doc, parsed):
+    """Every content page must carry an honest, visible, machine-readable date.
+
+    Two failure modes, both found on 2026-08-13 (SEO-027): seven pages declared
+    `Article` with no date at all, and the four that had dates still claimed the
+    day they were published after being edited — the sitemap said 12/08 while
+    the schema said 03/08. Content that cites regulation is only as trustworthy
+    as its date, and an LLM deciding whether to cite the page reads the schema,
+    not the git log.
+
+    The visible <time> must match the schema, because a date Google cannot see
+    on the page is a date it discounts.
+    """
+    if label == "/":  # not an Article — the home is the ProfessionalService node
+        return
+
+    dates = {}
+    def walk(node):
+        if isinstance(node, list):
+            for n in node:
+                walk(n)
+        elif isinstance(node, dict):
+            if node.get("@type") in ("Article", "ProfilePage"):
+                dates.update({k: v for k, v in node.items()
+                              if k in ("datePublished", "dateCreated", "dateModified")})
+            for v in node.values():
+                if isinstance(v, (list, dict)):
+                    walk(v)
+    walk(parsed)
+
+    published = dates.get("datePublished") or dates.get("dateCreated")
+    modified = dates.get("dateModified")
+    if not published:
+        fail("valid", f"{label}: schema sem datePublished/dateCreated")
+    if not modified:
+        fail("valid", f"{label}: schema sem dateModified")
+    if not (published and modified):
+        return
+
+    today = subprocess.run(["date", "+%Y-%m-%d"], capture_output=True,
+                           text=True).stdout.strip()
+    if modified < published:
+        fail("valid", f"{label}: dateModified {modified} anterior a {published}")
+    if modified > today:
+        fail("valid", f"{label}: dateModified {modified} no futuro")
+
+    visible = re.findall(r'<time datetime="(\d{4}-\d{2}-\d{2})"', doc)
+    for d in (published, modified):
+        if d not in visible:
+            fail("valid", f"{label}: data {d} no schema e ausente do texto visível")
+
+
 def section_valid():
     head("[valid] validação on-page dos arquivos locais")
 
@@ -308,6 +360,7 @@ def section_valid():
                 fail("valid", f"{label}: JSON-LD #{i} não parseia — {e}")
 
         check_faq_parity(label, doc, parsed)
+        check_dates(label, doc, parsed)
 
         for href in re.findall(r'href="(/[^"#?]*)', doc):
             all_targets.add(href if href.endswith("/") or "." in os.path.basename(href)

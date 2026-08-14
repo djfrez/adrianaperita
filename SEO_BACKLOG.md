@@ -935,3 +935,80 @@ Nenhum `<title>` e nenhuma `<meta name="description">` mudou. O teste de recache
 7. **SEO-026** (as duas páginas mudas), uma página por vez, depois de 19/08.
 8. **Vigiar as consultas da seção do SEO-022** — `parecer técnico`, `parecer técnico judicial`, `diferença entre laudo e parecer técnico`, `art. 472 CPC`. Relógio começou em 12/08.
 9. **Google Ads:** conferir a taxa de conversão do grupo AG03 separadamente, a landing mudou em 12/08.
+
+---
+
+## Execução 2026-08-13
+
+### Dados
+
+`/usr/bin/python3 tools/seo-report.py`, período 2026-07-16 → 2026-08-13.
+
+- **`[deploy]` em dia** — 0 commits pendentes, 12 páginas no sitemap publicado, 12 respondendo 200.
+- **`[valid]` ALL PASS** nas 12 páginas (antes da mudança de hoje).
+- **Indexação: 12 de 12 `PASS`.** `/impugnacao-laudo-pericial/` falhou por timeout na primeira chamada e passou na repetição — falha de rede, não de indexação. Vale como lembrete: um `FAIL` de inspeção não é um diagnóstico até ser repetido.
+- **Desempenho (28 dias): 115 impressões, 1 clique.** Eram 90 e 1 ontem.
+- **Consultas: 12 linhas, 12 impressões, 0 cliques.** 90% das impressões seguem anonimizadas.
+
+| Página | impr. | pos. |
+|---|---|---|
+| `/quesitos-periciais/` | 49 (1 clique) | 10,3 |
+| `/assistente-tecnica/` | 27 | 8,4 |
+| `/impugnacao-laudo-pericial/` | 14 | 18,1 |
+| `/honorarios-pericia-judicial/` | 9 | 10,4 |
+| `/pericia-combustiveis/` | 8 | 6,5 |
+| `/` | 3 | 6,0 |
+| `/classificacao-fiscal-ncm/` | 3 | 9,0 |
+| `/pericia-industria-quimica/` | 1 | 7,0 |
+| `/sobre/` | 1 | 32,0 |
+
+### Três correções de registro, todas de execuções anteriores
+
+1. **Não existe tráfego pago.** A execução de 10/08 justificou a prioridade do dia dizendo que a âncora `#parecer-tecnico` é destino de tráfego pago comprado pelo grupo `AG03`. **A conta do Google Ads (`2499172899`, "Adriana Rezende") tem zero impressão e zero custo nos últimos 90 dias** — consultado hoje pela API. O que existe é uma campanha `Campaign #1` habilitada sem entrega; a estrutura `AG01–AG03` só existe como CSV em `google-ads-import/`, nunca foi importada. A tarefa daquele dia continuava certa (a âncora era rasa e recebe link interno e sitelink), mas **a premissa de tráfego pago era falsa** e não deve ser reutilizada como argumento.
+2. **A conversão nunca foi perdida por defeito.** O GA4 registra `manual_event_CONTACT` em zero ocorrências em 60 dias, o que parecia um rastreamento quebrado. É o contrário: o único clique real em WhatsApp aconteceu em **03/08** e o rastreamento foi adicionado em **04/08** (commit `38fe681`). Testado hoje na página ao vivo — o handler dispara e empilha o evento no `dataLayer`. **Não há defeito; há ausência de contatos**: 45 sessões-página e nenhum clique de contato desde 04/08.
+3. **O GA4 mostra 8 sessões de "Paid Search"** contra zero entrega no Ads. Sem explicação confirmada — provavelmente URL com `utm_medium=cpc` ou `gclid` de teste. Registrado como observação, não como achado.
+
+### Por que esta foi a tarefa de hoje
+
+As três frentes de conteúdo seguem bloqueadas por data, e as datas foram fixadas por bom motivo:
+
+- **CTR / metadados** — janela de recache só legível a partir de ~16/08. Mexer destrói o teste aberto em 09/08.
+- **Grafo interno** — leitura não antes de ~19/08.
+- **SEO-026** (páginas mudas) — a correção provável dessas páginas é o `<title>`, e título é exatamente o que está congelado. Adiar continua certo. **Nota nova:** `/prazo-validade-alimentos/` também está com zero impressão, o que faz do problema um padrão de **cluster inteiro** (alimentos + ambiental, 3 páginas), não uma coincidência entre duas.
+
+A auditoria de hoje encontrou um defeito que não estava no backlog, que atinge **todas** as páginas de conteúdo e que **não toca em nenhuma das duas medições em curso** — não altera título, description, texto de corpo nem um único link interno.
+
+### SEO-027 — Páginas de conteúdo sem data legível por máquina *(executada em 2026-08-13)*
+
+- **Descrição:** das 11 páginas de conteúdo, **7 declaravam `Article` sem `datePublished` e sem `dateModified`**, e as 4 que tinham data continuavam declarando o dia da publicação depois de terem sido editadas — `/pericia-contaminacao-alimentos/` dizia 03/08 no schema enquanto o `sitemap.xml` dizia 12/08. O site afirmava duas coisas diferentes sobre a mesma página. `/sobre/` (`ProfilePage`) não tinha `dateCreated` nem `dateModified`. Nenhuma página exibia data ao leitor.
+- **URL:** as 11 páginas de conteúdo
+- **Categoria:** Structured data / E-E-A-T / AI citation
+- **Impacto:** 6 · **Esforço:** 3 · **Confiança:** 8 · **Valor de negócio:** 6
+- **Priority Score:** 96
+- **Status:** done · **Descoberto:** 2026-08-13 · **Concluído:** 2026-08-13
+- **Por que importa mais aqui do que na média dos sites:** todo o conteúdo deste site depende de norma vigente — RDC, CONAMA, NCM, artigos do CPC, e a multa que mudou de 150% para 100% (SEO-002). Conteúdo regulatório sem data é conteúdo sem prazo de validade declarado. Quem decide citar a página — um buscador, um LLM, ou um advogado conferindo — lê a data. O backlog já exigia que a expressão "atualizado em agosto de 2026" fosse mantida honesta; **até hoje não havia nenhum lugar onde essa honestidade fosse verificável por máquina.**
+- **Implementado:**
+  - `datePublished` + `dateModified` no `Article` das 10 páginas-guia e `dateCreated` + `dateModified` no `ProfilePage` de `/sobre/`, sempre no mesmo lugar do bloco (logo após `mainEntityOfPage`), em vez de espalhados no fim do objeto como nas 4 antigas.
+  - Linha visível dentro do `<p class="byline">` que já existia, com `<time datetime>`: *"Publicado em 6 de agosto de 2026 · Atualizado em 12 de agosto de 2026."* Em `/sobre/`, que não tinha byline (seria circular — é a página da própria autora), a linha entrou como parágrafo próprio com a mesma classe. **Zero CSS novo.**
+  - **As datas vieram do `git log`, uma por página** (`--diff-filter=A` para a publicação), não de estimativa.
+- **Decisão sobre `dateModified` — 12/08, não 13/08.** A última mudança substantiva de conteúdo foi a reescrita do bloco de links de ontem. A edição de hoje acrescenta a própria linha de data. Declarar "atualizado em 13/08" porque o arquivo mudou hoje seria inflar frescor por edição cosmética — o mesmo vício que esta tarefa corrige. O `lastmod` do sitemap **é** 13/08, porque ali a pergunta é outra: o arquivo mudou. As duas datas divergem de propósito.
+- **Guard, não conserto pontual.** `check_dates()` entrou no `[valid]` do `tools/seo-report.py` e reprova: página de conteúdo sem `datePublished`/`dateCreated`, sem `dateModified`, com `dateModified` anterior à publicação, com `dateModified` no futuro, ou com data no schema que não aparece em nenhum `<time datetime>` visível — que é a exigência do Google (data que a página não mostra é data descontada).
+- **O guard foi testado contra os três defeitos, não só contra o estado bom** (lição do SEO-024): data futura → reprova; par de datas removido → reprova nas duas; `<time>` visível divergindo do schema → reprova. Arquivo restaurado, `ALL PASS`.
+- **Validação:** `[valid]` ALL PASS nas 12 páginas; balanceamento de tags conferido por `html.parser` nas 12 (a edição entra dentro de um parágrafo existente em 11 arquivos por script); `sitemap.xml` parseia; `lastmod` 2026-08-13 nas 11 páginas alteradas; nenhum `<title>`, nenhuma `description`, nenhum link interno tocado.
+
+### O que segue em aberto
+
+- **SEO-026** (cluster mudo — agora 3 páginas: `/pericia-ambiental/`, `/pericia-contaminacao-alimentos/`, `/prazo-validade-alimentos/`) — depois de 19/08, e provavelmente junto com título, que destrava em 16/08.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, coberto por checagem automática.
+- **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
+- **SEO-009** (perfil no Google Business) — bloqueado por verificação de identidade da proprietária.
+- **Google Ads sem entrega** — fora do mandato de SEO, mas é a maior perda de alcance do negócio hoje: uma campanha habilitada, zero impressão em 90 dias, e a estrutura de grupos revisada em agosto nunca importada. Vale um aviso à cliente.
+
+### Próxima execução — o que checar primeiro
+
+1. **`/usr/bin/python3 tools/seo-report.py` como primeiro passo.** `[deploy]` acusando deriva ⇒ publicar é a tarefa do dia. O `[valid]` agora também reprova data ausente ou incoerente.
+2. **CTR das páginas entre 5 e 12 — a partir de 16/08**, e só com a série do GSC confirmada até uma data que cubra a janela. Confirmar até que data a série vai **antes** de tratar um zero como resultado.
+3. **`/quesitos-periciais/`** — 49 impressões, posição 10,3, o único clique. Primeira leitura possível do efeito do grafo a partir de 19/08.
+4. **`/impugnacao-laudo-pericial/`** — reavaliar por volta de 20/08. Posição 18,1 (era 24,8) e 5 das 12 consultas visíveis são dela, três delas com o mesmo erro de grafia (*"impunação"*). Se a página continuar em página 2, cobrir a variante mal escrita no corpo do texto é uma opção legítima — é como o cliente real escreve.
+5. **SEO-026**, uma página por vez, depois de 19/08 e com o título liberado.
+6. **Não repetir a premissa de tráfego pago.** Antes de usar "essa página recebe clique pago" como argumento, consultar a API do Ads — hoje a resposta é zero.
