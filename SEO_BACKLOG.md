@@ -1092,3 +1092,82 @@ As três frentes de maior valor seguem congeladas por data, e as datas continuam
 5. **`/impugnacao-laudo-pericial/`** — reavaliar por volta de 20/08. Posição 17,5 (era 18,1, era 24,8): melhora consistente em três medições.
 6. **SEO-026**, uma página por vez, depois de 19/08 e com o título liberado.
 7. **Não repetir a premissa de tráfego pago.** Consultar a API do Ads antes de usar esse argumento — hoje a resposta segue zero.
+
+---
+
+## Execução 2026-08-15
+
+### Dados
+
+`/usr/bin/python3 tools/seo-report.py`, período 2026-07-18 → 2026-08-15.
+
+- **`[deploy]` em dia** — 0 commits pendentes, 12 páginas no sitemap publicado, 12 respondendo 200.
+- **`[valid]` ALL PASS** nas 12 páginas, já com o guard de schema do SEO-028.
+- **Indexação: 12 de 12 `PASS`.**
+- **Desempenho (28 dias): 136 impressões, 1 clique.** Eram 115 e 1 em 13/08.
+
+| Página | impr. | pos. | Δ pos. desde 13/08 |
+|---|---|---|---|
+| `/quesitos-periciais/` | 49 (1 clique) | 10,3 | = |
+| `/assistente-tecnica/` | 30 | 8,6 | ligeira piora (8,4) |
+| `/impugnacao-laudo-pericial/` | 25 | 13,3 | **melhora (18,1 → 13,3)** |
+| `/pericia-combustiveis/` | 10 | 6,9 | leve piora (6,5) |
+| `/honorarios-pericia-judicial/` | 9 | 10,4 | = |
+| `/` | 3 | 6,0 | = |
+| `/classificacao-fiscal-ncm/` | 3 | 9,0 | = |
+| `/prazo-validade-alimentos/` | 3 | 4,7 | = (melhor posição do site) |
+| `/pericia-industria-quimica/` | 2 | 5,0 | melhora (7,0) |
+| `/pericia-contaminacao-alimentos/` | 1 | 7,0 | **primeira impressão da vida** |
+| `/sobre/` | 1 | 32,0 | = |
+
+**Duas leituras que mudam o quadro:**
+
+1. **`/impugnacao-laudo-pericial/` caiu de 24,8 → 18,1 → 13,3 em três medições**, com 25 impressões. É a curva mais consistente do site e chega perto da faixa de clique.
+2. **`/pericia-contaminacao-alimentos/` registrou sua primeira impressão.** O SEO-026 (cluster mudo) passa de **duas** páginas para **uma**: só `/pericia-ambiental/` segue com zero. Não é resolução — 1 impressão em 28 dias é ruído —, mas invalida a formulação "as duas páginas mudas" para a próxima execução.
+
+### Por que esta foi a tarefa de hoje
+
+As três frentes que o backlog vinha guardando continuam fechadas por data, e as datas foram fixadas por bom motivo — quebrá-las destrói medições que já custaram uma semana:
+
+- **CTR / metadados** — destrava em 16/08, amanhã. Mexer hoje custaria um dia inteiro de janela de recache por nenhum ganho.
+- **Grafo interno** — leitura não antes de 19/08.
+- **SEO-026** — a correção provável é o `<title>`, congelado até amanhã.
+
+A auditoria de hoje mediu uma coisa que nenhuma execução anterior tinha medido: **quantas vezes um leitor de guia pode agir**. A resposta foi **uma**, em todas as 10 páginas, e sempre no rodapé — depois de 25 a 45 KB de texto. É a **Prioridade 1 do mandato** (conversão em páginas que já recebem impressão), é a única frente que as três medições em curso não tocam, e o custo é baixo.
+
+### SEO-029 — Uma única porta de saída por guia, e ela fica no fim da página *(executada em 2026-08-15)*
+
+- **Descrição:** cada uma das 10 páginas de guia tinha **exatamente um** link de contato (`wa.me`), dentro da `.cta-sec` do rodapé, depois do artigo inteiro e depois do FAQ. Medido, não estimado: `grep -c 'href="https://wa.me'` = 1 nas 10 páginas. Um leitor que se convence na metade do guia — que é onde o guia estabelece que o caso dele é técnico — não tem o que fazer com essa convicção a não ser rolar mais 15 a 25 KB. O GA4 confirma o lado do resultado: **48 sessões-página em 28 dias e zero `manual_event_CONTACT` desde 04/08**, com o rastreamento comprovadamente funcional (testado ao vivo em 13/08).
+- **URL:** as 10 páginas de guia (todas menos `/` e `/sobre/`)
+- **Categoria:** Conversão (Prioridade 1 do mandato)
+- **Impacto:** 6 · **Esforço:** 2 · **Confiança:** 6 · **Valor de negócio:** 9
+- **Priority Score:** 162
+- **Status:** done · **Descoberto:** 2026-08-15 · **Concluído:** 2026-08-15
+- **Implementado:** um bloco `Leitura preliminar do caso` inserido **no meio do artigo** de cada guia, imediatamente antes do `<h2>` da seção em que o leitor passa de entender o problema para agir sobre ele. Medido em `/impugnacao-laudo-pericial/`: **50% da altura do documento**. Três parágrafos:
+  1. **O que enviar, específico da página** — não uma lista genérica. Em impugnação são o laudo com os anexos analíticos, a data da intimação do art. 477, §1º, e os quesitos já respondidos; em NCM são o auto com a NCM pretendida, o ensaio da fiscalização e a ficha técnica do produto, com o prazo de 30 dias do art. 15 do Decreto nº 70.235/1972 nomeado; e assim por diante nas 10.
+  2. **O que volta** — texto reaproveitado da promessa que `/assistente-tecnica/` já fazia desde 01/08 ("se há tese técnica, qual é o caminho de prova e qual o esforço envolvido — inclusive quando a resposta honesta é que a matéria técnica não favorece o caso"). **Nenhuma oferta comercial nova foi inventada**; a página só passou a repetir, no ponto de decisão, o que o site já se comprometia a fazer.
+  3. **O link `wa.me`**, com `?text=` carregando a origem no formato `(<assunto> — análise preliminar)`.
+- **Por que `?text=` e não um evento de GA4 novo:** o handler existente dispara `manual_event_CONTACT` para **qualquer** `a[href*="wa.me/5519992297507"]`, então os links novos já são rastreados sem uma linha de JavaScript. O que o GA4 não separa é *qual* dos dois links foi clicado — e essa distinção chega à cliente pelo próprio texto da mensagem do WhatsApp, que é onde ela de fato lê. Sufixo `— análise preliminar` = bloco do meio; sem sufixo = CTA do rodapé.
+- **Zero CSS novo.** O bloco usa `.box` + `.box-lbl`, que já existem nas 10 páginas e já são usados de 1 a 4 vezes em cada uma. Verificado no navegador: os quatro `.box` de `/impugnacao-laudo-pericial/` renderizam com largura idêntica; o novo é indistinguível dos três antigos.
+- **Nenhuma medição em curso foi tocada — verificado por diff, não por intenção.** Comparação campo a campo entre `HEAD` e a árvore de trabalho nas 10 páginas: **0 `<title>`, 0 `meta description` e 0 links internos (`href="/…"`) alterados**. O diff tem **70 linhas adicionadas e 0 removidas** — 7 por página, todas dentro do bloco novo. O link do bloco é externo (`wa.me`) justamente para não injetar aresta nova no grafo interno, que está sob leitura até 19/08.
+- **`dateModified` deliberadamente não alterado**, mesma disciplina do SEO-027 e do SEO-028: o bloco é um caminho de contato, não informação nova sobre a matéria da página. Declarar frescor por isso seria inflar data. O `lastmod` do sitemap **foi** para 15/08 nas 10 páginas, porque ali a pergunta é outra — o arquivo mudou.
+- **O que não foi feito, e por quê:** nenhum bloco na home (já tem seção de contato e formulário) nem em `/sobre/` (é página de biografia, não de decisão de caso); nenhum CTA fixo/flutuante (custo de irritação alto num site cuja credibilidade é o ativo); nenhum segundo bloco por página (dois pedidos no mesmo artigo viram ruído e o rodapé já é o segundo).
+- **Limitação honesta da medição:** com 48 sessões-página em 28 dias e zero contatos, **este item não tem como ser validado por dados tão cedo**. Ele não é um teste — é a correção de uma assimetria estrutural que a auditoria expôs (10 páginas de conteúdo denso, 1 porta de saída cada, sempre no fim). Se o volume orgânico crescer como a curva de impressões sugere, o bloco já estará lá. Ler taxa de conversão disso antes de ~200 sessões orgânicas seria inventar sinal.
+
+### O que segue em aberto
+
+- **SEO-026** (cluster mudo) — **reformulado: agora é uma página só**, `/pericia-ambiental/`. `/pericia-contaminacao-alimentos/` teve sua primeira impressão em 15/08. Depois de 19/08, com título liberado.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, coberto por checagem automática.
+- **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
+- **SEO-009** (perfil no Google Business) — bloqueado por verificação de identidade da proprietária.
+- **Google Ads sem entrega** — uma campanha habilitada, zero impressão em 90 dias. Fora do mandato de SEO, mas segue sendo a maior perda de alcance do negócio. **Vale um aviso à cliente.**
+
+### Próxima execução — o que checar primeiro
+
+1. **`/usr/bin/python3 tools/seo-report.py` como primeiro passo.** `[deploy]` acusando deriva ⇒ publicar é a tarefa do dia.
+2. **CTR está destravado.** É a frente de maior valor: ~50 impressões em posição ≤ 8,6 com 0 clique, em `/assistente-tecnica/` (30 impr., pos. 8,6), `/pericia-combustiveis/` (10, 6,9), `/prazo-validade-alimentos/` (3, 4,7) e `/` (3, 6,0). **Confirmar até que data a série do GSC vai antes de tratar um zero como resultado** — o lembrete que já custou uma conclusão errada em 11/08.
+3. **`/impugnacao-laudo-pericial/` é a página a vigiar.** 24,8 → 18,1 → 13,3 em três medições, 25 impressões. Se entrar na primeira página, é o primeiro caso do site com curva de subida legível, e vale entender o que a distingue.
+4. **`/pericia-ambiental/` é agora a única página com zero impressão em 28 dias.** SEO-026 vira caso único, o que torna a medição do efeito mais limpa do que seria com duas.
+5. **Efeito do grafo interno: ler a partir de 19/08.**
+6. **Não ler conversão do SEO-029 antes de ~200 sessões orgânicas.** Hoje são 4 em 28 dias.
+7. **Não repetir a premissa de tráfego pago.** Consultar a API do Ads antes de usar esse argumento.
