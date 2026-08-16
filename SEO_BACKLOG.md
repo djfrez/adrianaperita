@@ -1171,3 +1171,25 @@ A auditoria de hoje mediu uma coisa que nenhuma execução anterior tinha medido
 5. **Efeito do grafo interno: ler a partir de 19/08.**
 6. **Não ler conversão do SEO-029 antes de ~200 sessões orgânicas.** Hoje são 4 em 28 dias.
 7. **Não repetir a premissa de tráfego pago.** Consultar a API do Ads antes de usar esse argumento.
+
+### Correção de registro — 2026-08-15 (mesmo dia, após pergunta da cliente)
+
+**O relatório e o item SEO-029 acima dizem "48 sessões-página, 4 orgânicas". Os dois números estão errados como *sessões*.** É a contagem de linhas do relatório `pagePath × canal`, onde uma sessão que vê três páginas produz três linhas — exatamente o erro cometido em 11/08 e registrado como aviso em comentário dentro do próprio `section_ga4()`. **Foi cometido de novo.**
+
+Sessões reais de 28 dias, consultadas com `sessionDefaultChannelGroup` e métrica `sessions`:
+
+| Canal | Sessões | Usuários | Fonte / meio |
+|---|---|---|---|
+| Direct | 32 | 28 | `(direct) / (none)` |
+| Paid Search | 8 | 8 | `google / cpc` |
+| Organic Search | **2** | 2 | `google / organic` |
+| Referral | 1 | 1 | `periciajudicial.zsistemas.com.br` |
+| **Total** | **43** | 39 | |
+
+**Três consequências:**
+
+1. **74% do tráfego é Direct e não é aquisição.** 28 usuários diretos num site com 136 impressões e 1 clique orgânico são a própria proprietária, quem recebeu o link por mensagem e **as verificações em navegador feitas durante estas execuções diárias** — a tag GA4 dispara nelas. Não há filtro de tráfego interno configurado na propriedade. **Enquanto não houver, Direct não deve ser lido como alcance em nenhuma execução futura.**
+2. **`google / cpc` com 8 sessões contra zero entrega no Ads em 90 dias** — a observação sem explicação de 13/08 agora tem fonte confirmada. Só se explica por URL com `gclid` ou `utm_medium=cpc` aberta à mão, provavelmente as URLs de destino dos CSVs em `google-ads-import/`. É ruído de teste, não visita comprada.
+3. **O denominador do SEO-029 muda.** O item dizia "não ler conversão antes de ~200 sessões orgânicas; hoje são 4". **São 2.** A limitação declarada lá continua correta — fica ainda mais forte.
+
+**Ação de processo:** a seção `[ga4]` do `tools/seo-report.py` usa `pagePath` de propósito (mostra qual conteúdo é consumido) e imprime "sessões-página (≠ sessões)". O rótulo não bastou — errei duas vezes lendo essa saída. **Próxima execução: acrescentar ao `[ga4]` um segundo bloco com `sessionDefaultChannelGroup` × `sessions`**, para que a contagem correta esteja na tela ao lado da errada e não dependa de quem lê lembrar do aviso.
