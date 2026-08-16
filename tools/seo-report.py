@@ -553,22 +553,46 @@ def section_ga4(days=28):
     s = gt.AuthorizedSession(creds)
     end = datetime.date.today()
     start = end - datetime.timedelta(days=days)
-    r = s.post(
-        f"https://analyticsdata.googleapis.com/v1beta/properties/{GA4_PROPERTY}:runReport",
-        json={"dateRanges": [{"startDate": str(start), "endDate": str(end)}],
-              "dimensions": [{"name": "pagePath"}, {"name": "sessionDefaultChannelGroup"}],
-              "metrics": [{"name": "sessions"}], "limit": 50})
-    if r.status_code != 200:
-        fail("ga4", f"HTTP {r.status_code}: {r.text[:200]}")
+
+    def report(dims, metrics, limit=50):
+        r = s.post(
+            f"https://analyticsdata.googleapis.com/v1beta/properties/{GA4_PROPERTY}:runReport",
+            json={"dateRanges": [{"startDate": str(start), "endDate": str(end)}],
+                  "dimensions": [{"name": d} for d in dims],
+                  "metrics": [{"name": m} for m in metrics], "limit": limit})
+        if r.status_code != 200:
+            fail("ga4", f"HTTP {r.status_code}: {r.text[:200]}")
+            return None
+        return r.json().get("rows", [])
+
+    # Real session counts FIRST, so the correct number is on screen above the
+    # per-page breakdown instead of depending on the reader remembering the
+    # caveat below. The pagePath report was misread as sessions twice — on
+    # 2026-08-11 and again on 2026-08-15 — and a label alone did not stop it.
+    chan = report(["sessionDefaultChannelGroup"], ["sessions", "totalUsers"])
+    if chan is None:
         return
-    rows = r.json().get("rows", [])
+    print(f"  -- sessões reais por canal: {sum(int(x['metricValues'][0]['value']) for x in chan)} "
+          f"sessões em {days} dias --")
+    for row in sorted(chan, key=lambda x: -int(x["metricValues"][0]["value"])):
+        channel = row["dimensionValues"][0]["value"]
+        sess, users = (v["value"] for v in row["metricValues"])
+        print(f"    {channel:30.30} {sess:>5} sessões · {users:>4} usuários")
+    if not chan:
+        print("    (nenhuma sessão no período)")
+    print()
+
+    rows = report(["pagePath", "sessionDefaultChannelGroup"], ["sessions"])
+    if rows is None:
+        return
     total = sum(int(x["metricValues"][0]["value"]) for x in rows)
     # pagePath, not landingPage: this shows which content gets consumed. One
     # session that views three pages produces three rows, so DO NOT read the
     # row count or this total as a session count — it double-counts. Use
     # landingPagePlusQueryString when you need sessions. (Misread on 2026-08-11:
     # 4 pagePath rows were reported as "4 organic sessions"; there were 2.)
-    print(f"  {len(rows)} linhas · {total} sessões-página (≠ sessões)")
+    print(f"  -- conteúdo consumido: {len(rows)} linhas · {total} sessões-página "
+          f"(≠ sessões — use o bloco acima) --")
     for row in rows:
         page, channel = (v["value"] for v in row["dimensionValues"])
         print(f'    {page:40.40} {channel:22.22} {row["metricValues"][0]["value"]:>5}')

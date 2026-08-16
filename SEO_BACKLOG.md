@@ -254,6 +254,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-05 | SEO-015 — spoke `/impugnacao-laudo-pericial/` | `SEO: Add impugnação de laudo pericial spoke page (SEO-015)` |
 | 2026-08-05 | SEO-017 — spoke `/honorarios-pericia-judicial/` | `SEO: Add honorários periciais spoke page (SEO-017)` |
 | 2026-08-06 | SEO-018 — spoke `/quesitos-periciais/` | `SEO: Add quesitos periciais spoke page (SEO-018)` |
+| 2026-08-16 | SEO-030 — referência `/cpc-prova-pericial/` | `SEO: Add CPC prova pericial reference page (SEO-030)` |
 
 ---
 
@@ -1194,4 +1195,102 @@ Sessões reais de 28 dias, consultadas com `sessionDefaultChannelGroup` e métri
 2. **`google / cpc` com 8 sessões contra zero entrega no Ads em 90 dias** — a observação sem explicação de 13/08 agora tem fonte confirmada. Só se explica por URL com `gclid` ou `utm_medium=cpc` aberta à mão, provavelmente as URLs de destino dos CSVs em `google-ads-import/`. É ruído de teste, não visita comprada.
 3. **O denominador do SEO-029 muda.** O item dizia "não ler conversão antes de ~200 sessões orgânicas; hoje são 4". **São 2.** A limitação declarada lá continua correta — fica ainda mais forte.
 
-**Ação de processo:** a seção `[ga4]` do `tools/seo-report.py` usa `pagePath` de propósito (mostra qual conteúdo é consumido) e imprime "sessões-página (≠ sessões)". O rótulo não bastou — errei duas vezes lendo essa saída. **Próxima execução: acrescentar ao `[ga4]` um segundo bloco com `sessionDefaultChannelGroup` × `sessions`**, para que a contagem correta esteja na tela ao lado da errada e não dependa de quem lê lembrar do aviso.
+**Ação de processo:** a seção `[ga4]` do `tools/seo-report.py` usa `pagePath` de propósito (mostra qual conteúdo é consumido) e imprime "sessões-página (≠ sessões)". O rótulo não bastou — errei duas vezes lendo essa saída. **Próxima execução: acrescentar ao `[ga4]` um segundo bloco com `sessionDefaultChannelGroup` × `sessions`**, para que a contagem correta esteja na tela ao lado da errada e não dependa de quem lê lembrar do aviso. **Feito em 16/08** — ver a execução abaixo.
+
+---
+
+## Execução 2026-08-16
+
+### Dados
+
+`/usr/bin/python3 tools/seo-report.py`, período 2026-07-19 → 2026-08-16.
+
+- **`[deploy]` em dia** — 0 commits pendentes, 12 páginas no sitemap publicado, 12 respondendo 200.
+- **`[valid]` ALL PASS** nas 12 páginas antes da mudança de hoje.
+- **Indexação: 12 de 12 `PASS`.**
+- **Desempenho (28 dias): 148 impressões, 1 clique.** Eram 136 e 1 ontem.
+- **Consultas: 13 linhas, 13 impressões, 0 cliques.** Segue ~91% anonimizado.
+- **GA4 (sessões reais, pelo bloco novo): 43 sessões — 32 Direct, 8 Paid Search, 2 Organic Search, 1 Referral.** Idêntico ao número corrigido em 15/08.
+
+| Página | impr. | pos. |
+|---|---|---|
+| `/quesitos-periciais/` | 50 (1 clique) | 10,3 |
+| `/impugnacao-laudo-pericial/` | 33 | **12,7** (era 13,3) |
+| `/assistente-tecnica/` | 31 | 8,6 |
+| `/pericia-combustiveis/` | 11 | 7,1 |
+| `/honorarios-pericia-judicial/` | 9 | 10,4 |
+| `/classificacao-fiscal-ncm/` | 4 | 9,5 |
+| `/` | 3 | 6,0 |
+| `/prazo-validade-alimentos/` | 3 | 4,7 |
+| `/pericia-industria-quimica/` | 2 | 5,0 |
+| `/pericia-contaminacao-alimentos/` | 1 | 7,0 |
+| `/sobre/` | 1 | 32,0 |
+
+### O CTR destravou hoje — e a leitura honesta é "amostra insuficiente", não "snippet ruim"
+
+O item 2 da lista da execução anterior dizia que a janela de recache abria em 16/08. Abriu. Seguindo o lembrete metodológico que já custou uma conclusão errada em 11/08, **a primeira coisa medida foi até que data a série do GSC vai: 14/08** (dois dias de latência). A janela legível é, portanto, **09/08 → 14/08** — os snippets corrigidos foram publicados em 09/08.
+
+Nessa janela o site teve **102 impressões e 1 clique**, com posição média diária entre 7,1 e 15,9. A um CTR de 2–3%, que é o esperado para a posição ~10, o número previsto de cliques seria **2 a 3**. Observar 1 é resultado **compatível com a hipótese nula** — não é evidência de snippet defeituoso.
+
+**Consequência: o SEO-016 não é reaberto hoje, e a razão fica registrada para não ser reexaminada amanhã.** Reescrever título e description agora significaria (a) agir sobre ruído e (b) destruir a linha de base de 09/08 sem ter aprendido nada com ela. O gatilho passa a ser numérico em vez de temporal: **reabrir metadado quando houver ≥ 300 impressões acumuladas em posição ≤ 10 com CTR abaixo de 1%.** Hoje são ~102 na janela pós-recache.
+
+### Por que esta foi a tarefa de hoje
+
+Com metadado fora e as duas frentes de leitura (grafo interno, SEO-026) fechadas até 19/08, a decisão voltou a ser por intenção — mas desta vez com um sinal de dado que nenhuma execução anterior tinha explorado.
+
+**Entre as 13 consultas visíveis, uma se destaca por natureza: `art. 95, § 3º, ii, do cpc` — posição 9,0.** É a única consulta não procedimental-genérica e não espúria do conjunto, e revela uma lane inteira que o site atende por acidente: **advogado busca por número de artigo.** As demais confirmam o padrão já registrado — 5 da família impugnação, 3 de quesitos, 2 de honorários, 2 de assistente técnico: **100% das consultas visíveis são do cluster processual**, nenhuma temática.
+
+O site cita dezenas de dispositivos do CPC espalhados por dez guias, e **nenhuma página era localizável por artigo**. Cada guia trata um subconjunto em prosa, dentro de 25 a 50 KB de texto, sem âncora por dispositivo. Quem procura "art. 477 §1 cpc prazo" não tem porta de entrada.
+
+Descartadas antes de escolher, por verificação e não por intuição:
+
+1. **Página-pilar "perícia judicial" como hub do cluster.** Termo de cabeça generalista, alta concorrência de portais jurídicos, e intenção majoritariamente informativa (estudante, não contratante). Contra o princípio do mandato de não perseguir volume.
+2. **Cobrir a grafia errada "impunação" no corpo do texto** (opção registrada em 13/08). A página subiu 24,8 → 18,1 → 13,3 → **12,7** em quatro medições sem nenhuma intervenção. Mexer numa curva que está funcionando, para inserir um erro ortográfico deliberado, é risco sem necessidade.
+3. **SEO-026 (`/pericia-ambiental/`, única página muda).** Bloqueada até 19/08 por decisão registrada — a janela de leitura do grafo interno precisa ficar limpa.
+
+### SEO-030 — Referência por artigo: a prova pericial no CPC *(executada em 2026-08-16)*
+
+- **Descrição:** página de referência que reúne os dispositivos que governam a prova pericial, **na ordem em que o processo os aciona**, com âncora própria por artigo, a consequência prática de cada um e todos os prazos da fase reunidos numa tabela única.
+- **URL:** `/cpc-prova-pericial/`
+- **Categoria:** Conteúdo / Spoke de cluster / Cobertura de consulta por dispositivo / AI citation
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 7 · **Valor de negócio:** 9
+- **Priority Score:** 126
+- **Status:** done · **Descoberto:** 2026-08-16 · **Concluído:** 2026-08-16
+- **Implementado:** ~4.740 palavras, 50 KB. Escopo declarado logo na abertura — núcleo nos **arts. 464 a 480** (Seção X), mais os **arts. 156 a 158** (nomeação, escusa e responsabilidade do perito) e os **arts. 95 e 98, §1º, V e VI** (quem adianta, o que a gratuidade cobre). Dezoito entradas com `id` por dispositivo (`#art-465`, `#art-473`, `#art-477`…), cada uma com *o que o artigo dispõe* seguido de *na prática*. Fecha com os **cinco pontos em que a prova pericial se perde**, cada um ligado ao guia que o desenvolve.
+- **O ativo da página é a tabela de prazos.** Onze linhas — ato, quem pratica, prazo, termo inicial, base legal — cobrindo os arts. 465 §§1º–3º, 157 §1º, 466 §2º, 476, 477 caput e §§1º, 2º e 4º, e 468 §2º. Essa informação existe dispersa por quatro trechos do código e por dez páginas do próprio site; em lugar nenhum ela estava reunida. É o tipo de bloco autossuficiente e verificável que um LLM cita inteiro, e que um advogado com prazo correndo consulta em vez de ler.
+- **Por que uma página de referência e não um décimo primeiro guia:** os dez guias existentes respondem *como fazer*. Nenhum responde *qual dispositivo rege este ato e quanto tempo eu tenho*. São tipos de página distintos, com consultas distintas — por isso a canibalização é estruturalmente baixa, e não uma promessa.
+- **Canibalização — medida, não presumida.** Nenhum texto foi copiado de outra página e **nada foi encurtado em página alguma**. A sobreposição real é com o calendário da perícia em `/assistente-tecnica/` e com a tabela das três vias em `/impugnacao-laudo-pericial/`; nos dois casos a página nova é mais rasa de propósito (uma linha de tabela, não uma seção) e aponta para a página profunda. O diff confirma: **25 inserções, 1 remoção** fora do arquivo novo, e a única remoção é a data do `llms.txt`.
+- **Links de entrada:** 5 — oitavo card de Insights na home e um item no bloco "Continue lendo" das quatro páginas do cluster processual (`/assistente-tecnica/`, `/quesitos-periciais/`, `/impugnacao-laudo-pericial/`, `/honorarios-pericia-judicial/`), com **âncora diferente em cada uma**. Deliberadamente **não** foi linkada das seis páginas de matéria técnica: a hierarquia criada em 12/08 (SEO-019) diz que spoke processual se liga ao próprio cluster, e inflar inbound contra essa regra desfaria o trabalho de dez dias atrás.
+- **Perturbação da janela de medição do grafo — declarada, não escondida.** A leitura do efeito do SEO-019 estava marcada para 19/08 e publicar qualquer página acrescenta arestas. As arestas novas foram mantidas no mínimo (5 inbounds, todos aditivos) e **nenhum link existente foi alterado ou removido** — verificado por diff. As posições das 11 páginas antigas seguem legíveis; o que muda é que a partir de hoje há um 13º nó no grafo. Registrar isso vale mais do que fingir que a janela continua intocada.
+- **Verificação factual — texto literal da lei, não memória.** O Planalto voltou a recusar a ferramenta de fetch (padrão já registrado em SEO-018 e SEO-020); contornado com `curl` e user-agent de navegador, com extração e leitura integral dos arts. 464–480, 156–158, 95 e 98 da Lei nº 13.105/2015. **Cada número, prazo e inciso da página foi conferido contra esse texto.** Dois pontos que a redação de memória teria errado:
+  1. **O prazo de entrega do laudo não é fixo em lei.** É fixado pelo juiz "de imediato" no ato de nomeação (art. 465, caput). O que a lei fixa é o teto: 20 dias antes da audiência (art. 477, caput). Boa parte do conteúdo concorrente afirma um prazo legal que não existe.
+  2. **A prorrogação do art. 476 é única e pela metade** do prazo originalmente fixado — não uma prorrogação genérica a critério do juiz.
+  - Confirmados ainda, entre outros: os três incisos do art. 465, §1º vencendo **no mesmo prazo**; os 5 dias do §2º e os 5 dias comuns do §3º; o teto de 50% de adiantamento e a redução por perícia deficiente (§§4º e 5º); a antecedência mínima de 5 dias **comprovada nos autos** do art. 466, §2º; a inabilitação de 5 anos do perito que não restitui (art. 468, §2º); o alcance do art. 473, §3º **ao perito e aos assistentes**; a exigência do art. 473, III de demonstrar que o método é **predominantemente aceito**; e o art. 480, §3º ("não substitui a primeira").
+- **Schema:** `Article` com `isPartOf` apontando para o pilar, `datePublished`/`dateModified` 16/08 espelhados em `<time datetime>` visível, `citation` do tipo `Legislation` referenciando a Lei nº 13.105/2015 com URL do Planalto (é a primeira página do site a declarar a fonte legal em dado estruturado), `FAQPage` de 8 itens com paridade textual exata verificada por script, e `BreadcrumbList` de três níveis.
+- **Não entrou no `hasOfferCatalog` da home**, pela mesma regra de honestidade do SEO-028: é página de referência, não serviço contratável.
+- **Validação executada:** `[valid]` **ALL PASS nas 13 páginas** — title 52 caracteres, description 156, `og:title`/`twitter:title` idênticos ao `<title>`, zero title duplicado, canonical correto, um `<h1>`, todo JSON-LD parseando, zero link interno quebrado e **zero âncora inexistente** (a página tem 18 âncoras próprias), sitemap idêntico ao sistema de arquivos, nenhuma órfã, datas coerentes, referências de schema sem URL relativa. Balanceamento de tags conferido por `html.parser` nos 6 arquivos tocados: nenhuma tag pendente. Renderização conferida no navegador a **1280 px** (zero overflow do documento, tabela de 5 colunas cabendo em 832 px) e a **375 px** (zero overflow do documento, tabela rolando dentro do próprio contêiner, `scrollWidth` 583 contra `clientWidth` 311). Home confirmada com os 8 cards e sem overflow.
+- **Zero CSS novo** exceto uma regra (`.art-entry`) para o espaçamento das entradas por artigo e `scroll-margin-top` nos `h3` com âncora, para que o link direto não esconda o título sob o cabeçalho fixo.
+- **Nenhuma medição em curso foi tocada — verificado por diff.** Nas 12 páginas antigas: **0 `<title>`, 0 `meta description` e 0 links internos existentes alterados.**
+
+### Correção do relatório do GA4 — bloco de sessões reais *(mesma execução)*
+
+A ação de processo registrada em 15/08 foi executada. O `[ga4]` do `tools/seo-report.py` agora imprime **primeiro** um bloco `sessionDefaultChannelGroup × sessions + totalUsers` — a contagem correta —, e só depois o detalhamento por `pagePath`, agora rotulado "conteúdo consumido … (≠ sessões — use o bloco acima)". A ordem importa: o número certo aparece **antes** do número que já foi lido errado duas vezes, em vez de depender de quem lê lembrar do aviso. Saída conferida: 43 sessões, idêntico ao número apurado à mão em 15/08.
+
+### O que segue em aberto
+
+- **SEO-026** (`/pericia-ambiental/`, única página com zero impressão em 28 dias) — depois de 19/08.
+- **SEO-016** (metadados) — **reaberto por gatilho numérico**, não por data: ≥ 300 impressões acumuladas em posição ≤ 10 com CTR < 1%.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, coberto por checagem automática.
+- **SEO-005** (`_headers` inerte no GitHub Pages) — sem mudança.
+- **SEO-009** (perfil no Google Business) — bloqueado por verificação de identidade da proprietária.
+- **Google Ads sem entrega** — uma campanha habilitada, zero impressão em 90 dias, estrutura de grupos nunca importada. Fora do mandato de SEO. **Vale um aviso à cliente** — pendente há três execuções.
+
+### Próxima execução — o que checar primeiro
+
+1. **`/usr/bin/python3 tools/seo-report.py` como primeiro passo.** `[deploy]` acusando deriva ⇒ publicar é a tarefa do dia.
+2. **Indexação de `/cpc-prova-pericial/`.** A latência medida nesta propriedade é de 1 a 4 dias. Só investigar se continuar fora depois de ~20/08.
+3. **Consultas por número de artigo.** É a tese que esta página testa. Vigiar o aparecimento de `art. 465 cpc`, `art. 477 §1 cpc`, `art. 473 cpc`, `prazo quesitos cpc`, `art. 480 cpc` no relatório. Prazo de leitura: **7 a 14 dias a partir de 16/08**. Se a lane confirmar, o padrão a replicar é o de página de referência — não mais um guia.
+4. **Efeito do grafo interno (SEO-019): ler a partir de 19/08**, lembrando que o grafo ganhou um 13º nó em 16/08 e 5 arestas novas.
+5. **`/impugnacao-laudo-pericial/`: 24,8 → 18,1 → 13,3 → 12,7.** Melhora consistente em quatro medições, sem intervenção. **Não mexer** enquanto a curva subir.
+6. **CTR:** só reabrir metadado pelo gatilho numérico acima. Confirmar sempre até que data a série do GSC vai antes de tratar um zero como resultado.
+7. **Não repetir a premissa de tráfego pago.** Consultar a API do Ads antes de usar esse argumento.
