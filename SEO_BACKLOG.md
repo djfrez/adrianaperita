@@ -1368,9 +1368,33 @@ A maior nota do dia é o **SEO-032** (fóssil de navegação, 171,5) e ela foi *
 - **Categoria:** Arquitetura de links internos / UX / Rastreabilidade
 - **Impacto:** 7 · **Esforço:** 2 · **Confiança:** 7 · **Valor de negócio:** 7
 - **Priority Score:** 171,5
-- **Status:** open · **Descoberto:** 2026-08-18
-- **Por que não foi executada hoje:** é a maior nota do backlog aberto, e mesmo assim foi adiada. Trocar a navegação de 14 páginas altera o grafo interno inteiro no dia anterior à abertura da janela de leitura do SEO-019 — destruiria de forma irreversível uma medição que custa 24 horas de espera. **Executar em 19/08, depois de registrada a leitura.**
+- **Status:** done · **Descoberto:** 2026-08-18 · **Concluído:** 2026-08-19
+- **Por que foi adiada em 18/08:** é a maior nota do backlog aberto, e mesmo assim foi adiada. Trocar a navegação de 14 páginas altera o grafo interno inteiro no dia anterior à abertura da janela de leitura do SEO-019 — destruiria de forma irreversível uma medição que custa 24 horas de espera. **Executar em 19/08, depois de registrada a leitura.**
 - **Nota de escopo:** a correção não é trocar um destino por outro. É dar à navegação uma porta para o conjunto — rótulo "Guias" ou "Referência" apontando para um índice, ou para `/#insights` enquanto o índice não existir. Avaliar as duas na execução.
+
+#### SEO-032 — execução *(2026-08-19)*
+
+- **Leitura do SEO-019 registrada antes de tocar no grafo** (a janela abria hoje; ver bloco "Leitura do grafo interno" abaixo). Só depois disso a navegação foi alterada.
+- **O que mudou, nas 14 páginas:**
+  1. **Removido o link `Alimentos → /pericia-contaminacao-alimentos/`** das `<nav>` — 14 ocorrências (13 desktop + a `nav.mobile` da home; a própria página de contaminação não linkava para si). Era o link sitewide mais forte do site apontando, sob um rótulo de categoria, para um artigo específico com 1 impressão em 28 dias.
+  2. **Rótulo `Insights` → `Guias`** nos 15 itens de navegação que já apontavam para `#insights`. O `id="insights"` **não** mudou: âncoras externas, `llms.txt` e links antigos continuam válidos.
+  3. **`<h2>` da seção na home: "Insights técnicos" → "Guias técnicos"**, e o mesmo no cabeçalho do `llms.txt`. Sem isso, quem clicasse em "Guias" aterrissaria sob um título que dizia outra coisa — quebra de rastro de informação.
+- **Por que não se criou uma página-índice `/guias/`:** a navegação já tinha uma porta para o conjunto; ela estava com o nome errado, competindo com um fóssil. Renomear resolve o problema sem uma 15ª página, sem CSS novo e sem diluir o `#insights` que já concentra os links. Se o conjunto passar de ~15 guias, reavaliar.
+- **Escolha deliberada de escopo — o índice segue parcial (9 de 12).** `/pericia-ambiental/`, `/pericia-combustiveis/` e `/pericia-industria-quimica/` continuam fora da grade de `#insights`, alcançáveis só por um link inline dentro de `#expertise`. Adicioná-las hoje daria a essas três exatamente a aresta de entrada que o **SEO-026** existe para medir, uma por vez — o mesmo motivo que adiou este item ontem. Fica registrado como o primeiro candidato do SEO-026.
+- **Não tocado de propósito:** o breadcrumb de `/prazo-validade-alimentos/` (`Início / Alimentos / Prazo de validade`) continua apontando para a página de contaminação. Não é fóssil de navegação: é afirmação de hierarquia, espelhada no `BreadcrumbList`. Mexer exigiria mudar os dois juntos, e o rótulo ali é correto no contexto.
+- **Efeito no grafo:** −14 arestas para `/pericia-contaminacao-alimentos/` (de 14 sitewide para as contextuais). Nenhuma página ficou órfã — todas as 12 de conteúdo seguem alcançáveis a partir da home em um salto. **A leitura do SEO-026 nessa página passa a ter esta remoção como variável concorrente, além da aresta ganha em 19/08 pela correção da CP 1.362/2025.**
+- **Validação executada:** `[valid]` ALL PASS nas 14 páginas · balanceamento de tags por `html.parser` OK nas 14 · `[deploy]` sem deriva antes da mudança · breadcrumb do `/prazo-validade-alimentos/` conferido intacto após o script. **Zero CSS novo.**
+
+### Leitura do grafo interno — SEO-019, janela de 28 dias *(2026-08-19)*
+
+Números do `[gsc]`, 28 dias: **1 clique · 189 impressões · 11 páginas com impressão**. GA4: **47 sessões**, das quais **2 de busca orgânica** (35 diretas, 8 de Paid Search).
+
+- **`/quesitos-periciais/` — 60 impressões, posição 10,2, o único clique do período.** É a página mais exposta do site.
+- **`/assistente-tecnica/` — 43 impressões em posição 8,8**, zero clique. É a melhor posição entre as páginas de volume; nenhuma conversão de impressão em clique.
+- **`/impugnacao-laudo-pericial/` — 44 impressões, posição 13,8.** A série é 24,8 → 18,1 → 13,3 → 12,7 → 13,8. A melhora parou, com impressões subindo de 39 para 44. **Segue sem mexer** — duas medições laterais não são reversão.
+- **Consultas por identificador de norma/artigo:** `art. 95, § 3º, II, do CPC` aparece em **posição 9** — a primeira evidência de que a faixa por identificador (aberta em 16/08 com `/cpc-prova-pericial/`) pega tráfego. Nenhuma consulta por número de norma ainda (relógio desde 18/08, leitura a partir de ~01/09).
+- **Erros de grafia nas consultas:** `impunação`, `impugnação ao/de/laudo` em quatro variantes. O site não tem por que perseguir erro de digitação, mas confirma que a intenção de impugnação é a mais buscada entre as que já alcançam o site.
+- **Conclusão sobre o SEO-019:** com 1 clique no período inteiro, **não há sinal suficiente para atribuir efeito à diferenciação do bloco "Continue lendo"**. O que a janela mede hoje é exposição, não comportamento. Reabrir a leitura quando o total de cliques do período passar de ~10.
 
 ### O que segue em aberto
 
@@ -1390,4 +1414,22 @@ A maior nota do dia é o **SEO-032** (fóssil de navegação, 171,5) e ela foi *
 4. **Consultas por identificador.** Duas faixas agora: artigo do CPC (relógio desde 16/08, leitura até ~30/08) e **número de norma** (relógio desde 18/08). Vigiar `rdc 275 vigente`, `nbr 10004 2024`, `gasolina e30 especificação`, `conama 420`, `in 338 polícia federal`.
 5. **`/impugnacao-laudo-pericial/`: 24,8 → 18,1 → 13,3 → 12,7 → 13,8.** A curva parou de melhorar, com impressões subindo de 14 para 39. Uma medição não é reversão — **continuar sem mexer** e reavaliar na próxima.
 6. **`/classificacao-fiscal-ncm/` caiu de 9,0 para 25,4** com 5 impressões. Volume baixo demais para conclusão; anotado para confirmar na próxima.
+7. **Confirmar sempre até que data a série do GSC vai** antes de tratar um zero como resultado.
+
+### O que segue em aberto *(após 19/08)*
+
+- **SEO-026** (páginas mudas) — **é a maior nota aberta agora.** Primeiro candidato definido: incluir `/pericia-ambiental/`, `/pericia-combustiveis/` e `/pericia-industria-quimica/` na grade de `#insights` da home, **uma por vez**, para que a aresta ganha seja atribuível. Hoje elas só têm um link inline dentro de `#expertise`.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, coberto por checagem automática.
+- **SEO-016** (metadados) — gatilho: ≥ 300 impressões acumuladas em posição ≤ 10 com CTR < 1%. Hoje: **189 impressões no período**, com `/assistente-tecnica/` (43 imp., pos. 8,8) e `/quesitos-periciais/` (60 imp., pos. 10,2) sendo os dois casos que empurram o gatilho. Se a próxima leitura mantiver a trajetória, **este vira o item do dia**.
+- **SEO-005** (`_headers` inerte) e **SEO-009** (Google Business, bloqueado por verificação de identidade) — sem mudança.
+- **Google Ads sem entrega** — uma campanha habilitada, zero impressão em 90 dias, enquanto o GA4 registra 8 sessões de Paid Search no período (ou seja: há entrega em alguma campanha, não na que está sendo observada). Fora do mandato de SEO. **Aviso à cliente pendente há cinco execuções.**
+
+### Próxima execução — o que checar primeiro
+
+1. **`/usr/bin/python3 tools/seo-report.py` como primeiro passo**, em chamadas separadas (`deploy valid`, depois `gsc ga4`): a inspeção de URL estoura o timeout de uma execução única. Em 19/08 a chamada única levou ~2 min e foi ao background.
+2. **Confirmar o efeito da mudança de navegação.** Duas coisas para observar, e nenhuma delas é clique: (a) `/pericia-contaminacao-alimentos/` perdeu 14 arestas sitewide — se a impressão dela cair de 1 para 0, isso é ruído, não causa; (b) o rótulo "Guias" só afeta comportamento de visitante, não ranking. **Não atribuir movimento de posição a esta mudança.**
+3. **SEO-026, primeira das três páginas.** Escolher uma, adicionar o card em `#insights`, e **não tocar nas outras duas** até a leitura seguinte.
+4. **Consultas por identificador.** `art. 95, § 3º, II, do CPC` já apareceu em posição 9 — a faixa funciona. Vigiar agora as de número de norma: `rdc 275 vigente`, `nbr 10004 2024`, `gasolina e30 especificação`, `conama 420`, `in 338 polícia federal`.
+5. **`/classificacao-fiscal-ncm/`: 9,0 → 25,4 → 22,3** com 6 impressões. Duas leituras ruins seguidas, mas volume baixo demais para agir. Terceira leitura ruim ⇒ investigar canibalização com `/normas-tecnicas-pericia/`.
+6. **1 clique em 28 dias é o número que importa.** Enquanto o total de cliques do período for de um dígito, nenhuma leitura de CTR, de bloco "Continue lendo" ou de efeito de link interno tem poder estatístico. Priorizar o que aumenta **exposição** (cobertura, novas faixas de consulta) sobre o que otimiza **conversão de impressão**.
 7. **Confirmar sempre até que data a série do GSC vai** antes de tratar um zero como resultado.

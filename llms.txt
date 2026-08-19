@@ -53,7 +53,7 @@ Desambiguação de entidade: esta é Adriana Rezende **engenheira química (UNIC
 - Indústrias químicas e petroquímicas
 - Juízes e escrivães que necessitam de perito especializado
 
-## Insights Técnicos
+## Guias Técnicos
 
 - "Assistente técnico na perícia judicial: o que faz, quando contratar e como escolher" — https://adrianarezende.com.br/assistente-tecnica/ — guia sobre a diferença entre perito judicial e assistente técnico, o prazo de 15 dias do art. 465, §1º do CPC/2015 para indicação e quesitos, o prazo de parecer do art. 477, §1º, a apreciação da prova pericial pelo juiz (art. 479), a nova perícia (art. 480) e as falhas metodológicas mais comuns em laudos de matéria química, alimentar e ambiental (amostragem não representativa, cadeia de custódia rompida, norma revogada, limite de quantificação ignorado); inclui a seção de referência sobre **parecer técnico** (https://adrianarezende.com.br/assistente-tecnica/#parecer-tecnico): definição, tabela comparativa laudo pericial × parecer técnico em seis dimensões, as sete partes de um parecer utilizável, os poderes instrutórios do assistente do art. 473, §3º (ouvir testemunhas, obter informações, requisitar documentos de terceiros e de repartições públicas), a comunicação prévia de 5 dias das diligências do art. 466, §2º, e o uso do parecer **antes** da perícia — dispensa da prova pericial pelo art. 472 e perícia consensual do art. 471, que substitui para todos os efeitos a perícia por perito nomeado (§3º)
 
