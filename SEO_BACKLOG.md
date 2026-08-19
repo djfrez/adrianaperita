@@ -1294,3 +1294,100 @@ A ação de processo registrada em 15/08 foi executada. O `[ga4]` do `tools/seo-
 5. **`/impugnacao-laudo-pericial/`: 24,8 → 18,1 → 13,3 → 12,7.** Melhora consistente em quatro medições, sem intervenção. **Não mexer** enquanto a curva subir.
 6. **CTR:** só reabrir metadado pelo gatilho numérico acima. Confirmar sempre até que data a série do GSC vai antes de tratar um zero como resultado.
 7. **Não repetir a premissa de tráfego pago.** Consultar a API do Ads antes de usar esse argumento.
+
+---
+
+## Execução 2026-08-18
+
+Não houve execução em 17/08. Esta é a primeira depois do SEO-030.
+
+### Dados
+
+`/usr/bin/python3 tools/seo-report.py`, período 2026-07-21 → 2026-08-18.
+
+- **`[deploy]` em dia** — 0 commits pendentes, 13 páginas no sitemap publicado, 13 respondendo 200.
+- **`[valid]` ALL PASS** nas 13 páginas (antes da mudança de hoje).
+- **Indexação: 13 de 13 `PASS`.** Duas falharam por timeout na primeira chamada (`/cpc-prova-pericial/` e `/pericia-industria-quimica/`) e passaram na repetição — a mesma falha de rede de 13/08, e mais uma confirmação de que `FAIL` de inspeção só vira diagnóstico depois de repetido.
+- **`/cpc-prova-pericial/` indexada**, último rastreamento em 17/08 às 22:57 UTC — **um dia** depois da publicação, dentro da latência de 1 a 4 dias medida nesta propriedade.
+- **Desempenho (28 dias): 157 impressões, 1 clique.** Eram 115 e 1 em 13/08.
+- **GA4: 45 sessões** — 34 Direct, 8 Paid Search, 2 Organic Search, 1 Referral. Zero eventos de contato.
+
+| Página | impr. | pos. |
+|---|---|---|
+| `/quesitos-periciais/` | 51 (1 clique) | 10,3 |
+| `/impugnacao-laudo-pericial/` | 39 | 13,8 |
+| `/assistente-tecnica/` | 31 | 8,6 |
+| `/pericia-combustiveis/` | 11 | 7,1 |
+| `/honorarios-pericia-judicial/` | 10 | 10,4 |
+| `/classificacao-fiscal-ncm/` | 5 | 25,4 |
+| `/` | 3 | 6,0 |
+| `/prazo-validade-alimentos/` | 3 | 4,7 |
+| `/pericia-industria-quimica/` | 2 | 5,0 |
+| `/pericia-contaminacao-alimentos/` | 1 | 7,0 |
+| `/sobre/` | 1 | 32,0 |
+
+### A leitura que decidiu o dia: a faixa de consulta por dispositivo respondeu
+
+`art. 95, § 3º, ii, do cpc` apareceu nas consultas visíveis em **posição 9**, dois dias depois da publicação do SEO-030. É **um** ponto, não uma série — a janela de leitura declarada em 16/08 vai até ~30/08 e continua valendo. Mas é o primeiro sinal na direção da tese, e ele é qualitativamente diferente de tudo que o site recebia: uma consulta por **identificador de norma**, não por substantivo temático.
+
+Isso importa porque o diagnóstico do **SEO-026** é exatamente esse: as páginas mudas (`/pericia-ambiental/`, `/pericia-contaminacao-alimentos/`, `/prazo-validade-alimentos/`) são as que disputam substantivo temático de alta concorrência. A faixa por identificador é a porta de entrada que falta a elas — e no lado técnico o identificador não é o artigo do CPC, é **o número da norma**: `RDC 275/2002`, `CONAMA 420/2009`, `NBR 10004 2024`, `Resolução ANP 807/2020`.
+
+### Por que não foi a tarefa de maior nota
+
+A maior nota do dia é o **SEO-032** (fóssil de navegação, 171,5) e ela foi **adiada por um dia, de propósito**. A leitura do efeito do grafo interno (SEO-019) abre em 19/08; mudar a navegação de 14 páginas hoje destruiria essa leitura de forma irreversível, e ela custa 24 horas de espera. As três frentes de conteúdo fechadas por data continuam fechadas: metadados só pelo gatilho numérico (157 impressões acumuladas, longe das 300), e SEO-026 não antes de 19/08.
+
+### SEO-031 — Quadro de vigência das normas técnicas *(executada em 2026-08-18)*
+
+- **Descrição:** página de referência que reúne as normas invocadas nas perícias do site — ANVISA, CONAMA, ANP, ABNT, Receita Federal, Polícia Federal, MAPA, CNJ — com a **situação de cada uma na data da publicação** e o marco de vigência que a alterou.
+- **URL:** `/normas-tecnicas-pericia/`
+- **Categoria:** Conteúdo / Referência / Cobertura de consulta por identificador de norma / AI citation
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 7 · **Valor de negócio:** 9
+- **Priority Score:** 126
+- **Status:** done · **Descoberto:** 2026-08-18 · **Concluído:** 2026-08-18
+- **A tese é a do SEO-030, aplicada ao corpo técnico.** O CPC tem uma página de referência por artigo; a matéria técnica não tinha nenhuma. São tipos de consulta distintos dos dez guias: o guia responde *como se prova*; esta página responde *qual norma rege isso e se ela ainda vale*.
+- **O ativo é o quadro de vigência.** 30 linhas — matéria, norma, o que rege, situação em 18/08/2026 — cobrindo alimentos, ambiental, química industrial, combustíveis, fiscal/aduaneiro e laboratório/processo. Essa informação existia dispersa por seis páginas do site e em lugar nenhum estava reunida, e **não existe equivalente público em português para perícia**. Oito entradas com âncora própria (`#nbr-10004`, `#anp-807`, `#rdc-275`, `#conama-430`, `#nbr-14725`, `#in-pf-338`, `#multa-aduaneira`, `#cnj-232`) desenvolvem as alterações recentes que ainda circulam na versão vencida. Fecha com as três armadilhas de vigência e com as fontes públicas de conferência por órgão.
+- **A regra que organiza a página:** a norma técnica é parâmetro de exigibilidade, logo a versão aplicável é a vigente **na data do fato**, não a do dia do laudo. Norma errada é defeito de método — atacável pelos arts. 473, III e 479 do CPC/2015. Isso liga a página ao cluster processual sem repetir o que ele já diz.
+- **Verificação factual — e um achado que corrige o próprio site.** Nove pontos foram checados em fonte hoje, e **um deles mostrou que o site estava incompleto num ponto material**:
+  1. **A gasolina mudou em 01/08/2025.** A gasolina C comum passou a **30% de etanol anidro (E30)** e a premium a 25%, por determinação da **Resolução CNPE nº 9, de 25/06/2025**; a **Resolução ANP nº 988/2025** ajustou a especificação da Resolução ANP nº 807/2020 e elevou o **RON mínimo de 93 para 94**. `/pericia-combustiveis/` citava a 807/2020 sem a alteração. **O teor de etanol é o ensaio central da perícia de adulteração de gasolina** — aplicar o limite antigo a uma coleta posterior a 01/08/2025 produz um "fora de especificação" inexistente, e o inverso produz uma conformidade inexistente. Corrigido na página (FAQ visível, `FAQPage` e a linha da tabela de ensaios), com `dateModified` movido para 18/08 por ser mudança substantiva.
+  2. **RDC 275/2002 segue vigente.** A CP nº 1.362/2025 foi publicada em 11/12/2025, o prazo de contribuições se encerrou e a norma final não foi publicada. A redação de `/pericia-contaminacao-alimentos/` diz "em andamento" — **ficou impreciso e entra como pendência de manutenção**, não corrigido hoje porque a página está sob observação do SEO-026 até 19/08.
+  3. **NBR 10004:2024** — transição até 31/12/2026 confirmada, classes I/II-A/II-B → Classe 1 e Classe 2.
+  4. **CONAMA 430/2011** — vigente, com minuta propondo revogação integral e substituição por resolução de número novo.
+  5. **IN DG/PF nº 338/2026** — publicada em 29/07/2026 e **em vigor desde 03/08/2026** (data que o site ainda não registrava), revogou as INs 166/2020 e 211/2021 e **não alterou** a relação de produtos da Portaria MJSP 204/2022.
+  6. **Resolução CNJ 232/2016** — vigente, reajuste anual em janeiro pelo IPCA-E, GT de revisão em curso, e o juiz pode superar o teto em até cinco vezes de forma fundamentada.
+  - Confirmados ainda: Resolução ANP 968/2024 em vigor desde 31/07/2024; RDC 727/2022 desde 01/09/2022; Guia ANVISA nº 16/2018 v3 desde 03/04/2025 e **não normativo**; art. 84 da MP 2.158-35/2001 revogado pela LC 227/2026; multa de ofício qualificada em 100% pela Lei 14.689/2023.
+- **Links de entrada: 5** — nono card de Insights na home e um item no bloco "Continue lendo" de `/quesitos-periciais/`, `/pericia-combustiveis/`, `/pericia-industria-quimica/` e `/classificacao-fiscal-ncm/`, com âncora diferente em cada. **As três páginas do SEO-026 foram deixadas intactas de propósito** — receberão o link em 19/08, junto com o trabalho daquela tarefa, para que o efeito seja atribuível.
+- **Perturbação da janela do grafo — declarada.** 5 arestas novas, todas aditivas. **Diff confirma: zero `<title>`, zero `meta description` e zero link interno existente alterado ou removido** em qualquer página. A única mudança não aditiva do dia é a correção factual do E30.
+- **Schema:** `Article` com `isPartOf` apontando para o pilar, `datePublished`/`dateModified` 18/08 espelhados em `<time datetime>` visível, `FAQPage` de 8 itens e `BreadcrumbList` de três níveis. O FAQ visível e o `FAQPage` são **gerados da mesma lista no script de build** — a paridade é estrutural, não conferida depois.
+- **Validação executada:** `[valid]` **ALL PASS nas 14 páginas**. Balanceamento de tags conferido por `html.parser` nos 6 arquivos tocados: nenhuma pendência. `sitemap.xml` parseia, 14 URLs. Renderização conferida no navegador a **1280 px** (zero overflow do documento; tabela de 4 colunas em 832 px) e a **375 px** (zero overflow do documento; tabela rolando dentro do contêiner, `scrollWidth` 544 contra `clientWidth` 311). Home confirmada com os 9 cards e sem overflow. **Zero CSS novo** — a página reaproveita integralmente o shell visual das existentes.
+- **Manutenção — esta é a página com maior custo de manutenção do site, e isso é deliberado.** Ela afirma a situação de 30 normas numa data. Duas já têm gatilho conhecido: a **transição da NBR 10004 vence em 31/12/2026** e a **norma que substituir a RDC 275/2002** pode sair a qualquer momento. Enquanto a data declarada for mantida honesta, a página vale mais desatualizando-se em público do que um texto sem data que envelhece em silêncio.
+
+### SEO-032 — A navegação de todas as páginas oferece um único destino de conteúdo
+
+- **Descrição:** a `<nav>` persistente das 14 páginas traz **um** link de conteúdo, rotulado "Alimentos", apontando para `/pericia-contaminacao-alimentos/`. É um fóssil de 03/08, quando o site tinha três páginas. Hoje são doze guias e páginas de referência, e onze delas só são alcançáveis pela navegação depois de um desvio pela home. Pior: o link sitewide mais forte do site — 14 inbounds — aponta para a página com **1 impressão em 28 dias**, e o rótulo é um nome de categoria que leva a um artigo específico.
+- **URL:** as 14 páginas
+- **Categoria:** Arquitetura de links internos / UX / Rastreabilidade
+- **Impacto:** 7 · **Esforço:** 2 · **Confiança:** 7 · **Valor de negócio:** 7
+- **Priority Score:** 171,5
+- **Status:** open · **Descoberto:** 2026-08-18
+- **Por que não foi executada hoje:** é a maior nota do backlog aberto, e mesmo assim foi adiada. Trocar a navegação de 14 páginas altera o grafo interno inteiro no dia anterior à abertura da janela de leitura do SEO-019 — destruiria de forma irreversível uma medição que custa 24 horas de espera. **Executar em 19/08, depois de registrada a leitura.**
+- **Nota de escopo:** a correção não é trocar um destino por outro. É dar à navegação uma porta para o conjunto — rótulo "Guias" ou "Referência" apontando para um índice, ou para `/#insights` enquanto o índice não existir. Avaliar as duas na execução.
+
+### O que segue em aberto
+
+- **SEO-032** (fóssil de navegação, 171,5) — **em 19/08, logo após a leitura do grafo.**
+- **SEO-026** (as três páginas mudas) — a partir de 19/08, uma por vez, agora com a hipótese reforçada: a porta de entrada que falta é por **identificador de norma**, e `/normas-tecnicas-pericia/` é a página que abre essa faixa. Incluir nelas o link para o quadro de vigência nessa mesma execução.
+- **Manutenção factual pendente:** `/pericia-contaminacao-alimentos/` descreve a CP 1.362/2025 como "em andamento"; o prazo de contribuições já se encerrou. Corrigir junto com o SEO-026, que toca a mesma página.
+- **SEO-016** (metadados) — gatilho numérico: ≥ 300 impressões acumuladas em posição ≤ 10 com CTR < 1%. Hoje: 157.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, coberto por checagem automática.
+- **SEO-005** (`_headers` inerte) e **SEO-009** (Google Business, bloqueado por verificação de identidade) — sem mudança.
+- **Google Ads sem entrega** — uma campanha habilitada, zero impressão em 90 dias. Fora do mandato de SEO. **Aviso à cliente pendente há quatro execuções.**
+
+### Próxima execução — o que checar primeiro
+
+1. **`/usr/bin/python3 tools/seo-report.py` como primeiro passo.** `[deploy]` acusando deriva ⇒ publicar é a tarefa do dia. Rodar `deploy valid` e `gsc ga4` em chamadas separadas: a inspeção de URL leva minutos e estoura o timeout de uma execução única.
+2. **Ler o efeito do grafo interno (SEO-019)** — a janela abre em 19/08. Lembrar que o grafo ganhou o 13º nó em 16/08 (5 arestas) e o 14º em 18/08 (5 arestas), ambas aditivas.
+3. **Executar o SEO-032 logo depois da leitura.** É a maior nota aberta e está pronta há um dia.
+4. **Consultas por identificador.** Duas faixas agora: artigo do CPC (relógio desde 16/08, leitura até ~30/08) e **número de norma** (relógio desde 18/08). Vigiar `rdc 275 vigente`, `nbr 10004 2024`, `gasolina e30 especificação`, `conama 420`, `in 338 polícia federal`.
+5. **`/impugnacao-laudo-pericial/`: 24,8 → 18,1 → 13,3 → 12,7 → 13,8.** A curva parou de melhorar, com impressões subindo de 14 para 39. Uma medição não é reversão — **continuar sem mexer** e reavaliar na próxima.
+6. **`/classificacao-fiscal-ncm/` caiu de 9,0 para 25,4** com 5 impressões. Volume baixo demais para conclusão; anotado para confirmar na próxima.
+7. **Confirmar sempre até que data a série do GSC vai** antes de tratar um zero como resultado.

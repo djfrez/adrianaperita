@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://adrianarezende.com.br/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/"/>
@@ -24,7 +24,7 @@
   </url>
   <url>
     <loc>https://adrianarezende.com.br/classificacao-fiscal-ncm/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/classificacao-fiscal-ncm/"/>
@@ -45,14 +45,14 @@
   </url>
   <url>
     <loc>https://adrianarezende.com.br/pericia-combustiveis/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-combustiveis/"/>
   </url>
   <url>
     <loc>https://adrianarezende.com.br/pericia-industria-quimica/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/pericia-industria-quimica/"/>
@@ -73,7 +73,7 @@
   </url>
   <url>
     <loc>https://adrianarezende.com.br/quesitos-periciais/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/quesitos-periciais/"/>
@@ -84,6 +84,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/prazo-validade-alimentos/"/>
+  </url>
+  <url>
+    <loc>https://adrianarezende.com.br/normas-tecnicas-pericia/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/normas-tecnicas-pericia/"/>
   </url>
   <url>
     <loc>https://adrianarezende.com.br/cpc-prova-pericial/</loc>
