@@ -40,7 +40,7 @@
     "inLanguage": "pt-BR",
     "mainEntityOfPage": "https://adrianarezende.com.br/pericia-ambiental/",
     "datePublished": "2026-08-04",
-    "dateModified": "2026-08-12",
+    "dateModified": "2026-08-21",
     "image": "https://adrianarezende.com.br/headshot.jpg",
     "author": {
       "@type": "Person",
@@ -77,7 +77,8 @@
       { "@type": "Thing", "name": "Perícia Ambiental" },
       { "@type": "Thing", "name": "Área Contaminada" },
       { "@type": "Thing", "name": "Passivo Ambiental" },
-      { "@type": "Thing", "name": "Resíduos Perigosos" }
+      { "@type": "Thing", "name": "Resíduos Perigosos" },
+      { "@type": "Thing", "name": "Quesitos Periciais" }
     ]
   }
   </script>
@@ -85,67 +86,91 @@
   <!-- ─── Structured Data: FAQPage ─── -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "O que caracteriza uma área contaminada?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Tecnicamente, é a área onde se comprova a presença de substância química em concentração acima do Valor de Investigação definido pela Resolução CONAMA nº 420/2009, com potencial de risco à saúde humana ou ao meio ambiente. A resolução trabalha com três referências: Valor de Referência de Qualidade (o que é natural do solo local), Valor de Prevenção (limite para manter as funções do solo) e Valor de Investigação (acima do qual há risco potencial e a investigação deve avançar). Confundir esses três valores é um dos erros mais comuns em laudos."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quais normas regem a classificação de resíduos no Brasil hoje?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A ABNT NBR 10004 foi revisada em 2024 e passou a ser dividida em duas partes: NBR 10004-1:2024 e NBR 10004-2:2024, esta última criando o Sistema Geral de Classificação de Resíduos. As antigas classes I, II-A e II-B foram substituídas por Classe 1 (Resíduo Perigoso) e Classe 2 (Resíduo Não Perigoso). Há período de transição: até 31 de dezembro de 2026 as versões de 2004 ainda podem ser usadas. Depois dessa data, apenas a nova norma vale — o que torna crítico verificar qual versão um laudo aplicou."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "A responsabilidade por dano ambiental depende de culpa?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Não. A responsabilidade civil por dano ambiental é objetiva, nos termos do art. 14, §1º, da Lei nº 6.938/1981 — dispensa demonstração de culpa ou dolo. Ainda assim, permanecem necessários a conduta, o dano e o nexo de causalidade entre eles. Na prática pericial, é justamente o nexo causal que concentra a disputa técnica: provar que aquele contaminante veio daquela fonte, e não de outra."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quem tem o ônus da prova em ação de dano ambiental?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A Súmula 618 do STJ, de outubro de 2018, firmou que a inversão do ônus da prova se aplica às ações de degradação ambiental. Na prática isso desloca para o empreendedor o encargo de demonstrar que não causou o dano — o que torna a qualidade da prova técnica produzida pela defesa determinante, e não acessória."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Como se investiga tecnicamente uma área contaminada?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A investigação é progressiva. Começa pela avaliação preliminar, que levanta o histórico de uso da área e identifica áreas suspeitas a partir de documentos, plantas e entrevistas. Avança para a investigação confirmatória, com amostragem dirigida às fontes suspeitas para confirmar ou descartar a contaminação. Se confirmada, segue para a investigação detalhada, que delimita a pluma de contaminação em extensão e profundidade e caracteriza o meio físico para subsidiar a avaliação de risco e a remediação."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Um laudo ambiental administrativo pode ser contestado tecnicamente?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sim. Autos de infração e laudos de órgãos ambientais são atos administrativos com presunção relativa de legitimidade, que cede diante de demonstração técnica de erro. Os pontos que mais frequentemente sustentam a contestação são: malha de amostragem insuficiente ou mal posicionada em relação à fonte, comparação com o valor orientador errado, laboratório sem escopo acreditado para o ensaio, e conclusão de nexo causal sem descartar fontes alternativas de contaminação."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quais normas regem o lançamento de efluentes industriais?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A Resolução CONAMA nº 430/2011, que dispõe sobre as condições e padrões de lançamento de efluentes e complementa e altera a Resolução CONAMA nº 357/2005. Ela define os limites por parâmetro para o descarte em corpos receptores. Há consulta pública em andamento para revisão desses padrões, e processos de longa duração devem acompanhar o desfecho."
-        }
-      }
-    ]
-  }
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+            {
+                  "@type": "Question",
+                  "name": "O que caracteriza uma área contaminada?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Tecnicamente, é a área onde se comprova a presença de substância química em concentração acima do Valor de Investigação definido pela Resolução CONAMA nº 420/2009, com potencial de risco à saúde humana ou ao meio ambiente. A resolução trabalha com três referências: Valor de Referência de Qualidade (o que é natural do solo local), Valor de Prevenção (limite para manter as funções do solo) e Valor de Investigação (acima do qual há risco potencial e a investigação deve avançar). Confundir esses três valores é um dos erros mais comuns em laudos."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Quais normas regem a classificação de resíduos no Brasil hoje?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A ABNT NBR 10004 foi revisada em 2024 e passou a ser dividida em duas partes: NBR 10004-1:2024 e NBR 10004-2:2024, esta última criando o Sistema Geral de Classificação de Resíduos. As antigas classes I, II-A e II-B foram substituídas por Classe 1 (Resíduo Perigoso) e Classe 2 (Resíduo Não Perigoso). Há período de transição: até 31 de dezembro de 2026 as versões de 2004 ainda podem ser usadas. Depois dessa data, apenas a nova norma vale — o que torna crítico verificar qual versão um laudo aplicou."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "A responsabilidade por dano ambiental depende de culpa?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Não. A responsabilidade civil por dano ambiental é objetiva, nos termos do art. 14, §1º, da Lei nº 6.938/1981 — dispensa demonstração de culpa ou dolo. Ainda assim, permanecem necessários a conduta, o dano e o nexo de causalidade entre eles. Na prática pericial, é justamente o nexo causal que concentra a disputa técnica: provar que aquele contaminante veio daquela fonte, e não de outra."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Quem tem o ônus da prova em ação de dano ambiental?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A Súmula 618 do STJ, de outubro de 2018, firmou que a inversão do ônus da prova se aplica às ações de degradação ambiental. Na prática isso desloca para o empreendedor o encargo de demonstrar que não causou o dano — o que torna a qualidade da prova técnica produzida pela defesa determinante, e não acessória."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Como se investiga tecnicamente uma área contaminada?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A investigação é progressiva. Começa pela avaliação preliminar, que levanta o histórico de uso da área e identifica áreas suspeitas a partir de documentos, plantas e entrevistas. Avança para a investigação confirmatória, com amostragem dirigida às fontes suspeitas para confirmar ou descartar a contaminação. Se confirmada, segue para a investigação detalhada, que delimita a pluma de contaminação em extensão e profundidade e caracteriza o meio físico para subsidiar a avaliação de risco e a remediação."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Um laudo ambiental administrativo pode ser contestado tecnicamente?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sim. Autos de infração e laudos de órgãos ambientais são atos administrativos com presunção relativa de legitimidade, que cede diante de demonstração técnica de erro. Os pontos que mais frequentemente sustentam a contestação são: malha de amostragem insuficiente ou mal posicionada em relação à fonte, comparação com o valor orientador errado, laboratório sem escopo acreditado para o ensaio, e conclusão de nexo causal sem descartar fontes alternativas de contaminação."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Quais normas regem o lançamento de efluentes industriais?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A Resolução CONAMA nº 430/2011, que dispõe sobre as condições e padrões de lançamento de efluentes e complementa e altera a Resolução CONAMA nº 357/2005. Ela define os limites por parâmetro para o descarte em corpos receptores. Há consulta pública em andamento para revisão desses padrões, e processos de longa duração devem acompanhar o desfecho."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Quais quesitos devo apresentar em uma perícia ambiental?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Os quesitos úteis testam quatro coisas, nessa ordem: qual parâmetro foi aplicado e em qual versão (lista federal da CONAMA 420/2009 ou estadual; NBR 10004 de 2004 ou de 2024); se a amostragem representa o que se quer provar (locação dos pontos em relação à fonte, sentido do fluxo da água subterrânea, construção dos poços conforme a NBR 15495 e purga conforme a NBR 15847); se o número tem validade analítica (cadeia de custódia, holding time, escopo acreditado do laboratório pela ABNT NBR ISO/IEC 17025 e limite de quantificação do método); e se o nexo causal foi demonstrado ou apenas presumido (compatibilidade da substância com a atividade, descarte de fontes alternativas, assinatura analítica e caminho de exposição completo). Em um caso concreto escolhem-se os blocos aplicáveis, não todos."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Qual o prazo para apresentar quesitos na perícia ambiental?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Quinze dias contados da intimação do despacho que nomeia o perito, no mesmo prazo em que se indica o assistente técnico (art. 465, §1º, III, do CPC/2015). Não há prazo diferenciado para matéria ambiental. Perdido esse prazo, ainda cabe o quesito suplementar durante a diligência (art. 469), que o perito pode responder previamente ou na audiência de instrução e julgamento."
+                  }
+            },
+            {
+                  "@type": "Question",
+                  "name": "Por que perguntar o limite de quantificação do método ao perito ambiental?",
+                  "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Porque quando o limite de quantificação do método analítico é superior ao valor orientador aplicável àquela substância, um resultado “não detectado” não prova ausência de contaminação: prova apenas que o método escolhido não era capaz de enxergá-la naquela faixa de concentração. É um dos quesitos menos apresentados e um dos mais decisivos, porque transforma um laudo aparentemente favorável em prova inconclusiva sem que seja preciso discutir nenhum resultado."
+                  }
+            }
+      ]
+}
   </script>
 
   <!-- ─── Structured Data: BreadcrumbList ─── -->
@@ -239,6 +264,7 @@
 
     .faq { border-top: 1px solid var(--border); max-width: 46rem; }
     .faq > div { padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
+    h2[id], h3[id] { scroll-margin-top: 6rem; }
     .faq h3 { margin: 0 0 .75rem; }
     .faq p:last-child { margin-bottom: 0; }
 
@@ -315,7 +341,7 @@
       Por <strong>Adriana Rezende</strong> — engenheira química pela UNICAMP, CRQ IV Região — SP nº 04341673,
       com experiência em tratamento de água industrial, água potável e efluentes, e mais de 8 anos
       como perita judicial e assistente técnica.
-      <br>Publicado em <time datetime="2026-08-04">4 de agosto de 2026</time> · Atualizado em <time datetime="2026-08-12">12 de agosto de 2026</time>.
+      <br>Publicado em <time datetime="2026-08-04">4 de agosto de 2026</time> · Atualizado em <time datetime="2026-08-21">21 de agosto de 2026</time>.
     </p>
   </div>
 </div>
@@ -496,6 +522,76 @@
       <li><strong>Contaminação pretérita ignorada</strong> — atribuição integral ao ocupante atual sem investigar o histórico de uso da área.</li>
     </ul>
 
+    <h2 id="quesitos">Quesitos para perícia ambiental</h2>
+    <p>
+      Cada falha listada acima só vira tese quando alguém pergunta. Os quesitos abaixo são a tradução
+      direta dessas falhas em perguntas que o perito é obrigado a responder — e cuja resposta, ou a
+      recusa a respondê-la, fica nos autos. Estão agrupados pelo que testam, não pela ordem em que se
+      apresentam: em um caso concreto escolhem-se os blocos aplicáveis, e não os dezesseis.
+    </p>
+    <p>
+      <strong>Prazo:</strong> 15 dias contados da intimação do despacho de nomeação, no mesmo prazo em
+      que se indica o assistente técnico (art. 465, §1º, III, do CPC/2015). Perdido o prazo, resta o
+      quesito suplementar durante a diligência (art. 469). O juiz indefere os impertinentes
+      (art. 470, I) — por isso todo quesito abaixo pergunta por um <em>fato técnico verificável</em>,
+      nunca por opinião jurídica.
+    </p>
+
+    <h3 id="quesitos-parametro">1. Qual parâmetro foi aplicado, e em qual versão</h3>
+    <p>
+      É o bloco que mais derruba laudo ambiental, porque o erro aqui contamina toda a conclusão sem
+      aparecer no resultado analítico.
+    </p>
+    <ol>
+      <li>Qual lista de valores orientadores foi aplicada — a federal da Resolução CONAMA nº 420/2009 ou a lista estadual do órgão ambiental competente? Informe a versão e a data da lista utilizada.</li>
+      <li>Para cada substância detectada, informe os três valores aplicáveis — Referência de Qualidade, Prevenção e Investigação — e declare qual deles foi adotado como parâmetro de comparação e com que fundamento.</li>
+      <li>Tratando-se de classificação de resíduos, qual versão da ABNT NBR 10004 foi aplicada: a de 2004, com as classes I, II-A e II-B, ou as Partes 1 e 2 de 2024, com Classe 1 e Classe 2? Justifique a escolha em face da data do fato, considerando que a transição se encerra em 31/12/2026.</li>
+      <li>Tratando-se de lançamento de efluentes, quais parâmetros e limites da Resolução CONAMA nº 430/2011 foram utilizados, e qual corpo receptor e classe de enquadramento foram considerados?</li>
+    </ol>
+
+    <h3 id="quesitos-amostragem">2. Se a amostragem representa o que se quer provar</h3>
+    <p>
+      Uma amostra mal posicionada produz um número correto sobre a pergunta errada. Estes quesitos
+      separam as duas coisas.
+    </p>
+    <ol start="5">
+      <li>Descreva o plano de amostragem: número de pontos, critério de locação, profundidades e a justificativa técnica de cada ponto em relação às fontes suspeitas identificadas na avaliação preliminar (ABNT NBR 15515-1).</li>
+      <li>Os poços de monitoramento foram projetados e construídos conforme a ABNT NBR 15495-1 e desenvolvidos conforme a NBR 15495-2? Apresente os respectivos relatórios de construção e desenvolvimento.</li>
+      <li>Qual método de purga foi empregado na coleta de água subterrânea (ABNT NBR 15847) e quais parâmetros de estabilização foram registrados antes da coleta?</li>
+      <li>Informe o sentido do fluxo da água subterrânea na área e, para cada poço amostrado, se ele se situa a montante ou a jusante da fonte suspeita.</li>
+      <li>Foram coletadas amostras de controle — branco de campo, branco de viagem e duplicata? Apresente os resultados e comente eventuais discrepâncias.</li>
+    </ol>
+
+    <h3 id="quesitos-laboratorio">3. Se o número tem validade analítica</h3>
+    <p>
+      O quesito 12 é o menos apresentado e um dos mais decisivos: <strong>quando o limite de
+      quantificação do método é superior ao valor orientador, um resultado "não detectado" não prova
+      ausência de contaminação</strong> — prova apenas que o método escolhido não era capaz de enxergá-la.
+    </p>
+    <ol start="10">
+      <li>Apresente a cadeia de custódia completa: data e hora da coleta, forma de preservação, temperatura de transporte, data e hora de recebimento no laboratório e cumprimento do prazo de validade (<em>holding time</em>) de cada ensaio.</li>
+      <li>O laboratório é acreditado segundo a ABNT NBR ISO/IEC 17025 pela Cgcre/Inmetro, com escopo que abrange especificamente cada ensaio realizado? Apresente o certificado e o escopo acreditado vigente na data dos ensaios.</li>
+      <li>Informe, para cada ensaio, o limite de quantificação do método empregado e declare se ele é inferior ao valor orientador aplicável àquela substância.</li>
+    </ol>
+
+    <h3 id="quesitos-nexo">4. Se o nexo causal foi demonstrado ou presumido</h3>
+    <p>
+      Com responsabilidade objetiva e ônus invertido, é aqui que a perícia decide o caso: a disputa não
+      é sobre culpa, é sobre origem.
+    </p>
+    <ol start="13">
+      <li>As substâncias detectadas são compatíveis com os insumos, processos e resíduos da atividade atribuída à parte? Indique quais e em que etapa do processo produtivo elas ocorreriam.</li>
+      <li>Foram investigadas fontes alternativas de contaminação — ocupações pretéritas da área, atividades lindeiras, aterros, passivos regionais ou fontes difusas? Descreva o que foi feito para descartá-las.</li>
+      <li>Existe assinatura analítica — razão entre isômeros, presença de aditivos marcadores, perfil cromatográfico — que permita distinguir a fonte atribuída de outras fontes possíveis?</li>
+      <li>Há caminho de exposição completo entre a fonte, o meio de transporte e um receptor identificado? Descreva cada elo ou aponte o que falta para completá-lo.</li>
+    </ol>
+
+    <div class="box">
+      <div class="box-lbl">O que fazer com as respostas</div>
+      <p>Quesito que o perito responde bem fecha a questão. Quesito que ele responde de forma evasiva, ou que responde revelando que a etapa não foi cumprida, é o que sustenta o pedido de esclarecimentos (art. 477, §2º) e, se persistir, a impugnação do laudo — inclusive por método não predominantemente aceito, na forma do art. 473, III.</p>
+      <p><a href="/quesitos-periciais/">Como se redige um quesito que funciona</a> · <a href="/impugnacao-laudo-pericial/">As três vias para atacar um laudo</a> · <a href="/normas-tecnicas-pericia/">Quadro de vigência das normas citadas acima</a></p>
+    </div>
+
     <h2>Perguntas frequentes</h2>
     <div class="faq">
       <div>
@@ -525,6 +621,18 @@
       <div>
         <h3>Quais normas regem o lançamento de efluentes industriais?</h3>
         <p>A Resolução CONAMA nº 430/2011, que dispõe sobre as condições e padrões de lançamento de efluentes e complementa e altera a Resolução CONAMA nº 357/2005. Ela define os limites por parâmetro para o descarte em corpos receptores. Há consulta pública em andamento para revisão desses padrões, e processos de longa duração devem acompanhar o desfecho.</p>
+      </div>
+      <div>
+        <h3>Quais quesitos devo apresentar em uma perícia ambiental?</h3>
+        <p>Os quesitos úteis testam quatro coisas, nessa ordem: qual parâmetro foi aplicado e em qual versão (lista federal da CONAMA 420/2009 ou estadual; NBR 10004 de 2004 ou de 2024); se a amostragem representa o que se quer provar (locação dos pontos em relação à fonte, sentido do fluxo da água subterrânea, construção dos poços conforme a NBR 15495 e purga conforme a NBR 15847); se o número tem validade analítica (cadeia de custódia, holding time, escopo acreditado do laboratório pela ABNT NBR ISO/IEC 17025 e limite de quantificação do método); e se o nexo causal foi demonstrado ou apenas presumido (compatibilidade da substância com a atividade, descarte de fontes alternativas, assinatura analítica e caminho de exposição completo). Em um caso concreto escolhem-se os blocos aplicáveis, não todos.</p>
+      </div>
+      <div>
+        <h3>Qual o prazo para apresentar quesitos na perícia ambiental?</h3>
+        <p>Quinze dias contados da intimação do despacho que nomeia o perito, no mesmo prazo em que se indica o assistente técnico (art. 465, §1º, III, do CPC/2015). Não há prazo diferenciado para matéria ambiental. Perdido esse prazo, ainda cabe o quesito suplementar durante a diligência (art. 469), que o perito pode responder previamente ou na audiência de instrução e julgamento.</p>
+      </div>
+      <div>
+        <h3>Por que perguntar o limite de quantificação do método ao perito ambiental?</h3>
+        <p>Porque quando o limite de quantificação do método analítico é superior ao valor orientador aplicável àquela substância, um resultado “não detectado” não prova ausência de contaminação: prova apenas que o método escolhido não era capaz de enxergá-la naquela faixa de concentração. É um dos quesitos menos apresentados e um dos mais decisivos, porque transforma um laudo aparentemente favorável em prova inconclusiva sem que seja preciso discutir nenhum resultado.</p>
       </div>
     </div>
 

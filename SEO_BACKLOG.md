@@ -1433,3 +1433,99 @@ Números do `[gsc]`, 28 dias: **1 clique · 189 impressões · 11 páginas com i
 5. **`/classificacao-fiscal-ncm/`: 9,0 → 25,4 → 22,3** com 6 impressões. Duas leituras ruins seguidas, mas volume baixo demais para agir. Terceira leitura ruim ⇒ investigar canibalização com `/normas-tecnicas-pericia/`.
 6. **1 clique em 28 dias é o número que importa.** Enquanto o total de cliques do período for de um dígito, nenhuma leitura de CTR, de bloco "Continue lendo" ou de efeito de link interno tem poder estatístico. Priorizar o que aumenta **exposição** (cobertura, novas faixas de consulta) sobre o que otimiza **conversão de impressão**.
 7. **Confirmar sempre até que data a série do GSC vai** antes de tratar um zero como resultado.
+
+---
+
+## Execução 2026-08-21
+
+Não houve execução em 20/08. Esta é a primeira depois do SEO-032.
+
+### Dados
+
+`/usr/bin/python3 tools/seo-report.py`, período 2026-07-24 → 2026-08-21.
+
+- **`[deploy]` em dia** — 0 commits pendentes, 14 páginas no sitemap publicado, 14 respondendo 200.
+- **`[valid]` ALL PASS** nas 14 páginas (antes e depois da mudança de hoje).
+- **Indexação: 13 de 14 `PASS`.** `/normas-tecnicas-pericia/` falhou por `The read operation timed out` — a mesma falha de rede de 13/08 e 18/08. Pelo critério já registrado, `FAIL` de inspeção só vira diagnóstico depois de repetido; **não é tratado como problema de indexação hoje.**
+- **Desempenho (28 dias): 247 impressões, 1 clique.** Série: 115 (13/08) → 157 (18/08) → 189 (19/08) → **247**. A exposição segue subindo ~30% por leitura sem nenhuma intervenção de metadado.
+- **GA4: 51 sessões** — 38 Direct, 8 Paid Search, **3 Organic Search**, 1 Referral, 1 Unassigned. Zero eventos de contato.
+
+| Página | impr. | pos. |
+|---|---|---|
+| `/quesitos-periciais/` | 81 (1 clique) | 9,7 |
+| `/impugnacao-laudo-pericial/` | 60 | 12,6 |
+| `/assistente-tecnica/` | 55 | 8,9 |
+| `/pericia-combustiveis/` | 15 | 6,9 |
+| `/honorarios-pericia-judicial/` | 12 | 9,4 |
+| `/classificacao-fiscal-ncm/` | 7 | 19,3 |
+| `/` | 5 | 6,0 |
+| `/prazo-validade-alimentos/` | 5 | 6,6 |
+| `/pericia-contaminacao-alimentos/` | 3 | 9,7 |
+| `/pericia-industria-quimica/` | 2 | 5,0 |
+| `/pericia-ambiental/` | 1 | 5,0 |
+| `/sobre/` | 1 | 32,0 |
+
+### Correção de registro — a consulta por artigo do CPC **não** é servida pela página de referência
+
+As execuções de 18/08 e 19/08 leram `art. 95, § 3º, II, do CPC` em posição 9 como "a primeira evidência de que a faixa por identificador (aberta em 16/08 com `/cpc-prova-pericial/`) pega tráfego". **Isso não foi verificado na época, e está errado.** Uma consulta ao GSC com as dimensões `query × page` — feita hoje justamente para não repetir a atribuição de memória — mostra que a consulta é servida por **`/honorarios-pericia-judicial/`**, página que existe desde 06/08 e que já cobria o art. 95. O mesmo levantamento mostra que **`/cpc-prova-pericial/` e `/normas-tecnicas-pericia/` têm zero impressão em 28 dias**, 5 e 3 dias depois de indexadas.
+
+Consequências, todas registradas para não serem reexaminadas amanhã:
+
+1. **A tese da página de referência por identificador segue sem nenhuma evidência a favor nem contra.** O relógio continua: leitura de `/cpc-prova-pericial/` até ~30/08, de `/normas-tecnicas-pericia/` até ~01/09. Três a cinco dias é jovem demais para conclusão — a latência medida nesta propriedade vai de 1 a 4 dias só para o rastreamento.
+2. **O que a consulta realmente prova é outra coisa, e mais útil:** uma página de **guia procedimental** já capta consulta por dispositivo, em posição 9, sem ter sido desenhada para isso. O identificador dentro de um guia funciona; se a página dedicada acrescenta algo é o que está sob teste.
+3. **Regra de processo:** atribuição de consulta a página exige a dimensão `page` no mesmo levantamento. Ler a lista de consultas e a lista de páginas lado a lado e cruzá-las de cabeça já produziu uma conclusão errada que sobreviveu duas execuções.
+
+### Por que esta foi a tarefa de hoje
+
+O gatilho do **SEO-016** foi medido, não presumido: são **179 impressões em posição ≤ 10** (soma das nove páginas que atendem o critério), com CTR de 0,56%. O gatilho é **≥ 300**. Não disparou — metadado segue fechado.
+
+Com isso, o item de maior nota aberto era o **SEO-026** (58,8). Mas os dados de hoje reformulam o diagnóstico dele, e a reformulação vale mais que o item original: **as três páginas "mudas" não estão mudas.** `/pericia-ambiental/` tem 1 impressão em **posição 5,0**, `/pericia-industria-quimica/` 2 em **5,0**, `/pericia-contaminacao-alimentos/` 3 em 9,7. Google as classifica bem — o que falta não é ranqueamento nem link interno, é **volume de consulta**: elas ranqueiam ótimo para coisas que quase ninguém digita.
+
+E o dado que aponta o remédio já está na tabela há três leituras: **100% da demanda demonstrada do site é procedimental.** As duas páginas mais expostas são `/quesitos-periciais/` (81 impressões, o único clique do site) e `/impugnacao-laudo-pericial/` (60). As seis páginas de matéria técnica, todas temáticas, somam 28. A ponte entre as duas metades do site nunca foi construída: **nenhuma página técnica tinha uma linha de conteúdo procedimental.**
+
+Pior, havia uma promessa não cumprida: `/pericia-ambiental/` linka para `/quesitos-periciais/` com a âncora "Como formular os quesitos de uma perícia ambiental" — e aquela página ensina a *redigir* quesitos, sem trazer um único quesito ambiental (3 menções incidentais a "ambiental" no arquivo inteiro). O advogado que clica não encontra o que a âncora prometeu.
+
+### SEO-033 — Porta procedimental na página técnica: quesitos de perícia ambiental *(executada em 2026-08-21)*
+
+- **Descrição:** dar à primeira das três páginas técnicas de baixa exposição um bloco procedimental próprio — dezesseis quesitos de perícia ambiental, agrupados pelo que cada bloco testa —, transformando a página de "o que é perícia ambiental" em "o que eu pergunto ao perito na minha perícia ambiental".
+- **URL:** `/pericia-ambiental/#quesitos`
+- **Categoria:** Conteúdo / Cobertura de intenção procedimental / Conversão / AI citation
+- **Impacto:** 8 · **Esforço:** 3 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 192
+- **Status:** done · **Descoberto:** 2026-08-21 · **Concluído:** 2026-08-21
+- **Por que quesitos, e não outra porta procedimental.** É a faixa com a maior demanda medida do site e a de maior intenção comercial que existe neste negócio: quem redige quesitos está com prazo de 15 dias correndo e é exatamente quem contrata assistente técnico. Uma página que entrega os quesitos prontos é consultada no momento da decisão de contratar, não semanas antes.
+- **O ativo são os dezesseis quesitos, e eles são utilizáveis como estão.** Quatro blocos com âncora própria: `#quesitos-parametro` (qual lista de valores orientadores e qual versão da NBR 10004 foram aplicadas), `#quesitos-amostragem` (locação dos pontos face à fonte, sentido do fluxo, construção e purga dos poços), `#quesitos-laboratorio` (cadeia de custódia, *holding time*, escopo acreditado, limite de quantificação) e `#quesitos-nexo` (compatibilidade da substância com a atividade, descarte de fontes alternativas, assinatura analítica, caminho de exposição).
+- **O quesito 12 é o diferencial técnico da página.** Pergunta o limite de quantificação do método e se ele é inferior ao valor orientador aplicável — porque **quando o LQ é maior que o valor orientador, um "não detectado" não prova ausência de contaminação, prova só que o método não era capaz de enxergá-la.** Transforma um laudo aparentemente favorável em prova inconclusiva sem discutir nenhum resultado. Não encontrei esse ponto em conteúdo público brasileiro sobre quesitos ambientais.
+- **Não é canibalização de `/quesitos-periciais/` — é a divisão que faltava.** Aquela página ensina *como se redige* um quesito (as quatro partes, os seis defeitos, os dois limites legais); esta traz *quais perguntas fazer nesta matéria*. Nada foi copiado e **nada foi encurtado em página alguma** — o diff em `/quesitos-periciais/` é de uma linha, aditiva.
+- **Verificação factual — normas conferidas em fonte, não de memória:**
+  1. **ABNT NBR 15515** dividida em Parte 1 (avaliação preliminar), Parte 2 (investigação confirmatória) e Parte 3 (investigação detalhada) — confirmado. Citadas por parte, **sem ano**, porque a Parte 3 passou por Consulta Nacional de revisão em 2024 e não confirmei o desfecho.
+  2. **ABNT NBR 15495-1** (projeto e construção de poços de monitoramento em aquíferos granulares) e **15495-2** (desenvolvimento) — confirmado.
+  3. **ABNT NBR 15847:2010** — amostragem de água subterrânea em poços de monitoramento, métodos de purga — confirmado.
+  4. **Prazo de quesitos: 15 dias, art. 465, §1º, III do CPC/2015**; suplementares no art. 469; indeferimento de impertinentes no art. 470, I — todos já conferidos no texto literal da lei em 16/08 (SEO-030).
+  - **Um número foi deliberadamente omitido:** a Decisão de Diretoria da CETESB que fixa os valores orientadores de São Paulo. Duas fontes secundárias apontam a DD 125/2021/E, mas a página da CETESB é renderizada por JavaScript e devolveu 403 à ferramenta de fetch e conteúdo vazio ao `curl` — **não confirmei na fonte primária, então o número não entrou.** O quesito pergunta "qual lista estadual e em qual versão", que é a pergunta pericial correta e não depende do número.
+- **Links de entrada: 1, e é deliberado.** `/quesitos-periciais/` — a página mais exposta do site — ganhou um item no bloco "Onde os quesitos se aplicam", que já listava química e alimentos e não listava ambiental. **Uma aresta, de uma página, para uma das três páginas do SEO-026**, exatamente para que o efeito seja atribuível. As outras duas páginas técnicas **não foram tocadas** e servem de controle.
+- **Também executado aqui:** o link para `/normas-tecnicas-pericia/` que o SEO-031 deixou pendente para esta execução entrou no bloco de fechamento da seção, junto com os links para `/quesitos-periciais/` e `/impugnacao-laudo-pericial/`.
+- **Schema:** três novas entradas no `FAQPage` (10 no total), **paridade textual exata com o FAQ visível verificada por script** — 10 visíveis, 10 no schema, comparação caractere a caractere. `dateModified` movido para 21/08 em JSON-LD e no `<time datetime>` visível, `lastmod` idem no sitemap. `about` ganhou `Quesitos Periciais`.
+- **Validação executada:** `[valid]` **ALL PASS nas 14 páginas** · balanceamento de tags por `html.parser` nos 2 arquivos tocados: nenhuma pendência · paridade FAQ 10/10 exata · `[deploy]` sem deriva antes da mudança. **Uma regra de CSS nova** (`h2[id], h3[id] { scroll-margin-top: 6rem; }`), o mesmo padrão do SEO-030, para que o link direto às âncoras não esconda o título sob o cabeçalho fixo.
+- **Ressalva honesta sobre a verificação de renderização.** As execuções anteriores conferiam o layout a 1280 px e 375 px em navegador. **Hoje isso não foi possível:** o servidor local não subiu (porta bloqueada no ambiente) e o `file://` foi renderizado como snapshot estático, com `innerWidth` 0 — qualquer medida ali seria inventada. A checagem foi feita **estruturalmente**: o bloco novo usa apenas `h2`, `h3`, `p`, `ol`, `li`, `strong`, `em`, `a` e `div.box` — todos já presentes na página —, **zero tabelas** e **zero tokens com mais de 28 caracteres**, que são as duas causas reais de overflow neste layout. Conferir no navegador contra a URL publicada na próxima execução.
+- **Se funcionar, o padrão se replica** — quesitos de perícia em indústria química e quesitos de perícia em combustíveis, **uma página por execução**, para manter a atribuição.
+
+### O que segue em aberto
+
+- **SEO-026** — reformulado pelos dados de hoje: o problema das três páginas não é ranqueamento (posições 5,0 / 5,0 / 9,7), é **volume de consulta**. O remédio em teste é a porta procedimental do SEO-033. **`/pericia-industria-quimica/` e `/pericia-contaminacao-alimentos/` ficam intocadas até a próxima leitura**, como controle.
+- **Tese da página de referência por identificador** — sem evidência em nenhuma direção. `/cpc-prova-pericial/` (0 impressões em 5 dias) e `/normas-tecnicas-pericia/` (0 em 3 dias). Leituras a partir de ~30/08 e ~01/09.
+- **SEO-016** (metadados) — gatilho **medido hoje: 179 impressões em posição ≤ 10, CTR 0,56%**. Limiar: 300. Não disparou.
+- **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, coberto por checagem automática.
+- **SEO-005** (`_headers` inerte) e **SEO-009** (Google Business, bloqueado por verificação de identidade) — sem mudança.
+- **Google Ads sem entrega** — uma campanha habilitada, zero impressão em 90 dias, enquanto o GA4 registra 8 sessões de Paid Search. Fora do mandato de SEO. **Aviso à cliente pendente há seis execuções.**
+
+### Próxima execução — o que checar primeiro
+
+1. **`/usr/bin/python3 tools/seo-report.py` em chamadas separadas** (`deploy valid`, depois `gsc ga4`): a inspeção de URL estoura o timeout de uma execução única — aconteceu de novo hoje, ~10 min.
+2. **Conferir `/pericia-ambiental/` no navegador contra a URL publicada**, a 1280 px e 375 px. É a única checagem do SEO-033 que ficou por fazer.
+3. **`/pericia-ambiental/`: a leitura do SEO-033.** O que observar é **impressão**, não posição — a página já está em 5,0. Consultas a vigiar: `quesitos perícia ambiental`, `quesitos contaminação de solo`, `modelo de quesitos ambiental`, `quesitos laudo ambiental`. Não tocar nas outras duas páginas técnicas até essa leitura.
+4. **Atribuição de consulta exige a dimensão `page` no mesmo levantamento.** Não cruzar as duas listas de cabeça — foi assim que a leitura do `art. 95` sobreviveu errada por duas execuções.
+5. **`/impugnacao-laudo-pericial/`: 24,8 → 18,1 → 13,3 → 12,7 → 13,8 → 12,6**, com impressões de 44 para 60. Voltou a melhorar. **Continuar sem mexer.**
+6. **`/classificacao-fiscal-ncm/`: 9,0 → 25,4 → 22,3 → 19,3** com 7 impressões. Terceira leitura seguida em faixa ruim, mas melhorando e com volume baixo. Se a próxima piorar, investigar canibalização com `/normas-tecnicas-pericia/`.
+7. **1 clique em 28 dias segue sendo o número que importa.** Enquanto for de um dígito, priorizar **exposição** (cobertura de intenção, novas faixas de consulta) sobre **conversão de impressão**.
+8. **Confirmar sempre até que data a série do GSC vai** antes de tratar um zero como resultado.
