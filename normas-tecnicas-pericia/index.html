@@ -294,9 +294,9 @@
     p { font-size: 1.0625rem; color: var(--sec); line-height: 1.8; margin-bottom: 1.25rem; max-width: 46rem; }
     strong { color: var(--fg); font-weight: 500; }
 
-    ul, ol { max-width: 46rem; margin: 0 0 1.5rem; padding-left: 0; list-style: none; }
-    li { font-size: 1.0625rem; color: var(--sec); line-height: 1.75; margin-bottom: .75rem; display: flex; }
-    li::before { content: "—"; color: var(--muted); margin-right: 1rem; flex-shrink: 0; }
+    ul, ol { max-width: 46rem; margin: 0 0 1.5rem; padding-left: 1.75rem; list-style: none; }
+    li { font-size: 1.0625rem; color: var(--sec); line-height: 1.75; margin-bottom: .75rem; display: block; position: relative; }
+    li::before { content: "—"; color: var(--muted); position: absolute; left: -1.75rem; }
     ol { counter-reset: n; }
     ol li { counter-increment: n; }
     ol li::before { content: counter(n) "."; font-variant-numeric: tabular-nums; }
