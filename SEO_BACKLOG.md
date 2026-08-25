@@ -737,7 +737,9 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 
 **Pendência do SEO-033 encerrada.** `/pericia-ambiental/` conferida na mesma sessão, com viewport assentado: **overflow 0 a 375 px e a 1280 px**, nenhum elemento excedendo a janela, as duas tabelas contidas no `.table-scroll` e `scroll-margin-top` em 96 px nas cinco âncoras de quesitos. A conclusão de 21/08 estava certa; só não estava medida.
 
-### SEO-035 — `li { display: flex }` é uma fragilidade latente em quatro outras páginas
+### SEO-035 — `li { display: flex }` estourava o viewport do celular *(executada em 2026-08-24)*
+
+> **O título e a avaliação originais desta entrada, preservados abaixo, estavam errados** — o defeito era **ativo em seis páginas**, não latente em quatro. A medição que corrigiu isso está no bloco de execução ao final. Mantidos como estavam porque o erro de método é a parte reaproveitável.
 
 - **Descrição:** a folha de estilo compartilhada usa `li { display: flex }` para pendurar o marcador (`li::before`). O efeito colateral é que **todo elemento inline dentro de um `<li>` vira um item de flex numa linha `nowrap`** — `<a>`, `<em>`, `<strong>`. Enquanto os trechos de texto são curtos, cabe na linha e nada aparece; quando passam da largura do container, o item estoura a caixa e, no celular, arrasta o documento inteiro. Foi exatamente o que aconteceu no SEO-034.
 - **URLs com o padrão hoje:** `/cpc-prova-pericial/` (4 itens), `/assistente-tecnica/` (2), `/impugnacao-laudo-pericial/` (2), `/pericia-contaminacao-alimentos/` (1) — contagem por script, apenas itens com `<a>` inline; **os casos com `<em>`/`<strong>` são muito mais numerosos e não foram contados.**
@@ -745,30 +747,107 @@ Pelo próprio escore do mandato não havia competição. Publicar duas melhorias
 - **Categoria:** Técnico / Renderização mobile
 - **Impacto:** 5 · **Esforço:** 3 · **Confiança:** 9 · **Valor de negócio:** 5
 - **Priority Score:** 75
-- **Status:** open · **Descoberto:** 2026-08-22
-- **Correção quando for feita:** envolver o conteúdo dos `<li>` em `<span>`, como no SEO-034, **ou** trocar o marcador por `display: list-item` com `::marker`, o que elimina a causa de vez. A segunda é a correção certa e mexe em 14 arquivos — candidata natural para um dia em que não haja tarefa de exposição melhor.
+- **Status:** done · **Descoberto:** 2026-08-22 · **Concluído:** 2026-08-24
+- **Correção prevista em 22/08:** envolver o conteúdo dos `<li>` em `<span>`, como no SEO-034, **ou** trocar o marcador por `display: list-item` com `::marker`, o que elimina a causa de vez. A segunda é a correção certa e mexe em 14 arquivos — candidata natural para um dia em que não haja tarefa de exposição melhor.
 - **Bloqueio parcial hoje:** três das quatro páginas são controle ou experimento em curso (SEO-026/033) ou estão sob "não mexer" (`/impugnacao-laudo-pericial/`). **Não tocar nelas até a leitura de ~28/08.**
+
+#### Execução em 2026-08-24 — a fragilidade não era latente, e não eram quatro páginas
+
+**O que mudou a leitura: a dimensão `device` do GSC.** A série de hoje vai até **22/08** e traz **3 cliques em 28 dias** (eram 1). A repartição por dispositivo é o achado:
+
+| dispositivo | impressões | posição média | cliques |
+|---|---|---|---|
+| DESKTOP | 273 | 10,9 | **3** |
+| MOBILE | **98** | **8,9** | **0** |
+| TABLET | 3 | 6,7 | 0 |
+
+**O celular ranqueia melhor que o desktop e converte zero.** Isso não é ruído de amostra pequena: é a mesma pergunta que o SEO-035 tinha deixado em aberto, agora com um número do lado de fora.
+
+**A medição a 375 px nas 15 páginas mostrou que o diagnóstico de 22/08 estava errado em dois pontos.** Não era latente (era defeito ativo) e não eram quatro páginas (eram seis, e a lista estava parcialmente trocada):
+
+| página | `innerWidth` antes | overflow antes | impressões | depois |
+|---|---|---|---|---|
+| `/quesitos-periciais/` | 440 | — | **127** | 375 · 0 |
+| `/impugnacao-laudo-pericial/` | **635** | **260** | **82** | 375 · 0 |
+| `/assistente-tecnica/` | 519 | 144 | **62** | 375 · 0 |
+| `/honorarios-pericia-judicial/` | 486 | 111 | 20 | 375 · 0 |
+| `/classificacao-fiscal-ncm/` | 460 | 85 | 10 | 375 · 0 |
+| `/prazo-validade-alimentos/` | 411 | 36 | 6 | 375 · 0 |
+
+**As seis páginas quebradas carregavam 307 das 336 impressões do site — 91%.** As nove páginas íntegras somavam 29. E os 3 cliques do período saíram de páginas que **não** estavam quebradas no celular (`/`, `/pericia-combustiveis/`) ou de sessão desktop (`/quesitos-periciais/`).
+
+**Por que o SEO-035 contou errado.** A contagem de 22/08 foi feita **por script, procurando só `<li>` com `<a>` inline**. O próprio texto da entrada já avisava que "os casos com `<em>`/`<strong>` são muito mais numerosos e não foram contados" — e são justamente eles que estouram. `/cpc-prova-pericial/` e `/pericia-contaminacao-alimentos/`, que a lista apontava, medem íntegras; `/quesitos-periciais/`, `/honorarios-pericia-judicial/`, `/classificacao-fiscal-ncm/` e `/prazo-validade-alimentos/`, que a lista não citava, estavam quebradas. **Contar ocorrências de um padrão no fonte não substitui medir a página renderizada.**
+
+**O bloqueio de 22/08 se dissolveu sozinho.** As três páginas de controle/experimento do SEO-026/033 (`/pericia-ambiental/`, `/pericia-industria-quimica/`, `/pericia-contaminacao-alimentos/`) **mediram íntegras** — não precisavam de correção de layout, e a mudança de CSS que receberam não altera nenhuma delas visualmente (nenhum `<li>` delas estourava). O experimento segue válido. `/impugnacao-laudo-pericial/` estava sob "não mexer", mas era **a pior página do site** (overflow 260 px) — e "não mexer" protegia conteúdo e metadados de uma página em tendência de melhora, não uma correção de renderização que a torna legível no celular. Deixá-la quebrada para preservar a limpeza de um experimento seria trocar o resultado pelo termômetro.
+
+**A correção adotada foi a segunda das duas previstas, adaptada.** O SEO-035 previa `display: list-item` + `::marker`. Testada ao vivo, ela zera o overflow — mas `::marker` só aceita um punhado de propriedades e o suporte a `content` em Safari antigo é irregular. Preferiu-se o equivalente sem essas ressalvas, que usa apenas CSS universal:
+
+```
+ul, ol { … padding-left: 1.75rem; list-style: none; }        /* era padding-left: 0 */
+li     { … display: block; position: relative; }             /* era display: flex */
+li::before { content: "—"; … position: absolute; left: -1.75rem; }  /* era margin-right: 1rem; flex-shrink: 0 */
+```
+
+O marcador sai do fluxo por completo, então **nenhum filho inline volta a ser item de flex**. As regras de `content` (—, →, `counter(n) "."`) ficaram intocadas: o desenho é o mesmo, a numeração contínua por `start` + `counter-reset` do SEO-034 continua valendo, e os `<span>` que o SEO-034 pôs em volta de 29 itens de `/laudo-pericial/` ficaram inertes (não foram removidos — são spans inline inofensivos, e removê-los seria diff grande sem ganho).
+
+**Diff: 3 linhas × 14 arquivos.** A home não foi tocada: ela usa outra folha de lista (`ul { display: flex; flex-direction: column; gap: .6875rem }`, sem `li { display: flex }`) — que é exatamente por que ela nunca estourou.
+
+**Verificação executada:**
+- Confirmado que **nenhuma `<nav>` do site usa `<ul>/<li>`** (são `<nav>` com links soltos) e que as listas existem em só três contextos (`main > .wrap`, `.wrap > .related`, e uma `.exp-item` na home) — a regra global `li` podia ser trocada sem risco de quebrar navegação.
+- `box-sizing: border-box` global confirmado antes de adicionar `padding-left` a uma lista com `max-width`.
+- **Local, iframe de 375 px, 14 páginas:** overflow do documento **0**, **zero** caixas com `scrollWidth` maior que o próprio `clientWidth`, **zero** elementos além da janela fora de `.table-scroll`, e **todo marcador cabendo na calha de 28 px**.
+- **Desktop 1280 px:** overflow 0 e zero elementos além da janela nas páginas conferidas.
+- `[valid]` **ALL PASS nas 15 páginas** · balanceamento de tags por `html.parser` nos 14 arquivos: nenhuma pendência · as três substituições conferidas string a string em cada arquivo, e ausência do `display: flex` antigo.
+- **Contra a URL publicada, com viewport assentado (`innerWidth` = `clientWidth` = 375):** as seis páginas que estouravam medem **overflow 0**, e a inspeção visual de `/laudo-pericial/` confirma o que a medida não mostra — marcadores 5, 6, 7 pintando na calha, linhas seguintes alinhadas sob o texto, e **`<strong>` fluindo inline dentro do item**, que era precisamente o que a linha `nowrap` de flex impedia.
+
+**A regra do SEO-033/034 ganhou um terceiro degrau.** "`innerWidth` ≠ `clientWidth` ⇒ medida inválida" (033) e "meça uma página boa conhecida na mesma aba para separar ruído de defeito" (034) continuam valendo — foram elas que conduziram hoje. O que se aprendeu agora: **quando o defeito é corrigido, `innerWidth` volta a assentar sozinho em 375.** Ou seja, o `innerWidth` inflado **não era ruído de ambiente: era sintoma do próprio overflow**. Onde o 034 usou o controle para decidir se acreditava na leitura, hoje o assentamento pós-correção provou a causalidade.
+
+**Limite conhecido da correção:** a calha é de 28 px e o marcador ordinal mais largo do site — dois dígitos com `tabular-nums`, medido em **26,6 px** em `/laudo-pericial/` (que numera até 22) — cabe com **1,4 px de folga**. Uma lista que chegue a **três dígitos** passaria a invadir o texto à esquerda. Se algum dia existir, aumentar `padding-left` para `2.25rem` nessa página.
+
+### SEO-036 — Âncoras de heading escondidas sob o cabeçalho fixo em três páginas
+
+- **Descrição:** `h2[id]`/`h3[id]` sem `scroll-margin-top` fazem o link direto parar com o título **debaixo** do cabeçalho fixo — o leitor cai no meio do texto sem ver de que seção se trata. É o mesmo defeito que o SEO-034 corrigiu em `/laudo-pericial/` no dia em que a página nasceu; as páginas anteriores nunca foram varridas.
+- **Achado por medição (`getComputedStyle`, 1280 px), não por leitura de fonte:**
+
+| página | âncoras de heading | com `scroll-margin-top: 0` |
+|---|---|---|
+| `/cpc-prova-pericial/` | 26 | **7** (`#prazos`, `#antes`, `#nomeacao`, `#execucao`, …) |
+| `/normas-tecnicas-pericia/` | 13 | **5** (`#quadro`, `#mudaram`, `#armadilhas`, `#conferir`, …) |
+| `/assistente-tecnica/` | 5 | **5** (`#parecer-tecnico`, `#entregaveis`, `#impugnacao-laudos`, …) |
+
+- **Por que importa mais do que parece:** `/cpc-prova-pericial/` é a página-referência por identificador, e várias dessas âncoras são **citadas no `llms.txt`** e usadas como destino de link interno. Uma âncora que aterrissa escondida desperdiça exatamente o clique mais qualificado que o site recebe — o de quem já sabe o que procura.
+- **Categoria:** Técnico / Usabilidade / AI citation
+- **Impacto:** 5 · **Esforço:** 2 · **Confiança:** 9 · **Valor de negócio:** 5
+- **Priority Score:** 112,5
+- **Status:** open · **Descoberto:** 2026-08-24
+- **Correção:** a mesma de `/laudo-pericial/` — `h2[id], h3[id] { scroll-margin-top: 6rem }`. Em `/cpc-prova-pericial/` a regra já existe, mas **só dentro de `.art-entry`**; é preciso generalizá-la sem duplicar o valor.
+- **Verificar depois de corrigir por medição, não por leitura:** `getComputedStyle(el).scrollMarginTop` em toda `[id]` de heading, exatamente como o levantamento acima.
 
 ### O que segue em aberto
 
-- **SEO-026 / SEO-033** — **sem leitura possível hoje: a série do GSC termina em 20/08 e o SEO-033 é de 21/08.** Primeira leitura útil a partir de ~28/08. `/pericia-ambiental/` está em 1 impressão / posição 5,0; o que se observa é **impressão**, não posição. **`/pericia-industria-quimica/` e `/pericia-contaminacao-alimentos/` seguem intocadas como controle.**
-- **A assimetria procedimental × matéria ficou mais nítida** — 253 impressões nas seis páginas procedimentais contra 28 nas seis de matéria. Se o SEO-033 não mover `/pericia-ambiental/` até o fim de agosto, a hipótese a testar deixa de ser "falta porta procedimental na página de matéria" e passa a ser "a demanda de matéria não existe nessa cauda", com a consequência de parar de investir nelas.
-- **Tese da página de referência por identificador** — `/cpc-prova-pericial/` saiu de 0 e tem 0 impressões próprias nesta janela; `/normas-tecnicas-pericia/` tem **6 impressões em posição 2,8**, a melhor posição do site. Volume baixíssimo, mas a tese não está refutada. Leitura em ~01/09.
-- **SEO-016** (metadados) — gatilho **medido hoje: ~199 impressões em posição ≤ 10** (soma das páginas com posição média ≤ 10), contra 179 na leitura anterior. Limiar: 300. **Não disparou**, e a regra 7 abaixo continua valendo.
+*(atualizado em 2026-08-24 — série do GSC até 22/08, 28 dias: **336 impressões, 3 cliques**, 14 páginas com impressão)*
+
+- **O número que mudou: 1 → 3 cliques.** Ainda de um dígito, então a regra 8 continua valendo — **exposição antes de conversão de impressão**. Mas dois dos três cliques vieram de páginas de **matéria** (`/pericia-combustiveis/`, e o da home), o que enfraquece a leitura de 22/08.
+- **A assimetria procedimental × matéria encolheu.** Era 253 × 28 em 22/08; hoje é ~307 × 44 — e a matéria produziu **CTR de 6,2% em `/pericia-combustiveis/`** (16 impressões, posição 6,5), o melhor CTR do site. **A hipótese "a demanda de matéria não existe nessa cauda" perdeu força e não deve ser tratada como concluída.**
+- **`/laudo-pericial/` (SEO-034, publicado 22/08): 0 impressões — não aparece na série.** Esperado: a série termina no próprio dia da publicação. **Primeira leitura útil ~30/08.** Não tratar o zero como resultado.
+- **`/pericia-ambiental/` (SEO-033, publicado 21/08): 1 impressão, posição 5,0.** Um dia de dado. **Leitura ~28/08**, observando **impressão**, não posição. `/pericia-industria-quimica/` e `/pericia-contaminacao-alimentos/` seguem intocadas como controle — a mudança de CSS de hoje não altera nenhuma das três (nenhuma estourava).
+- **`/normas-tecnicas-pericia/`: 6 → 15 impressões, posição 5,5.** A tese da página de referência por identificador **ganhou força**. `/cpc-prova-pericial/` continua em 1 impressão. Leitura em ~01/09.
+- **`/impugnacao-laudo-pericial/`: 72 → 82 impressões, posição 12,6 (era 12,5).** Impressões subindo, posição estável. **Continuar sem mexer no conteúdo** — a correção de renderização de hoje não tocou texto, metadado nem link.
+- **`/classificacao-fiscal-ncm/`: 7 → 10 impressões, posição 19,3 → 15,0.** Melhorou. A investigação de canibalização com `/normas-tecnicas-pericia/` **não é mais necessária por ora**.
+- **SEO-016** (metadados) — gatilho medido hoje: **~246 impressões em posição ≤ 10** (eram 199). Limiar: 300. **Não disparou**, mas está a uma execução de disparar.
+- **SEO-036** (âncoras escondidas sob o cabeçalho fixo em 3 páginas) — 112,5, aberto hoje. É a maior nota em aberto e custa pouco.
 - **SEO-023** (redação do FAQ em `/sobre/` e `/assistente-tecnica/`) — 63, coberto por checagem automática.
-- **SEO-035** (`li { display: flex }` latente em quatro páginas) — 75, aberto hoje. Três das quatro são controle/experimento; a correção definitiva (`display: list-item` + `::marker`) mexe em 14 arquivos.
-- **SEO-005** (`_headers` inerte) e **SEO-009** (Google Business, bloqueado por verificação de identidade) — sem mudança.
-- **Google Ads sem entrega** — uma campanha habilitada, zero impressão em 90 dias, enquanto o GA4 registra 8 sessões de Paid Search. Fora do mandato de SEO. **Aviso à cliente pendente há sete execuções.**
+- **SEO-005** (`_headers` inerte) — 21,6, sem mudança. **SEO-009** (Google Business) — bloqueado por verificação de identidade, sem mudança.
+- **Google Ads sem entrega** — uma campanha habilitada, zero impressão em 90 dias, enquanto o GA4 registra sessões de Paid Search. Fora do mandato de SEO. **Aviso à cliente pendente há oito execuções** — vale escalar de "nota no relatório" para item com dono.
 
 ### Próxima execução — o que checar primeiro
 
-1. **`/usr/bin/python3 tools/seo-report.py` em chamadas separadas** (`deploy valid`, depois `gsc ga4`): a inspeção de URL estoura o timeout de uma execução única — de novo hoje. Hoje funcionou rodar `deploy valid` primeiro e, para a leitura de dados, um script curto que consulta só `searchanalytics` (sem `urlInspection`), que responde em segundos. **A inspeção de índice pode ficar para o fim, e três timeouts nela não são um problema do site.**
-2. **Conferência de renderização: as duas pendências foram fechadas nesta execução** (`/laudo-pericial/` e `/pericia-ambiental/`, a 1280 px e 375 px, overflow 0 nas duas). **O método que passou a valer: quando o viewport não assentar, medir uma página boa conhecida na mesma aba antes de descartar a leitura** — foi o controle que separou ruído de defeito hoje. E a página nova precisa de `?v=N` na URL: o navegador serviu cópia em cache duas vezes seguidas e mostrou o arquivo antigo como se fosse o publicado.
-3. **`/pericia-ambiental/`: a leitura do SEO-033**, a partir de ~28/08. Observar **impressão**. Consultas a vigiar: `quesitos perícia ambiental`, `quesitos contaminação de solo`, `modelo de quesitos ambiental`, `quesitos laudo ambiental`.
-4. **`/laudo-pericial/`: a leitura do SEO-034**, a partir de ~30/08 (indexação primeiro). Consultas a vigiar: `o que o laudo pericial deve conter`, `requisitos do laudo pericial`, `como analisar um laudo pericial`, `art 473 cpc`, `laudo pericial sem resposta aos quesitos`. **O risco a monitorar é canibalização com `/impugnacao-laudo-pericial/`** — se as impressões daquela página caírem enquanto as desta sobem, verificar por `query × page` qual das duas o Google escolheu para cada consulta antes de concluir qualquer coisa.
-5. **Atribuição de consulta exige a dimensão `page` no mesmo levantamento.** Não cruzar as duas listas de cabeça — foi assim que a leitura do `art. 95` sobreviveu errada por duas execuções. **E note que a dimensão `query` só explica 23 das 294 impressões** — o resto é anonimizado. Conclusão baseada em lista de consultas neste site é conclusão sobre 8% dos dados.
-6. **`/impugnacao-laudo-pericial/`: 24,8 → 18,1 → 13,3 → 12,7 → 13,8 → 12,6 → 12,5**, com impressões de 44 → 60 → 72. Continua melhorando nas duas dimensões. **Continuar sem mexer.**
-7. **`/classificacao-fiscal-ncm/`: 9,0 → 25,4 → 22,3 → 19,3 → 19,3** com 7 impressões. Estável em faixa ruim. Se a próxima piorar, investigar canibalização com `/normas-tecnicas-pericia/`.
-8. **1 clique em 28 dias segue sendo o número que importa.** Enquanto for de um dígito, priorizar **exposição** (cobertura de intenção, novas faixas de consulta) sobre **conversão de impressão**. As impressões diárias, porém, estão subindo — 32, 27, 31, 47 nos dias 17 a 20/08 contra 2 a 15 na semana anterior. **Quando o clique sair de um dígito, a prioridade inverte.**
-9. **Confirmar sempre até que data a série do GSC vai** antes de tratar um zero como resultado. Isso decidiu a escolha de tarefa de hoje.
-10. **Ao clonar o CSS de uma página existente para uma nova, conferir duas coisas que o validador não vê:** `scroll-margin-top` para as âncoras e `counter-reset` quando houver lista numerada contínua em mais de um bloco. As duas falharam hoje.
+1. **Rodar `tools/seo-report.py` em chamadas separadas.** Hoje `deploy valid` levou ~15 min porque o `git fetch` **falhou por timeout de rede** (`Resolving timed out`) — o restante passou (0 commits pendentes, sitemap em dia, 15 URLs em 200, `[valid]` ALL PASS). **Um `git fetch` que estoura não é deriva do site**; confirmar pelo resto do relatório antes de investigar.
+2. **A dimensão `device` deve entrar no levantamento padrão.** Foi ela que revelou o defeito de hoje — 98 impressões no celular em posição 8,9 com zero clique. **`page` e `query` sozinhas não teriam mostrado.** A dimensão `query` explica só **33 das 336 impressões (~10%)**: conclusão tirada da lista de consultas deste site é conclusão sobre 10% dos dados.
+3. **Medir renderização é levantamento, não conferência de véspera.** O SEO-035 classificou como "fragilidade latente em quatro páginas" o que era **defeito ativo em seis, cobrindo 91% das impressões** — porque contou ocorrências de um padrão no fonte em vez de medir a página renderizada. **Varrer as 15 páginas a 375 px com iframe leva um minuto e deve ser rotina, não reação.** O script está no formato usado hoje: iframe de 375 px, `scrollWidth` do documento, caixas com `scrollWidth > clientWidth` e elementos além da janela, ignorando `.table-scroll`.
+4. **Três degraus da regra de medição, na ordem:** (033) `innerWidth` ≠ `clientWidth` ⇒ leitura inválida; (034) meça uma página boa conhecida na mesma aba para separar ruído de defeito; (035, hoje) **depois de corrigir, `innerWidth` assenta sozinho — o valor inflado era sintoma do overflow, não do ambiente.**
+5. **`/laudo-pericial/`: leitura do SEO-034 a partir de ~30/08.** Consultas a vigiar: `o que o laudo pericial deve conter`, `requisitos do laudo pericial`, `como analisar um laudo pericial`, `art 473 cpc`. **Risco a monitorar: canibalização com `/impugnacao-laudo-pericial/`** — se as impressões daquela caírem enquanto as desta sobem, conferir por `query × page` antes de concluir.
+6. **Atribuição de consulta exige `page` e `query` no mesmo levantamento.** Não cruzar duas listas de cabeça — foi assim que a leitura do `art. 95` sobreviveu errada por duas execuções.
+7. **A correção de hoje é a primeira mudança do site que ataca conversão e não exposição.** O sinal a observar em ~31/08 é **cliques no celular saindo de zero**, com impressões e posição móveis estáveis. Se a posição móvel cair junto, a causa não foi o layout. Se as impressões móveis subirem, o Google reavaliou a usabilidade da página — efeito secundário possível, não a hipótese principal.
+8. **Quando os cliques saírem de um dígito, a prioridade inverte** — de exposição para conversão de impressão (SEO-016 e CTAs). Está mais perto do que estava: 1 → 3.
+9. **Ao clonar CSS de uma página existente para uma nova, conferir três coisas que o validador não vê:** `scroll-margin-top` nas âncoras (ver SEO-036), `counter-reset` quando houver lista numerada contínua em mais de um bloco, e **agora não há mais `li { display: flex }` a herdar** — a folha corrigida é a das 14 páginas atuais.
