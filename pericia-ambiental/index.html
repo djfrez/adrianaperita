@@ -264,7 +264,7 @@
 
     .faq { border-top: 1px solid var(--border); max-width: 46rem; }
     .faq > div { padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
-    h2[id], h3[id] { scroll-margin-top: 6rem; }
+    h2[id], h3[id] { scroll-margin-top: 7rem; }
     .faq h3 { margin: 0 0 .75rem; }
     .faq p:last-child { margin-bottom: 0; }
 
@@ -282,6 +282,14 @@
     .related ul + .related-lbl { margin-top: 2.25rem; }
 
     footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 0; font-size: .75rem; color: var(--muted); }
+
+    /* Destinos de âncora: o cabeçalho fixo mede 98 px, então o alvo precisa
+       assentar abaixo disso. 7rem (112 px) deixa uma folga de 14 px. Regra
+       única e por último na folha, para vencer empates de especificidade
+       (`.art-entry h3`) e para valer também em <tr>/<section>/<div> com id —
+       eram esses os alvos que a regra antiga, só de heading, não alcançava. */
+    h2[id], h3[id], h4[id], section[id], article[id],
+    tr[id], div[id], details[id] { scroll-margin-top: 7rem; }
   </style>
 
   <!-- ─── Google Analytics 4 ─── -->
