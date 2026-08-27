@@ -228,7 +228,7 @@ Status: `open` · `in progress` · `done` · `blocked`
   - `Article` + `FAQPage` (7 itens, paridade com o texto visível verificada por script) + `BreadcrumbList`, com o `@id` canônico do `Person`. GA4 e disparo de `manual_event_CONTACT` presentes.
   - Links de entrada: card de expertise da home, "Continue lendo" das seis páginas existentes, `sitemap.xml` e `llms.txt`. A própria página linka os cinco pilares — cluster fechado, sem link quebrado (verificado por script).
 - **Verificação factual — dois pontos posteriores ao meu conhecimento interno, checados em fonte antes do commit:**
-  1. **IN DG/PF nº 338, de 29/07/2026 — confirmada.** Reeditou os procedimentos de controle e fiscalização de produtos químicos e **revogou as INs nº 166/2020 e nº 211/2021**. Detalha o regime sancionador (multas até R$ 350 mil, suspensão e cancelamento de licença). **Não alterou a relação de produtos controlados**, que segue na Portaria MJSP nº 204/2022 — como a página afirma. Fonte: gov.br/pf e cobertura especializada.
+  1. **IN DG/PF nº 338, de 29/07/2026 — confirmada.** Reeditou os procedimentos de controle e fiscalização de produtos químicos e **revogou as INs nº 166/2020 e nº 211/2021**. Detalha o regime sancionador (dosimetria da multa, suspensão e cancelamento de licença). **Correção registrada em 27/08/2026:** esta nota dizia "multas até R$ 350 mil", número vindo de cobertura secundária. A faixa é legal e está no art. 14, V da Lei nº 10.357/2001 — **R$ 2.128,20 a R$ 1.064.100,00** —, confirmada no Planalto e na página oficial da PF; a IN dosa a multa dentro dela e não pode ampliá-la (ver SEO-037). **Não alterou a relação de produtos controlados**, que segue na Portaria MJSP nº 204/2022 — como a página afirma. Fonte: gov.br/pf e cobertura especializada.
   2. **ABNT NBR 14725:2023 — confirmada.** Publicada em 03/07/2023, consolidou as quatro partes anteriores e substituiu FISPQ por FDS. O período de adequação de 24 meses **encerrou em 03/07/2025**; desde 04/07/2025 só o formato FDS é admitido. A página trata o prazo como encerrado, o que está correto.
 - **Vantagem competitiva com prazo:** a IN 338/2026 tem uma semana. Praticamente todo o conteúdo concorrente ainda cita as INs 166/2020 e 211/2021 como vigentes. Janela curta — vale acompanhar se a concorrência atualiza.
 - **Manutenção:** revisar se a Portaria MJSP 204/2022 for substituída (é ela que lista os produtos, e é o ponto que muda com mais frequência).
@@ -255,6 +255,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 | 2026-08-05 | SEO-017 — spoke `/honorarios-pericia-judicial/` | `SEO: Add honorários periciais spoke page (SEO-017)` |
 | 2026-08-06 | SEO-018 — spoke `/quesitos-periciais/` | `SEO: Add quesitos periciais spoke page (SEO-018)` |
 | 2026-08-16 | SEO-030 — referência `/cpc-prova-pericial/` | `SEO: Add CPC prova pericial reference page (SEO-030)` |
+| 2026-08-27 | SEO-037 — spoke `/produtos-quimicos-controlados/` | `SEO: Add produtos químicos controlados spoke page (SEO-037)` |
 
 ---
 
@@ -472,16 +473,114 @@ Sobre as 10 páginas em produção. Sem dados de desempenho utilizáveis, então
 - **Por que não era a tarefa de 06/08 (avaliação original, mantida para registro):** score baixo e o problema ainda é teórico em 10 páginas — o grafo completo até ajuda a distribuir rastreamento num domínio novo. Vira relevante por volta de 15 páginas, ou antes disso se o GSC mostrar páginas recebendo tráfego irrelevante entre clusters.
 - **Ver a execução de 2026-08-12 (segunda)** mais abaixo para o que foi implementado e por que o score subiu de 33,3 para 84.
 
+---
+
+## Estado da medição — 2026-08-27
+
+**Primeira coleta com sinal utilizável.** Período 28 dias, service account.
+
+- **484 impressões · 5 cliques · 15 de 15 páginas indexadas (PASS em todas).** Não há mais pendência de indexação: o item que vinha sendo acompanhado desde 03/08 está encerrado.
+- **Crescimento real na quinzena** (14 dias anteriores → 14 dias recentes): `/quesitos-periciais/` 49 → 128 impressões (pos 10,3 → 9,5); `/impugnacao-laudo-pericial/` 15 → 69 (pos 17,5 → 12,7); `/honorarios-pericia-judicial/` 9 → 32; `/normas-tecnicas-pericia/` 0 → 31 já em **pos 4,3**; `/cpc-prova-pericial/` 0 → 9. O volume quase triplicou.
+- **GA4:** 67 sessões, das quais **6 de Organic Search**. Ainda não há base para otimizar conversão — Prioridade 1 do mandato continua sem dado que a sustente.
+
+### O achado estrutural: a cauda ranqueia, a cabeça não
+
+Cruzando `query × page` (90 dias), o padrão se repete em dois clusters independentes, **na mesma página**:
+
+| Consulta | Página | Posição |
+|---|---|---|
+| impugnação ao laudo pericial **cpc** | `/impugnacao-laudo-pericial/` | **9,0** |
+| impugnação ao laudo pericial | idem | 26,8 |
+| impugnação de laudo pericial | idem | 44,0 |
+| **prazo** apresentacao quesitos | `/quesitos-periciais/` | **12,0** |
+| emitir **despacho** - sem quesitos | idem | **9,4** |
+| quesitos | idem | 40,3 |
+| apresentação de quesitos | idem | 46,5 |
+
+**Leitura:** o Google confia nestas páginas para a consulta *qualificada* (com artigo, prazo, ato processual) e não para o termo-cabeça comercial, onde a SERP é ocupada por portais jurídicos de alta autoridade. A média da página (13,5 e 9,7) vem da cauda anonimizada, não da cabeça.
+
+**Consequência para a estratégia:** o retorno mais rápido está em **ser mais específico**, não mais abrangente — e de preferência em terreno onde a autoridade da concorrência não é jurídica. As duas páginas de melhor posição do site (`/normas-tecnicas-pericia/` 4,3 e `/pericia-industria-quimica/` 4,0) e a de melhor CTR (`/pericia-combustiveis/`, 8,7% em pos 6,3) são exatamente as mais técnicas e mais estreitas. As mais amplas e mais jurídicas são as que ficam em 27–47.
+
+### Mobile: o sinal pré-registrado não se confirmou nem se desmentiu
+
+O item 8 da lista anterior previa ler o primeiro clique móvel por volta de 01/09 como veredito sobre SEO-035/SEO-036.
+
+- **MOBILE:** 127 impressões · **0 cliques** · pos **8,7**
+- **DESKTOP:** 354 impressões · 5 cliques · CTR 1,41% · pos 10,3
+
+As impressões móveis subiram de quase nada para 127, com posição *melhor* que a do desktop. Mas **0 de 127 não é anomalia estatística**: a uma CTR móvel plausível de ~0,8% na posição 8,7 (a CTR móvel é sistematicamente menor que a desktop na mesma posição nominal, por causa da coluna única e dos blocos de AI Overview e PAA acima), o esperado seria ~1 clique. Observar zero tem probabilidade ~0,36. **A amostra não distingue as hipóteses.** Não se pode dizer que o layout resolveu, nem que não era a causa. Fica pendente até haver ~400 impressões móveis.
+
+**O desdobramento previsto para SEO-016 (título/descrição na SERP móvel) foi verificado e descartado:** os 15 títulos (49–64 caracteres) e as 15 descriptions (156–168) foram inspecionados um a um. Estão front-loaded, dentro ou muito perto do limite de exibição e são melhores que os da concorrência. **SEO-016 está materialmente concluído** — não há reescrita de metadado com ganho esperável, e insistir nele seria trabalho cosmético. Encerrado.
+
+---
+
+## Auditoria — 2026-08-27
+
+Sobre as 15 páginas em produção. `deploy` e `valid` passaram integralmente antes de qualquer alteração: 0 commits pendentes, sitemap em dia, 15 URLs em 200, e as 15 páginas sem falha de título, description, canonical, `h1`, JSON-LD, link interno, órfã ou paridade de FAQ.
+
+### O que está saudável — não mexer
+
+- **Técnico e estrutural:** nada a corrigir. Não há ganho disponível em metadado, schema, link interno, sitemap, robots, `llms.txt` (que cobre as 15 páginas) ou indexação. **Não restava "melhoria fácil de ranking"** — a regra do mandato de não criar conteúdo enquanto houver ganho fácil disponível foi verificada e liberada, não presumida.
+- **AI crawlers** nominalmente liberados no `robots.txt` (GPTBot, ClaudeBot, Google-Extended, PerplexityBot, anthropic-ai, Amazonbot, Applebot).
+
+### Três hipóteses de página nova testadas contra o conteúdo existente — e descartadas
+
+Registrado para que execuções futuras não as reproponham:
+
+1. **Página de "parecer técnico".** Motivação aparente forte: a expressão aparece **24 vezes** em `/assistente-tecnica/`, é serviço nomeado no mandato e não tem página. **Descartada:** o pilar já *ensina* o parecer — definição, tabela laudo × parecer (quem assina, base legal, objeto, prazo, efeito), a seção "as sete partes de um parecer que o juízo consegue usar", os poderes do art. 473, §3º e o uso antecipado do art. 472, além de 4 entradas de FAQ. Diferente do caso da SEO-018 (quesitos), em que o pilar apenas *afirmava* a importância sem ensinar. Aqui a canibalização seria severa.
+2. **Página de "prazos da perícia".** **Descartada:** `/cpc-prova-pericial/` já traz a tabela única com os 11 prazos da fase pericial, incluindo os arts. 95 e 98 fora do bloco 464–480.
+3. **Página de "recall / recolhimento de produto".** **Descartada:** o tema aparece 14 vezes em `/pericia-contaminacao-alimentos/`, com a RDC 655/2022 tratada na seção de normas.
+
+### A lacuna real
+
+**"Produtos Químicos Controlados" é serviço nomeado no mandato, não tem página, e o que existe está no contêiner errado.** A cobertura vivia inteiramente dentro de `/pericia-industria-quimica/` — uma `<h2>`, uma `<h3>` e duas entradas de FAQ — enquadrada como *uma das quatro famílias de litígio industrial*. Quem procura o regime de licenciamento, a obrigação de escrituração ou o que fazer com uma autuação recém-recebida não está procurando uma página sobre acidente de processo. Público distinto (empresa, não advogado), intenção distinta (conformidade e defesa administrativa, não perícia judicial) e concorrência distinta (consultorias de compliance, não portais jurídicos).
+
+### SEO-037 — Spoke: produtos químicos controlados *(executada em 2026-08-27)*
+- **Descrição:** Os dois regimes federais de controle de produto químico, as obrigações de cada um, o que mudou com a IN DG/PF nº 338/2026 e a defesa técnica da autuação escritural.
+- **URL:** `/produtos-quimicos-controlados/`
+- **Categoria:** Conteúdo / Spoke de cluster / Conformidade e defesa administrativa
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 144
+- **Status:** done · **Descoberto:** 2026-08-27 · **Concluído:** 2026-08-27
+- **Por que esta:** aprofunda o cluster de Indústria Química, que tinha **uma única página**, em vez de abrir frente nova; é serviço nomeado no mandato sem página; e vai para o tipo de terreno que os dados de hoje mostram ser o mais produtivo para este domínio — técnico, estreito e sem concorrência de portal jurídico. As alternativas de Prioridade 1 e 2 foram avaliadas e não tinham lastro: conversão não tem dado (6 sessões orgânicas) e a melhoria fácil de ranking não existe (auditoria integralmente limpa).
+- **Implementado:** ~3.540 palavras. Tabela comparativa dos dois regimes em seis dimensões; tabela das nove obrigações da Lei nº 10.357/2001 artigo a artigo; as treze infrações do art. 12 em lista numerada; as cinco medidas do art. 14; a seção dos trinta dias do art. 15; o regime do Exército com a revogação das dispensas; **a tabela das quatro hipóteses de divergência escritural, com mecanismo físico e forma de demonstração de cada uma**; e a seção de enquadramento por concentração. `Article` (com `isPartOf` apontando para o pilar) + `FAQPage` (8 itens) + `BreadcrumbList` de três níveis, com o `@id` canônico do `Person`.
+- **A tese que a página tem e a concorrência não:** *uma divergência sistemática tem assinatura física; um desvio, não.* Perda por evaporação é proporcional ao volume operado e reprodutível período a período; erro de conversão é constante em percentual; desvio é episódico e não guarda relação com variável de processo. Demonstrar a **regularidade do padrão** é, em si, prova de que a diferença é escritural. É o argumento que só um engenheiro químico formula, e é o ativo da página.
+- **Paridade de FAQ garantida por construção, não por conferência:** as 8 perguntas e respostas foram definidas uma única vez em estrutura de dados, e o HTML visível e o JSON-LD foram **gerados da mesma fonte**. Conferido depois por script: idênticos caractere a caractere. Método melhor que o das páginas anteriores (escrever duas vezes e comparar) — vale repetir.
+- **Canibalização resolvida na origem, no padrão da SEO-015:** a `<h3>` "As autuações mais comuns são escriturais" do pilar foi **encurtada** de lista de quatro itens para um parágrafo-resumo que aponta para a spoke, e o parágrafo operacional sobre a IN 338/2026 (SIPROQUIM, CRC/CLF, prazo dos mapas, retificação) foi condensado ao essencial. O pilar mantém a tabela dos dois órgãos, porque ela é contexto das quatro famílias de litígio. **Nenhum texto duplicado entre as duas páginas.**
+- **Regra de negócio da cliente preservada:** o pilar declara em caixa própria que a atuação **não é consultoria regulatória de rotina** (licença, cadastro, escrituração periódica são compliance, não prova técnica). Como a página nova fala de obrigações de conformidade, ela **repete a delimitação de escopo** e o CTA vende defesa técnica e laudo, não licenciamento. Sem isso, a página atrairia demanda que a cliente não atende.
+- **Links de entrada:** 5 páginas — card de Insights na home, dois links contextuais dentro do pilar, e "Continue lendo" de `/classificacao-fiscal-ncm/` (autuação e enquadramento administrativos) e `/normas-tecnicas-pericia/` (índice de normas). Vizinhança tópica real, no critério da SEO-019 — não foi adicionada a todas as páginas. `sitemap.xml` e `llms.txt` atualizados, com a lista de Serviços do `llms.txt` passando a nomear "Produtos Químicos Controlados" como serviço próprio.
+
+- **Verificação factual — texto literal da lei e fonte oficial antes de publicar. Duas correções e uma confirmação que a memória interna errava:**
+  1. **Multa: R$ 2.128,20 a R$ 1.064.100,00** (art. 14, V da Lei nº 10.357/2001, lido no Planalto). **O "até R$ 350 mil" que circula na cobertura secundária da IN 338/2026 — e que estava na nota do SEO-014 neste backlog — não corresponde à lei.** A página oficial da PF confirma a mesma faixa. Instrução normativa **dosa** a multa; não pode ampliar teto legal. Corrigido aqui e não propagado.
+  2. **Decreto nº 10.030/2019 segue vigente no que importa.** Havia risco real de erro: buscas indicam que o Decreto nº 11.615/2023 "revogou o Decreto nº 10.030/2019". Lido o texto no Planalto, **o art. 83 do D. 11.615/2023 revoga dispositivos do Decreto nº 9.847/2019** (armas), e as revogações internas ao D. 10.030 atingem seus **arts. 2º a 4º, que alteravam outros decretos sobre armas de fogo**. O **art. 1º, que aprova o R-105, não foi revogado** — e o próprio D. 11.615 remete ao "Regulamento de Produtos Controlados" como norma existente. A citação do site estava certa; a fonte secundária é que induzia ao erro.
+  3. **As dispensas de registro do art. 7º, §1º do R-105 foram revogadas pelo Decreto nº 11.366/2023** — inclusive a de quem usava PCE apenas eventualmente. Achado próprio da leitura do texto integral, ausente do material de orientação disponível, que ainda as descreve como vigentes. É o ponto mais acionável da seção do Exército.
+  4. **IN DG/PF nº 338/2026: assinada em 29/07/2026, publicada no DOU em 03/08/2026**, vigente da publicação. Revogou as INs nº 166/2020 e nº 211/2021 e **não alterou a lista de produtos**, que segue na Portaria MJSP nº 204, de 21/10/2022. Novidades: PAI instaurado **só quando constatada a infração**, critérios de pena-base com atenuantes e agravantes, consolidação no SIPROQUIM2. Fonte: página oficial da PF em gov.br.
+  5. **Prazo dos mapas confirmado, depois de quase ter sido removido.** A afirmação do pilar — mapas mensais até o **décimo quinto dia do mês subsequente** — não constava da lei (o art. 9º remete a portaria) e por isso foi tratada como não verificada e deixada de fora da primeira versão da página. Confirmada nas páginas de SIPROQUIM2 do gov.br/pf, junto com os instrumentos **CRC** e **CLF**, e então **acrescentada** à página. *Não verificado ainda não é falso — vale um segundo esforço de busca antes de descartar um dado útil.*
+  - Conferidos ainda, no texto do Planalto: arts. 4º a 10 (licença, autorização especial, renovação anual, licenciamento de todas as partes, comércio exterior, escrituração, suspensão), art. 12, I a XIII (as treze infrações) e art. 15 (trinta dias para sanar, destinação do produto não regularizado, destinação imediata em risco iminente).
+- **O único ponto deixado deliberadamente sem número:** a lista de PCE do Exército é descrita como "elaborada e atualizada pelo Comando do Exército", sem citar portaria específica, porque não foi possível confirmar em fonte primária qual está vigente. Melhor uma referência genérica correta do que um número que envelhece errado — a lição do SEO-002.
+- **Vantagem competitiva com prazo:** a IN 338/2026 tem menos de um mês. O material de orientação disponível ainda descreve o regime das INs 166/2020 e 211/2021, e a revogação das dispensas do R-105 (2023) segue mal documentada na web. Janela real, mas curta.
+- **Manutenção:** rever se a **Portaria MJSP nº 204/2022** for substituída — é ela que lista os produtos e é o ponto que muda com mais frequência. A faixa de multa só muda por lei.
+
+### Verificação de renderização — e um falso "OK" que quase passou
+
+Medição em Chrome real (Playwright, `channel="chrome"`) contra `http://localhost:8899`, a 375 px e 1280 px, em vez do harness de iframes.
+
+- **Sem overflow horizontal em nenhuma página, nas duas larguras:** `scrollWidth == clientWidth` (375 e 1280), com `innerWidth == clientWidth` confirmando a validade da leitura (regra do SEO-033). As tabelas ultrapassam 375 px **dentro do `.table-scroll`**, que é o comportamento desejado — e o mesmo padrão medido, na mesma sessão, em `/pericia-industria-quimica/` e `/laudo-pericial/`, que são páginas boas conhecidas (controle do SEO-034).
+- **9 de 9 âncoras assentam em y = 112 px**, abaixo do cabeçalho fixo de 98 px. `scroll-margin-top: 7rem` clonado corretamente.
+- **A primeira medição de âncora deu "9/9 OK" e estava errada.** Reportava o texto em y = 365, 1399, 4080… — valores que só podem significar que o salto não aconteceu. A segunda tentativa, com recarga completa por âncora, ainda errava: o déficit **crescia com a distância** (135, 345, 798 … 4057 px), assinatura de `scroll-behavior: smooth` ainda em animação quando a medição ocorreu. Só a terceira, esperando `scrollY` estabilizar, deu o número real e constante.
+- **Regra nova, que generaliza o item 5 anterior:** *um resultado uniforme demais ("tudo OK") merece a mesma desconfiança que um resultado idêntico ao anterior.* E, especificamente: **com `scroll-behavior: smooth`, nenhuma medição de posição vale antes de `scrollY` parar de mudar.** O harness de iframes não tinha essa espera — o Playwright com espera de estabilização substitui os dois arquivos de `scratchpad/` com vantagem, porque elimina o problema de cache por construção.
+
 ### Próxima execução — o que checar primeiro
 
-1. **Rodar `tools/seo-report.py` em chamadas separadas** (`deploy`, `valid`, `gsc`). Hoje as três passaram em segundos — o `git fetch` que estourou em 24/08 era rede, não deriva. **`deploy` lento não é sinal de problema; confirme pelo resto do relatório antes de investigar.**
-2. **`device` e a varredura de renderização são levantamento padrão, não reação.** As duas harnesses estão em `scratchpad/` (`anchors.html`, `overflow.html`): iframes de 375 px e 1280 px sobre `http://localhost:8899`, servido por `python3 -m http.server`. **Rodam em um minuto e devem abrir a execução, não fechá-la.**
-3. **Quatro degraus da regra de medição, na ordem:** (033) `innerWidth` ≠ `clientWidth` ⇒ leitura inválida; (034) meça uma página boa conhecida na mesma aba; (035) depois de corrigir, `innerWidth` assenta sozinho; **(036) meça o seletor que o defeito usa, não o que a correção anterior usou** — foi o que separou 17 de 61.
-4. **Medir onde o conteúdo assenta, não onde a caixa começa.** Padding de seção esconde a borda e mostra o título; a primeira passagem de hoje acusou 4 falsos positivos na home por medir a caixa. **Vale para qualquer medição de posição, não só de âncora.**
-5. **Cache de iframe invalida medição pós-correção silenciosamente.** A verificação de hoje repetiu **exatamente** os números de antes da correção porque os iframes vieram do cache. **Sempre `?cb=` + timestamp no `src`** — um resultado idêntico ao anterior é suspeito antes de ser tranquilizador.
-6. **`/laudo-pericial/`: leitura do SEO-034 a partir de ~30/08.** Consultas a vigiar: `o que o laudo pericial deve conter`, `requisitos do laudo pericial`, `art 473 cpc`. **Risco: canibalização com `/impugnacao-laudo-pericial/`** — conferir por `query × page` no mesmo levantamento antes de concluir.
-7. **`/impugnacao-laudo-pericial/` mudou de estado: posição 12,6 → 13,5 com impressões paradas.** Se cair de novo em 28/08, **a orientação "não mexer" caducou** e a página volta a ser candidata a trabalho de conteúdo.
-8. **O sinal do SEO-035 + SEO-036 é o primeiro clique móvel, por volta de 01/09.** Se as impressões móveis subirem, o Google reavaliou usabilidade — efeito secundário, não a hipótese. **Se nada mudar, layout não era a causa: passar para SEO-016 (título/descrição na SERP móvel).**
-9. **Quando os cliques saírem de um dígito, a prioridade inverte** — de exposição para conversão. **`/quesitos-periciais/`** (136 impressões, CTR 0,7%) é a primeira da fila.
-10. **Ao clonar CSS de uma página existente, conferir o que o validador não vê:** `scroll-margin-top` — **a folha das 15 páginas agora traz a regra geral correta, e é essa que deve ser clonada** — `counter-reset` em lista numerada contínua, e nenhum `li { display: flex }` a herdar.
-11. **Escalar o Google Ads sem entrega.** Nove execuções como nota de rodapé. **Não é item de SEO e não se resolve no backlog** — cabe uma mensagem direta à cliente.
+1. **Rodar `tools/seo-report.py` em `deploy`, `valid` e `gsc` separados, antes de decidir qualquer coisa.** Hoje as três passaram limpas e foi isso que **liberou** a criação de conteúdo: a regra do mandato é não criar página enquanto houver ganho fácil de ranking, e "não há ganho fácil" precisa ser verificado, não presumido.
+2. **A verificação de renderização agora é Playwright com Chrome real, não o harness de iframes.** `pw.chromium.launch(channel="chrome")` — o browser do Playwright não está instalado, o Chrome do sistema está. Mede overflow (`scrollWidth` vs `clientWidth`, com `innerWidth == clientWidth` como validade) e âncoras. **Esperar `scrollY` estabilizar antes de medir posição**, senão o `scroll-behavior: smooth` devolve número errado que cresce com a distância. Os dois arquivos de `scratchpad/` estão obsoletos.
+3. **Desconfiar de resultado uniforme, não só de resultado repetido.** "9/9 OK" foi falso duas vezes hoje antes de ser verdadeiro. Um número que não varia quando deveria variar é tão suspeito quanto um número idêntico ao da medição anterior.
+4. **SEO-016 está encerrado** — os 15 títulos e descriptions foram inspecionados e estão bons. Não reabrir por hábito.
+5. **Indexação está 15/15.** Parar de tratá-la como pendência aberta; verificar só quando entrar página nova.
+6. **O sinal móvel ainda não decide nada.** 127 impressões, 0 cliques, pos 8,7 — estatisticamente compatível com CTR normal. **Só voltar ao assunto com ~400 impressões móveis**, por volta de meados de setembro. Não tirar conclusão sobre SEO-035/SEO-036 antes disso, em nenhuma direção.
+7. **`/produtos-quimicos-controlados/`: primeira leitura a partir de ~05/09.** Consultas a vigiar: `produtos químicos controlados`, `licença polícia federal produtos químicos`, `mapa de controle siproquim`, `autuação produto controlado`, `IN 338/2026`. **Conferir canibalização com `/pericia-industria-quimica/` por `query × page`** antes de concluir qualquer coisa — foi de lá que o conteúdo saiu.
+8. **A hipótese estratégica a testar é a da especificidade.** Os dados de hoje dizem que este domínio ranqueia 4–13 em consulta técnica qualificada e 27–47 em termo-cabeça jurídico. Se a página nova confirmar (entrar direto abaixo de 10 em consulta de conformidade), **a fila seguinte é técnica, não processual** — e os candidatos naturais são os temas ainda presos dentro de pilares: **HACCP/APPCC como sistema de prova**, **análise laboratorial e acreditação ISO/IEC 17025**, e **rotulagem**. Se não confirmar, a limitação é de autoridade de domínio, e aí o trabalho vira aquisição de citação e menção, não mais conteúdo.
+9. **Quando os cliques saírem de um dígito, a prioridade inverte** — de exposição para conversão. `/quesitos-periciais/` (177 impressões, CTR 0,6%, pos 9,7) segue primeira da fila, e `/impugnacao-laudo-pericial/` (84, pos 12,7) segunda.
+10. **Gerar FAQ visível e JSON-LD da mesma fonte de dados**, como na SEO-037, em vez de escrever duas vezes e conferir depois. Elimina a classe de erro em vez de detectá-la.
+11. **Ao citar norma, separar o que a lei fixa do que a regulamentação dosa.** O erro dos "R$ 350 mil" entrou aqui por cobertura secundária de uma IN; a faixa estava na lei o tempo todo. E **não verificado não é falso**: o prazo dos mapas quase foi descartado por não estar na lei, e estava na fonte oficial da PF.
+12. **Escalar o Google Ads sem entrega.** Décima execução como nota de rodapé. **Não é item de SEO e não se resolve no backlog** — cabe uma mensagem direta à cliente.
