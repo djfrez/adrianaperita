@@ -113,4 +113,11 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/produtos-quimicos-controlados/"/>
   </url>
+  <url>
+    <loc>https://adrianarezende.com.br/rotulagem-alimentos/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/rotulagem-alimentos/"/>
+  </url>
 </urlset>

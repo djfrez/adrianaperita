@@ -371,6 +371,16 @@ def section_valid():
         doc = read(page_file(page))
         label = page
 
+        # Tags de estrutura únicas. Um </head> duplicado passou despercebido em
+        # 2026-08-27: o navegador se recupera, e nenhuma outra checagem olha a
+        # moldura do documento. Barato de conferir, e fecha a classe de erro.
+        for tag in ("head", "body"):
+            for pat, shown in ((rf"<{tag}\b[^>]*>", f"<{tag}>"),
+                               (rf"</{tag}\s*>", f"</{tag}>")):
+                n = len(re.findall(pat, doc, re.I))
+                if n != 1:
+                    fail("valid", f"{label}: {shown} aparece {n}x (esperado 1)")
+
         m = re.search(r"<title>(.*?)</title>", doc, re.S | re.I)
         title = html.unescape(m.group(1).strip()) if m else None
         if not title:
