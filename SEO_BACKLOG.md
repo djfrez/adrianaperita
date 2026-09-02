@@ -841,3 +841,111 @@ Aplicando a regra 10, injetou-se um defeito para ver a checagem reprovar. **Ela 
 10. **Presumir revogação e provar vigência** — segue valendo, e nesta execução evitou tratar a RANP 902/2022 como especificação de etanol quando ela é o programa de marcação.
 11. **Gerar FAQ visível e JSON-LD da mesma fonte de dados.** Quinta execução; segue eliminando a classe de erro.
 12. **Escalar o Google Ads sem entrega.** Décima terceira execução como nota de rodapé. Não é item de SEO — cabe uma mensagem direta à cliente.
+
+---
+
+## Estado da medição — 2026-09-02
+
+Período 28 dias. **728 impressões · 9 cliques · CTR 1,24%.** GA4: 62 sessões, **9 de Organic Search**.
+
+| Página | Impressões | Posição | Cliques |
+|---|---|---|---|
+| `/quesitos-periciais/` | 257 | 11,0 | 1 |
+| `/impugnacao-laudo-pericial/` | 94 | 13,1 | 0 |
+| `/assistente-tecnica/` | **80** | **9,9** | 0 |
+| `/honorarios-pericia-judicial/` | 65 | 11,5 | 1 |
+| `/laudo-pericial/` | 62 | 8,9 | 0 |
+| `/normas-tecnicas-pericia/` | 53 | **5,7** | 0 |
+| `/pericia-combustiveis/` | 27 | **5,9** | 2 |
+| `/cpc-prova-pericial/` | 27 | 8,1 | 0 |
+| `/pericia-industria-quimica/` | 13 | **6,2** | 1 |
+| `/pericia-contaminacao-alimentos/` | 12 | **6,2** | 2 |
+| `/prazo-validade-alimentos/` | 8 | **6,0** | 0 |
+| `/produtos-quimicos-controlados/` | 2 | **6,0** | 0 |
+
+### O gatilho pré-registrado do item 5 de 31/08 foi testado — e **não** disparou
+
+O item 5 previa: *se as páginas novas continuarem entrando em 5–6 e os cliques não subirem proporcionalmente, o gargalo deixou de ser posição e passou a ser CTR e volume — e a fila deixa de ser conteúdo e vira aquisição de citação (Prioridade 8).*
+
+- **27/08:** 484 impressões · 5 cliques · CTR 1,03%
+- **02/09:** 728 impressões · 9 cliques · CTR 1,24%
+
+Impressões **+50%**, cliques **+80%**. Os cliques subiram *mais rápido* que as impressões e a CTR agregada subiu. **A condição do gatilho não se verificou**, e a Prioridade 8 não foi acionada. Registrado como teste falseável que saiu negativo — a estratégia de conteúdo segue sendo a alavanca. Reavaliar no mesmo formato na próxima leitura.
+
+### Prioridades 1 e 2 verificadas — sem alavanca disponível
+
+- **Prioridade 1:** `/quesitos-periciais/` mantém 257 impressões (35% do site) a 0,4% de CTR na posição 11,0. Diagnóstico de 27/08 e 31/08 inalterado: posição 11 é topo de página 2, onde a CTR desaba independentemente do metadado, e a SEO-016 foi encerrada após inspeção um a um dos títulos e descriptions. A alavanca é autoridade, não reescrita.
+- **Prioridade 2:** o `query × page` expôs 32 linhas (62 de 728 impressões; o resto anonimizado). Na faixa 5–20: `emitir despacho - sem quesitos` (9,0), `anexo juntado: apresentação de esclarecimentos ao laudo` (8,2), `art. 95, § 3º, ii, do cpc` (9,0), `impugnação ao laudo pericial cpc` (9,0), `assistente tecnico pericia` (16,0), `assistente técnico` (18,0). Todas apontam para tema **já coberto** — as duas últimas para `/assistente-tecnica/`, que é justamente a página que mais cresceu (80 impressões, pos 9,9). Sem tema meio coberto, a criação de conteúdo fica liberada pela regra do mandato.
+- **Indexação:** 19 de 20 páginas indexadas. `/dano-motor-combustivel/` em *"Detectada, mas não indexada no momento"* — publicada em 31/08, um dia antes da leitura. Aguardar, não agir.
+- **Falha transitória descartada:** `[deploy]` reprovou `/honorarios-pericia-judicial/` por *read timeout*. Três novas requisições retornaram **200** em 0,38 s, 0,10 s e 0,08 s. Rede, não site.
+
+### A lacuna: o site inteiro ignora a prova que se produz antes da ação
+
+Levantamento por termo nas 19 páginas (~93.000 palavras):
+
+| Termo | Ocorrências no site |
+|---|---|
+| "produção antecipada" | **5 — todas em `/dano-motor-combustivel/`**, publicada em 31/08 |
+| "381" | 3 — idem |
+| "cautelar" | 1 — em página de outro assunto |
+| "ata notarial" | **0** |
+| "perpetuação" / "prevenção do juízo" | **0** |
+
+`/cpc-prova-pericial/`, que é a referência processual do site e percorre os arts. 464 a 480 mais os arts. 95, 98 e 156 a 158, **não mencionava o art. 381 uma única vez**. Era a lacuna interna registrada no item 6 de 31/08.
+
+**Por que virou página e não seção**, contrariando a hipótese do item 6: (a) é procedimento próprio, com competência, contraditório, recurso e destino dos autos próprios — arts. 381 a 383; (b) a intenção de busca é distinta da de "prova pericial no CPC"; (c) o momento comercial é o mais valioso do site, porque o cliente contrata a assistente técnica **antes** de existir ação; (d) `/cpc-prova-pericial/` é organizado explicitamente "na ordem em que o processo os aciona" e começa no art. 464 — o art. 381 acontece antes de haver processo e quebraria essa espinha. A seção foi feita **também**, como porta de entrada, resolvendo a canibalização na origem.
+
+### SEO-042 — Página: produção antecipada de prova pericial *(executada em 2026-09-02)*
+- **Descrição:** As três hipóteses do art. 381, o que perece em cada matéria técnica e em que ritmo, a fronteira entre ata notarial e perícia antecipada, o recorte do objeto no art. 382 e o papel do assistente técnico numa prova que não se repete.
+- **URL:** `/producao-antecipada-prova/`
+- **Categoria:** Conteúdo / Referência processual / Prova técnica pré-processual
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 144
+- **Status:** done · **Descoberto:** 2026-09-02 · **Concluído:** 2026-09-02
+- **Por que esta:** maior lacuna tópica do site medida por levantamento de termo (cobertura zero de um instrumento processual central); conecta **seis** clusters em vez de abrir frente nova, porque prova perece em combustível, alimento, microbiologia, ambiental, indústria química e rotulagem; captura o cliente no ponto mais precoce e mais valioso da jornada; e a própria página de 31/08 já gerava demanda interna de link sem destino.
+- **Implementado:** ~4.200 palavras. Três tabelas: as três hipóteses do art. 381 (inciso → texto → o que demonstrar → situação técnica); o que perece por matéria (6 linhas: combustíveis, alimentos-conformidade, alimentos-microbiológico, ambiental-efluente, ambiental-solo, indústria química); e ata notarial × produção antecipada em 7 dimensões. Nove quesitos de estrutura. Cinco erros que inutilizam a medida. `Article` (com `isPartOf` apontando para `/cpc-prova-pericial/`) + `FAQPage` (8) + `BreadcrumbList` de três níveis, com o `@id` canônico do `Person`.
+
+- **A tese central:** *a prova técnica tem prazo próprio, e esse prazo não é o do processo.* Quando o objeto do exame é consumido, reparado, descartado ou muda com o tempo, a perícia da ação principal chega para examinar **outra coisa** — e nada disso é má-fé, é o funcionamento normal de uma oficina, de uma fábrica e de um corpo d'água.
+- **A segunda tese, a que corrige um erro difundido de fundamentação:** *o art. 381 tem três hipóteses independentes e só a primeira é de urgência.* O inciso II (viabilizar autocomposição) e o inciso III (justificar ou **evitar** o ajuizamento) não contêm elemento de perigo na demora. Fundamentar só em perecimento, quando o caso é de inciso III, cria uma controvérsia sobre urgência que o pedido não precisaria travar.
+- **A terceira tese, que separa dois instrumentos que a prática confunde:** *ata notarial preserva aparência; perícia antecipada preserva análise.* O tabelião atesta a existência e o modo de existir de um fato perceptível (art. 384) — não mede teor, contagem microbiana, concentração nem composição. Daí o uso combinado e a ordem correta: a ata lavrada no dia seguinte registra o estado, o lacre e a guarda, **documentando a cadeia de custódia** enquanto o pedido de produção antecipada é preparado.
+- **A quarta tese, operacional e a mais específica do site:** *a janela de perecimento se mede em eventos, não em dias de calendário* — o próximo recebimento de combustível, a próxima parada de manutenção, o próximo ciclo de limpeza. E **a limpeza destrói tanta prova quanto o descarte**: peça lavada perde borra, particulado e produto de corrosão, que são a assinatura do mecanismo.
+- **O achado de redação que muda a petição:** o art. 382, § 4º, só admite recurso contra o indeferimento **totalmente** denegatório. O indeferimento **parcial** — o que autoriza o exame mas recorta o objeto — não abre recurso. Como o recorte é onde se decide se o laudo responderá à pergunta do caso, o momento de acertar é a inicial.
+- **Paridade de FAQ garantida por construção** (sexta execução do método da SEO-037): as 8 perguntas e respostas definidas uma única vez em `faq.py`, com HTML visível e JSON-LD gerados da mesma fonte. Conferido por script estrito: **8/8 idênticos caractere a caractere**.
+- **Links de entrada:** 5 páginas — card de Insights na home; **seção nova em `/cpc-prova-pericial/`** ("Antes da ação: a perícia que não pode esperar o processo", que fecha o item 6 de 31/08 e serve de porta); link contextual **no parágrafo do art. 381 em `/dano-motor-combustivel/`**, que citava o artigo sem destino, mais entrada no "Continue lendo"; e entradas em `/assistente-tecnica/`, `/pericia-contaminacao-alimentos/` e `/laudo-pericial/`, com âncoras diferenciadas por vizinhança (critério da SEO-019). `sitemap.xml` e `llms.txt` atualizados, com "Produção Antecipada de Prova" passando a serviço próprio na lista do `llms.txt`.
+
+- **Verificação factual — texto literal do CPC antes de publicar:**
+  1. **Arts. 381, 382, 383 e 384 lidos no texto compilado da Lei nº 13.105/2015 no Planalto**, baixado localmente e extraído artigo a artigo. Conferidos: art. 381 caput e incisos I a III; §1º (arrolamento só para documentação, sem atos de apreensão); §2º (competência do foro onde a prova deva ser produzida **ou** do foro de domicílio do réu); §3º (**não previne** a competência); §4º (juízo estadual contra União, autarquia ou empresa pública federal onde não houver vara federal); §5º (justificação, "para simples documento e sem caráter contencioso"). Art. 382 caput e §§ 1º a 4º. Art. 383 e parágrafo único. Art. 384 e parágrafo único.
+  2. **Art. 383 diz "durante 1 (um) mês"**, não "trinta dias" — a página usa "um mês", e a expressão saiu certa porque o texto literal estava aberto quando foi redigida, não porque tenha sido corrigida depois. Registrado como o tipo de detalhe que a paráfrase de memória erra: "um mês" e "trinta dias" divergem em quatro meses do ano.
+  3. **Art. 382, § 4º — a palavra é "totalmente".** A ressalva recursal alcança apenas o indeferimento **total**; o indeferimento parcial, que recorta o objeto do exame, não abre recurso. Nenhum erro foi cometido e depois corrigido aqui — o advérbio foi lido na fonte e o ponto virou seção própria (caixa "O detalhe do § 4º que muda a redação do pedido") justamente porque é ele que carrega a consequência prática. **Nesta execução não houve erro factual próprio a registrar**, ao contrário das SEO-002 e SEO-041.
+  4. **Arts. 464, 465 e 466 lidos no mesmo texto**, para a articulação com a perícia: art. 464 caput ("exame, vistoria ou avaliação"); art. 465, § 1º, I a III (quinze dias para impedimento/suspeição, indicação de assistente técnico e quesitos); art. 466, § 2º (acesso e acompanhamento dos assistentes, comunicação prévia comprovada, **antecedência mínima de cinco dias**).
+  5. **Nenhuma jurisprudência e nenhuma doutrina foram afirmadas.** A tese sobre a autonomia dos incisos II e III é sustentada **pelo próprio texto legal**, que não contém elemento de urgência neles — não por entendimento consolidado que não foi verificado. Mesma disciplina do item (b) deixado de fora em 31/08.
+  6. **Reuso apenas de fato já verificado no site:** Resolução ANP nº 898/2022 e os três últimos recebimentos (verificados em 31/08); Lei nº 6.437/1977 e a amostra de contraprova (verificada em 28/08); acreditação ABNT NBR ISO/IEC 17025 (verificada em 03/08).
+- **O que foi deixado deliberadamente de fora:** (a) **números de resolução em matéria ambiental** — a tabela do que perece trata efluente e pluma pelo comportamento físico (fluxo × estoque, migração e atenuação), sem citar limite ou norma que não tenha sido lida em fonte primária nesta execução; (b) **prazos e custos do procedimento** — não há número citável e a variação por comarca é grande; (c) **discussão sobre eficácia do laudo antecipado perante quem não foi citado** — depende de entendimento jurisprudencial não verificado, e a página se limita a registrar o que o art. 382, § 1º, determina.
+- **Manutenção:** baixa. A base é texto de código processual, que muda pouco. Rever se houver alteração nos arts. 381 a 384.
+
+### Verificação de renderização
+
+Chrome real via Playwright (`channel="chrome"`, `/usr/bin/python3`) contra `http://localhost:8899`, a 375 px e 1280 px, com `/cpc-prova-pericial/` — a página modificada — como controle.
+
+- **Sem overflow horizontal nas duas páginas, nas duas larguras** (`scrollWidth == clientWidth`, com `innerWidth` confirmando a leitura).
+- **9 de 9 âncoras assentam em y = 112 px**, abaixo do cabeçalho fixo. **Controle negativo:** com `scroll-margin-top` desligado, as 9 caem para **y = 0**. A medição sabe reprovar.
+- Animação desligada por `html { scroll-behavior: auto !important }` antes de medir, conforme o item 9 de 31/08. Zero espera, medida determinística.
+
+### Controle negativo da paridade de FAQ
+
+Aplicando a regra 10 também ao script estrito: injetou-se um defeito em **uma única resposta visível** (troca de acentuação em 4 caracteres), deixando o JSON-LD intacto. O script **reprovou, apontando o item 2**. Página restaurada e paridade reconferida depois do restauro. O `seo-report` seguiu em `ALL PASS` durante o defeito, confirmando de novo o que o item 8 de 31/08 registrou: **`ALL PASS` não é prova de paridade**.
+
+### Próxima execução — o que checar primeiro
+
+1. **Rodar `tools/seo-report.py` em `deploy`, `valid` e `gsc` antes de decidir qualquer coisa** — `gsc` exige `/usr/bin/python3`. Um `ERR timeout` isolado no `[deploy]` deve ser reconferido com `curl` antes de virar item: em 02/09 foi rede, não site.
+2. **Repetir o teste do gatilho do item 5 no formato de 02/09** — impressões e cliques lado a lado contra a leitura anterior. Se desta vez os cliques crescerem **menos** que as impressões, a Prioridade 8 (citação e menção) passa à frente do conteúdo. Hoje: +50% impressões, +80% cliques, gatilho não disparado.
+3. **`/dano-motor-combustivel/`: conferir se saiu de "Detectada, mas não indexada".** Se ainda não estiver indexada por volta de 10/09, aí sim é item, não espera.
+4. **`/producao-antecipada-prova/`: primeira leitura a partir de ~09/09.** Consultas a vigiar: `produção antecipada de prova pericial`, `art 381 cpc`, `produção antecipada de prova requisitos`, `ata notarial ou perícia`, `perícia antes de entrar com ação`, `assistente técnico produção antecipada`, `preservar prova antes do processo`. **Conferir canibalização com `/cpc-prova-pericial/`**, de onde a fronteira foi traçada, e observar se a seção nova daquela página muda a sua posição média (hoje 8,1).
+5. **`/assistente-tecnica/` foi a página que mais cresceu (80 impressões, pos 9,9) e é a de maior valor comercial do site.** As consultas `assistente técnico` (18,0) e `assistente tecnico pericia` (16,0) estão na faixa 5–20 e apontam para ela. É a primeira candidata de Prioridade 2 da próxima leitura — verificar se a nova página de entrada precoce a empurra.
+6. **O cluster processual tem agora 7 páginas** (cpc, assistente, quesitos, laudo, impugnação, honorários, produção antecipada) e é o que ranqueia 9–13, não 5–6. Antes de acrescentar a oitava, verificar se a sétima entra abaixo de 10 — mesma disciplina aplicada a Alimentos e a Combustíveis.
+7. **Advérbio em texto legal costuma ser o que carrega a consequência.** "Indeferir **totalmente**" (art. 382, § 4º) e "durante **1 (um) mês**" (art. 383) são os dois casos desta execução. Ambos saíram corretos porque o texto do Planalto estava aberto durante a redação — o método que funcionou foi *redigir com a fonte à vista*, não *redigir e conferir depois*. Manter esse método: baixar o texto literal antes de escrever a seção, não antes do commit.
+8. **`ALL PASS` do `seo-report` não prova paridade de FAQ.** Rodar sempre o script estrito, e passar o controle negativo nele.
+9. **Para medir âncora, desligar a animação em vez de esperar por ela.**
+10. **Presumir revogação e provar vigência** — segue valendo.
+11. **Gerar FAQ visível e JSON-LD da mesma fonte de dados.** Sexta execução; segue eliminando a classe de erro.
+12. **Escalar o Google Ads sem entrega.** Décima quarta execução como nota de rodapé. Não é item de SEO — cabe uma mensagem direta à cliente.
