@@ -949,3 +949,115 @@ Aplicando a regra 10 também ao script estrito: injetou-se um defeito em **uma �
 10. **Presumir revogação e provar vigência** — segue valendo.
 11. **Gerar FAQ visível e JSON-LD da mesma fonte de dados.** Sexta execução; segue eliminando a classe de erro.
 12. **Escalar o Google Ads sem entrega.** Décima quarta execução como nota de rodapé. Não é item de SEO — cabe uma mensagem direta à cliente.
+
+---
+
+## Estado da medição — 2026-09-02 (segunda execução do dia)
+
+Período 28 dias. **782 impressões · 9 cliques · CTR 1,15%.** A leitura da manhã registrou 728 · 9. As duas leituras estão separadas por horas, não por dias: **a variação não é tendência e o teste do gatilho do item 5 não foi repetido aqui** — repeti-lo com esse intervalo seria medir ruído. Fica para a próxima execução em dia distinto, no formato de 02/09 (manhã).
+
+| Página | Impressões | Posição | Cliques |
+|---|---|---|---|
+| `/quesitos-periciais/` | 280 | 10,8 | 1 |
+| `/impugnacao-laudo-pericial/` | 97 | 12,9 | 0 |
+| `/assistente-tecnica/` | 80 | 10,0 | 0 |
+| `/honorarios-pericia-judicial/` | 75 | 10,7 | 1 |
+| `/laudo-pericial/` | 62 | 8,9 | 0 |
+| `/normas-tecnicas-pericia/` | 57 | **5,8** | 0 |
+| `/cpc-prova-pericial/` | 35 | 8,3 | 0 |
+| `/pericia-combustiveis/` | 28 | **5,7** | 2 |
+| `/classificacao-fiscal-ncm/` | 16 | 12,7 | 0 |
+| `/pericia-industria-quimica/` | 13 | **6,2** | 1 |
+| `/pericia-contaminacao-alimentos/` | 12 | **6,2** | 2 |
+| `/prazo-validade-alimentos/` | 8 | **6,0** | 0 |
+| `/` | 7 | **6,0** | 1 |
+| `/sobre/` | 5 | 11,8 | 1 |
+| `/produtos-quimicos-controlados/` | 3 | **4,3** | 0 |
+| `/analise-microbiologica-alimentos/` | 2 | 39,5 | 0 |
+| `/pericia-ambiental/` | **2** | **7,5** | 0 |
+
+- **Indexação:** `/dano-motor-combustivel/` segue em *"Detectada, mas não indexada"* (publicada em 31/08 — dentro da janela de espera do item 3). `/producao-antecipada-prova/` em *"O Google não reconhece o URL"*, publicada hoje — esperado. `/pericia-combustiveis/` teve **falha de inspeção por timeout**, não reprovação de indexação: mesma classe de ruído de rede registrada em 02/09 (manhã) no `[deploy]`.
+- **Novo canal na leitura do GA4:** `/quesitos-periciais/` recebeu 2 sessões de **`AI Assistant`**. É a primeira vez que o canal de busca por LLM aparece nominalmente nos dados desta propriedade. Não é base para decisão ainda — é marco para acompanhar.
+
+### Prioridades 1 e 2 verificadas — e por que a Prioridade 2 pré-registrada não virou tarefa
+
+- **Prioridade 1:** `/quesitos-periciais/` mantém o padrão (280 impressões, 36% do site, CTR 0,4%, posição 10,8). Diagnóstico de 27/08, 31/08 e 02/09 inalterado — posição 11 é topo de página 2. A SEO-016 já encerrou a via de metadado. Sem alavanca nova.
+- **Prioridade 2 — o item 5 pré-registrado foi testado e recusado por falta de massa.** O item 5 de 02/09 (manhã) apontava `/assistente-tecnica/` como primeira candidata, pelas consultas `assistente técnico` (pos 18,0) e `assistente tecnico pericia` (pos 16,0). Ao abrir o `query × page` desta leitura, **as duas consultas têm 1 impressão cada**. Agir sobre elas seria otimizar ruído, não uma faixa 5–20 com massa. Ordenadas por impressão, as consultas em 5–20 são `emitir despacho - sem quesitos` (9 impressões, pos 9,0) e `anexo juntado: apresentação de esclarecimentos ao laudo` (4, pos 8,2) — ambas apontam para tema **já coberto**. Registrado como candidata pré-registrada que **não se confirmou ao ser medida**, e não como item pendente.
+- **Um padrão que a lista de consultas expõe e que não estava registrado:** as páginas ranqueiam bem em cauda longa processual e **mal no termo-cabeça do próprio assunto**. `/impugnacao-laudo-pericial/` está em 9,0 para `impugnação ao laudo pericial cpc`, mas em **26,8 / 30,3 / 44,0 / 47,0** para `impugnação ao laudo pericial`, `impugnação laudo pericial`, `impugnação de laudo pericial` e `impugnar laudo pericial`. O mesmo em quesitos (`quesitos` 36,8; `quesitos periciais` 42,5). Isso é sinal de **autoridade tópica**, não de metadado — e é coerente com a decisão de seguir expandindo cluster.
+
+### A lacuna: o cluster Ambiental tem pilar e não tem nada mais
+
+Levantamento por termo nas 20 páginas:
+
+| Termo | Ocorrências no site | Onde |
+|---|---|---|
+| "IBAMA" | **0** | — |
+| "9.605" (Lei de Crimes Ambientais) | **0** | — |
+| "6.514" (regulamento das infrações) | **0** | — |
+| "automonitoramento" | **0** | — |
+| "condicionante" | **0** | — |
+| "outorga" | **0** | — |
+| "DBO" / "DQO" | **0** | — |
+| "licenciamento" | 1 | numa página de outro assunto |
+| "auto de infração" | 30 | **1 única** em `/pericia-ambiental/`; 11 em NCM, 6 em rotulagem |
+
+O contraste com o próprio site é o argumento: **o padrão que converte aqui é "você foi autuado, esta é a defesa técnica"** — é o que sustenta `/classificacao-fiscal-ncm/`, `/rotulagem-alimentos/` e `/produtos-quimicos-controlados/`. Esse padrão **não existia no cluster Ambiental**, que tinha só o pilar genérico.
+
+O dado empírico fecha o diagnóstico: `/pericia-ambiental/` e `/pericia-combustiveis/` foram publicadas no **mesmo dia** (04/08), com esforço equivalente. Um mês depois, Combustíveis tem 28 impressões, 2 cliques e a melhor CTR do site (7,1%); Ambiental tem **2 impressões**, posição 7,5, zero clique. Ambiental ranqueia bem e **não é procurada**, porque o pilar responde a uma categoria e não a uma pergunta. A disciplina do mandato foi respeitada: antes de acrescentar a segunda página do cluster, verificou-se que a primeira entra **abaixo de 10** (7,5).
+
+### SEO-043 — Página: auto de infração ambiental e defesa técnica *(executada em 2026-09-02, segunda execução)*
+- **Descrição:** O que o auto precisa descrever, o teste do vício insanável, o ônus da prova no processo administrativo sancionador, o calendário federal, a distinção entre descumprir padrão de lançamento e praticar a infração de poluição, e as condições de validade do dado analítico em efluentes.
+- **URL:** `/auto-infracao-ambiental/`
+- **Categoria:** Conteúdo / Autoridade tópica / Defesa administrativa / Cluster Ambiental
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 144
+- **Status:** done · **Descoberto:** 2026-09-02 · **Concluído:** 2026-09-02
+- **Por que esta:** o cluster mais fraco do site medido por dado (2 impressões em 28 dias contra 28 do gêmeo publicado no mesmo dia); a maior lacuna de entidade medida por levantamento de termo (IBAMA, Lei 9.605/1998, Decreto 6.514/2008, automonitoramento — todos em zero); e a aplicação, ao único cluster que ainda não a tinha, do padrão editorial que já sustenta as três páginas de autuação do site. Prioridade 1 sem alavanca e Prioridade 2 recusada por falta de massa, ambas verificadas antes.
+- **Implementado:** ~7.275 palavras. Três tabelas: vício sanável × insanável (4 dimensões, com o teste do art. 100, § 1º); fases e prazos do processo federal (8 linhas, com a coluna "o que a técnica produz aqui"); e as condições de lançamento do art. 16, I, da CONAMA 430/2011 (8 linhas, valor a valor). Cinco falhas que enfraquecem a defesa. Checklist de análise preliminar. `Article` (com `isPartOf` apontando para `/pericia-ambiental/`) + `FAQPage` (8) + `BreadcrumbList` de três níveis, com o `@id` canônico do `Person`. Entidades novas para o grafo: **IBAMA**, **Licenciamento Ambiental**, **Efluentes Industriais**, **Auto de Infração Ambiental**.
+
+- **A tese central:** *no processo administrativo sancionador, o ônus da prova dos fatos alegados pela defesa é do autuado* — art. 118 do Decreto nº 6.514/2008. Isso inverte a intuição formada na esfera cível, onde a responsabilidade é objetiva e o ônus é invertido em favor de quem alega o dano. São esferas diferentes com regras de prova opostas, e confundi-las é o erro estratégico mais caro: alegação técnica sem laudo, sem série histórica e sem memorial de cálculo é argumento, e argumento não desloca dado.
+- **A segunda tese, que separa duas perguntas que chegam no mesmo papel:** *ultrapassar um padrão de lançamento não é, por si só, a infração de poluição.* O caput do art. 61 do Decreto nº 6.514/2008 exige níveis que resultem ou possam resultar em dano à saúde humana, mortandade de animais ou destruição significativa da biodiversidade — há elemento de nível e de efeito que não decorre aritmeticamente da superação de um limite. E o parágrafo único condiciona a penalidade a **laudo técnico do órgão identificando a dimensão do dano e a gradação do impacto**, o que dá à dosimetria um pressuposto documental verificável.
+- **A terceira tese, que dá critério objetivo a uma discussão normalmente retórica:** *o vício é insanável quando corrigi-lo implica modificar o fato descrito no auto* (art. 100, § 1º). Traduzido para a prática técnica: se o auto imputa lançamento num ponto e o laudo mede outro, ou autua um parâmetro e ensaia outro, a correção não é convalidação — é autuação nova. Isso transforma "o auto está mal fundamentado" numa checagem documental linha a linha.
+- **A quarta tese, operacional e específica do site:** *na maior parte das autuações por lançamento, a prova contra a empresa foi produzida e entregue pela própria empresa* — automonitoramento do art. 24 e Declaração de Carga Poluidora do art. 28 da CONAMA 430/2011, esta até 31 de março de cada ano. A mesma resolução que obriga a produzir o dado fixa as condições que ele precisa cumprir (amostragem representativa no art. 24; coleta e análise por profissional legalmente habilitado no art. 25; laboratório acreditado pelo INMETRO com controle de qualidade analítica implementado no art. 26). Dado que não cumpre as condições da própria norma é frágil **nos dois sentidos**.
+- **O achado de leitura que evita erro de cálculo:** o padrão de DBO do art. 16 é **remoção mínima de 60%** — uma eficiência, não uma concentração. Demonstrá-la exige medição pareada de afluente e efluente. Autuação que compara a DBO de saída com um número absoluto está aplicando outro critério, que pode ser legítimo se vier da licença ou de norma estadual mais restritiva, mas então é essa a norma que precisa constar do auto.
+- **Paridade de FAQ garantida por construção** (sétima execução do método da SEO-037): as 8 perguntas e respostas definidas uma única vez em `faq.py`, com HTML visível e JSON-LD gerados da mesma fonte. Conferido por script estrito: **8/8 idênticos caractere a caractere**.
+- **Links de entrada:** 6 páginas — card de Insights na home; **parágrafo contextual novo em `/pericia-ambiental/`**, colocado exatamente na dobra entre a seção de efluentes e a de responsabilidade civil, porque é ali que a troca de esfera (e a inversão do ônus) precisa ser avisada; e entradas em `/normas-tecnicas-pericia/`, `/pericia-industria-quimica/`, `/classificacao-fiscal-ncm/` (o paralelo direto da autuação) e `/assistente-tecnica/`, com âncoras diferenciadas por vizinhança (critério da SEO-019). `sitemap.xml` e `llms.txt` atualizados, com "Defesa Técnica em Auto de Infração Ambiental" passando a serviço próprio na lista do `llms.txt`.
+
+- **Verificação factual — 41 pontos conferidos por script contra a fonte primária baixada:**
+  1. **Método:** os textos do **Decreto nº 6.514/2008** e da **Lei nº 9.605/1998** foram baixados do Planalto e a **Resolução CONAMA nº 430/2011** do sítio do CONAMA (PDF oficial, 9 páginas), extraídos para texto e mantidos abertos durante a redação — o método registrado no item 7 de 02/09 (manhã): *redigir com a fonte à vista*, não redigir e conferir depois. Ao final, um script conferiu **41 agulhas literais** (valores, prazos e trechos citados) contra os três textos: **41/41 ok**.
+  2. **A armadilha do texto compilado do Planalto, que quase custou um erro:** o HTML compilado exibe **as redações revogadas junto com a vigente**, na mesma sequência. Os arts. 98, 99, 100, 113, 119, 120 e 127 aparecem em duas ou três versões seguidas. Foi preciso extrair **todas** as ocorrências de cada artigo e escolher a última deliberadamente. Ler o primeiro resultado teria produzido citação de norma revogada em pelo menos quatro artigos.
+  3. **O art. 119, § 1º, do Decreto nº 6.514/2008 — prazo de dez dias para o parecer técnico — foi REVOGADO pelo Decreto nº 11.373/2023.** A redação vigente do art. 119, dada pelo mesmo decreto, não tem prazo. Este é o achado que mais se aproximou de virar erro: o prazo de dez dias é o que aparece primeiro no texto compilado e é o que circula em material de terceiros. A página **registra a revogação em caixa própria**, o que a torna mais correta que a maior parte do conteúdo concorrente — mesma vantagem competitiva da multa de 1% na SEO-002.
+  4. **Redações vigentes confirmadas artigo a artigo:** art. 99 e art. 100 na redação do **Decreto nº 11.080/2022**; art. 113 na redação do **Decreto nº 11.080/2022**; art. 97-A e o sobrestamento do prazo incluídos pelo **Decreto nº 9.760/2019**; art. 120 na redação do **Decreto nº 11.080/2022**; art. 119 na redação do **Decreto nº 11.373/2023**.
+  5. **Valores da CONAMA 430/2011 copiados célula a célula e reconferidos** (item 7 de 31/08): pH 5 a 9; temperatura inferior a 40 °C com variação do corpo receptor até 3 °C no limite da zona de mistura; materiais sedimentáveis até 1 mL/L em teste de uma hora; vazão máxima de até 1,5 vez a vazão média do período de atividade diária; óleos minerais até 20 mg/L; óleos vegetais e gorduras animais até 50 mg/L; ausência de materiais flutuantes; DBO 5 dias a 20 °C com remoção mínima de 60%.
+  6. **Uma divergência de grafia tratada explicitamente:** o PDF oficial da CONAMA 430/2011 imprime "cone **Inmhoff**"; o equipamento é o cone **Imhoff**. A página usa a grafia correta **em descrição, não entre aspas**, para não atribuir à norma um texto que ela não tem nem propagar o erro de digitação da fonte.
+  7. **Nenhuma jurisprudência foi afirmada.** A tese sobre o elemento de nível e efeito do art. 61 é sustentada **pelo próprio texto do caput e do parágrafo único**, não por entendimento consolidado que não foi verificado. Mesma disciplina das duas execuções anteriores.
+- **O que foi deixado deliberadamente de fora:** (a) **prazos e procedimento de órgãos estaduais e municipais** — a página abre com caixa de ressalva dizendo que o Decreto nº 6.514/2008 é federal e que o prazo do caso precisa ser lido na norma do órgão que lavrou o auto; citar prazos da CETESB sem ler a norma paulista seria exatamente o erro que a caixa alerta; (b) **a Tabela I do art. 16 (padrões por parâmetro)** — foi lida e conferida, mas reproduzi-la inteira acrescentaria volume sem decisão, e a página remete à resolução; (c) **critérios de dosimetria e valores de multa por infração além do art. 61** — dependem de leitura completa do Anexo e de atos do órgão que não foram verificados nesta execução; (d) **efeitos do pagamento com desconto sobre o direito de recorrer** — o art. 126 apresenta as duas condutas como alternativas, e ir além disso exigiria entendimento não verificado; a página diz o que o artigo diz e registra que a escolha é jurídica, informada pela pergunta técnica de se a base fática do auto sobrevive ao exame.
+- **Manutenção:** média. O Decreto nº 6.514/2008 foi alterado três vezes em quatro anos (Decretos 9.760/2019, 11.080/2022 e 11.373/2023) — é norma **em movimento**, ao contrário do CPC da SEO-042. Reconferir as redações dos arts. 97-A, 99, 100, 113, 119 e 120 a cada revisão. A CONAMA 430/2011 tem consulta pública de revisão dos padrões de lançamento em andamento, já registrada em `/pericia-ambiental/` — se resultar em norma nova, **as duas páginas** precisam ser atualizadas juntas.
+
+### Verificação de renderização
+
+Chrome real via Playwright (`channel="chrome"`, `/usr/bin/python3`) contra `http://localhost:8899`, a 375 px e 1280 px, com `/pericia-ambiental/` — a página modificada — e a home como controles.
+
+- **Sem overflow horizontal nas três páginas, nas duas larguras** (`scrollWidth == clientWidth`, com `innerWidth` confirmando a leitura).
+- **Controle negativo:** injetado um bloco de 3000 px de largura, a medição passou a acusar `scrollWidth=3000` contra `clientWidth=375`. A medição sabe reprovar.
+- A página não tem âncoras internas, então o teste de `scroll-margin-top` das execuções anteriores não se aplica aqui.
+
+### Controle negativo da paridade de FAQ
+
+Sétima aplicação da regra 10 ao script estrito: injetou-se um defeito em **uma única pergunta visível** (remoção do acento em "ônus"), deixando o JSON-LD intacto. O script **reprovou, apontando o item 5**; o `seo-report` seguiu em **`ALL PASS`** durante o defeito. Página restaurada e paridade reconferida depois do restauro. Terceira confirmação de que `ALL PASS` não é prova de paridade.
+
+### Próxima execução — o que checar primeiro
+
+1. **Rodar `tools/seo-report.py` em `deploy`, `valid` e `gsc` antes de decidir qualquer coisa** — `gsc` exige `/usr/bin/python3`. **Rodar com `python3 -u`**: com a saída redirecionada para arquivo, o Python bufferiza e a seção `[gsc]` parece travada por mais de dez minutos quando na verdade está progredindo. Custou duas execuções abortadas hoje. Falha isolada de `timeout` no `[deploy]` ou na inspeção de URL é rede — reconferir com `curl` antes de virar item.
+2. **Repetir o teste do gatilho do item 5 de 31/08 em dia distinto**, no formato de 02/09 (manhã): impressões e cliques lado a lado contra a leitura anterior. Se os cliques crescerem **menos** que as impressões, a Prioridade 8 (citação e menção) passa à frente do conteúdo. **Não repetir com poucas horas de intervalo** — foi por isso que não se repetiu nesta execução.
+3. **`/dano-motor-combustivel/`: se ainda não estiver indexada por volta de 10/09, aí sim é item, não espera.** `/producao-antecipada-prova/` e `/auto-infracao-ambiental/`: primeira checagem de indexação a partir de ~09/09.
+4. **`/auto-infracao-ambiental/`: primeira leitura a partir de ~09/09.** Consultas a vigiar: `auto de infração ambiental`, `defesa auto de infração ambiental`, `prazo defesa auto de infração ambiental`, `multa ambiental CETESB defesa`, `lançamento de efluente fora do padrão`, `CONAMA 430 padrões de lançamento`, `automonitoramento de efluentes`, `art 61 decreto 6514`. **Conferir canibalização com `/pericia-ambiental/`**, de onde a fronteira foi traçada (conformidade e prova judicial no pilar; autuação e defesa administrativa na nova), e observar se o parágrafo novo do pilar muda a sua posição média (hoje 7,5) ou o seu volume (hoje 2 impressões — o número a bater).
+5. **O cluster Ambiental agora tem duas páginas.** Antes de acrescentar a terceira, verificar se a segunda entra abaixo de 10 — mesma disciplina aplicada a Alimentos, Combustíveis e Processual.
+6. **A lacuna interna aberta hoje:** `/normas-tecnicas-pericia/`, que é o quadro de vigência do site, **não cita a Lei nº 9.605/1998 nem o Decreto nº 6.514/2008**, que passaram a existir no site por esta página. É candidata a linha nova naquela tabela, não a página nova — mesma forma do item 6 de 31/08, que virou seção em `/cpc-prova-pericial/`.
+7. **Candidata de Prioridade 3 registrada, ainda não medida:** o padrão "termo-cabeça mal posicionado, cauda longa bem posicionada" descrito acima é o sintoma que o cluster processual apresenta há três leituras. Se persistir na próxima, a resposta não é mais conteúdo no mesmo cluster — é Prioridade 8. Vigiar `impugnação de laudo pericial` (hoje 26,8–47,0) como o indicador dessa virada.
+8. **Ao ler o Planalto, extrair TODAS as ocorrências do artigo e escolher a última deliberadamente.** O texto compilado exibe redações revogadas em sequência com a vigente. Hoje isso valeu para sete artigos e um parágrafo revogado que circula como vigente. Regra nova, e a mais importante desta execução.
+9. **`ALL PASS` do `seo-report` não prova paridade de FAQ.** Rodar sempre o script estrito, e passar o controle negativo nele.
+10. **Presumir revogação e provar vigência** — segue valendo, e hoje pegou o art. 119, § 1º.
+11. **Gerar FAQ visível e JSON-LD da mesma fonte de dados.** Sétima execução; segue eliminando a classe de erro.
+12. **`AI Assistant` apareceu como canal no GA4 pela primeira vez** (2 sessões em `/quesitos-periciais/`). Marcar e acompanhar: se crescer, é a primeira medida direta do retorno do trabalho de citação por LLM, que hoje só é otimizado às cegas.
+13. **Escalar o Google Ads sem entrega.** Décima quinta execução como nota de rodapé. Não é item de SEO — cabe uma mensagem direta à cliente.

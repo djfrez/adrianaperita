@@ -141,4 +141,11 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/producao-antecipada-prova/"/>
   </url>
+  <url>
+    <loc>https://adrianarezende.com.br/auto-infracao-ambiental/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://adrianarezende.com.br/auto-infracao-ambiental/"/>
+  </url>
 </urlset>
