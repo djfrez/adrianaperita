@@ -1061,3 +1061,105 @@ Sétima aplicação da regra 10 ao script estrito: injetou-se um defeito em **um
 11. **Gerar FAQ visível e JSON-LD da mesma fonte de dados.** Sétima execução; segue eliminando a classe de erro.
 12. **`AI Assistant` apareceu como canal no GA4 pela primeira vez** (2 sessões em `/quesitos-periciais/`). Marcar e acompanhar: se crescer, é a primeira medida direta do retorno do trabalho de citação por LLM, que hoje só é otimizado às cegas.
 13. **Escalar o Google Ads sem entrega.** Décima quinta execução como nota de rodapé. Não é item de SEO — cabe uma mensagem direta à cliente.
+
+---
+
+## Estado da medição — 2026-09-03
+
+Período 28 dias, service account. Leitura comparada com a de 27/08.
+
+- **821 impressões · 9 cliques · CTR 1,10%** (em 27/08: 484 · 5). **18 de 21 páginas indexadas.**
+- **Quinzena contra quinzena** (04–17/08 → 18–31/08): **186 → 599 impressões** e **1 → 8 cliques**. As impressões triplicaram; os cliques octuplicaram.
+- **GA4:** 52 sessões, 11 de Organic Search, **2 de AI Assistant** (canal que apareceu pela primeira vez em 02/09, em `/quesitos-periciais/`, e se manteve).
+
+### Dois gatilhos pré-registrados foram testados. Um fechou, o outro não disparou.
+
+1. **O gatilho móvel do item 8 de 27/08 fechou — e a hipótese SEO-035/SEO-036 não se confirma.** Em 27/08 o mobile tinha 127 impressões e **0 cliques**, e ficou registrado que a amostra não distinguia as hipóteses (probabilidade ~0,36 de observar zero). Agora: **MOBILE 199 impressões · 2 cliques · CTR 1,01% · pos 8,9**, contra **DESKTOP 561 · 7 · CTR 1,25% · pos 10,5**. As CTRs são estatisticamente indistinguíveis. **Não há defeito de layout móvel a corrigir.** O item está encerrado por dado, não por opinião.
+2. **O gatilho do item 5 de 31/08 (repetido conforme o item 2 do handoff) NÃO disparou.** A regra era: se os cliques crescerem menos que as impressões, a Prioridade 8 (citação e menção) passa à frente do conteúdo. Impressões ×3,2; cliques ×8. **A estratégia de conteúdo continua justificada.**
+
+### O que a CTR agregada diz — e corrige uma suspeita anterior
+
+CTR de 1,10% na posição média 10,5 está **dentro do esperado** para essa posição, não abaixo. Ou seja: **o problema do site não é CTR, é posição.** Isso remove a Prioridade 1 (conversão em páginas de impressão alta) da mesa por ausência de alavanca — pela segunda leitura consecutiva, mas agora por um motivo diferente e mais forte do que em 27/08. Confirma também o encerramento do SEO-016: não há metadado a reescrever com ganho esperável.
+
+### O achado que decidiu a execução: as consultas nomeadas são texto de andamento processual
+
+Só **66 das 821 impressões (8%)** vêm de consultas nomeadas — o resto é cauda anonimizada. Como o GSC oculta as consultas *raras*, as nomeadas são as **mais frequentes**. E elas têm uma forma comum:
+
+| Consulta nomeada | Posição |
+|---|---|
+| **emitir despacho - sem quesitos** (a consulta nº 1 do site, 9 impressões) | **9,0** |
+| **anexo juntado: apresentação de esclarecimentos ao laudo pericial** | **8,2** |
+| prazo para se manifestar sobre laudo pericial | 11,0 |
+| prazo apresentacao quesitos | 12,0 |
+| quesitos podem ser apresentados até a perícia | 29,0 |
+| art. 95, § 3º, ii, do cpc | 9,0 |
+| impugnação ao laudo pericial **cpc** | 9,0 |
+| — contra os termos-cabeça — | |
+| quesitos · apresentação de quesitos · quesitos periciais | 36,8 · 48,3 · 42,5 |
+| laudo pericial · impugnação de laudo pericial | 34,3 · 44,0 |
+
+**As consultas em que o site fica entre 8 e 12 são, em sua maioria, strings copiadas da tela do processo** — nomes de movimento e de expediente, não conceitos. As conceituais ficam entre 22 e 53, e **não se moveram desde a leitura de 27/08**, o que é o indicador do item 7 do handoff: mais conteúdo no mesmo cluster jurídico não resolve o termo-cabeça.
+
+Terceira confirmação do achado estrutural de 27/08 — *o retorno está em ser mais específico, em terreno onde a autoridade da concorrência não é jurídica*. E uma direção nova: o terreno mais específico disponível não é uma matéria técnica, é **o vocabulário da própria tramitação**.
+
+### O levantamento que confirmou a lacuna
+
+Contagem por termo nas 21 páginas (~100.000 palavras):
+
+| Termo | Ocorrências no site |
+|---|---|
+| intimação / 15 dias / esclarecimentos | 50 / 68 / 37 — a **lei** está bem coberta |
+| **PJe · e-SAJ · certidão · conclusos · vista dos autos** | **0 · 0 · 0 · 0 · 0** |
+| movimento | 1 |
+
+O site **ensina o regime e é invisível ao vocabulário pelo qual ele é procurado**. Mesma forma do caso da SEO-018 (quesitos), em que o pilar afirmava a importância sem ensinar a coisa — aqui o pilar ensina a lei sem nomear a tela.
+
+### Por que seção, e não página nova — contrariando o instinto
+
+O mandato manda não criar conteúdo enquanto houver ganho de ranking fácil disponível. Três fatos empurraram para dentro de uma página existente:
+
+1. **Três das 21 páginas não estão indexadas** (`/dano-motor-combustivel/` e `/producao-antecipada-prova/` como *detectadas, não indexadas*; `/auto-infracao-ambiental/` o Google ainda não reconhece). A cadência de publicação está à frente da demanda de rastreamento do domínio. **O valor marginal da página 22 é menor que o de fazer as 21 ranquearem.**
+2. `/cpc-prova-pericial/` já está indexada, já está em **pos 8,2**, e é organizada explicitamente *na ordem em que o processo aciona cada ato* — que é exatamente a espinha de um decodificador de andamento. Ao contrário do art. 381 na SEO-042, isto **não quebra a espinha: percorre-a**.
+3. Página nova produziria canibalização direta com `/cpc-prova-pericial/` e `/quesitos-periciais/`, as duas páginas de maior volume do site.
+
+### SEO-044 — Decodificador de andamento processual em `/cpc-prova-pericial/` *(executada em 2026-09-03)*
+- **Descrição:** Traduzir os nomes oficiais dos movimentos processuais para o prazo do CPC que cada um dispara, e converter a intimação eletrônica em data de vencimento com dia certo.
+- **URL:** `/cpc-prova-pericial/#andamento`
+- **Categoria:** Prioridade 2 (posições 5–20) / Cobertura semântica / Conversão
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 144
+- **Status:** done · **Descoberto:** 2026-09-03 · **Concluído:** 2026-09-03
+- **Implementado:** ~1.900 palavras dentro da página existente. Tabela de **11 movimentos** (nome e código oficiais do CNJ → o que aconteceu → o que passa a correr → base legal); tabela de **7 passos** da intimação eletrônica até a data de vencimento; três enganos que a conversão produz; e um parágrafo de encaminhamento que liga cada janela ao produto técnico correspondente. **4 novas entradas de FAQ** (de 8 para 12), visíveis e em JSON-LD.
+- **A fonte que dá vantagem competitiva:** os nomes de movimento não foram escritos de memória. Foram extraídos do **webservice público do Sistema de Gestão de Tabelas do CNJ** (`sgt_ws.php`, operação `pesquisarItemPublicoWS`, tabela `M`), que devolveu **964 movimentos** com código, hierarquia pai/filho e glossário oficial. Daí saíram: Conclusão (51), Despacho (11009) › Mero expediente (11010), Perícia (14901) › Determinada/Designada · Agendada · Reagendada · Realizada, Intimação (12263) › Eletrônica, Juntada (67) › Petição · Documento, Decurso de Prazo (1051) e Expedição de documento (60). As descrições de *Conclusão*, *Decurso de Prazo* e *Expedição de documento* reproduzem o glossário oficial. **Não há, até onde se verificou, conteúdo em português que ligue a tabela de movimentos do CNJ aos prazos periciais do CPC.**
+- **A tese central, que é onde o prazo se perde:** *o marco não é a data do despacho nem a da juntada — é a da intimação, e no processo eletrônico ela pode ser ficta.* A cadeia completa, em sete passos com base legal em cada um: disponibilização no portal (Lei nº 11.419/2006, art. 5º); intimação realizada no dia da consulta, ou no primeiro dia útil seguinte se a consulta se der em dia não útil (§§ 1º e 2º); **intimação automaticamente realizada no término de 10 dias corridos do envio, se não houver consulta (§ 3º)**; início da contagem no dia útil seguinte (CPC, art. 231, V); contagem excluindo o dia do começo e incluindo o do vencimento (art. 224) e **somente em dias úteis** (art. 219); protração do art. 224, § 1º; e suspensão de 20/12 a 20/01 (art. 220). Pelo DJe, valem o art. 224, §§ 2º e 3º.
+- **O engano mais caro, que é aritmético:** a janela de consulta é de **10 dias corridos**; o prazo que ela dispara corre **em dias úteis**. São duas contagens encadeadas com unidades diferentes.
+- **O engano contraintuitivo:** **o prazo em dobro do art. 229 não se aplica em autos eletrônicos** — o § 2º do próprio artigo o afasta. Quem soma a dobra sobre os 15 dias do art. 465, § 1º, num processo eletrônico trabalha com prazo inexistente.
+- **O engano com maior valor comercial:** ler *Decurso de Prazo* como fim da participação técnica. Perdidos os quesitos iniciais, permanecem os quesitos suplementares do art. 469 e, sobretudo, **os 15 dias comuns do art. 477, § 1º** para a manifestação e o parecer do assistente técnico. É a janela em que a crítica ao laudo é feita, e ela existe para quem perdeu a primeira — que é exatamente o visitante que chega por uma consulta de andamento.
+- **Verificação factual — fonte primária aberta durante a redação**, método das três execuções anteriores. CPC/2015 e Lei nº 11.419/2006 baixados do Planalto; tabela de movimentos obtida do SGT/CNJ. Todos os artigos citados (203, 219, 220, 224, 229, 231, 465, 466, 469, 470, 474, 476, 477, 480) foram extraídos com **todas as ocorrências listadas e a última escolhida deliberadamente** (regra 8 do handoff de 02/09). Conferidos um a um: 15 dias do art. 465, § 1º; 5 dias do art. 465, §§ 2º e 3º; 5 dias de antecedência do art. 466, § 2º; 20 dias do art. 477, caput; 15 dias comuns do art. 477, § 1º; 10 dias do art. 477, § 4º; e os 10 dias **corridos** do art. 5º, § 3º, da Lei nº 11.419/2006.
+- **Um achado colateral que reforça a tabela:** o art. 203, § 4º dispõe que *os atos meramente ordinatórios, como a juntada e a vista obrigatória, independem de despacho* — o que explica por que *Juntada* aparece no andamento sem despacho que a preceda, e por que o rótulo sozinho não permite inferir se há prazo correndo.
+- **Nenhuma jurisprudência foi afirmada.** As três teses saem do texto legal. Em particular, a terceira (decurso de uma janela não fecha as outras) é sustentada pela existência autônoma dos arts. 469 e 477, § 1º, e **não** por entendimento sobre a admissibilidade de indicação tardia de assistente técnico, que não foi verificado e por isso não é mencionado.
+- **Honestidade metodológica registrada na própria página:** uma caixa avisa que cada tribunal pode criar tabela complementar de documentos e que o texto de tela costuma trazer complemento livre digitado pela secretaria — *o rótulo orienta; o inteiro teor decide*. Isso impede que a tabela seja lida como promessa de correspondência exata.
+- **Links internos:** três **contextuais novos** apontando para `#andamento`, colocados exatamente nas páginas que carregam as consultas de andamento e no ponto do texto em que a dúvida nasce — `/impugnacao-laudo-pericial/` (na lista de erros, como um quarto erro: contar da data errada), `/laudo-pericial/` (logo após a frase dos 15 dias do art. 477, § 1º) e `/quesitos-periciais/` (no bloco de "o que enviar", citando o movimento *Perícia — Determinada/Designada* pelo nome). Âncoras diferenciadas por vizinhança, critério da SEO-019. A seção nova, por sua vez, liga às quatro páginas de produto técnico. `sitemap.xml` (4 `lastmod`) e `llms.txt` atualizados.
+- **Manutenção:** baixa para o CPC, que é estável. **Média para a tabela do CNJ**, que é versionada e ganha movimentos novos — reconferir pelo SGT antes de citar código novo. A Lei nº 11.419/2006 é estável, mas o art. 5º é candidato perene a alteração por marco de processo eletrônico.
+
+### Verificação
+
+- **Paridade de FAQ garantida por construção** (oitava execução do método da SEO-037): as 12 perguntas definidas uma única vez em `tools/build/andamento.py`; HTML visível e JSON-LD gerados da mesma estrutura por `andamento_build.py`. Script estrito: **12/12 idênticos caractere a caractere**.
+- **Controle negativo da paridade** (regra 9): removido o acento de uma única pergunta *visível*, com o JSON-LD intacto. O script estrito **reprovou, apontando o item 10**; o `seo-report` seguiu em **`ALL PASS`** durante o defeito. **Quarta confirmação de que `ALL PASS` não prova paridade.** Página restaurada e paridade reconferida.
+- **Renderização** em Chrome real via Playwright, a 375 px e 1280 px, em `/cpc-prova-pericial/`, `/laudo-pericial/` e a home: **sem overflow horizontal** (`scrollWidth == clientWidth`). Controle negativo com bloco de 3000 px: a medição **acusou** `scrollWidth=3000`.
+- **Armadilha de medição descoberta hoje, e que custou uma investigação:** medida logo após a navegação, a âncora `#andamento` parecia parar 95 px **abaixo** do `scroll-margin-top` de 112 px, enquanto `#prazos` e `#faq` acertavam. **Não era defeito.** O CSS do site usa `scroll-behavior: smooth`, e a rolagem suave **ainda estava em curso** — quanto mais fundo o alvo, mais tempo ela leva, e `#andamento` está a 3.016 px. Desligado o `scroll-behavior`, as três âncoras repousam **exatamente em 112 px, nas duas larguras**. Regra nova: **medir posição de âncora sempre com `scroll-behavior: auto` forçado**, ou a medição reprova página boa.
+
+### Próxima execução — o que checar primeiro
+
+1. **Rodar `tools/seo-report.py` em `deploy`, `valid` e `gsc` antes de decidir**, com `/usr/bin/python3 -u`. Falha isolada de `timeout` é rede — reconferir com `curl`.
+2. **A leitura que decide o próximo passo é a de `#andamento`.** A partir de ~10/09, vigiar em `query × page` para `/cpc-prova-pericial/`: `emitir despacho sem quesitos`, `anexo juntado apresentação de esclarecimentos ao laudo pericial`, `prazo para se manifestar sobre laudo pericial`, `o que significa conclusão no processo`, `intimação eletrônica quando começa o prazo`, `prazo em dobro processo eletrônico`, `decurso de prazo o que significa`. **A página está hoje em pos 8,2 com 41 impressões — são esses os números a bater.** Se as consultas de andamento subirem para o top 5, a tese está validada e o próximo passo é replicar a forma (decodificar o vocabulário de tela) nos clusters administrativos — autuação fiscal, ambiental e sanitária têm o mesmo problema: o cidadão lê o rótulo do órgão, não o nome da norma.
+3. **Se as consultas de andamento NÃO subirem até ~24/09**, a hipótese cai, e aí sim a Prioridade 8 assume: o site terá esgotado o que dá para fazer on-page com o conteúdo que tem.
+4. **Indexação:** `/dano-motor-combustivel/` (publicada em 31/08) segue *detectada, não indexada* — o prazo do item 3 de 02/09 é **10/09**; se persistir, vira item. `/producao-antecipada-prova/` e `/auto-infracao-ambiental/` são de 02/09: primeira checagem legítima a partir de **09/09**. **Três páginas não indexadas ao mesmo tempo é o sinal para reduzir a cadência de publicação**, não para publicar mais.
+5. **A cadência de publicação está à frente da demanda de rastreamento.** 21 páginas em ~33 dias contra 9 cliques em 28 dias. Enquanto houver página não indexada, preferir melhorar página existente a criar página nova — foi o que esta execução fez, e a regra deve valer para a próxima.
+6. **Lacuna interna ainda aberta** (item 6 de 02/09, não resolvida hoje): `/normas-tecnicas-pericia/`, que é o quadro de vigência do site, **não cita a Lei nº 9.605/1998 nem o Decreto nº 6.514/2008**. É linha nova naquela tabela, não página nova.
+7. **`AI Assistant` no GA4 manteve-se em 2 sessões**, ambas em `/quesitos-periciais/`. Ainda é a única medida direta do retorno do trabalho de citação por LLM. Continuar acompanhando.
+8. **Medir posição de âncora com `scroll-behavior: auto` forçado.** Regra nova desta execução.
+9. **`ALL PASS` do `seo-report` não prova paridade de FAQ.** Rodar sempre o script estrito com o controle negativo. Quarta confirmação.
+10. **Ao ler o Planalto, extrair TODAS as ocorrências do artigo e escolher a última.** Segue valendo.
+11. **Gerar FAQ visível e JSON-LD da mesma fonte.** Oitava execução; segue eliminando a classe de erro.
+12. **Escalar o Google Ads sem entrega.** Décima sexta execução como nota de rodapé — cabe mensagem direta à cliente, não é item de SEO.
