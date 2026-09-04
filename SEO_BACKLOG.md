@@ -1163,3 +1163,68 @@ O mandato manda não criar conteúdo enquanto houver ganho de ranking fácil dis
 10. **Ao ler o Planalto, extrair TODAS as ocorrências do artigo e escolher a última.** Segue valendo.
 11. **Gerar FAQ visível e JSON-LD da mesma fonte.** Oitava execução; segue eliminando a classe de erro.
 12. **Escalar o Google Ads sem entrega.** Décima sexta execução como nota de rodapé — cabe mensagem direta à cliente, não é item de SEO.
+
+---
+
+## Execução de 2026-09-04 — a leitura acontece, o contato não
+
+### O que os dados disseram, e por que mudaram a prioridade
+
+Primeira execução em que **o GA4, não o Search Console, decidiu a tarefa**.
+
+O quadro do Search Console (28 dias) é o mesmo das últimas execuções — 937 impressões, 11 cliques, páginas em posição 6–13. Mas o GA4 em 56 dias mostrou algo que nenhuma leitura anterior tinha isolado:
+
+| Sinal | Valor em 56 dias |
+|---|---|
+| Sessões | 78 · 239 page views |
+| `scroll` | 22 |
+| `click` | 2 |
+| `form_start` | **1** |
+| `manual_event_CONTACT` | **1** |
+
+E a duração média por página de destino: `/quesitos-periciais/` 156 s · `/pericia-contaminacao-alimentos/` 232 s · `/assistente-tecnica/` 329 s · `/laudo-pericial/` 453 s · `/pericia-industria-quimica/` 524 s · `/quesitos-periciais/?v=1` 621 s.
+
+**As pessoas leem — de dois a dez minutos, com bounce zero nas páginas de conteúdo — e não escrevem.** Isso não é problema de tráfego nem de posição: é a Prioridade 1 do mandato, *conversão em página que já recebe visita*, e é o único degrau com falha medida em vez de hipótese.
+
+### Por que não foi título/meta, nem conteúdo novo
+
+- **Título e meta já estão bons.** As 20 páginas têm título de intenção e descrição dentro do limite de SERP (regra da SEO-016). Reescrevê-los sem dado de CTR por consulta seria mexer no que funciona — o mandato veda mudança sem justificativa.
+- **Não cabia página nova.** Duas páginas seguem *detectadas, não indexadas* (`/dano-motor-combustivel/`, `/auto-infracao-ambiental/`). A regra do item 5 do handoff de 03/09 continua valendo: enquanto houver página não indexada, melhorar existente.
+- **Não cabia atacar o termo-cabeça.** As consultas conceituais de `/quesitos-periciais/` seguem em posição 28–56 (`quesitos` 36,5 · `apresentação de quesitos` 48 · `elaboração de quesitos` 56). Quarta confirmação de que o termo genérico não se move com mais conteúdo do mesmo cluster.
+- **Não cabia julgar a SEO-044.** O `#andamento` foi publicado em 03/09; a leitura legítima é a partir de ~10/09. `emitir despacho - sem quesitos` segue a maior consulta nominal do site (10 impressões, pos 9,1).
+
+### SEO-045 — Bloco "O que enviar na primeira mensagem" nas 20 páginas de conteúdo *(executada em 2026-09-04)*
+- **Descrição:** Remover as três dúvidas que travam a primeira mensagem de um advogado que acabou de ler 4.000 palavras com prazo correndo — *o que eu mando, de que data conta o prazo, e o que volta*.
+- **URL:** as 20 páginas de conteúdo, dentro do `cta-sec` existente
+- **Categoria:** Prioridade 1 (conversão em página com visita) / UX / AI citation
+- **Impacto:** 9 · **Esforço:** 3 · **Confiança:** 7 · **Valor de negócio:** 10
+- **Priority Score:** 210
+- **Status:** done · **Descoberto:** 2026-09-04 · **Concluído:** 2026-09-04
+- **Implementado:** uma caixa `.box` no `cta-sec`, **antes** dos botões, com quatro partes:
+  1. **A lista do que enviar, específica de cada página** — não genérica. `/laudo-pericial/` pede laudo integral com memoriais e o registro fotográfico; `/pericia-industria-quimica/` pede batch record, P&ID, HAZOP e ordens de manutenção; `/classificacao-fiscal-ncm/` pede o parecer do fisco que fundamenta a reclassificação e a ficha técnica quantitativa; `/produtos-quimicos-controlados/` pede os mapas e livros de controle do período autuado. São 20 listas distintas, cada uma com o documento que efetivamente permite a leitura preliminar daquela matéria.
+  2. **A data que conta**, com a correção que é o erro mais caro do processo eletrônico: *a data da intimação, não a do despacho nem a da juntada*.
+  3. **Um link contextual novo para `/cpc-prova-pericial/#andamento`** em cada página — 19 links de entrada para a seção publicada ontem, colocados no momento exato em que o leitor precisa converter a intimação em data. Na própria `/cpc-prova-pericial/` o link é âncora local.
+  4. **O que o primeiro retorno estabelece** — se há tese técnica sustentável, qual via ela comporta, o que precisaria ser produzido — e, explicitamente, **que isso não substitui o parecer**.
+- **O que deliberadamente NÃO foi prometido:** nenhum prazo de resposta ("retorno em 24 h") e nenhuma gratuidade ("análise sem custo"). As duas coisas aumentariam a conversão e **nenhuma foi autorizada pela cliente** — um SLA publicado no site vira compromisso que ela passa a ter de cumprir. O texto se limita a descrever o que a análise preliminar estabelece, que é o que a home já oferece ("análise preliminar de casos"). **Se a cliente quiser autorizar prazo de retorno ou triagem sem custo, esse é o próximo salto de conversão disponível, e é dela a decisão.**
+- **Fonte única, nono uso do método da SEO-037:** as 20 listas e os três textos fixos vivem em `tools/build/intake.py`; `intake_build.py` gera e reescreve o bloco entre marcadores `<!-- intake:start/end -->`. É idempotente — rodar de novo restaura qualquer página que tenha derivado. Nenhuma lista foi copiada à mão para 20 arquivos.
+- **CSS:** uma linha (`.cta-sec .box { background: var(--bg) }`), porque o `cta-sec` já é branco e a caixa também era — sem isso a caixa desapareceria no fundo. Nenhuma classe nova.
+
+### Verificação
+
+- **Verificador estrito** (`/tmp/verify_intake.py`): para as 20 páginas, confirma que o bloco existe, está **dentro** do `cta-sec`, vem **antes** dos botões, que os itens `<li>` são idênticos caractere a caractere aos de `intake.py`, que os textos fixos estão presentes, que o `href` do andamento é o certo para cada caso e que o destino `id="andamento"` existe. **20/20 OK.**
+- **Controle negativo** (regra 9): tirado o acento de "juízo" num único `<li>` de `/laudo-pericial/`. O verificador **reprovou apontando a página e o item**; o `seo-report valid` seguiu em **`ALL PASS`** durante o defeito. **Quinta confirmação de que `ALL PASS` não prova paridade de conteúdo.** Página restaurada e reconferida.
+- **Renderização** em Chromium real, 5 páginas × 375 px e 1280 px, com `scroll-behavior: auto` forçado (regra nova de 03/09): sem overflow horizontal, caixa dentro da viewport nas duas larguras, itens renderizados. **Controle negativo** com bloco de 3000 px dentro da própria caixa: a medição **acusou** `scrollWidth=3062` contra `clientWidth=375`.
+- `sitemap.xml`: 20 `lastmod` para 2026-09-04, XML bem formado. A home não mudou e não foi tocada.
+- `llms.txt` não mudou — nenhuma URL nova; o bloco é seção interna de páginas já listadas.
+
+### Próxima execução — o que checar primeiro
+
+1. **A leitura que decide tudo agora é `form_start` e `manual_event_CONTACT` no GA4.** A linha de base é **1 e 1 em 56 dias**, com 78 sessões. Se subirem sem que o tráfego suba, a tese da SEO-045 está validada e o próximo passo é levar o mesmo bloco para a home. Se **não** subirem até ~25/09 com volume de sessão comparável, o gargalo não é a fricção do primeiro contato — é a qualificação do visitante, e aí a Prioridade 8 (autoridade) assume de vez.
+2. **`#andamento` (SEO-044) fica legível a partir de ~10/09.** Consultas a vigiar em `query × page` para `/cpc-prova-pericial/`: `emitir despacho sem quesitos` (hoje pos 9,1), `anexo juntado apresentação de esclarecimentos ao laudo pericial` (8,2), `prazo para se manifestar sobre laudo pericial` (11,0), `decurso de prazo o que significa`. A página está em **pos 8,4 com 47 impressões** — são esses os números a bater. A SEO-045 acabou de dar a ela 19 links internos novos, o que é uma variável a mais na leitura: **uma subida agora pode ser do conteúdo ou do link, e as duas coisas entraram com um dia de diferença.**
+3. **Indexação:** `/dano-motor-combustivel/` (31/08) e `/auto-infracao-ambiental/` (02/09) seguem *detectadas, não indexadas*. `/producao-antecipada-prova/` passou a indexada. Se as duas restantes persistirem depois de ~15/09, vira item próprio.
+4. **Decisão pendente com a cliente, de alto valor:** autorizar (ou não) prazo de retorno declarado e/ou triagem preliminar sem custo no bloco de intake. É o maior ganho de conversão restante e não é decisão de SEO.
+5. **Lacuna interna ainda aberta** (arrastada de 02/09 e 03/09): `/normas-tecnicas-pericia/` não cita a **Lei nº 9.605/1998** nem o **Decreto nº 6.514/2008**. Linha nova na tabela de vigência, não página nova. Terceira execução em que fica para depois — se não sair na próxima, virar item formal com prioridade própria.
+6. **`AI Assistant` no GA4 subiu de 2 para 3 sessões**, todas em `/quesitos-periciais/`. Segue a única medida direta do retorno do trabalho de citação por LLM.
+7. **Oportunidade de citação por LLM não executada hoje:** "o que enviar ao assistente técnico no primeiro contato" é pergunta de FAQ com resposta agora escrita e específica por matéria. Não virou entrada de `FAQPage` porque a paridade de FAQ é construída por página, em scripts separados, e mexer nos 20 JSON-LD de uma vez era risco desproporcional numa execução só. **É o item de menor esforço e maior citabilidade disponível para a próxima.**
+8. **Regras que seguem valendo:** `ALL PASS` não prova paridade (5ª confirmação) · medir âncora com `scroll-behavior: auto` · extrair todas as ocorrências do artigo no Planalto e escolher a última · gerar visível e JSON-LD da mesma fonte.
+9. **Google Ads segue sem entrega.** Décima sétima execução como nota de rodapé — é mensagem direta à cliente, não item de SEO.
