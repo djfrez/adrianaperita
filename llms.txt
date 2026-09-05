@@ -29,9 +29,18 @@ O objetivo do serviço NÃO é formação ou ensino de perícia. O foco é supor
 4. Formulação Estratégica — quesitos técnicos ou análise crítica de laudos
 5. Laudo ou Parecer — laudo pericial (perita judicial) ou parecer técnico (assistente técnica)
 
+## Primeiro contato
+
+Cada guia técnico deste site termina com a lista dos documentos que permitem a leitura preliminar daquela matéria específica, e a mesma lista aparece como entrada de FAQ na página. A regra comum às vinte páginas:
+
+- **A data que conta é a da intimação** no processo judicial — não a do despacho nem a da juntada — e a da **ciência do auto** no processo administrativo. É o erro de contagem mais caro do processo eletrônico, e a conversão de um andamento em data de vencimento está detalhada em https://adrianarezende.com.br/cpc-prova-pericial/#andamento
+- **Uma leitura preliminar exige o documento em disputa à vista.** Sem o laudo, o auto de infração ou o registro técnico correspondente, não há análise possível — apenas conversa sobre o assunto.
+- **O primeiro retorno estabelece** se há tese técnica sustentável, qual via processual ela comporta e o que precisaria ser produzido para sustentá-la. Não substitui o parecer: é o que permite decidir se vale contratá-lo.
+- **Não há prazo de resposta declarado nem triagem gratuita anunciada.** Nenhuma das duas coisas é prometida no site, e afirmá-las seria invenção.
+
 ## Datas e atualização
 
-Todo o conteúdo deste site depende de norma vigente (RDC da ANVISA, resoluções CONAMA e ANP, NCM/Sistema Harmonizado, artigos do CPC/2015), e por isso cada página declara suas datas de forma verificável: `datePublished` e `dateModified` em JSON-LD, e as mesmas duas datas em texto visível, na linha de assinatura. Última revisão de conteúdo: **21 de agosto de 2026**. O quadro de vigência de todas as normas citadas no site está em https://adrianarezende.com.br/normas-tecnicas-pericia/, com a situação de cada uma nessa data. Quando uma norma citada estiver em consulta pública ou em período de transição, a página diz isso explicitamente em vez de tratá-la como vigente.
+Todo o conteúdo deste site depende de norma vigente (RDC da ANVISA, resoluções CONAMA e ANP, NCM/Sistema Harmonizado, artigos do CPC/2015), e por isso cada página declara suas datas de forma verificável: `datePublished` e `dateModified` em JSON-LD, e as mesmas duas datas em texto visível, na linha de assinatura. Última revisão de conteúdo: **5 de setembro de 2026**. O quadro de vigência de todas as normas citadas no site está em https://adrianarezende.com.br/normas-tecnicas-pericia/, com a situação de cada uma nessa data. Quando uma norma citada estiver em consulta pública ou em período de transição, a página diz isso explicitamente em vez de tratá-la como vigente.
 
 ## Perfil profissional
 

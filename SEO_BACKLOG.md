@@ -1228,3 +1228,72 @@ E a duração média por página de destino: `/quesitos-periciais/` 156 s · `/p
 7. **Oportunidade de citação por LLM não executada hoje:** "o que enviar ao assistente técnico no primeiro contato" é pergunta de FAQ com resposta agora escrita e específica por matéria. Não virou entrada de `FAQPage` porque a paridade de FAQ é construída por página, em scripts separados, e mexer nos 20 JSON-LD de uma vez era risco desproporcional numa execução só. **É o item de menor esforço e maior citabilidade disponível para a próxima.**
 8. **Regras que seguem valendo:** `ALL PASS` não prova paridade (5ª confirmação) · medir âncora com `scroll-behavior: auto` · extrair todas as ocorrências do artigo no Planalto e escolher a última · gerar visível e JSON-LD da mesma fonte.
 9. **Google Ads segue sem entrega.** Décima sétima execução como nota de rodapé — é mensagem direta à cliente, não item de SEO.
+
+---
+
+## Execução de 2026-09-05 — a indexação regrediu, e isso decidiu o dia
+
+### O que os dados disseram
+
+**Search Console (28 dias):** 1.018 impressões · 12 cliques · 18 páginas com impressão. Crescimento contínuo (937 → 1.018 impressões em um dia de janela). `/produtos-quimicos-controlados/` em **pos 4,4**, `/pericia-combustiveis/` 5,9 com CTR 6,2%, `/pericia-contaminacao-alimentos/` 6,6 com CTR 14,3%. As consultas conceituais seguem em 28–47 — **quinta confirmação** de que o termo-cabeça não se move com mais conteúdo do mesmo cluster.
+
+**GA4 (28 dias):** 49 sessões — 33 Direct, 11 Organic Search, **3 AI Assistant**, 1 Organic Social. O bloco de intake da SEO-045 tem um dia de vida; `form_start` e `manual_event_CONTACT` ainda não têm janela legítima de leitura (o pré-registro é ~25/09).
+
+**O achado que decidiu a tarefa — indexação:**
+
+| Página | Publicada | Estado em 05/09 |
+|---|---|---|
+| `/dano-motor-combustivel/` | 31/08 | detectada, não indexada |
+| `/auto-infracao-ambiental/` | 02/09 | detectada, não indexada |
+| `/producao-antecipada-prova/` | 02/09 | **regrediu** — estava indexada em 04/09 |
+
+**Três páginas fora do índice ao mesmo tempo, uma delas por regressão.** É exatamente o sinal pré-registrado no item 4 do handoff de 03/09: reduzir a cadência de publicação, não aumentá-la. **Nenhuma página nova hoje** — decisão tomada pelo dado, não por preferência.
+
+### Por que esta tarefa, e não outra
+
+O item 7 do handoff de 04/09 já havia identificado a oportunidade e a classificado como *a de menor esforço e maior citabilidade disponível*: a resposta a "o que eu mando no primeiro contato" existia escrita e específica por matéria desde a SEO-045, mas em **prosa dentro do CTA — fora de `FAQPage`**. É o único formato que AI Overviews e LLMs citam com atribuição, e o site tem 3 sessões de `AI Assistant` no período, sua única medida direta de retorno desse trabalho.
+
+Não foi feita ontem porque a paridade de FAQ é construída por página e mexer nos 20 JSON-LD de uma vez parecia risco desproporcional. **O risco era real e se materializou** — ver a seção de verificação.
+
+### SEO-046 — Entrada de FAQ "o que enviar no primeiro contato" nas 20 páginas *(executada em 2026-09-05)*
+- **Descrição:** Promover a resposta específica por matéria de prosa do CTA a entrada de `FAQPage`, visível e em JSON-LD, gerada da mesma fonte da SEO-045.
+- **URL:** as 20 páginas de conteúdo, seção `#faq`
+- **Categoria:** AI citation / Prioridade 1 (conversão em página com visita) / Cobertura semântica
+- **Impacto:** 8 · **Esforço:** 3 · **Confiança:** 8 · **Valor de negócio:** 9
+- **Priority Score:** 192
+- **Status:** done · **Descoberto:** 2026-09-04 · **Concluído:** 2026-09-05
+- **Implementado:** uma pergunta e uma resposta novas por página — 20 perguntas **distintas**, escritas com o vocabulário da matéria (`"Que registros são necessários para periciar um acidente ou desvio de processo químico?"`, `"Como verificar se a norma técnica citada em um laudo era a vigente?"`, `"O que é preciso enviar para contestar tecnicamente uma reclassificação fiscal (NCM)?"`), e não 20 variações da mesma frase. Cada resposta tem quatro partes: abertura específica da matéria, **a lista de documentos importada de `intake.py`**, um fecho técnico que explica por que aqueles documentos e não outros, e o aviso de prazo na variante certa — `PRAZO_JUD` (data da intimação, não a do despacho nem a da juntada) para as matérias judiciais, `PRAZO_ADM` (data da ciência do auto) para as administrativas. Total de perguntas nas 20 páginas subiu de 168 para 188.
+- **A escolha de projeto que importa:** a lista de documentos **não foi redigida de novo**. `faq_intake.py` importa `PAGES` de `intake.py` e monta a frase a partir dela. Se um documento mudar, muda no bloco do CTA e na FAQ ao mesmo tempo — a divergência entre os dois é impossível por construção, não por conferência. Décima aplicação do método da SEO-037.
+- **O que deliberadamente não entrou:** nenhum prazo de resposta e nenhuma gratuidade, pela mesma razão da SEO-045 — nenhuma das duas foi autorizada pela cliente. O `llms.txt` passou a **declarar essa ausência explicitamente** ("não há prazo de resposta declarado nem triagem gratuita anunciada"), para que um LLM não preencha a lacuna por conta própria.
+- **`llms.txt`:** seção nova `## Primeiro contato` com as quatro regras comuns às 20 páginas e o link para `#andamento`. Não replica as 20 listas — elas já estão nas páginas, e duplicá-las no arquivo só o engorda.
+- **Datas:** `dateModified` e o "Atualizado em" visível das 20 páginas foram para 2026-09-05, e `sitemap.xml` recebeu 20 `lastmod`. **A SEO-045 acrescentou conteúdo e não mexeu na data** — lapso corrigido hoje. A regra da SEO-027 vale para toda execução que acrescenta texto: as duas pontas, schema e visível, ou a data mente.
+
+### Verificação
+
+- **O risco previsto pelo handoff era o certo, e apareceu.** A primeira versão do inseridor localizava o fecho de `mainEntity` por texto (`"\n    ]"`). **Quatro das vinte páginas** (`/auto-infracao-ambiental/`, `/cpc-prova-pericial/`, `/normas-tecnicas-pericia/`, `/pericia-ambiental/`) usam **outra indentação de JSON-LD**, e nelas a entrada nova caiu **fora do objeto**, quebrando o JSON. O `seo-report valid` **não apanhou** — ele só falha se o bloco não parsear *e* isso derrubar outra checagem; aqui o `FAQPage` simplesmente deixou de existir para o parser, e a checagem de paridade não roda quando não há entradas nem perguntas visíveis a comparar. Encontrado pelo verificador escrito antes de confiar no resultado. **Correção:** o fecho passou a ser achado por balanceamento de colchetes, e `apply()` reparseia **todos** os blocos `ld+json` da página antes de escrever, abortando se algum ficar inválido.
+- **Verificador estrito** (`tools/verify-faq-intake.py`, versionado): para as 20 páginas confere que o `FAQPage` parseia, que a última entrada é a esperada, que não há pergunta duplicada, que o texto do JSON-LD é **idêntico caractere a caractere** à fonte, que a contagem visível bate com a do schema, que o `<h3>` e o `<p>` visíveis são idênticos à fonte e que o bloco está **dentro** do contêiner `.faq`. **20/20 OK.**
+- **Controle negativo** (regra 9): removido o acento de "análise" no `<h3>` de `/laudo-pericial/`. O verificador **reprovou apontando a página e a divergência**; o `seo-report valid` seguiu em **`ALL PASS`** durante o defeito. **Sexta confirmação de que `ALL PASS` não prova paridade.** Restaurado e reconferido.
+- **Idempotência:** segunda execução do gerador devolve "sem mudança" nas 20. O bloco visível vive entre marcadores; a entrada JSON é localizada pelo `name` e substituída.
+- **Renderização** em Chromium real, 5 páginas × 375 px e 1280 px, com `scroll-behavior: auto` forçado (regra de 03/09): sem overflow horizontal, texto renderizado idêntico à fonte, caixa dentro da viewport. **Controle negativo** com bloco de 3000 px dentro da entrada nova: a medição **acusou** `scrollWidth=3032` contra `clientWidth=375`.
+- `sitemap.xml` bem formado, 20 `lastmod` em 2026-09-05, a home intocada. `verify-intake.py` (SEO-045) segue em 20/20 — a inserção de hoje não deslocou o bloco de ontem.
+
+### SEO-047 — `/normas-tecnicas-pericia/` sem a Lei nº 9.605/1998 e o Decreto nº 6.514/2008
+- **Descrição:** O quadro de vigência do site é a página de referência para "qual norma vale", e cobre autuação ambiental apenas pelo art. 16 da CONAMA 430/2011. **Faltam as duas normas que efetivamente tipificam a infração ambiental e fixam a dosimetria da multa** — a Lei de Crimes Ambientais e o decreto que a regulamenta —, justamente as que `/auto-infracao-ambiental/` discute. São linhas novas na tabela, não página nova.
+- **URL:** `/normas-tecnicas-pericia/`
+- **Categoria:** Cobertura semântica / E-E-A-T / Consistência interna
+- **Impacto:** 5 · **Esforço:** 2 · **Confiança:** 8 · **Valor de negócio:** 6
+- **Priority Score:** 120
+- **Status:** open · **Descoberto:** 2026-09-02
+- **Notas:** arrastado sem item formal em 02/09, 03/09 e 04/09. **Formalizado hoje**, conforme o item 5 do handoff de 04/09 pedia. Exige verificação em fonte primária antes de escrever: o Decreto nº 6.514/2008 sofreu alterações relevantes e a dosimetria não pode ser afirmada de memória.
+
+### Próxima execução — o que checar primeiro
+
+1. **Indexação é o item nº 1, à frente de qualquer conteúdo.** Três páginas fora do índice, uma por regressão. Se em ~12/09 continuarem fora, **isso deixa de ser espera e vira item próprio** — as hipóteses a testar, nesta ordem: orçamento de rastreamento consumido por 21 páginas publicadas em ~35 dias contra 12 cliques em 28 dias; sinal de qualidade agregado; e só então algo técnico (o `valid` passa nas 21, então não é on-page óbvio). **Não publicar página nova enquanto o quadro não limpar.**
+2. **`form_start` e `manual_event_CONTACT` (SEO-045)** — linha de base 1 e 1 em 56 dias. Janela legítima a partir de ~25/09. A SEO-046 age no mesmo funil, então **a partir de agora as duas mudanças se confundem na leitura**: uma subida não distingue o bloco do CTA da entrada de FAQ. Registrado para não ser atribuído à toa.
+3. **`#andamento` (SEO-044)** ficou legível em ~10/09, mas recebeu 19 links internos em 04/09 e 20 respostas de FAQ que citam a data da intimação em 05/09 — **três variáveis em três dias**. `/cpc-prova-pericial/` está em **pos 8,6 com 55 impressões**; é o número a bater, sem atribuição limpa de causa.
+4. **`AI Assistant` no GA4: 3 sessões**, ainda todas em `/quesitos-periciais/`. A SEO-046 é a aposta direta nesse canal — 20 pares pergunta/resposta citáveis onde antes havia prosa. **Se esse número subir e passar a aparecer em outras páginas, é o sinal mais limpo que o site produz.**
+5. **SEO-047** é a tarefa de menor esforço em aberto, com fonte primária a conferir antes de escrever.
+6. **Regra nova desta execução:** **nunca inserir em JSON-LD por casamento de texto de indentação.** O site tem pelo menos dois estilos de formatação de `ld+json`, e o erro é silencioso — o bloco deixa de parsear e o `valid` continua em `ALL PASS`. Balancear delimitadores e reparsear todos os blocos antes de escrever.
+7. **Regras que seguem valendo:** `ALL PASS` não prova paridade (6ª confirmação) · medir âncora com `scroll-behavior: auto` · extrair todas as ocorrências do artigo no Planalto e escolher a última · gerar visível e JSON-LD da mesma fonte (10ª aplicação) · **toda execução que acrescenta conteúdo mexe em `dateModified` e no `<time>` visível**.
+8. **Decisão pendente com a cliente** (arrastada de 04/09): autorizar prazo de retorno declarado e/ou triagem preliminar sem custo. Segue sendo o maior ganho de conversão restante e não é decisão de SEO.
+9. **Google Ads segue sem entrega.** Décima oitava execução como nota de rodapé.
