@@ -1638,3 +1638,34 @@ A regra que sai daqui: **a descrição de um item de backlog envelhece como cont
 8. **Regras que seguem valendo:** `ALL PASS` não prova paridade (11ª confirmação; hoje não houve o que provar) · JSON-LD por parse, nunca por casamento de indentação, e ler a indentação do arquivo · medir âncora com `scroll-behavior: auto` · Planalto: todas as ocorrências, ficar com a última · visível e JSON-LD da mesma fonte (15ª aplicação) · execução que acrescenta conteúdo mexe em `dateModified` e `<time>` — **e execução que não acrescenta, não mexe** · lista com posição contratual verifica posição · número na prosa derivado do dado e conferido na renderização · conteúdo corrigido de passagem se corrige em todas as pontas · controle negativo que não altera o arquivo não é controle · **regra nova:** a descrição de um item de backlog envelhece — quando ele sobe para execução, conferir primeiro se as opções que ela lista ainda são reais.
 9. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. Maior ganho de conversão restante; não é decisão de SEO.
 10. **Google Ads segue sem entrega.** Vigésima quarta execução como nota de rodapé.
+
+## Execução de 2026-09-12 — link contextual para a página que converte, a partir de uma página livre
+
+**Estado da medição (GSC, 28 dias findos em 12/09/2026):** `/normas-tecnicas-pericia/` 106 impr · pos 7,7 · **1º clique** · `/cpc-prova-pericial/` 84 · 8,5 · 0 · `/impugnacao-laudo-pericial/` 81 · 12,7 · 0 · `/pericia-combustiveis/` 37 · 5,6 · 3 · `/prazo-validade-alimentos/` 23 · 5,7 · 1 · `/pericia-ambiental/` 13 · 11,5 · 0. SEO-048: `emitir despacho - sem quesitos` 8,3 · 14 impr (era 8,9 · 11); `anexo juntado…` 8,2 · 4 (igual). GA4: 71 sessões; AI Assistant estável em 6. Indexação: as mesmas três URLs novas fora do índice.
+
+### Por que esta tarefa
+- As páginas com volume seguem embargadas (SEO-048 a 051, e a 047 em `/normas-tecnicas-pericia/` até ~20/09).
+- A SEO-052 foi adiada porque exigia editar páginas embargadas. **Mas metade dela não exige:** o destino (`/pericia-combustiveis/`, melhor CTR do site) só recebia links de **listas "Continue lendo"**, nunca de dentro do texto. Uma página livre pode dar esse link sem tocar em medição nenhuma.
+- `/pericia-ambiental/` é livre, é **a página com mais sessões orgânicas no GA4 junto com combustíveis (4)** e tinha uma lacuna real: não dizia nada sobre postos de combustíveis — a fonte da maioria das áreas contaminadas cadastradas. Isso não é link inventado para distribuir sinal; é o tema que liga os dois clusters.
+
+### SEO-053 — Seção "Postos de combustíveis: o caso mais frequente de área contaminada" em `/pericia-ambiental/` *(executada em 2026-09-12)*
+- **URL:** `/pericia-ambiental/#postos-de-combustiveis` · **Categoria:** Prioridade 4 (cobertura semântica) + Prioridade 5 (link contextual; primeira etapa da SEO-052)
+- **Impacto:** 5 · **Esforço:** 2 · **Confiança:** 6 · **Valor de negócio:** 7 · **Priority Score:** 105 · **Status:** done · **Descoberto/Concluído:** 2026-09-12
+- **Conteúdo:** dado do cadastro CETESB (dez/2020: 4.523 de 6.434 áreas ≈ 70% são postos); BTEX e fase livre; **Resolução CONAMA nº 273/2000** conferida no texto oficial (PDF do CONAMA): art. 1º (licenciamento; § 2º plano de encerramento), art. 3º parágrafo único (teste de estanqueidade antes da operação e a cada ≤ 5 anos, redação da Res. 319/2002), art. 5º (caracterização hidrogeológica e poços num raio de 100 m); e o parágrafo-ponte que diferencia a perícia ambiental (o produto saiu do tanque?) da de qualidade (o que estava dentro atendia à ANP?), com **link contextual para `/pericia-combustiveis/`**.
+- **Ressalva de fonte:** o percentual da CETESB foi confirmado em duas fontes secundárias que citam o cadastro de dez/2020 (a CETESB publica a relação, mas a página não abriu em texto). Fontes citam 68–74% conforme o recorte (só postos × postos + bases + TRR); por isso o texto diz "cerca de 70%" e dá os números absolutos. **Reconferir quando houver cadastro mais novo.**
+- **Não foi feito:** FAQ nova (evita mexer na paridade visível × JSON-LD sem necessidade); nada em páginas embargadas.
+
+### Verificação
+- `seo-report valid` **ALL PASS** (21 páginas; o `h2` novo não quebra h1 único nem links). `verify-faq-intake` 20/20, `verify-intake` 20/20, `verify-amb-normas` OK.
+- `dateModified`, `<time>` e `lastmod` do sitemap em 2026-09-12; nenhuma ocorrência de 2026-09-05 sobrou na página.
+- Links para `/pericia-combustiveis/` em `/pericia-ambiental/`: 1 → 2 (um contextual).
+- **Não houve verificação de renderização em Chrome** nesta execução — a mudança é prosa + lista sem tabela nem componente novo; o `h2[id]` herda o ajuste de âncora da SEO-036. Registrado como lacuna, não como OK.
+
+### Próxima execução — o que checar primeiro
+1. **SEO-048 vence em ~14/09.** `emitir despacho - sem quesitos` subiu de 8,9 para 8,3 — dentro do ruído, ainda fora do top 5.
+2. SEO-049 (~15/09), 050 (~16/09), 051 (~17/09): não tocar até a data.
+3. **SEO-053 entra em medição:** `/pericia-ambiental/` 13 impr · pos 11,5 · 0 cliques; `/pericia-combustiveis/` 37 · 5,6 · 3. Janela a partir de ~26/09. Sinal: consultas com "posto", "CONAMA 273", "estanqueidade" ou "BTEX" atribuídas à página ambiental.
+4. **SEO-052 continua `open`**, agora com a parte livre executada para combustíveis. As próximas etapas (links de saída das páginas de 2ª página) liberam em ~17/09 — uma por execução.
+5. `/normas-tecnicas-pericia/` ganhou o 1º clique (106 impr · 7,7). Janela até ~20/09; depois, CTR.
+6. Regras que seguem valendo (ver 11/09) · **regra nova:** item de backlog bloqueado por embargo deve ser decomposto — a parte que não toca página embargada pode sair antes.
+7. Decisão pendente com a cliente (prazo de retorno / triagem sem custo) · SEO-009 `blocked` · Google Ads sem entrega.
