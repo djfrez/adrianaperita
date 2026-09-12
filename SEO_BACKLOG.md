@@ -18,7 +18,7 @@ Status: `open` · `in progress` · `done` · `blocked`
 
 1. **Ausência total de conteúdo indexável além da home.** Nenhuma página de serviço, nenhum artigo. A seção "Insights" listava 4 títulos sem destino — promessa de conteúdo que não existia.
 2. **Zero clusters temáticos.** Nenhuma cobertura de perguntas de pré-contratação (prazos, custos, diferença perito × assistente, impugnação de laudo).
-3. **`_headers` inerte.** O arquivo segue o formato Cloudflare Pages/Netlify, mas o site é servido pelo GitHub Pages, que o ignora.
+3. **`_headers` inerte.** O arquivo seguia o formato Cloudflare Pages/Netlify, mas o site é servido pelo GitHub Pages, que o ignora. **Resolvido em 2026-09-11 (SEO-005): arquivo removido**, depois de medir ao vivo que o cache declarado nunca esteve em vigor e que o próprio arquivo respondia 404.
 4. **CSS duplicado entre páginas.** Cada página traz seu próprio bloco `<style>` inline. Aos ~5 páginas, extrair para `/style.css` compartilhado; abaixo disso, o inline evita requisição extra e o risco de deriva é só cosmético.
 5. **Inconsistência de E-E-A-T no llms.txt** — dizia "8 anos de experiência" enquanto o site diz "+20 anos técnicos / +8 anos em perícia". (corrigido em 2026-08-01)
 
@@ -100,9 +100,16 @@ Status: `open` · `in progress` · `done` · `blocked`
 - **Categoria:** Técnico / Performance
 - **Impacto:** 4 · **Esforço:** 5 · **Confiança:** 9 · **Valor de negócio:** 3
 - **Priority Score:** 21,6
-- **Status:** open
-- **Descoberto:** 2026-08-01
-- **Notas:** Impacto real baixo — o site é leve e o LCP já tem preload. Não bloqueia nada.
+- **Status:** done · **Descoberto:** 2026-08-01 · **Concluído:** 2026-09-11
+- **Decisão: (c) remover o arquivo.** As opções (a) e (b) foram descartadas por medição, não por preferência.
+- **O que foi medido ao vivo em 11/09/2026, e não presumido:**
+  - `curl -I https://adrianarezende.com.br/` → `server: GitHub.com` · `cache-control: max-age=600` · `via: 1.1 varnish` · `x-served-by: cache-gru-sbgr1930075-GRU`. O `via`/`x-served-by` são do **Fastly**, o CDN do próprio GitHub Pages — **não há Cloudflare na frente do domínio**, então a opção (a) nunca chegou a ser aplicada.
+  - `curl -I .../headshot.webp` → **`cache-control: max-age=600` também nas imagens**. O cache de 30 dias que o arquivo declarava **nunca esteve em vigor** em nenhum tipo de conteúdo.
+  - `curl -o /dev/null -w %{http_code} .../_headers` → **404**. O GitHub Pages nem serve o arquivo (Jekyll exclui caminhos iniciados por `_`), muito menos o interpreta.
+- **Por que (a) não resolveria, e este era o erro conceitual da descrição original:** `_headers` é um recurso do **Cloudflare Pages** (a hospedagem), não do **CDN da Cloudflare** (o proxy). A documentação diz que o arquivo é "parsed by Cloudflare Pages" e que ele **não é servido como asset estático**. Colocar o domínio atrás do proxy da Cloudflare permitiria regras de cache **no painel**, e o arquivo continuaria inerte. A descrição de 01/08 tratava (a) como se ativasse o arquivo — não ativa.
+- **Por que (b) não se justifica:** migrar hospedagem para ganhar `max-age` maior em duas imagens WebP (36 KB e 108 KB) num site de 21 páginas estáticas com 71 sessões/28 dias. O LCP já tem `preload`; o problema medido do site é **CTR e posição**, não peso. Custo real, ganho não mensurável.
+- **Notas:** o arquivo não era neutro — era **documentação falsa versionada**. Qualquer leitor (humano ou LLM lendo o repositório) concluiria que o site tem cache de imagem de 30 dias. Nenhuma referência a ele em código, build, verificadores ou conteúdo (`grep -rn "_headers"` fora do backlog: **zero**). `seo-report deploy valid` segue em `ALL PASS` nas 21 páginas após a remoção.
+- **Se um dia o cache importar:** a única via no GitHub Pages é trocar de host ou pôr um CDN configurável na frente — `max-age=600` é fixo e não há `.htaccess` nem equivalente. Registrado aqui para que a decisão não seja reaberta sem esse fato.
 
 ### SEO-006 — Formulário de contato depende de `mailto:`
 - **Descrição:** O envio do formulário abre o cliente de e-mail do usuário. Em navegador sem cliente configurado (comum em desktop corporativo), o lead se perde silenciosamente. Avaliar endpoint de formulário estático (Formspree, Web3Forms) ou CTA direto para WhatsApp como ação primária.
@@ -1552,3 +1559,82 @@ Todas as páginas acima de `/honorarios-pericia-judicial/` em impressões estão
 8. **Regras que seguem valendo:** `ALL PASS` não prova paridade (**11ª confirmação**) · JSON-LD por parse, nunca por casamento de indentação, e ler a indentação do arquivo (6ª aplicação) · medir âncora com `scroll-behavior: auto` · Planalto: todas as ocorrências, ficar com a última (hoje a CLT tinha duas redações do mesmo artigo) · visível e JSON-LD da mesma fonte (**15ª aplicação**) · toda execução que acrescenta conteúdo mexe em `dateModified` e `<time>` · lista com posição contratual verifica posição · número na prosa derivado do dado e conferido na renderização · controle negativo que não altera o arquivo não é controle · **regra nova:** conteúdo antigo corrigido de passagem se corrige **em todas as pontas** (visível, JSON-LD, tabela, `llms.txt`) e o verificador cobra a ausência do texto antigo, não só a presença do novo.
 9. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo.
 10. **Google Ads segue sem entrega.** Vigésima terceira execução como nota de rodapé.
+
+### SEO-052 — Desequilíbrio de links internos: as páginas que convertem recebem os piores links *(descoberta em 2026-09-11, não executada)*
+- **Descrição:** A distribuição de links internos do site está **invertida em relação ao desempenho medido**. As páginas com melhor posição e melhor CTR recebem o menor número de links internos; as de 0 cliques recebem os maiores.
+- **URL:** site inteiro (21 páginas)
+- **Categoria:** Prioridade 5 (links internos) / Prioridade 2
+- **Impacto:** 6 · **Esforço:** 3 · **Confiança:** 6 · **Valor de negócio:** 7
+- **Priority Score:** 84
+- **Status:** open
+- **Descoberto:** 2026-09-11
+- **O dado (links internos recebidos × desempenho GSC 28d, medido por script em 11/09):**
+
+| Página | Páginas que a linkam | Links | Impr | Pos | Cliques |
+|---|---|---|---|---|---|
+| `/pericia-combustiveis/` | **5** | 6 | 36 | **5,8** | **3** |
+| `/pericia-contaminacao-alimentos/` | 10 | 19 | 15 | 6,7 | 2 |
+| `/produtos-quimicos-controlados/` | **4** | 6 | 6 | **5,3** | 0 |
+| `/rotulagem-alimentos/` | 5 | 8 | 3 | **5,0** | 0 |
+| `/quesitos-periciais/` | **18** | 36 | 436 | 12,4 | 1 |
+| `/assistente-tecnica/` | **20** | 39 | 258 | 13,4 | 1 |
+
+- **A leitura:** `/pericia-combustiveis/` é a página de **melhor CTR do site com volume (8,3%)** e responde por **3 dos 12 cliques do domínio**, com apenas 5 páginas apontando para ela. `/quesitos-periciais/` e `/assistente-tecnica/` concentram 36 e 39 links e estão em pos 12,4 e 13,4 — receber link interno não as tirou da segunda página, e o sinal gasto ali não está rendendo.
+- **Por que NÃO foi executada hoje:** a execução exigiria editar `/quesitos-periciais/`, `/assistente-tecnica/`, `/impugnacao-laudo-pericial/` e `/honorarios-pericia-judicial/` para acrescentar links de saída — **todas sob janela de medição** (SEO-048 até ~14/09, 049 até ~15/09, 050 até ~16/09, 051 até ~17/09). Tocar nelas contaminaria quatro medições em curso para um ganho que pode esperar seis dias.
+- **Quando executar:** a partir de **~17/09**, quando a última janela vencer.
+- **Cuidado ao executar:** o dado de posição das páginas de cauda vem de 3 a 36 impressões — posição média com essa base é ruidosa. A hipótese a testar é "distribuir link interno para páginas já bem posicionadas rende mais que reforçar páginas travadas na 2ª página", e ela só se lê com volume. Não redistribuir tudo de uma vez: o mandato permite uma mudança por execução, e uma redistribuição em bloco seria impossível de atribuir.
+
+## Execução de 2026-09-11 — o arquivo que documentava um cache que nunca existiu
+
+**Estado da medição (GSC, 28 dias findos em 11/09/2026):** 1.274 impressões · 12 cliques · CTR 0,9% (contra 1.175 · 11 ontem). Páginas: `/quesitos-periciais/` 436 (pos 12,4 · 1) · `/assistente-tecnica/` 258 (13,4 · 1) · `/honorarios-pericia-judicial/` 109 (10,6 · 2) · `/normas-tecnicas-pericia/` 95 (7,7 · 0) · `/impugnacao-laudo-pericial/` 87 (12,5 · 0) · `/cpc-prova-pericial/` 79 (8,5 · 0) · `/laudo-pericial/` 62 (8,9 · 0) · `/pericia-combustiveis/` 36 (5,8 · **3**) · `/pericia-industria-quimica/` 19 (10,4 · 1).
+
+**As duas consultas da SEO-048 seguem exatamente onde estavam** — `emitir despacho - sem quesitos` **8,9 · 11 impr** e `anexo juntado: apresentação de esclarecimentos ao laudo pericial` **8,2 · 4 impr**. Nenhum movimento em três dias. Janela vence em ~14/09.
+
+**GA4 — o único número que melhorou de verdade:** 71 sessões em 28 dias (46 Direct · 16 Organic Search · **6 AI Assistant** · 1 Social · 1 Referral · 1 Unassigned). O canal **AI Assistant dobrou (3 → 6 sessões, 4 usuários)** e **deixou de ser uma página só**: `/quesitos-periciais/` 3, `/` 2, `/prazo-validade-alimentos/` 2. É o primeiro sinal de que a otimização para citação por LLM está rendendo em mais de um cluster — e é o canal que o mandato persegue.
+
+**Indexação:** as mesmas três URLs fora do índice — `/auto-infracao-ambiental/` e `/dano-motor-combustivel/` em "Detectada, mas não indexada", `/producao-antecipada-prova/` de volta em "O Google não reconhece o URL" (a oscilação da Inspection API já registrada em 07/09 e 10/09). Quatro inspeções falharam por timeout (`/assistente-tecnica/`, `/prazo-validade-alimentos/`, `/sobre/`, e uma repetida) — ruído.
+
+### Por que esta tarefa, e por que não uma página
+
+O handoff de 10/09 previu esta situação no item 6, e o dado confirmou a previsão **exatamente**:
+
+1. **Todas as páginas com volume estão embargadas.** As sete primeiras em impressões estão sob janela de medição até ~14, ~15, ~16, ~17 e ~20/09.
+2. **Nenhuma página livre tem lacuna verificável.** Foi feito o cruzamento `page × query` (1.000 linhas, 28 dias) sobre as **nove** páginas sem janela. Resultado: `/pericia-combustiveis/` **0 consultas atribuídas**, `/pericia-industria-quimica/` **0**, `/prazo-validade-alimentos/` **0**, `/pericia-contaminacao-alimentos/` **0**, `/pericia-ambiental/` **0**, `/produtos-quimicos-controlados/` **0**, `/rotulagem-alimentos/` **0**; `/classificacao-fiscal-ncm/` 2 consultas de 1 impressão cada (`fuga de classificação fiscal` pos 89 · `uma simulação` pos 7) e `/analise-microbiologica-alimentos/` 1 (`análise microbiológica alimentos` pos 72). Todas abaixo do limiar de anonimização do GSC — **não há vocabulário de usuário para decodificar**, que é a matéria-prima do método das SEO-044/048/049/050/051.
+3. **A hipótese de que as três URLs não indexadas tinham defeito foi testada e descartada.** Elas têm 5 a 7 páginas apontando para elas (mais que `/produtos-quimicos-controlados/`, que tem 4 e está indexada em pos 5,3), 7.508 a 8.139 palavras, e são simplesmente **as três mais novas do site** (31/08 e 02/09). "Detectada, mas não indexada" em página de 9 a 11 dias num domínio novo é comportamento de orçamento de rastreamento, não defeito. **Não há o que consertar, e consertar o que não está quebrado é mudança sem porquê.**
+
+Sobrou o que o handoff prescreveu: manutenção técnica. **SEO-005 era o único item `open` do backlog** — aberto desde 01/08, arrastado por 41 dias em nove handoffs como "sem urgência".
+
+### O que foi feito
+
+**Removido o arquivo `_headers`** (`git rm`), depois de medir ao vivo as três coisas que fechavam a decisão — e uma delas **corrigiu um erro conceitual da própria descrição do item**:
+
+- `cache-control: max-age=600` **na home e na imagem WebP** — o cache de 30 dias que o arquivo declarava nunca esteve em vigor em nenhum tipo de conteúdo.
+- `server: GitHub.com`, `via: 1.1 varnish`, `x-served-by: cache-gru-…` — Fastly, o CDN do próprio GitHub Pages. **Não há Cloudflare na frente do domínio.**
+- **`/_headers` responde 404** — o GitHub Pages nem serve o arquivo, muito menos o interpreta.
+- **O erro corrigido:** a descrição de 01/08 listava "(a) colocar o domínio atrás do Cloudflare" como se isso ativasse o arquivo. Não ativa. `_headers` é recurso do **Cloudflare Pages** (hospedagem), não do **CDN da Cloudflare** (proxy) — conferido na documentação da Cloudflare, que diz que o arquivo é "parsed by Cloudflare Pages" e **não é servido como asset estático**. Nove handoffs carregaram essa opção como viável sem que ninguém a conferisse.
+
+O arquivo **não era neutro**: era documentação falsa versionada, afirmando uma política de cache que nunca valeu, legível por qualquer humano ou LLM que abrisse o repositório.
+
+### Verificação
+- **`grep -rn "_headers"`** em `.py`, `.html`, `.md`, `.txt`, `.xml`, `.sh`: **zero referências** fora do próprio backlog. Nada em build, verificadores, conteúdo ou sitemap depende do arquivo.
+- **`seo-report deploy valid`:** 21 páginas, `ALL PASS`; 21 URLs ao vivo em 200; sitemap em dia. A única falha reportada foi `1 arquivo rastreado modificado sem commit` — que é **a própria remoção**, e é exatamente o que essa guarda existe para pegar (SEO-021). Some no commit.
+- **Os sete verificadores de conteúdo, todos OK e nenhum tocado:** `verify-faq-intake` 20/20 · `verify-intake` 20/20 · `verify-amb-normas` · `verify-andamento-tela` · `verify-vocabulario` · `verify-nulidade` (com recontagem no Planalto) · `verify-honorarios-final` (idem). A remoção não podia afetá-los, e foi confirmado que não afetou.
+- **Nada de conteúdo foi alterado:** nenhuma página, nenhum `dateModified`, nenhum `<time>`, nenhum `lastmod`, nenhum bloco JSON-LD. **Por isso, e só por isso, esta execução não mexe em data de modificação** — a regra "toda execução que acrescenta conteúdo mexe em `dateModified`" vale para quem acrescenta conteúdo; esta não acrescentou.
+
+### O que esta execução ensinou
+
+**Um item de score baixo que fica aberto tempo suficiente vira um tipo diferente de problema.** A SEO-005 tinha Priority Score 21,6 e foi corretamente adiada nove vezes — sempre havia algo melhor a fazer. Mas o cálculo do score media o **ganho de performance** (real: zero) e ignorava o **custo de manter uma afirmação falsa no repositório**, que não é de performance e não caía em nenhuma das oito prioridades do mandato. E o item carregou por 41 dias uma opção tecnicamente impossível — (a) — que nenhuma das nove passagens conferiu, porque ninguém confere as opções de um item que não vai executar.
+
+A regra que sai daqui: **a descrição de um item de backlog envelhece como conteúdo de página, e as opções que ela lista só são verdadeiras até alguém conferir.** Quando um item finalmente sobe para execução, a primeira coisa a verificar não é como executá-lo — é se a descrição ainda descreve a realidade.
+
+### Próxima execução — o que checar primeiro
+1. **A SEO-048 vence em ~14/09 — e o veredito está próximo.** `emitir despacho - sem quesitos` (8,9 · 11 impr) e `anexo juntado: apresentação de esclarecimentos…` (8,2 · 4 impr) **não se moveram em três dias**. Top 5 → replicar a forma nos clusters administrativos. Nada até ~28/09 → a hipótese de andamento cai por inteiro, **incluindo a SEO-044**, e isso precisa ser escrito sem suavizar.
+2. **SEO-049 (~15/09):** `/assistente-tecnica/` 258 impr · pos 13,4 · 1 clique (era 217 · 13,0 ontem — impressão subindo, posição de lado). **SEO-050 (~16/09):** `/impugnacao-laudo-pericial/` 87 · 12,5 · 0 (era 93 · 12,1 — leve piora, dentro do ruído). **SEO-051 (~17/09):** `/honorarios-pericia-judicial/` 109 · 10,6 · 2. **Não tocar nenhuma das três até a data.**
+3. **`/normas-tecnicas-pericia/` até ~20/09** — 95 impr · pos 7,7 · 0 cliques. Segue sendo a melhor posição do site com volume e zero clique: quando a janela vencer, é **CTR** (título e descrição), Prioridade 1. É o alvo mais óbvio do backlog inteiro.
+4. **SEO-052 (nova, score 84) libera em ~17/09** — redistribuição de link interno para as páginas que já convertem. Uma mudança por execução, não em bloco.
+5. **Vigiar o canal AI Assistant.** Dobrou para 6 sessões e espalhou para três páginas. Se seguir subindo, é o argumento para priorizar formato citável (tabela, definição, FAQ) sobre qualquer outra coisa — e o mandato mede exatamente isso.
+6. **Se em ~12–16/09 tudo seguir embargado e nenhuma página livre ganhar consulta atribuída, não há tarefa de conteúdo legítima.** O backlog ficou **sem itens `open` de manutenção técnica** — a SEO-005 era o último. O que sobra no backlog inteiro: **SEO-052** (score 84, liberada em ~17/09) e **SEO-009** (perfil no Google Business e citações locais), que segue **`blocked` por depender da cliente**. Fora isso, só trabalho de conteúdo sem urgência: a reconferência integral do quadro de vigência (30 das 32 linhas em "situação em 18/08/2026"), liberada apenas após 20/09 pelo item 3.
+7. **`form_start` / `manual_event_CONTACT`** (SEO-045/046) — linha de base 1 e 1, janela a partir de ~25/09.
+8. **Regras que seguem valendo:** `ALL PASS` não prova paridade (11ª confirmação; hoje não houve o que provar) · JSON-LD por parse, nunca por casamento de indentação, e ler a indentação do arquivo · medir âncora com `scroll-behavior: auto` · Planalto: todas as ocorrências, ficar com a última · visível e JSON-LD da mesma fonte (15ª aplicação) · execução que acrescenta conteúdo mexe em `dateModified` e `<time>` — **e execução que não acrescenta, não mexe** · lista com posição contratual verifica posição · número na prosa derivado do dado e conferido na renderização · conteúdo corrigido de passagem se corrige em todas as pontas · controle negativo que não altera o arquivo não é controle · **regra nova:** a descrição de um item de backlog envelhece — quando ele sobe para execução, conferir primeiro se as opções que ela lista ainda são reais.
+9. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. Maior ganho de conversão restante; não é decisão de SEO.
+10. **Google Ads segue sem entrega.** Vigésima quarta execução como nota de rodapé.
