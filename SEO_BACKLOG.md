@@ -1669,3 +1669,35 @@ A regra que sai daqui: **a descrição de um item de backlog envelhece como cont
 5. `/normas-tecnicas-pericia/` ganhou o 1º clique (106 impr · 7,7). Janela até ~20/09; depois, CTR.
 6. Regras que seguem valendo (ver 11/09) · **regra nova:** item de backlog bloqueado por embargo deve ser decomposto — a parte que não toca página embargada pode sair antes.
 7. Decisão pendente com a cliente (prazo de retorno / triagem sem custo) · SEO-009 `blocked` · Google Ads sem entrega.
+
+## Execução de 2026-09-13 — a NCM virou porta de alíquota, e a página não dizia
+
+**Estado da medição (GSC, 28 dias findos em 13/09/2026):** 1.459 impressões · 14 cliques (era 1.274 · 12 em 11/09). `/quesitos-periciais/` 491 (12,2 · 1) · `/assistente-tecnica/` 310 (12,5 · 1) · `/honorarios-pericia-judicial/` 136 (11,0 · 2) · `/normas-tecnicas-pericia/` 109 (7,8 · 1) · `/cpc-prova-pericial/` 91 (8,5 · 0) · `/impugnacao-laudo-pericial/` 82 (12,4 · 0) · `/laudo-pericial/` 62 (8,9 · 0) · `/pericia-combustiveis/` 38 (5,6 · 3) · `/prazo-validade-alimentos/` 28 (5,8 · 1) · `/pericia-industria-quimica/` 22 (9,6 · 1) · `/pericia-contaminacao-alimentos/` 20 (6,7 · 2) · **`/classificacao-fiscal-ncm/` 19 (7,2 · 0; era 17 · 12,2 em 10/09)**. SEO-048: `emitir despacho - sem quesitos` 8,2 · 15 impr; `anexo juntado…` 8,2 · 4. Indexação: as mesmas três URLs novas fora do índice.
+
+### Por que esta tarefa
+- Páginas com volume seguem embargadas (SEO-047 a 051; SEO-053 em `/pericia-ambiental/`).
+- Cruzamento `page × query` (28 e 90 dias) nas páginas livres: nenhuma consulta atribuída acima do limiar de anonimização — de novo, sem vocabulário de usuário para decodificar.
+- Entre as livres, **`/classificacao-fiscal-ncm/` foi a que mais subiu (12,2 → 7,2) e segue com 0 clique**, e é serviço de alto valor. A leitura da página contra a lei mostrou uma **lacuna de conteúdo real e datada**: ela tratava a NCM só como II/IPI e multa, e não dizia que, desde a LC 214/2025, **o código NCM/SH é o critério das alíquotas reduzidas do IBS e da CBS**. Para indústria de alimentos e de higiene/limpeza — exatamente o histórico profissional da Adriana — reclassificação passou a decidir entre alíquota zero, redução de 60% ou alíquota cheia. 2026 é o ano de teste; a janela para revisar portfólio é agora.
+
+### SEO-054 — Seção "Reforma tributária: a NCM passou a decidir a alíquota do IBS e da CBS" em `/classificacao-fiscal-ncm/` *(executada em 2026-09-13)*
+- **URL:** `/classificacao-fiscal-ncm/#reforma-tributaria` · **Categoria:** Prioridade 4 (cobertura semântica/entidades) + Prioridade 2 (página livre subindo para o top 10) + Prioridade 1 (meta description)
+- **Impacto:** 6 · **Esforço:** 3 · **Confiança:** 6 · **Valor de negócio:** 9 · **Priority Score:** 108 · **Status:** done · **Descoberto/Concluído:** 2026-09-13
+- **Conteúdo:** tabela benefício × artigo × anexo (arts. 125/Anexo I, 135/Anexo VII, 136/Anexo VIII, 148/Anexo XV); art. 492, I e § 2º (NCM da Resolução Gecex 272/2021; alteração futura da NCM não muda o tratamento); três itens do Anexo I em que o código não basta e a prova é de composição/descrição (leite, leite em pó e fórmulas infantis "em conformidade com os requisitos da legislação específica"; pão francês descrito por formato e mistura, código 1905.90.90; margarina 1517.10.00); calendário (arts. 343, 346 e 347). Link contextual para `/rotulagem-alimentos/` (denominação × padrão de identidade).
+- **Meta description** reescrita para incluir "NCM no IBS e na CBS" (150 caracteres). Título mantido — sem dado de consulta, trocar título seria palpite.
+- **Fonte:** texto compilado da LC 214/2025 no Planalto, com trechos tachados (`<strike>`) removidos antes de conferir — a lei já foi alterada pela LC 227/2026.
+- **Não foi feito:** FAQ nova (evita mexer na paridade sem necessidade); nenhuma alíquota de referência numérica pós-2027 (ainda não fixada); nada sobre split payment ou créditos — fora do escopo técnico da perita.
+- `dateModified`, `<time>`, `lastmod` do sitemap em 2026-09-13; `llms.txt` atualizado.
+
+### Verificação
+- **`tools/verify-ncm-reforma.py` (novo, versionado):** as 4 linhas da tabela (artigo e anexo) contra a fonte e contra o Planalto; 7 trechos da lei (Gecex 272, § 2º do art. 492, 0,9%, 0,1%, redução de 0,1 p.p., códigos 1905.90.90 e 1517.10.00); códigos, link e `dateModified` na página. Sem rede, SKIP e exit 1. **OK.**
+- **Controle negativo 1:** `Art. 136` → `Art. 137` só na tabela da página → **reprovou**. **Controle negativo 2:** fonte do art. 136 trocada para "30%" → **reprovou no Planalto**. Ambos restaurados e reconferidos OK.
+- `seo-report valid` **ALL PASS** (21 páginas) · `verify-faq-intake` 20/20 · `verify-intake` 20/20 · `verify-amb-normas` OK.
+- **Renderização** em Chrome real (Playwright, `/usr/bin/python3`, localhost:8899): 375 px e 1280 px sem overflow horizontal (`scrollWidth` = largura); tabela nova com 4 linhas.
+
+### Próxima execução — o que checar primeiro
+1. **SEO-048 vence em ~14/09** — veredito: top 5 → replicar; nada até ~28/09 → hipótese cai (inclusive SEO-044).
+2. SEO-049 (~15/09), 050 (~16/09), 051 (~17/09): não tocar até a data. SEO-052 libera etapas em ~17/09.
+3. **SEO-054 entra em medição:** `/classificacao-fiscal-ncm/` 19 impr · pos 7,2 · 0 cliques. Janela a partir de ~27/09. Sinal: consultas com "IBS", "CBS", "reforma tributária", "cesta básica", "anexo I" ou "alíquota zero" atribuídas à página.
+4. **Manutenção da SEO-054:** a LC 214/2025 muda por lei complementar e por revisão dos anexos (art. 126, §§ 2º e 3º). Rodar `verify-ncm-reforma.py` antes de qualquer execução que toque a página — ele reprova se o Planalto mudar os trechos citados.
+5. `/normas-tecnicas-pericia/` até ~20/09 → CTR. Regras de 11/09 e 12/09 seguem valendo.
+6. Decisão pendente com a cliente (prazo de retorno / triagem sem custo) · SEO-009 `blocked` · Google Ads sem entrega.
