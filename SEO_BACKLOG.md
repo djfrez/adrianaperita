@@ -1701,3 +1701,37 @@ A regra que sai daqui: **a descrição de um item de backlog envelhece como cont
 4. **Manutenção da SEO-054:** a LC 214/2025 muda por lei complementar e por revisão dos anexos (art. 126, §§ 2º e 3º). Rodar `verify-ncm-reforma.py` antes de qualquer execução que toque a página — ele reprova se o Planalto mudar os trechos citados.
 5. `/normas-tecnicas-pericia/` até ~20/09 → CTR. Regras de 11/09 e 12/09 seguem valendo.
 6. Decisão pendente com a cliente (prazo de retorno / triagem sem custo) · SEO-009 `blocked` · Google Ads sem entrega.
+
+## Execução de 2026-09-14 — a lei de doação que a página não citava, e que revogou a anterior
+
+**Estado da medição (GSC, 28 dias findos em 14/09/2026):** 1.488 impressões · 14 cliques. `/quesitos-periciais/` 501 (12,2 · 1) · `/assistente-tecnica/` 318 (12,5 · 1) · `/honorarios-pericia-judicial/` 135 (11,0 · 2) · `/normas-tecnicas-pericia/` 110 (7,8 · 1) · `/cpc-prova-pericial/` 93 (8,5 · 0) · `/impugnacao-laudo-pericial/` 78 (12,0 · 0) · `/laudo-pericial/` 63 (8,9 · 0) · `/pericia-combustiveis/` 40 (5,8 · 3) · **`/prazo-validade-alimentos/` 36 (5,5 · 1; era 23 em 12/09 e 28 em 13/09)**. GA4: 72 sessões; AI Assistant estável em 6 (2 em `/prazo-validade-alimentos/`). Indexação: as mesmas três URLs novas fora do índice.
+
+**SEO-048 — dia da janela:** `emitir despacho - sem quesitos` 8,2 · 15 impr; `anexo juntado…` 8,2 · 4. **Fora do top 5.** Não é veredito: a regra registrada em 11/09 é "nada até ~28/09 → hipótese cai". Segue em observação, sem tocar as páginas.
+
+### Por que esta tarefa
+- Páginas com volume seguem embargadas (SEO-047 a 051, 053, 054).
+- `page × query` (28 e 90 dias) nas páginas livres: de novo só `análise microbiológica alimentos` (1 impr · pos 72). Sem vocabulário de usuário.
+- Entre as livres, **`/prazo-validade-alimentos/` é a de impressão crescendo mais rápido (23 → 36 em dois dias), pos 5,5, e uma das três que recebem sessão de AI Assistant**. A leitura contra a lei achou uma lacuna datada: a página não tratava de **doação de estoque perto do vencimento** — decisão real de indústria e varejo, com pergunta de responsabilidade — e a lei que a rege mudou: a **Lei nº 15.224/2025 revogou a Lei nº 14.016/2020**. Mesmo padrão de vantagem da SEO-002 (multa de 1% revogada) e da SEO-054.
+
+### SEO-055 — Seção "Doação de alimento perto do vencimento: o que a Lei nº 15.224/2025 exige" em `/prazo-validade-alimentos/` *(executada em 2026-09-14)*
+- **URL:** `/prazo-validade-alimentos/#doacao` · **Categoria:** Prioridade 4 (cobertura semântica/legislação) + Prioridade 2 (página livre em pos 5,5 com impressão subindo)
+- **Impacto:** 5 · **Esforço:** 3 · **Confiança:** 7 · **Valor de negócio:** 7 · **Priority Score:** 81,7 · **Status:** done · **Descoberto/Concluído:** 2026-09-14
+- **Conteúdo:** tabela ponto × dispositivo (art. 14 caput, §§ 1º e 2º; arts. 15 e 16; art. 17); três leituras (embalado vencido fica fora dos "termos desta Lei"; para in natura/preparado o critério é técnico — link para `/analise-microbiologica-alimentos/`; o escudo é civil, a lei não menciona as Leis 6.437/1977 e 8.137/1990); e a consequência pericial: com responsabilidade limitada ao dolo, a prova é o que o doador sabia na entrega (termo com lote e validade, registro de conservação — link interno para `#cadeia-de-frio`, id novo —, relatório de não conformidade do lote).
+- **FAQ nova** "Uma empresa pode doar alimento perto do vencimento sem responder se alguém passar mal?" — visível e JSON-LD da mesma string, em posição penúltima (intake da SEO-046 segue última).
+- **Fonte:** texto da Lei 15.224/2025 no Planalto (DOU 01/10/2025; vigência na publicação). A página da Lei 14.016/2020 no Planalto traz "Revogado pela Lei nº 15.224, de 2025".
+- **O que o texto deliberadamente NÃO afirma:** se o regulamento do art. 14, § 1º (atestado do profissional habilitado) já foi editado — não conferido; o texto diz só "na forma de regulamento". Nenhuma conclusão sobre incidência penal/sanitária na doação — só que a lei não trata desses regimes.
+- `dateModified`, `<time>`, `lastmod` do sitemap em 2026-09-14; `llms.txt` atualizado.
+
+### Verificação
+- **`tools/verify-doacao.py` (novo, versionado):** 5 linhas da tabela contra a fonte e contra o Planalto, 7 trechos da lei (ementa/data, revogação da 14.016, art. 931, arts. 12 e 13 do CDC, art. 392, vigência, DOU), links, id `cadeia-de-frio`, FAQ nas duas pontas, `dateModified`. **OK.**
+- **Controle negativo 1:** `Art. 17` → `Art. 18` na tabela da página → **reprovou**. **Controle negativo 2:** trecho da fonte "dolo" → "culpa" → **reprovou no Planalto**. Ambos restaurados; reconferido OK.
+- `seo-report valid` sem falha (21 páginas, inclui paridade de FAQ) · `verify-faq-intake` 20/20 · `verify-intake` 20/20.
+- **Renderização** (Playwright, localhost:8899): 375 px e 1280 px sem overflow horizontal; tabela com 5 linhas.
+
+### Próxima execução — o que checar primeiro
+1. **SEO-048:** fora do top 5 no dia da janela. Prazo final ~28/09; se nada, a hipótese de andamento cai (inclusive SEO-044) — escrever sem suavizar.
+2. SEO-049 (~15/09), 050 (~16/09), 051 (~17/09): não tocar até a data. **SEO-052 libera etapas em ~17/09** — uma por execução.
+3. **SEO-055 entra em medição:** `/prazo-validade-alimentos/` 36 impr · pos 5,5 · 1 clique. Janela a partir de ~28/09. Sinal: consultas com "doação", "doar alimentos", "15.224" ou "14.016" atribuídas à página.
+4. **Manutenção da SEO-055:** conferir se o regulamento dos §§ 1º e 2º do art. 14 foi editado; se sim, a tabela precisa citá-lo. Rodar `verify-doacao.py` antes de tocar a página.
+5. `/normas-tecnicas-pericia/` até ~20/09 → CTR. Regras de 11/09–13/09 seguem valendo.
+6. Decisão pendente com a cliente (prazo de retorno / triagem sem custo) · SEO-009 `blocked` · Google Ads sem entrega.
