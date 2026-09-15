@@ -9,8 +9,9 @@ Cobra, na ordem:
      (`tools/build/vocabulario.py`) — nenhuma edição manual silenciosa na página;
   3. pergunta e resposta visíveis idênticas, caractere a caractere, ao que a
      fonte gera; a mesma resposta no JSON-LD, sem tag e sem entidade HTML;
-  4. **posição penúltima** da entrada nova no `FAQPage`, com a de intake da
-     SEO-046 em último — a invariante que a SEO-047 descobriu do jeito difícil;
+  4. a entrada nova vem **antes** da de intake da SEO-046, e a de intake é a
+     **última** — a invariante que a SEO-047 descobriu do jeito difícil. (Até
+     15/09/2026 isto cobrava "posição penúltima"; ver a nota na checagem 4.);
   5. paridade contagem visível × schema;
   6. os links internos declarados na seção;
   7. **os números afirmados, recontados no texto compilado do Planalto.** Esta é
@@ -107,10 +108,24 @@ def main():
     check("&" not in texts.get(plain(QUESTION), "") or "&amp;" not in texts.get(plain(QUESTION), ""),
           "resposta do JSON-LD sem entidade HTML crua")
 
-    # 4 — posição penúltima; intake em último
-    check(len(names) >= 2 and names[-2] == plain(QUESTION),
-          "entrada nova em posição PENÚLTIMA no FAQPage")
-    check(names[-1] == INTAKE_Q, "entrada de intake da SEO-046 segue em ÚLTIMO")
+    # 4 — a entrada vem ANTES da de intake, e a de intake é a última.
+    #
+    # Até 15/09/2026 esta checagem cobrava "posição penúltima". Estava errada, e
+    # a SEO-056 provou: "penúltima" só vale para a entrada mais recente, e a
+    # execução seguinte que acrescenta uma FAQ na mesma página empurra esta para
+    # a antepenúltima — a verificação reprovava uma página correta. O contrato
+    # real, o da SEO-046, sempre foi outro: **a de intake é a última**, e toda
+    # entrada nova entra antes dela. É isso que se cobra agora.
+    #
+    # A força do controle negativo da SEO-049 está preservada: inverter as duas
+    # últimas entradas continua reprovando, porque a de intake deixa de ser a
+    # última.
+    check(names.count(plain(QUESTION)) == 1,
+          "entrada da SEO-049 presente exatamente uma vez no FAQPage")
+    check(plain(QUESTION) in names and names.index(plain(QUESTION)) < len(names) - 1,
+          "entrada da SEO-049 vem ANTES da de intake")
+    check(bool(names) and names[-1] == INTAKE_Q,
+          "entrada de intake da SEO-046 segue em ÚLTIMO")
 
     # 5 — paridade visível × schema
     vis = re.search(r'<div class="faq">(.*?)\n    </div>\s*\n', doc, re.S)

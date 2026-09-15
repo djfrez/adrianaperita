@@ -1566,7 +1566,7 @@ Todas as páginas acima de `/honorarios-pericia-judicial/` em impressões estão
 - **Categoria:** Prioridade 5 (links internos) / Prioridade 2
 - **Impacto:** 6 · **Esforço:** 3 · **Confiança:** 6 · **Valor de negócio:** 7
 - **Priority Score:** 84
-- **Status:** open
+- **Status:** **blocked** — premissa invalidada em 15/09/2026 pela decomposição da cauda (ver SEO-056). A tabela abaixo compara posições médias de página, que misturam a cauda de 1ª página com consultas nomeadas de 3ª; executar como escrita retiraria link das duas páginas que carregam 711 das 1.357 impressões reais. **Reescrever sobre a base decomposta antes de qualquer execução.**
 - **Descoberto:** 2026-09-11
 - **O dado (links internos recebidos × desempenho GSC 28d, medido por script em 11/09):**
 
@@ -1735,3 +1735,67 @@ A regra que sai daqui: **a descrição de um item de backlog envelhece como cont
 4. **Manutenção da SEO-055:** conferir se o regulamento dos §§ 1º e 2º do art. 14 foi editado; se sim, a tabela precisa citá-lo. Rodar `verify-doacao.py` antes de tocar a página.
 5. `/normas-tecnicas-pericia/` até ~20/09 → CTR. Regras de 11/09–13/09 seguem valendo.
 6. Decisão pendente com a cliente (prazo de retorno / triagem sem custo) · SEO-009 `blocked` · Google Ads sem entrega.
+
+### SEO-056 — "Quem pode ser assistente técnico" em `/assistente-tecnica/` *(executada em 2026-09-15)*
+- **URL:** `/assistente-tecnica/#quem-pode` · **Categoria:** Prioridade 1 (2ª página do site em impressões, CTR 0,3%) + Prioridade 4 (pergunta ausente) + AI citation
+- **Impacto:** 7 · **Esforço:** 3 · **Confiança:** 8 · **Valor de negócio:** 9 · **Priority Score:** 168 · **Status:** done · **Descoberto/Concluído:** 2026-09-15
+- **O dado que a escolheu:** `quem pode ser assistente técnico em perícia` está em **posição 61 — a pior posição nomeada de todo o domínio** —, e está nela na página que deveria ser dona da pergunta. O `grep` confirmou o buraco: `"quem pode ser"` não aparecia nenhuma vez em `/assistente-tecnica/`, apesar das 31 seções e 15 entradas de FAQ. A página é a **2ª do site em impressões** (330 · pos 13,5 · 1 clique) e é a **única das quatro maiores livre de janela de medição** — a da SEO-049 venceu hoje.
+- **O achado:** **o CPC não impõe nenhum requisito de qualificação ao assistente técnico.** Todos os requisitos de habilitação do Código são endereçados ao *perito*: cadastro mantido pelo tribunal (art. 156, §1º) e currículo com comprovação de especialização em 5 dias (art. 465, §2º, II). Sobre o assistente, o art. 466, §1º, só diz que é de confiança da parte e **não está sujeito a impedimento ou suspeição** — ou seja, **pode ter vínculo com quem o indicou**, o oposto do que a maioria dos textos concorrentes dá a entender. O limite real não está no processo, está na profissão.
+- **Implementado:**
+  - **Tabela de 7 exigências × 4 colunas** (exigência · perito do juízo · assistente técnico · onde): entrada no processo, cadastro do tribunal, currículo, impedimento/suspeição, termo de compromisso, adiantamento da remuneração (art. 95) e pluralidade de profissionais em perícia complexa (art. 475).
+  - **Box "Onde a exigência realmente está":** Decreto nº 85.877/1981 — perícia e parecer entre as atividades do químico (art. 1º, VI), entre os *privativos* nos termos do art. 2º, IV, "g", e o art. 3º reservando estudo/planejamento/projeto de instalações industriais a quem tem currículo de Engenharia Química. Liga a entidade "Adriana Rezende / Engenharia Química / CRQ" à pergunta de elegibilidade.
+  - **`<h3>` "Quando e por qual via a indicação é feita":** as três vias, que não se equivalem — 15 dias do art. 465, §1º; perícia consensual com indicação **já no momento da escolha** (art. 471, §1º); perícia por carta (art. 465, §6º).
+  - **FAQ nova** "Quem pode ser assistente técnico em perícia?" — a consulta literal de pos 61 —, visível + JSON-LD da mesma fonte (**15ª aplicação** do método da SEO-037), antes da de intake da SEO-046.
+  - Três links internos (`/normas-tecnicas-pericia/`, `/quesitos-periciais/`, `/cpc-prova-pericial/`); `llms.txt`, `lastmod`, `dateModified` e `<time>` em 2026-09-15.
+- **O que o texto deliberadamente NÃO afirma:** que só profissional registrado possa ser assistente técnico. O chapeau do art. 2º, IV, do Decreto condiciona o rol a atividades "exercidas em firmas ou entidades públicas e privadas", e um parecer judicial não se enquadra ali sem interpretação. O texto diz o que a fonte sustenta — a perícia e o parecer **estão** entre as atividades da profissão e, *nos termos daquele inciso*, entre os privativos — e para o resto argumenta pelo peso probatório, não pela proibição.
+
+### Verificação
+- **`tools/verify-elegibilidade.py` (novo, versionado):** 28 células da tabela contra a fonte, pergunta/resposta idênticas nas duas pontas, ordem no `FAQPage`, paridade visível × schema, 3 links, `dateModified`/`<time>`, e **14 transcrições legais reconferidas ao vivo no Planalto** (11 do CPC, 3 do Decreto 85.877/1981). Sem rede, a checagem 7 dá **SKIP e o script sai com 1**. **OK.**
+- **Controle negativo 1** (paridade): acento removido de "técnico" na pergunta *visível*, JSON-LD intacto → verificador **reprovou**; `seo-report valid` seguiu em **`ALL PASS`** durante o defeito. **10ª confirmação de que `ALL PASS` não prova paridade.**
+- **Controle negativo 2** (ordem): duas últimas entradas do `FAQPage` invertidas → reprovou por duas razões independentes, e o `verify-faq-intake` da SEO-046 reprovou apontando a página. As duas guardas se pegam mutuamente.
+- **Controle negativo 3a** (célula na página): `art. 475` → `art. 476` na tabela, fonte intacta → reprovou.
+- **Controle negativo 3b** (a cadeia nas duas pontas): "perícia complexa" → "perícia simples" **na fonte**, com a página reconstruída a partir dela — página e fonte concordando perfeitamente — e **a recontagem no Planalto reprovou**. É o que separa "número autoconsistente" de "número verdadeiro".
+- **Idempotência:** três execuções; a 2ª e a 3ª devolvem "sem mudança" e o `diff` é vazio.
+- **Renderização** (Chromium real, `scroll-behavior: auto` forçado): 375 px e 1280 px sem overflow horizontal; `#quem-pode` em **y=112** nas duas larguras, igual às âncoras existentes; tabela com **7 linhas × 4 colunas**. **Controle negativo** com bloco de 3000 px **acusou** `scrollWidth=3000`.
+- Suíte completa (10 verificadores) e `seo-report valid` (21 páginas) em **ALL PASS**.
+
+### Uma invariante que estava errada, e que esta execução quebrou para descobrir
+`verify-vocabulario` (SEO-049) **reprovou** ao rodar a suíte — e estava certo em reprovar do seu ponto de vista, e errado no que cobrava. Ele exigia que a entrada da SEO-049 estivesse em **posição penúltima** no `FAQPage`. Mas "penúltima" só vale para a entrada *mais recente*: a FAQ nova da SEO-056 tomou o lugar, e a da SEO-049 virou antepenúltima — página correta, verificador reprovando.
+
+O contrato real, o da SEO-046, sempre foi **"a de intake é a última"**, e "penúltima" era um atalho que funcionava enquanto ninguém acrescentasse uma segunda FAQ à mesma página. Corrigido em `verify-vocabulario.py` para *presente exatamente uma vez · antes da de intake · intake em último*, e **o controle negativo 2 da SEO-049 foi repetido contra a versão corrigida: continua reprovando**, porque a de intake deixa de ser a última. A mesma correção foi aplicada preventivamente ao verificador novo, antes de commitar. `grep '\[-2\]'` confirma que nenhum outro verificador carrega a formulação frágil.
+
+### A decomposição que muda a leitura do site inteiro — e invalida a premissa da SEO-052
+
+Medindo `page × query` no GSC e subtraindo as consultas nomeadas do total da página, aparece o que nenhuma execução anterior tinha visto: **1.357 das 1.511 impressões do domínio (90%) estão na cauda anonimizada** — consultas com volume baixo demais para o GSC nomear — **e essa cauda está na primeira página do Google**, não na segunda.
+
+| Página | Impr total | Pos total | Impr nomeadas | Pos nomeadas | **Impr cauda** | **Pos cauda** | Cliques cauda |
+|---|---|---|---|---|---|---|---|
+| `/quesitos-periciais/` | 504 | 12,4 | 69 | 33,1 | **435** | **9,2** | 1 |
+| `/assistente-tecnica/` | 330 | 13,5 | 54 | 32,7 | **276** | **9,8** | 1 |
+| `/honorarios-pericia-judicial/` | 143 | 10,8 | 6 | 49,0 | **137** | **9,1** | 2 |
+| `/normas-tecnicas-pericia/` | 110 | 7,8 | 7 | 28,6 | **103** | **6,4** | 1 |
+| `/cpc-prova-pericial/` | 93 | 8,5 | 0 | — | 93 | 8,5 | 0 |
+| `/laudo-pericial/` | 64 | 8,8 | 9 | 18,7 | 55 | 7,2 | 0 |
+| `/pericia-combustiveis/` | 38 | 5,8 | 0 | — | 38 | 5,8 | 3 |
+
+**Três consequências:**
+
+1. **A "posição média de segunda página" das páginas grandes é um artefato.** `/quesitos-periciais/` não está em 12,4 — está em **9,2 no que traz 86% das suas impressões**, e em 33,1 num punhado de consultas genéricas (`quesitos`, `quesitos significado`) que não trazem nada. A média mistura as duas.
+
+2. **A premissa da SEO-052 está invalidada, e executá-la como escrita teria piorado o site.** A SEO-052 comparava `/pericia-combustiveis/` (pos 5,8 · 5 páginas linkando) com `/quesitos-periciais/` (pos 12,4 · 18 páginas linkando) e concluía que o link interno estava sendo gasto nas páginas erradas. Na base correta — só a cauda — a comparação é **5,8 contra 9,2**, com `/quesitos-periciais/` trazendo **435 impressões contra 38**. Tirar link de `/quesitos-periciais/` e `/assistente-tecnica/` para alimentar `/pericia-combustiveis/` teria desidratado as duas páginas que carregam **711 das 1.357 impressões reais do domínio**, em favor de uma que carrega 38. **SEO-052 fica `blocked` até ser reescrita sobre a decomposição.**
+   O desequilíbrio real, agora que dá para medi-lo, é outro e menor: `/honorarios-pericia-judicial/` (**137 impr de cauda · pos 9,1 · 2 cliques — a 2ª maior fonte de clique do site**) recebe **6 páginas / 9 links**, enquanto `/cpc-prova-pericial/` (93 impr · 0 cliques) recebe **20 páginas / 37 links** e `/sobre/` (5 impr) recebe **20 / 38**. `/laudo-pericial/` (55 impr · pos **7,2**) recebe 6 / 8.
+
+3. **Três execuções seguidas do método de vocabulário (SEO-048, 049, 050) miraram o alvo errado.** Elas foram escolhidas por consultas nomeadas em pos 25–50 — exatamente a fatia que não traz tráfego. A leitura da janela da SEO-049, que vencia hoje, confirma: **pré (01–07/09) 131 impr · pos 15,0 · 1 clique → pós (09–15/09) 127 impr · pos 13,9 · 0 cliques.** Ganho de ~1,1 posição, dentro do ruído, e nenhum clique. A SEO-048 segue sem subir (`emitir despacho - sem quesitos` 8,2 · 15 impr, contra 8,9 · 11 em 11/09); prazo final ~28/09.
+   **Regra nova, e é a mais importante desta execução:** *a escolha de alvo passa a ser feita sobre a cauda decomposta, não sobre a posição média da página nem sobre a lista de consultas nomeadas.* A SEO-056 ainda foi escolhida pelo método antigo (uma consulta nomeada, pos 61) — mas numa página cuja cauda está em 9,8, o que a torna defensável pelos dois critérios. As próximas não têm essa desculpa.
+
+### Próxima execução — o que checar primeiro
+1. **Escolher o alvo sobre a cauda decomposta.** Rodar `page × query` no GSC, subtrair as nomeadas e ordenar por impressão de cauda. É a regra nova da SEO-056 e substitui a leitura por posição média de página.
+2. **SEO-052 está `blocked`, não pendente.** Não executar a redistribuição como está escrita. Se for reescrita, o alvo defensável é `/honorarios-pericia-judicial/` (137 impr de cauda · pos 9,1 · 2 cliques · só 6 páginas linkando) e `/laudo-pericial/` (55 · pos 7,2 · 6 páginas) — mas **ambas sob janela**: SEO-051 até ~17/09 e SEO-048 até ~28/09. Acrescentar link *de entrada* também contamina medição.
+3. **SEO-056 entra em medição:** linha de base `/assistente-tecnica/` **330 impr · pos 13,5 · 1 clique (28d)**, cauda **276 · pos 9,8 · 1 clique**, e a consulta alvo `quem pode ser assistente técnico em perícia` em **pos 61 · 3 impr**. Janela legítima a partir de **~29/09**. **Não tocar a página até lá.**
+4. **SEO-048: prazo final ~28/09.** `emitir despacho - sem quesitos` 8,2 · 15 impr. Se não chegar ao top 5, a hipótese de vocabulário de andamento cai por inteiro — incluindo a SEO-044 — e isso tem de ser escrito sem suavizar.
+5. **A SEO-049 já pode ser lida e o resultado é negativo:** +1,1 posição, 0 cliques (ver SEO-056). Não iniciar uma quarta seção de vocabulário sem uma justificativa que a medição sustente.
+6. `/normas-tecnicas-pericia/` até ~20/09. Reconferência integral do quadro de vigência (30 das 32 linhas ainda dizem "situação em 18/08/2026") é o melhor candidato de E-E-A-T sem página nova — **só depois de 20/09**.
+7. **Indexação:** as mesmas três URLs fora do índice (`/auto-infracao-ambiental/`, `/dano-motor-combustivel/`, `/producao-antecipada-prova/`). A regra de ≤ ~5 páginas por execução segue valendo.
+8. **Regras que seguem valendo:** `ALL PASS` não prova paridade (**10ª confirmação**) · nunca inserir em JSON-LD por casamento de indentação, ler a indentação do arquivo · medir âncora com `scroll-behavior: auto` · visível e JSON-LD da mesma fonte (**15ª aplicação**) · toda execução que acrescenta conteúdo mexe em `dateModified` e no `<time>` visível · número/transcrição afirmado no texto é afirmação verificável e o verificador **reconta na fonte** · controle negativo que não altera o arquivo não é controle · **regra nova:** invariante de *posição absoluta* em lista que cresce (a "penúltima") apodrece na execução seguinte — cobrar a relação (*antes da de intake*), não o índice.
+9. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. Maior ganho de conversão restante; não é decisão de SEO.
+10. **Google Ads segue sem entrega.** Vigésima sétima execução como nota de rodapé.
