@@ -1799,3 +1799,44 @@ Medindo `page × query` no GSC e subtraindo as consultas nomeadas do total da p�
 8. **Regras que seguem valendo:** `ALL PASS` não prova paridade (**10ª confirmação**) · nunca inserir em JSON-LD por casamento de indentação, ler a indentação do arquivo · medir âncora com `scroll-behavior: auto` · visível e JSON-LD da mesma fonte (**15ª aplicação**) · toda execução que acrescenta conteúdo mexe em `dateModified` e no `<time>` visível · número/transcrição afirmado no texto é afirmação verificável e o verificador **reconta na fonte** · controle negativo que não altera o arquivo não é controle · **regra nova:** invariante de *posição absoluta* em lista que cresce (a "penúltima") apodrece na execução seguinte — cobrar a relação (*antes da de intake*), não o índice.
 9. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. Maior ganho de conversão restante; não é decisão de SEO.
 10. **Google Ads segue sem entrega.** Vigésima sétima execução como nota de rodapé.
+
+### SEO-057 — Snippet de `/cpc-prova-pericial/`: prazos concretos no title e na description *(executada em 2026-09-16)*
+- **URL:** `/cpc-prova-pericial/` · **Categoria:** Prioridade 1 (1ª página, impressão alta, zero clique)
+- **Impacto:** 6 · **Esforço:** 2 · **Confiança:** 5 · **Valor de negócio:** 8 · **Priority Score:** 120 · **Status:** done · **Descoberto/Concluído:** 2026-09-16
+- **Por que esta e não outra (cauda decomposta, regra da SEO-056, GSC 28d findos em 16/09):**
+
+| Página | Impr cauda | Pos cauda | Cliques | Janela |
+|---|---|---|---|---|
+| `/quesitos-periciais/` | 471 | 8,9 | 1 | SEO-048 até ~28/09 |
+| `/assistente-tecnica/` | 328 | 9,4 | 1 | SEO-056 até ~29/09 |
+| `/honorarios-pericia-judicial/` | 145 | 9,0 | 2 | SEO-051 até ~17/09 |
+| `/normas-tecnicas-pericia/` | 106 | 6,5 | 1 | SEO-047 até ~20/09 |
+| **`/cpc-prova-pericial/`** | **98** | **8,5** | **0** | **livre** (último toque 07/09) |
+| `/laudo-pericial/` | 64 | 7,4 | 0 | SEO-048 até ~28/09 |
+| `/impugnacao-laudo-pericial/` | 60 | 10,3 | 0 | SEO-050 vence hoje |
+
+  `/cpc-prova-pericial/` é a **maior página livre de janela**, com 100% das impressões na cauda (nenhuma consulta nomeada), posição **estável em 8,5 desde 09/09** (66 → 98 impr) e **zero clique** em todo o período. Posição parada e conteúdo já saturado (31 seções, 13 FAQs, tabela de prazos, decodificador de andamento) apontam para o snippet, não para o corpo. É a ação de Prioridade 1 que ainda não tinha sido tentada no site: nenhuma execução anterior mexeu em title/description de página com impressão.
+- **O diagnóstico do snippet antigo:** `Prova pericial no CPC: os artigos e prazos, em ordem` + "Referência da prova pericial… o que cada dispositivo obriga na prática". Promete **uma referência**; não entrega **nenhum número**. Quem busca prazo pericial quer o prazo — e o resultado que o mostra no próprio SERP é o que recebe o clique (ou responde sem clique, o que ao menos não é pior que hoje).
+- **Implementado:**
+  - `<title>`, `og:title`, `twitter:title` e `headline` do `Article`: **`Prova pericial no CPC: prazos de quesitos, laudo e parecer`** (58 caracteres). Mantém o termo-cabeça no início e nomeia os três atos que a parte procura.
+  - `meta description` (157): **"Quesitos: 15 dias (art. 465). Manifestação sobre o laudo e parecer do assistente: 15 dias comuns (art. 477). Todos os prazos da perícia no CPC em uma tabela."** — resposta no próprio snippet, com a base legal, e a tabela como motivo para clicar.
+  - `og:description` / `twitter:description` no mesmo sentido.
+  - `dateModified`, `<time>` visível e `lastmod` em 2026-09-16. H1 e corpo **intocados** — a atribuição fica limpa: se o CTR mudar, foi o snippet.
+- **Deliberadamente NÃO feito:** "laudo 20 dias antes da audiência" ficou fora da description — a lei diz *ao menos* 20 dias, e o prazo de entrega é o fixado pelo juiz; comprimido em 160 caracteres, viraria afirmação imprecisa.
+
+### Verificação
+- **`tools/verify-cpc-snippet.py` (novo):** title nos 4 lugares e o antigo em nenhum; limites de 60 / 150–160; **cada prazo do snippet sustentado pela linha correspondente da tabela da própria página**; `dateModified`/`<time>`; e as **duas transcrições (art. 465, §1º e art. 477, §1º) reconferidas ao vivo no Planalto** — sem rede, sai com 1. **OK.**
+- **Controle negativo 1:** `15 dias, comum` → `10 dias, comum` na linha do art. 477, §1º da página → **reprovou** ("tabela da página sustenta…"). Página restaurada, `cmp` idêntico ao backup.
+- **Controle negativo 2:** transcrição do art. 465, §1º alterada para "(dez) dias" numa cópia do verificador → **reprovou** na recontagem do Planalto.
+- Suíte completa (11 verificadores) e `seo-report valid` (21 páginas) em **ALL PASS**.
+
+### Leitura da janela da SEO-050 (vence hoje) — resultado negativo, registrado sem suavizar
+`/impugnacao-laudo-pericial/`: linha de base 09/09 **93 impr · pos 12,1 · 0 cliques** → hoje **66 impr · pos 12,2 · 0 cliques**. Consultas nomeadas seguem em 22–51 (`impugnação de laudo pericial` pos 51,5). A seção de vocabulário de desfazer o laudo **não moveu a posição nem gerou clique**, e as impressões caíram. Terceira leitura consecutiva negativa do método de vocabulário (SEO-049 +1,1 pos · 0 cliques; SEO-048 parada). **Não iniciar nova seção de vocabulário.** A página fica livre a partir de hoje; se o snippet da SEO-057 funcionar, é a próxima candidata ao mesmo tratamento (pos de cauda 10,3, a pior das grandes).
+
+### Próxima execução — o que checar primeiro
+1. **Git exige `DEVELOPER_DIR=/Library/Developer/CommandLineTools`** — a licença do Xcode não aceita foi (re)ativada no Mac; `git` e `/usr/bin/python3` em `/usr/bin` são shims do Xcode e falham sem isso. Resolver de vez exige `sudo xcodebuild -license` pela cliente/operador.
+2. **SEO-057 em medição:** linha de base `/cpc-prova-pericial/` **98 impr · pos 8,5 · 0 cliques (28d findos em 16/09)**. Título leva ~3–7 dias para ser reprocessado; janela legítima a partir de **~30/09** (14 dias, CTR precisa de volume). Checar antes se o Google adotou o title (o `site:` ou a inspeção de URL mostram). **Não tocar a página até lá.**
+3. SEO-051 (`/honorarios-pericia-judicial/`) vence ~17/09; SEO-047 (`/normas-tecnicas-pericia/`) ~20/09 — a reconferência do quadro de vigência segue sendo a melhor candidata de E-E-A-T depois de 20/09.
+4. SEO-048: prazo final ~28/09. SEO-056: ~29/09.
+5. **Indexação:** as mesmas três URLs fora do índice (`/auto-infracao-ambiental/` e `/dano-motor-combustivel/` detectadas não indexadas; `/producao-antecipada-prova/` não reconhecida) — já são duas semanas. Se persistir até a próxima semana, vira item próprio (links de entrada a partir das páginas indexadas de maior impressão, que hoje estão sob janela — conflito a decidir).
+6. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega.
