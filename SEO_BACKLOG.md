@@ -1840,3 +1840,57 @@ Medindo `page × query` no GSC e subtraindo as consultas nomeadas do total da p�
 4. SEO-048: prazo final ~28/09. SEO-056: ~29/09.
 5. **Indexação:** as mesmas três URLs fora do índice (`/auto-infracao-ambiental/` e `/dano-motor-combustivel/` detectadas não indexadas; `/producao-antecipada-prova/` não reconhecida) — já são duas semanas. Se persistir até a próxima semana, vira item próprio (links de entrada a partir das páginas indexadas de maior impressão, que hoje estão sob janela — conflito a decidir).
 6. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega.
+
+### SEO-058 — Description de `/honorarios-pericia-judicial/`: a resposta no próprio snippet *(executada em 2026-09-18)*
+- **URL:** `/honorarios-pericia-judicial/` · **Categoria:** Prioridade 1 (1ª página na cauda, impressão crescente, zero clique recente)
+- **Impacto:** 6 · **Esforço:** 2 · **Confiança:** 5 · **Valor de negócio:** 9 · **Priority Score:** 135 · **Status:** done · **Descoberto/Concluído:** 2026-09-18
+- **Por que esta e não outra (cauda decomposta, regra da SEO-056, GSC 28d findos em 16/09):**
+
+| Página | Impr total | Impr cauda | Pos cauda | Cliques | Janela |
+|---|---|---|---|---|---|
+| `/quesitos-periciais/` | 582 | — | — | 1 | SEO-048 até ~28/09 |
+| `/assistente-tecnica/` | 505 | — | — | 2 | SEO-056 até ~29/09 |
+| **`/honorarios-pericia-judicial/`** | **160** | **153** | **8,9** | **2** | **livre desde ~17/09** |
+| `/normas-tecnicas-pericia/` | 126 | 119 | 6,6 | 1 | SEO-047 até ~20/09 |
+| `/cpc-prova-pericial/` | 106 | 106 | 8,7 | 0 | SEO-057 até ~30/09 |
+| `/impugnacao-laudo-pericial/` | 69 | 63 | 11,1 | 0 | livre |
+
+  `/honorarios-pericia-judicial/` é a **maior página livre de janela**, 96% das impressões na cauda, em **8,9** — fim da 1ª página. É a de maior valor comercial entre as livres: quem pesquisa quem paga a perícia está decidindo se contrata assistente técnico.
+- **Leitura da janela da SEO-051 (venceu 17/09) — positiva, mas sem clique:** semana 03–09/09 **27 impr · pos 11,1 · 0 cliques** → semana 10–16/09 **54 impr · pos 9,6 · 0 cliques**. Impressões dobraram e a posição subiu ~1,5, o que é consistente com a seção nova ter aberto consultas de cauda. Os 2 cliques do período de 28 dias são **anteriores** à janela: as impressões novas **não converteram em clique** — e é isso que aponta para o snippet.
+- **O diagnóstico da description antiga:** "Quem adianta os honorários do perito e do assistente técnico, como o juiz arbitra o valor e o que muda…" — **lista as perguntas e não responde nenhuma.** O title já nomeia a pergunta ("quem paga, quem adianta e gratuidade"); a description repetia a promessa em vez de entregar.
+- **Implementado:**
+  - `meta description` (157): **"Perito: adianta quem pediu a perícia, com rateio se ambas pediram ou o juiz a determinou (art. 95 do CPC). Assistente técnico: adianta a parte que o indicou."** — a regra inteira do art. 95, com base legal, e separando as duas contas, que é exatamente a distinção que a página ensina e o gancho comercial (o assistente é contratado pela parte).
+  - `og:description` / `twitter:description`: a mesma resposta em forma curta, mais a gratuidade (art. 95, §3º), que coube ali e não coube na description.
+- **Deliberadamente NÃO feito:**
+  - **Title intocado.** Diferente da SEO-057, que mudou title e description juntos, aqui só a description muda — se o CTR mudar, a atribuição é limpa. Com duas execuções de snippet em páginas diferentes, uma com e outra sem title, a comparação das duas janelas diz qual das duas alavancas funciona neste site.
+  - **Verbo "adianta", não "paga".** A própria página insiste que o verbo do código é *adiantar* — quem adianta não é necessariamente quem suporta o custo ao final (art. 82, §2º). "Quem paga" no snippet contradiria o corpo.
+  - **`dateModified` e `<time>` não mudaram.** Metadado de SERP não é conteúdo; atualizar a data visível sem mudar o texto seria exatamente a desonestidade que a SEO-002 proibiu. O verificador cobra isso.
+  - Corpo, H1, FAQ e links: intocados.
+
+### Verificação
+- **`tools/verify-honorarios-snippet.py` (novo):** description nova e no limite; og/twitter novos; os três textos antigos em lugar nenhum; title intocado nos 4 lugares; **cada afirmação do snippet sustentada pela linha "Quem adianta" da tabela da própria página** e pela seção de gratuidade; datas preservadas; e **art. 95, caput e §3º, I e II, reconferidos ao vivo no Planalto** — sem rede, sai com 1. **OK.**
+- **Controle negativo 1** (a página deixa de sustentar o snippet): célula do assistente trocada para "A parte vencida (art. 95)" → verificador **reprovou**; `seo-report valid` seguiu em **`ALL PASS`** durante o defeito — **11ª confirmação de que `ALL PASS` não prova conteúdo.**
+- **Controle negativo 2** (a lei não diz o que o snippet diz): transcrição do art. 95 alterada para "requerida por uma das partes" numa cópia do verificador → **reprovou** na recontagem do Planalto.
+- **Controle negativo 3** (data de fachada): `dateModified` → 2026-09-18 sem mudança de conteúdo → **reprovou**. Página restaurada, `cmp` idêntico ao backup.
+- Suíte completa (**12 verificadores**) e `seo-report valid` (21 páginas) em **ALL PASS**.
+
+### SEO-059 — Três páginas fora do índice há duas semanas e meia *(descoberta em 2026-09-18, não executada)*
+- **URLs:** `/dano-motor-combustivel/` (**"URL desconhecida para o Google"**), `/auto-infracao-ambiental/` e `/producao-antecipada-prova/` (**"Descoberta – atualmente não indexada"**)
+- **Categoria:** Prioridade 6 (técnico — indexação) · **Impacto:** 6 · **Esforço:** 3 · **Confiança:** 4 · **Valor de negócio:** 7 · **Priority Score:** 56 · **Status:** open
+- **O que foi medido hoje, e não presumido (Inspeção de URL + Sitemaps API):**
+  - O `sitemap.xml` foi **baixado pelo Google hoje (18/09 01:11 UTC)**, 21 URLs, 0 erros — as três estão nele desde 05–06/09. Não é sitemap desatualizado.
+  - As três respondem **200**, `index, follow`, canonical autorreferente. Não é bloqueio técnico.
+  - `robotsTxtState` e `pageFetchState` **não especificados** nas três: **o Googlebot nunca as buscou.** É fila de rastreamento, não rejeição de qualidade — o Google não leu o conteúdo, então não pode tê-lo julgado.
+  - O caso estranho é `/dano-motor-combustivel/`: está no sitemap que o Google baixou hoje, é linkada por 5 páginas indexadas (incluindo `/pericia-combustiveis/`, a de melhor CTR do site) e **ainda assim é "desconhecida"**. O relatório de inspeção pode estar defasado em relação ao processamento do sitemap; reconferir antes de concluir qualquer coisa.
+- **Links de entrada hoje:** `/auto-infracao-ambiental/` 6 páginas · `/dano-motor-combustivel/` 5 · `/producao-antecipada-prova/` 7. Nenhuma das três é linkada pela página mais rastreada do site; `/assistente-tecnica/` linka duas.
+- **Hipótese de ação:** link contextual (não de rodapé) para as três a partir das páginas que o Google mais rastreia — `/quesitos-periciais/` e `/assistente-tecnica/` —, onde houver encaixe temático real (produção antecipada ↔ quesitos; auto de infração ↔ assistente em processo administrativo). **Conflito:** as duas estão sob janela (SEO-048 até ~28/09, SEO-056 até ~29/09). Link *de saída* no corpo tem efeito desprezível na página de origem, mas a regra do projeto é não tocar página sob janela — **decidir na execução de ~29/09** ou antes, se a inspeção continuar parada em 25/09.
+- **Não fazer:** pedir indexação manual pela API — a Indexing API do Google só aceita `JobPosting`/`BroadcastEvent`, e usá-la para outra coisa é violação dos termos. A solicitação pela interface do GSC é manual e cabe à cliente/operador.
+
+### Próxima execução — o que checar primeiro
+1. **Git e `/usr/bin/python3` exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`** (licença do Xcode não aceita). Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador.
+2. **Duas execuções de snippet em medição, em paralelo e de propósito:** SEO-057 (title + description, `/cpc-prova-pericial/`, linha de base 98 impr · pos 8,5 · 0 cliques, janela ~30/09) e **SEO-058 (só description, `/honorarios-pericia-judicial/`, linha de base 160 impr · pos 10,3 · 2 cliques em 28d; cauda 153 · pos 8,9; 0 cliques em 10–16/09 com 54 impr), janela a partir de ~02/10.** Ler as duas juntas: se só a com title mexer no CTR, a alavanca é o title. **Não tocar nenhuma das duas páginas até lá.**
+3. SEO-047 (`/normas-tecnicas-pericia/`) vence ~20/09: cauda 119 · pos 6,6 · 1 clique — é a próxima candidata a snippet **e** a reconferência do quadro de vigência. Escolher uma, não as duas na mesma execução.
+4. SEO-048 prazo final ~28/09 (`emitir despacho - sem quesitos` 7,9 · 13 impr). SEO-056 ~29/09.
+5. **SEO-059:** reconferir a inspeção das três URLs; se paradas em ~25/09, executar os links contextuais.
+6. `/impugnacao-laudo-pericial/` está livre (cauda 63 · pos 11,1 · 0 cliques) — candidata a snippet depois que SEO-057/058 disserem se o método funciona.
+7. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega.
