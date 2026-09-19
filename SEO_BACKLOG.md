@@ -1894,3 +1894,95 @@ Medindo `page × query` no GSC e subtraindo as consultas nomeadas do total da p�
 5. **SEO-059:** reconferir a inspeção das três URLs; se paradas em ~25/09, executar os links contextuais.
 6. `/impugnacao-laudo-pericial/` está livre (cauda 63 · pos 11,1 · 0 cliques) — candidata a snippet depois que SEO-057/058 disserem se o método funciona.
 7. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega.
+
+### SEO-060 — Seção "Surto: quando o alimento suspeito já foi comido" em `/pericia-contaminacao-alimentos/` *(executada em 2026-09-19)*
+- **URL:** `/pericia-contaminacao-alimentos/#surto` · **Categoria:** Prioridade 2 + 4 (página 5–20 com a melhor conversão do site; cobertura semântica ausente)
+- **Impacto:** 8 · **Esforço:** 4 · **Confiança:** 7 · **Valor de negócio:** 9 · **Priority Score:** 126 · **Status:** done · **Descoberto/Concluído:** 2026-09-19
+
+#### O achado que escolheu esta página (GSC 28d findos em 19/09, dados até 16/09)
+
+Primeiro, **um quase-erro que vale registrar**: a consulta inicial usou dimensões `["page","query"]` e devolveu **159 impressões** no site inteiro, contra 1.357 na leitura anterior — parecia colapso de 90%. Não era. Com `["page","query"]` o GSC **descarta as consultas anonimizadas**, que aqui são **92% do volume**. A leitura correta usa `["page"]` sozinho. **Nunca ler totais de página a partir de um join com `query`.**
+
+Totais reais, e a série semanal — o site está **crescendo**, não caindo:
+
+| Semana | Impressões | Cliques |
+|---|---|---|
+| 23–29/08 | 354 | 5 |
+| 30/08–05/09 | 427 | 4 |
+| 06–12/09 | 505 | 3 |
+| **13–19/09** | **706** | **1** |
+
+28 dias: **2.011 impressões · 14 cliques · CTR 0,7% · posição média 11,1.**
+
+**O padrão que decidiu a execução — CTR por tamanho de página, e ele é invertido:**
+
+| Página | Impr | Cliques | CTR | Pos |
+|---|---|---|---|---|
+| `/assistente-tecnica/` | 595 | 2 | **0,3%** | 11,1 |
+| `/quesitos-periciais/` | 585 | 1 | **0,2%** | 11,8 |
+| `/honorarios-pericia-judicial/` | 157 | 2 | 1,3% | 10,1 |
+| `/normas-tecnicas-pericia/` | 115 | 1 | 0,9% | 8,2 |
+| `/prazo-validade-alimentos/` | 59 | 1 | 1,7% | 6,9 |
+| **`/pericia-combustiveis/`** | 51 | 2 | **3,9%** | 5,6 |
+| **`/pericia-contaminacao-alimentos/`** | 47 | 2 | **4,3%** | 6,8 |
+| `/pericia-industria-quimica/` | 20 | 1 | 5,0% | 10,4 |
+
+**As duas maiores páginas do site convertem 15× pior que as pequenas.** E não é efeito de posição: `/assistente-tecnica/` está em 11,1 e converte a 0,3%; `/pericia-industria-quimica/` está em 10,4 — posição praticamente igual — e converte a 5,0%.
+
+A explicação está nas consultas nominais: `/assistente-tecnica/` e `/quesitos-periciais/` rankeiam para consultas **definicionais** ("o que é quesito", "quesitos significado", "assistente técnico"), onde quem pesquisa é estudante ou curioso e onde a IA do Google responde sem clique. As páginas pequenas rankeiam para consultas **de problema concreto**, onde quem pesquisa tem um caso.
+
+**Consequência estratégica, e ela contraria o instinto de otimizar a página maior:** `/assistente-tecnica/` cresceu 17 → 100 → 170 → **305 impressões/semana** em quatro semanas e já é 43% do volume do site — mas é volume de baixa intenção. A missão é explícita: *"Never chase high-volume keywords. Dominate high-intent, high-conversion searches."* O movimento de maior ROI hoje é **alimentar as páginas que já convertem a 4–5%**, não perseguir CTR na cauda definicional.
+
+Entre as duas melhores conversoras, `/pericia-contaminacao-alimentos/` (4,3%, a maior do site) está **livre de janela** e é o núcleo da especialidade mais profunda da Adriana. `/pericia-combustiveis/` também está livre e fica como próxima candidata.
+
+**Todas as páginas maiores estavam sob janela** e não podiam ser tocadas: SEO-048 (`/quesitos-periciais/`, `/laudo-pericial/`) até ~28/09 · SEO-056 (`/assistente-tecnica/`) ~29/09 · SEO-057 (`/cpc-prova-pericial/`) ~30/09 · SEO-058 (`/honorarios-pericia-judicial/`) ~02/10 · SEO-047 (`/normas-tecnicas-pericia/`) ~20/09.
+
+#### A lacuna de conteúdo
+
+A página ensinava a analisar **a amostra que existe** — custódia, acreditação, APPCC, recall, CDC. Não dizia nada sobre o litígio mais frequente em alimentos: **várias pessoas passam mal e o alimento suspeito já foi consumido**. Não há amostra. É exatamente o caso em que um restaurante, uma cozinha industrial ou uma indústria procura assistente técnico — e a pergunta que decide o caso (como se prova o nexo sem amostra) não tinha resposta em lugar nenhum do site.
+
+#### Implementado
+
+Seção `#surto`, entre "Cadeia de custódia da amostra" e "Normas técnicas aplicáveis" — a ordem importa: a anterior trata da amostra que existe, esta do caso em que ela não existe.
+
+1. **Terminologia atual:** o Ministério da Saúde hoje usa **DTHA** (Doenças de Transmissão Hídrica e Alimentar), não mais apenas DTA. Boa parte do conteúdo concorrente ainda diz DTA — mesma vantagem de atualidade da SEO-002.
+2. **Definição de surto:** duas ou mais pessoas com doença ou sintomas semelhantes após ingerir alimento e/ou água de mesma origem, normalmente no mesmo local; **botulismo e cólera** — um único caso já é surto.
+3. **Tabela das medidas de associação:** taxa de ataque nos expostos (TA1), nos não expostos (TA2) e risco relativo (RR = TA1 ÷ TA2), com a leitura de RR > 1, RR = 1 e RR < 1. É a prova do nexo quando não há laboratório — e serve nas duas direções: laudo positivo não basta se a TA dos não expostos for comparável.
+4. **Box "O ponto que decide muitos casos":** quando não há sobra do alimento consumido e se recorre a **amostra de alimento similar**, o próprio manual do MS registra que o resultado é **inconclusivo para o encerramento do surto**. É o ponto mais citável da seção e o que mais frequentemente é apresentado com força maior do que a metodologia autoriza.
+5. **Hierarquia das amostras alternativas:** amostras de controle de qualidade no local de produção → ingredientes → sobras em embalagens e utensílios não lavados → embalagens vazias (botulismo).
+6. **Duas regras de guarda que quase todo mundo confunde:**
+   - A **RDC 216/2004 não exige guarda de amostras** — a palavra "amostra" **não aparece no texto** (conferido: zero ocorrências). O dever vem de norma estadual/municipal; citada a **Portaria SES/RS nº 799/2023, item 10.17** (100 g ou 100 mL, 72 h, < 5 °C, obrigatória para UAN de hospitais e cozinhas institucionais e industriais).
+   - **RDC 216/2004, item 4.11.3:** registros por **no mínimo 30 dias** da data de preparação. Quando a ação chega meses depois, as planilhas que inocentariam ou condenariam já podem ter sido legitimamente descartadas — argumento de urgência que liga à produção antecipada de prova.
+7. **Quatro entradas de FAQ** novas (visíveis + `FAQPage`, agora 12), inseridas **antes** da entrada de intake, que segue sendo a última (invariante das SEO-045/046).
+8. **Links internos:** saída contextual para `/producao-antecipada-prova/` (que é **uma das três URLs não indexadas** da SEO-059 — link de corpo, de página indexada e bem rastreada, sem tocar nenhuma página sob janela); entrada nova de `/analise-microbiologica-alimentos/#uma-so-chance` para `#surto`, com âncora que descreve a tese. `sitemap.xml` (lastmod das duas) e `llms.txt` atualizados.
+
+**Verificação factual — fontes primárias, ao vivo:** manual de vigilância epidemiológica de DTHA (MS, 2021), RDC nº 216/2004 e Portaria SES/RS nº 799/2023. A Portaria CVS-5/2013 (SP) seria o exemplo mais conhecido, mas o servidor devolveu **403** e o item não pôde ser conferido — **por isso foi citada a norma gaúcha, conferida palavra por palavra**, e não a paulista de memória.
+
+#### Verificação
+- **`tools/verify-surto.py` (novo, 13º da suíte):** 24 checagens — estrutura e ordem da seção, invariante do FAQ de intake, **paridade integral visível × JSON-LD** das 12 perguntas, e cada afirmação técnica reconferida **ao vivo** contra as três fontes (baixa e extrai o PDF a cada execução). Sem rede, sai com 1.
+- **Sete controles negativos, e três expuseram falhas do próprio verificador:**
+  1. Ressalva de inconclusividade invertida na página → reprovou. ✔
+  2. **Leitura do RR invertida ("RR > 1: ausência de associação") → NÃO foi pega.** A 1ª versão só checava a *presença* das strings "RR > 1", "RR = 1", "RR < 1", não o que estava emparelhado com elas — teria aprovado uma página que ensina o **oposto** da fonte. Corrigido para casar leitura + significado, mais três padrões que reprovam a inversão explicitamente. Reteste: reprovou por duas razões independentes. ✔
+  3. FAQ intrusa depois da de intake → reprovou. ✔
+  4. **Definição alterada só na cópia JSON-LD → NÃO foi pega.** A checagem rodava sobre o texto achatado da página inteira, onde a outra cópia ainda satisfazia a condição. Corrigido para exigir a definição **no corpo e no JSON-LD separadamente**, mais confirmação na fonte. Reteste: reprovou por duas razões. ✔
+  5. **Prazo 30 → 90 dias numa das duas cópias → NÃO foi pego.** Mesma classe de erro: `"30 dias" in flat` continuava verdadeiro pela outra ocorrência. Corrigido para extrair **todas** as ocorrências e exigir que o conjunto seja exatamente `{"30"}`. Reteste: reprovou nomeando os dois valores. ✔
+  6. Seção movida para depois das normas → reprovou com as posições. ✔
+  7. Data de fachada (`dateModified` adiantado sem mudança de conteúdo) → reprovou. ✔
+- **Lição de método, e é nova:** os controles 5 e 6 **pareceram passar** numa rodada intermediária porque o verificador tinha um `SyntaxError` (backslash dentro de f-string) e **abortava antes de imprimir qualquer FAIL**. Grepar por `FAIL` num verificador quebrado é indistinguível de um verificador aprovando. **A partir daqui, controle negativo só conta com o `exit code` conferido** — foi assim que os sete foram refeitos.
+- Página restaurada após cada controle, `cmp` idêntico ao backup.
+- Suíte completa (**13 verificadores**) e `seo-report valid` (21 páginas) em **ALL PASS**. Mais uma confirmação de que `ALL PASS` não prova conteúdo: passou durante os sete defeitos.
+
+#### Indexação — reconferência da SEO-059 (pedida pelo handoff de 18/09)
+`/dano-motor-combustivel/` **saiu de "URL desconhecida" e agora é "Detectada, mas não indexada"** — progresso real. As três (`/dano-motor-combustivel/`, `/auto-infracao-ambiental/`, `/producao-antecipada-prova/`) estão no mesmo estado: `robotsTxtState`, `pageFetchState` e `indexingState` **não especificados** — o Googlebot ainda **não as buscou**. Segue fila de rastreamento, não rejeição de qualidade. Controle: `/rotulagem-alimentos/`, indexada, retorna `pageFetchState: SUCCESSFUL` e último rastreamento em 29/08. SEO-059 **continua `open`**; a execução dos links contextuais permanece marcada para ~29/09, quando `/assistente-tecnica/` e `/quesitos-periciais/` saírem de janela — **mas a seção de hoje já entregou um link de corpo para `/producao-antecipada-prova/`** sem tocar em página sob janela.
+
+### Próxima execução — o que checar primeiro
+1. **Git e `/usr/bin/python3` exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`** (licença do Xcode não aceita). Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador.
+2. **Ler totais de página SEMPRE com a dimensão `["page"]` sozinha.** Com `["page","query"]` o GSC descarta as consultas anonimizadas — aqui, **92% das impressões**. Em 19/09 isso quase foi lido como um colapso de 90% do tráfego. A cauda anonimizada é onde estão **todos os 14 cliques** do período; **nenhuma consulta nominal converteu**.
+3. **Controle negativo só conta com `exit code` conferido.** Um verificador que aborta por erro de sintaxe não imprime FAIL e é indistinguível de um que aprova (aconteceu duas vezes em 19/09).
+4. **Três janelas em medição, ler juntas:** SEO-057 (title + description, `/cpc-prova-pericial/`, base 98 impr · pos 8,5 · 0 cliques, ~30/09) · SEO-058 (só description, `/honorarios-pericia-judicial/`, base 157 impr · pos 10,1 · 2 cliques, ~02/10) · SEO-056 (`/assistente-tecnica/`, ~29/09). Se só a com title mexer no CTR, a alavanca é o title. **Não tocar nenhuma das três.**
+5. **A tese de 19/09 a testar, e ela redireciona a estratégia:** as duas maiores páginas convertem a 0,2–0,3% e as pequenas de problema concreto a 4–5%, com posição equivalente. Se a hipótese estiver certa, o crescimento de `/assistente-tecnica/` (305 impr/semana e subindo) **nunca vira lead**, e o esforço deve ir para os clusters de alimentos e combustíveis. **Janela da SEO-060 a partir de ~03/10:** se `/pericia-contaminacao-alimentos/` ganhar impressões *mantendo* CTR ≥ 4%, a tese está validada e a próxima é `/pericia-combustiveis/` (51 impr · pos 5,6 · CTR 3,9%, livre) com o mesmo tratamento.
+6. **SEO-047** (`/normas-tecnicas-pericia/`) vence ~20/09: cauda 108 · pos 6,8 · 1 clique. Livre a partir de amanhã — candidata a snippet **ou** à reconferência do quadro de vigência. Escolher uma, não as duas.
+7. **SEO-059:** as três URLs seguem "Detectada, mas não indexada", nunca buscadas pelo Googlebot. Executar os links contextuais a partir de ~29/09, quando `/quesitos-periciais/` e `/assistente-tecnica/` saírem de janela. `/producao-antecipada-prova/` já recebeu um link de corpo em 19/09.
+8. `/impugnacao-laudo-pericial/` livre (56 impr · cauda pos 10,8 · 0 cliques) — posição 10,8 é topo de 2ª página, onde snippet rende pouco; tratar como candidata a **conteúdo**, não a snippet.
+9. **404s com impressão residual:** `/assistencia-tecnica/` (2 impr, pos 1,0) e `/aline-rezende/` (1 impr) respondem **404**. Volume desprezível hoje; se `/assistencia-tecnica/` crescer, vale um redirecionamento — o GitHub Pages não faz 301, então seria `<meta http-equiv="refresh">` ou uma página real.
+10. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega.
