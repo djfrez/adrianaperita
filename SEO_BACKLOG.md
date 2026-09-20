@@ -1986,3 +1986,70 @@ Seção `#surto`, entre "Cadeia de custódia da amostra" e "Normas técnicas apl
 8. `/impugnacao-laudo-pericial/` livre (56 impr · cauda pos 10,8 · 0 cliques) — posição 10,8 é topo de 2ª página, onde snippet rende pouco; tratar como candidata a **conteúdo**, não a snippet.
 9. **404s com impressão residual:** `/assistencia-tecnica/` (2 impr, pos 1,0) e `/aline-rezende/` (1 impr) respondem **404**. Volume desprezível hoje; se `/assistencia-tecnica/` crescer, vale um redirecionamento — o GitHub Pages não faz 301, então seria `<meta http-equiv="refresh">` ou uma página real.
 10. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega.
+
+### SEO-061 — Reconferência do quadro de vigência: a gasolina estava errada, e o rito do MAPA havia mudado de decreto *(executada em 2026-09-20)*
+- **URL:** `/normas-tecnicas-pericia/` · **Categoria:** Prioridade 1 + 4 (maior página livre de janela; E-E-A-T e correção factual)
+- **Impacto:** 8 · **Esforço:** 5 · **Confiança:** 8 · **Valor de negócio:** 8 · **Priority Score:** 102 · **Status:** done · **Descoberto/Concluído:** 2026-09-20
+
+#### Antes de tudo: a execução de 19/09 nunca chegou ao ar
+O `[deploy]` abriu com **`commit sem push`** — o commit da SEO-060 (seção `#surto`) estava só no repositório local. **Empurrado antes de qualquer outra coisa** (`38e8744..601885c`). É a SEO-021 pela segunda vez: commit sem push é no-op silencioso, e a checagem existe exatamente porque a execução do dia parece concluída sem estar. *Rodar `seo-report deploy` no início, e não no fim, foi o que salvou um dia inteiro de trabalho.*
+
+#### Por que esta página
+`/normas-tecnicas-pericia/` saiu da janela da SEO-047 hoje, e é a **maior página livre**: 115 impressões, **posição 8,1 — a melhor entre as grandes** — 1 clique. Todas as maiores estavam sob janela (SEO-048 até ~28/09 · SEO-056 ~29/09 · SEO-057 ~30/09 · SEO-058 ~02/10 · SEO-060 ~03/10).
+
+Entre as duas alavancas que o handoff de 18/09 mandava escolher (snippet **ou** reconferência do quadro), a reconferência se impôs por um motivo objetivo: **o quadro estava datado de 18/08/2026 numa página cuja promessa é dizer qual norma vale na data do fato.** Uma tabela de vigência com um mês de idade é, pelo próprio critério que a página ensina, conteúdo a verificar — não a manter.
+
+#### O que a reconferência achou (e não era o esperado)
+Três correções materiais. A primeira torna a página **factualmente errada** hoje:
+
+1. **Gasolina: E30 → E32, e a página dizia E30 em três lugares** (linha do quadro, seção `#anp-807` e FAQ, visível e em JSON-LD). Desde **01/08/2026** a gasolina C comum e a comum aditivada têm **32% de etanol anidro**, pela **Resolução CNPE nº 9, de 14/07/2026** (DOU de 30/07/2026, edição extra), medida **temporária: 180 dias, prorrogáveis uma única vez**. A premium segue em 25%.
+   **O ponto que só um engenheiro formula, e que é o ativo da correção:** o **percentual obrigatório não está na Resolução ANP nº 807/2020**. A ANP registrou que o E32 **não altera** as demais especificações da 807/2020 e que o **RON mínimo permanece em 94,0**. Percentual mora na resolução do CNPE; especificação, na da ANP. *Quem confere só a resolução da ANP — que é o que a própria página mandava fazer — lê 30% e erra o teor vigente.* Acrescentada a janela de trânsito do **art. 15-B da 807/2020** e os prazos antes da autuação (15 dias distribuidoras / 30 no Norte; 30 dias postos / 60 no Norte): amostra colhida nessa janela pode carregar a mistura anterior sem que a divergência renda autuação.
+
+2. **O rito do processo administrativo do MAPA/SIF saiu do RIISPOA.** O **Decreto nº 12.502/2025** (art. 40, XII), que regulamenta a **Lei nº 14.515/2022**, revogou os **arts. 520, 522 e 525 a 529** do Decreto nº 9.013/2017 **e o § 1º do art. 474-B**. A **defesa caiu de 30 para 20 dias** (art. 3º, § 1º, II), o **recurso subiu de 10 para 20 dias** (arts. 6º e 7º), os prazos passaram a correr em **dias corridos** (art. 8º) e surgiu uma **terceira instância** na Comissão Especial de Recursos de Defesa Agropecuária. Como o decreto vigora desde **12/06/2025**, **o prazo aplicável é o da data do auto** — a tese da página aplicada a ela mesma.
+   **E o que sobreviveu vende o serviço:** o **art. 474-A** continua exigindo que o **assistente técnico** indicado para acompanhar a **análise pericial de contraprova** comprove formação e competência técnica; se não atender, o pedido é **considerado protelatório, é indeferido e prevalece o resultado da análise fiscal** (§§ 1º e 2º). A empresa perde a contraprova sem exame de mérito. É o argumento comercial mais direto já publicado no site: *indicar o assistente errado não enfraquece a defesa — elimina-a.*
+
+3. **Lei nº 9.847/1999 na redação da Lei nº 14.993/2024** (Combustível do Futuro), que reescreveu os arts. 1º e 3º e estendeu a fiscalização da ANP aos combustíveis sintéticos, aos biocombustíveis e à estocagem geológica de CO₂. A linha dizia apenas "Vigente". É a **mesma lei** que dá base ao E32 — o cluster de combustíveis passa a se sustentar por uma norma só.
+
+Mais duas precisões menores: **Lei nº 6.437/1977, art. 10, XVIII** está na redação da **MP nº 2.190-34/2001** e alcança também **importar e exportar** (a linha só falava em expor à venda); e a **Lei nº 9.605/1998** teve como alteração mais recente a **Lei nº 15.355/2026, restrita ao art. 32** (maus-tratos a animais) — mesmo padrão do Decreto nº 12.877/2026, que toca só o art. 29. Nenhuma das duas atinge os arts. 70 a 76.
+
+#### A quarta armadilha, que a própria apuração produziu
+A página tinha "três armadilhas de vigência". Ganhou a quarta, e ela não saiu de um manual: **tomar o número da norma por identificação suficiente.** A **Resolução CNPE nº 9 *de 2025*** fixou o E30 **e** o B15; a **Resolução CNPE nº 9 *de 2026*** fixou o E32. Mesmo número, mesmo conselho, mesma matéria, **ambas com efeito a partir de 1º de agosto**. Citação sem o ano não identifica a norma — e em perícia de combustível a diferença entre as duas é o teor obrigatório contra o qual a amostra foi confrontada.
+
+#### Também implementado
+- Linha do **diesel**: o teor de biodiesel não está na 968/2024 — é **15% (B15) desde 01/08/2025** (Resolução CNPE nº 9/2025), e o biodiesel puro tem especificação própria na **Resolução ANP nº 920/2023**. B16 ainda depende de deliberação do CNPE.
+- **Três perguntas de FAQ**: a da gasolina reescrita ("Qual é o teor de etanol na gasolina hoje, e qual valia na data da coleta?") e **duas novas** — o prazo de defesa no MAPA/SIF e quem pode ser assistente técnico na contraprova. Visível e JSON-LD **gerados da mesma fonte** (14ª aplicação do método da SEO-037); a de intake segue contratualmente última. Perguntas: 10 → 12.
+- Cabeçalho do quadro e da coluna em **20/09/2026**; nota de conferência reescrita no `ambiental_normas.py` (fonte, não na página) declarando que **a NBR 10004:2024 é a única linha cuja fonte é paga e não pôde ser reaberta** — mantém a conferência de 18/08/2026. Dizer isso é o que impede que "reconferido" seja lido como mais do que foi.
+- `meta description`, `og:description`, `dateModified`, `<time>` visível, `sitemap.xml` e `llms.txt` (item da gasolina reescrito, bloco novo do MAPA/RIISPOA, quarta armadilha).
+
+#### Verificação
+- **`tools/verify-revigencia.py` (novo, 14º da suíte): 82 checagens**, todas contra **fonte primária baixada a cada execução** — Planalto (Decretos 9.013/2017, 12.502/2025 e 6.514/2008; Leis 9.605, 9.847, 6.437 e 6.938) e o comunicado oficial da ANP sobre o E32. Sem rede, sai com 1.
+- **Nove controles negativos, e dois expuseram falhas do próprio verificador:**
+  1. **E32 → E30 em uma só cópia → NÃO foi pego.** A checagem exigia o padrão "desde 1º de agosto de 2026 … N%", que a cópia alterada não tinha. Corrigido para extrair **todos** os pares `N% de etanol anidro (EN)`, exigir coerência entre número e sigla, exigir o conjunto `{"32"}` e exigir que o E30 apareça **delimitado como período encerrado**. Reteste: reprovou nomeando `['30','32']`. ✔
+  2. **FAQ visível intrusa depois da de intake → NÃO foi pega.** O invariante de última posição só era conferido no **JSON-LD**. Corrigido para comparar a **lista inteira dentro do `<div class="faq">`** com a do JSON-LD, ordem incluída. Reteste: reprovou por duas razões. ✔
+  3. Prazo de defesa 20 → 30 em uma cópia → reprovou (`{'30','20'}`). ✔
+  4. Sigla trocada só na FAQ visível → reprovou por paridade. ✔
+  5. Resposta trocada só no JSON-LD → reprovou por paridade. ✔
+  6. Lei 15.355/2026 atribuída ao art. 70 → reprovou. ✔
+  7. Data de fachada (`dateModified` adiantado sobre a página antiga) → reprovou. ✔
+  8. Fonte da ANP deixa de sustentar o snippet (premium 25 → 35 numa cópia do verificador) → reprovou na recontagem ao vivo. ✔
+  9. Revogação inexistente exigida do art. 40, XII → reprovou. ✔
+- **A lição de 19/09 cobrou juros, e quase passou de novo.** Os controles 8 e 9 foram rodados a partir de cópias em `scratchpad/`, e saíram com **exit 1 por `FileNotFoundError`** — `ROOT` é derivado do caminho do próprio arquivo. Exit 1 por crash é **indistinguível de exit 1 por FAIL**, e os dois controles não testaram nada. Refeitos dentro de `tools/`, aí sim reprovando pelo motivo certo. **Conferir o exit code não basta: é preciso conferir a linha de FAIL que o acompanha.**
+- **Idempotência:** `revigencia.py --check` e `ambiental_normas.py --check` devolvem "sem mudança" na segunda execução.
+- Suíte completa (**14 verificadores**) e `seo-report valid` (21 páginas) em **ALL PASS**. `ALL PASS` passou durante os nove defeitos — 12ª confirmação de que não prova conteúdo.
+
+#### O que ficou deliberadamente de fora
+- **Title intocado.** A `description` precisou mudar porque dizia "agosto de 2026", que virou falso — mas não virou experimento de snippet. Com SEO-057 (title+description) e SEO-058 (só description) em medição, abrir uma terceira variante estragaria a comparação que as duas foram montadas para produzir.
+- **ANVISA (CP 1.362/2025) e CONAMA 430/2011**: reconferidas, **nada mudou** — a norma final da ANVISA segue não publicada e a 430/2011 segue em revisão. Registrado como resultado, não omitido. O número da consulta do CONAMA (nº 10/2025) apareceu em fonte secundária e **não entrou**, por não ter sido confirmado no sítio do conselho.
+- **ABNT NBR 10004:2024**: catálogo pago, não reaberto. A página **declara** que essa linha mantém a conferência de 18/08/2026.
+
+### Próxima execução — o que checar primeiro
+1. **Rodar `seo-report deploy` ANTES de qualquer trabalho.** Em 20/09 ele pegou a SEO-060 inteira sem push. É a checagem de maior valor por segundo de todo o ferramental.
+2. **Git e `/usr/bin/python3` exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`** (licença do Xcode não aceita). Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador.
+3. **Controle negativo só conta com o exit code E a linha de FAIL conferidos.** Um verificador copiado para fora de `tools/` sai com 1 por `FileNotFoundError` e parece reprovar. Aconteceu em 20/09; a regra de 19/09 (conferir o exit code) era necessária e **não suficiente**.
+4. **Quatro janelas em medição, ler juntas:** SEO-057 (title+description, `/cpc-prova-pericial/`, base 114 impr · pos 8,8 · 0 cliques, ~30/09) · SEO-058 (só description, `/honorarios-pericia-judicial/`, base 161 impr · pos 10,0 · 2 cliques, ~02/10) · SEO-060 (`/pericia-contaminacao-alimentos/`, base 51 impr · CTR 4,3%, ~03/10) · **SEO-061 (`/normas-tecnicas-pericia/`, base 115 impr · pos 8,1 · 1 clique · CTR 0,9%, janela a partir de ~04/10).** Não tocar nenhuma delas.
+5. **A tese de 19/09 continua de pé e ganhou um teste a mais:** as duas maiores páginas convertem a 0,2–0,3% e as pequenas de problema concreto a 4–5%. `/normas-tecnicas-pericia/` está no meio (0,9% em pos 8,1) — se a reconferência a mover, o caminho é conteúdo de precisão normativa, não snippet.
+6. **SEO-059:** as três URLs seguem "Detectada, mas não indexada", nunca buscadas pelo Googlebot. Executar os links contextuais a partir de ~29/09, quando `/quesitos-periciais/` e `/assistente-tecnica/` saírem de janela.
+7. `/impugnacao-laudo-pericial/` livre (60 impr · pos 12,1 · 0 cliques) — pos 12,1 é 2ª página, onde snippet rende pouco; candidata a **conteúdo**.
+8. **Manutenção com data marcada, nova:** o **E32 vale 180 dias a partir de 01/08/2026 — vence por volta de 28/01/2027**, prorrogável uma vez. É a linha do quadro com maior chance de envelhecer mal; revisar em janeiro. Acompanhar também o **B16**, que depende de deliberação do CNPE ainda em 2026.
+9. **404s com impressão residual:** `/assistencia-tecnica/` (2 impr) e `/aline-rezende/` (1 impr). Volume desprezível.
+10. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega — vigésima nona execução como nota de rodapé.

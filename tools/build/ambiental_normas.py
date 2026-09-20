@@ -28,7 +28,8 @@ ROWS = [
      "Vigente. O art. 70 define a infração administrativa ambiental; o art. 71 fixa os prazos "
      "máximos do processo administrativo; o art. 72 lista as onze sanções; e o art. 75 fixa o "
      "piso de R$ 50,00 e o teto de R$ 50.000.000,00. O art. 73, sobre a destinação do "
-     "arrecadado, está na redação da Lei nº 14.691/2023."),
+     "arrecadado, está na redação da Lei nº 14.691/2023. A alteração mais recente da lei é "
+     "a Lei nº 15.355/2026, restrita ao art. 32 — maus-tratos a animais."),
     ("Ambiental",
      "Decreto nº 6.514/2008",
      "Tipificação das infrações administrativas ambientais, dosimetria da multa e processo "
@@ -73,9 +74,11 @@ FAQ_A = (
     "pressuposto ao agravamento e o memorial de cálculo da multa precisa ser refeito."
 )
 
-NOTA = ("As duas linhas ambientais da Lei nº 9.605/1998 e do Decreto nº 6.514/2008 foram "
-        "acrescentadas em 06/09/2026 e conferidas na fonte nessa data; as demais mantêm a "
-        "conferência de 18/08/2026.")
+NOTA = ("Todas as linhas deste quadro foram reconferidas em fonte primária em 20/09/2026. "
+        "A reconferência corrigiu três: a gasolina (E30 → E32), o RIISPOA (o rito do "
+        "processo administrativo foi revogado pelo Decreto nº 12.502/2025) e a Lei nº "
+        "9.847/1999 (redação da Lei nº 14.993/2024). A NBR 10004:2024 é a única linha "
+        "cuja fonte é paga e não pôde ser reaberta: mantém a conferência de 18/08/2026.")
 
 # ── Emissão ─────────────────────────────────────────────────────────────────
 
