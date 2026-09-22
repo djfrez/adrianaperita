@@ -40,7 +40,7 @@
     "inLanguage": "pt-BR",
     "mainEntityOfPage": "https://adrianarezende.com.br/laudo-pericial/",
     "datePublished": "2026-08-22",
-    "dateModified": "2026-09-07",
+    "dateModified": "2026-09-21",
     "image": "https://adrianarezende.com.br/headshot.jpg",
     "author": {
       "@type": "Person",
@@ -155,6 +155,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Não automaticamente. O art. 477, §2º, do CPC impõe ao perito o dever de esclarecer, em 15 dias, ponto divergente ou duvidoso apontado pelas partes, pelo juiz, pelo Ministério Público ou no parecer do assistente técnico — mas o CPC não abre, depois dessa juntada, nova janela de manifestação para a parte. O que o §3º prevê é um requerimento: persistindo a necessidade de esclarecimento, a parte pede ao juiz que mande intimar o perito ou o assistente técnico a comparecer à audiência, formulando desde logo as perguntas sob forma de quesitos. Como o §4º exige intimação eletrônica com pelo menos 10 dias de antecedência da audiência, quem espera aparecer no andamento um “prazo para se manifestar sobre os esclarecimentos” tende a chegar à audiência sem pergunta nenhuma protocolada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O laudo do laboratório tem o símbolo de acreditação. Isso valida a conclusão do laudo pericial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. A acreditação cobre o ensaio que está dentro do escopo acreditado daquele laboratório — o resultado de medição, com o método e a incerteza declarados — e, quando o próprio laboratório colhe a amostra, também a amostragem. Ela não cobre a interpretação: o DOQ-Cgcre-087 (Revisão 00 – MAR/2018), da Coordenação Geral de Acreditação do Inmetro, registra que “A Cgcre não faz acreditação para opiniões e interpretações, exceto para programas de acreditação específicos”. O número é acreditado; a frase que diz o que o número significa para o caso, não. Quem assume essa interpretação é o perito, pelo art. 473, III e §1º, do CPC — e o laudo que a transfere ao laboratório deixou de fundamentar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O relatório diz que a amostra está “conforme”. Dá para conferir isso?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dá, e é a conferência mais produtiva e a menos feita. Declarar conformidade não é opinião: é declaração regulada. Pela ABNT NBR ISO/IEC 17025:2017, item 7.8.6.1, “o laboratório deve documentar a regra de decisão empregada, considerando o nível de risco (como falsa aceitação e falsa rejeição e pressupostos estatísticos) associado à regra de decisão empregada, e aplicar a regra de decisão”, e o item 7.8.6.2 exige que a declaração identifique para quais resultados se aplica; o atendimento ou não às especificações, normas ou suas partes; e a regra de decisão. Regra de decisão é, na definição do item 3.7, “regra que descreve como a incerteza de medição é considerada ao declarar a conformidade com um requisito especificado”. Na prática: um “conforme” sem regra de decisão declarada não diz se a incerteza foi considerada — e, quando o resultado está perto do limite, é a regra de decisão que decide o caso, não o ensaio."
         }
       },
       {
@@ -358,7 +374,7 @@
       Por <strong>Adriana Rezende</strong> — engenheira química pela UNICAMP, CRQ IV Região — SP nº 04341673,
       com mais de 20 anos de experiência técnica e industrial e mais de 8 anos como perita judicial
       e assistente técnica.
-      <br>Publicado em <time datetime="2026-08-22">22 de agosto de 2026</time> · Atualizado em <time datetime="2026-09-07">7 de setembro de 2026</time>.
+      <br>Publicado em <time datetime="2026-08-22">22 de agosto de 2026</time> · Atualizado em <time datetime="2026-09-21">21 de setembro de 2026</time>.
     </p>
   </div>
 </div>
@@ -687,6 +703,118 @@
       cumprimento da lei — e a perda é da parte que formulou o quesito, não falha do laudo.
     </p>
 
+<!-- seo062:sec:start -->
+    <h2 id="laboratorio">O símbolo de acreditação no laudo do laboratório: o que ele cobre</h2>
+
+    <p>
+      Os itens 14 a 17 do roteiro mandam abrir o laudo do laboratório que instrui a perícia. O que
+      quase sempre acontece a seguir é a leitura parar no símbolo de acreditação: ele está lá, o
+      laboratório é acreditado, o resultado vale. <strong>O símbolo cobre menos do que parece</strong> —
+      e o que ele deixa de fora é, com frequência, exatamente a frase em que o laudo pericial se apoiou.
+    </p>
+
+    <p>
+      A norma de competência é a <strong>ABNT NBR ISO/IEC 17025:2017</strong>, e a acreditação no Brasil
+      é concedida pela <strong>Coordenação Geral de Acreditação (Cgcre) do Inmetro</strong>. O texto da
+      ABNT é pago, mas os requisitos estão explicados em documento oficial e gratuito — o
+      <a href="https://www.gov.br/cdtn/pt-br/centrais-de-conteudo/documentos-cgcre-abnt-nbr-iso-iec-17025/doq-cgcre-087" rel="noopener">DOQ-Cgcre-087 (Revisão 00 – MAR/2018)</a> —, e é dele que saem as citações abaixo.
+      O <a href="http://www.inmetro.gov.br/laboratorios/rble/" rel="noopener">catálogo da RBLE</a>, também público e gratuito, lista o
+      escopo de cada laboratório <strong>ensaio por ensaio</strong>, com matriz e método ao lado.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">O que está no relatório de ensaio</th>
+            <th scope="col">Situação perante a acreditação</th>
+            <th scope="col">O que decorre disso na perícia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>O resultado do ensaio que está no escopo</strong></td>
+            <td><strong>Coberto.</strong> É o objeto da acreditação: aquele ensaio, naquela matriz, por aquele método.</td>
+            <td>Sustenta o art. 473, III — método identificado e demonstradamente aceito na área.</td>
+          </tr>
+          <tr>
+            <td><strong>O resultado de um ensaio fora do escopo</strong></td>
+            <td><strong>Não coberto</strong>, ainda que o laboratório seja acreditado para outros ensaios. A acreditação é concedida ensaio a ensaio.</td>
+            <td>O número pode estar certo, mas perdeu a demonstração externa de competência. Confere-se abrindo o escopo do laboratório na RBLE e procurando a linha do ensaio — não o nome do laboratório.</td>
+          </tr>
+          <tr>
+            <td><strong>A amostragem, quando feita pelo próprio laboratório</strong></td>
+            <td><strong>Coberta</strong> nessa hipótese: a norma trata a amostragem associada ao ensaio como atividade de laboratório, com requisitos próprios de registro.</td>
+            <td>Quando quem colhe é o perito, a parte ou um terceiro, a acreditação começa no recebimento — e tudo o que aconteceu antes se prova pela cadeia de custódia, não pelo símbolo.</td>
+          </tr>
+          <tr>
+            <td><strong>A ressalva sobre a condição em que a amostra chegou</strong></td>
+            <td><strong>Prevista e obrigatória.</strong> Havendo desvio das condições especificadas — o exemplo do próprio documento da Cgcre é temperatura elevada —, “o laboratório deve incluir uma ressalva no relatório, indicando quais resultados podem estar afetados pelo desvio”.</td>
+            <td>É o defeito de cadeia de custódia escrito pelo próprio laboratório. Costuma estar no rodapé, em corpo menor, e é o achado mais barato de toda a conferência.</td>
+          </tr>
+          <tr>
+            <td><strong>A frase que diz o que o resultado significa para o caso</strong></td>
+            <td><strong>Não coberta.</strong> “A Cgcre não faz acreditação para opiniões e interpretações, exceto para programas de acreditação específicos”.</td>
+            <td>Quem assume a interpretação é o perito, pelo art. 473, III e §1º. Laudo que transfere a conclusão para o laboratório — “conforme atesta o laudo laboratorial” — não fundamentou: delegou.</td>
+          </tr>
+          <tr>
+            <td><strong>A declaração de que a amostra está “conforme”</strong></td>
+            <td><strong>Coberta, mas condicionada.</strong> Declarar conformidade não é opinião nem interpretação: é declaração regulada, e só é completa com a regra de decisão documentada.</td>
+            <td>É o item mais rendoso da conferência, e o único que quase nunca é feito. Ver o quadro abaixo.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>A regra de decisão: o que decide um resultado que ficou perto do limite</h3>
+
+    <p>
+      Quando o relatório diz “conforme”, “aprovado”, “dentro da especificação” — ou os contrários —,
+      ele não está opinando: está emitindo uma <strong>declaração de conformidade</strong>, que a norma
+      regula. O item <strong>7.8.6.1</strong> exige que “o laboratório deve documentar a regra de decisão empregada, considerando o nível de risco (como falsa aceitação e falsa rejeição e pressupostos estatísticos) associado à regra de decisão empregada, e aplicar a regra de decisão”, e o item <strong>7.8.6.2</strong>
+      exige que a declaração identifique para quais resultados se aplica; o atendimento ou não às especificações, normas ou suas partes; e a regra de decisão. Quando a declaração é pedida ao laboratório,
+      o item <strong>7.1.3</strong> antecipa a exigência: já na contratação, “a especificação ou norma e a regra de decisão devem ser claramente definidas”.
+    </p>
+
+    <div class="box">
+      <div class="box-lbl">Por que isso muda o resultado, e não só a forma</div>
+      <p>
+        Regra de decisão é, na definição do item <strong>3.7</strong>, “regra que descreve como a incerteza de medição é considerada ao declarar a conformidade com um requisito especificado”. Ela pode
+        estabelecer que a incerteza <em>não</em> será considerada — e aí “conforme” significa apenas que
+        o valor medido ficou do lado de dentro. Pode estabelecer que será, e aí o laboratório só declara
+        conformidade quando o resultado <strong>e a sua faixa de incerteza</strong> ficam do lado de
+        dentro. São critérios diferentes que produzem declarações opostas a partir do mesmo número.
+        Um limite de 0,10 mg/kg, um resultado de 0,09 mg/kg e uma incerteza de 20% dão “conforme” pela
+        primeira regra e “não conclusivo” pela segunda. <strong>Se a regra não está declarada, não se
+        sabe qual das duas produziu a palavra que está no relatório</strong> — e é essa palavra que o
+        laudo pericial costuma reproduzir como se fosse o resultado.
+      </p>
+    </div>
+
+    <p>
+      A incerteza, quando informada, vem “na mesma unidade do mensurando ou na forma de um termo relativo ao mensurando (por exemplo, percentual)” (item 7.8.3.1). Isso importa na leitura: 20% e
+      0,02 mg/kg podem ser a mesma coisa, e a comparação com o limite legal tem de ser feita na mesma
+      unidade em que o limite está escrito. Sobre o que pedir quando o objeto é um resultado de
+      laboratório, ver <a href="/analise-microbiologica-alimentos/">a leitura de um laudo de análise
+      microbiológica</a> e, quando a discussão é o agente e não o número,
+      <a href="/pericia-contaminacao-alimentos/">a investigação de contaminação</a>.
+    </p>
+
+    <div class="box">
+      <div class="box-lbl">Três perguntas que cabem em um quesito complementar</div>
+      <p>
+        Nenhuma delas discute o ensaio — todas pedem o que a norma já obriga o laboratório a ter:
+        <strong>(1)</strong> qual foi a regra de decisão empregada na declaração de conformidade, e se
+        a incerteza de medição foi nela considerada; <strong>(2)</strong> se o ensaio relatado consta do
+        escopo acreditado do laboratório na data do ensaio, com indicação da linha do escopo;
+        <strong>(3)</strong> se houve ressalva quanto à condição da amostra no recebimento e quais
+        resultados ela pode ter afetado. São perguntas de resposta objetiva, e a ausência de resposta
+        é ela própria um achado. Sobre a forma de redigi-las,
+        <a href="/quesitos-periciais/">como se formula um quesito</a>; sobre o que fazer com o defeito
+        depois de encontrado, <a href="/impugnacao-laudo-pericial/">as três vias de impugnação</a>.
+      </p>
+    </div>
+    <!-- seo062:sec:end -->
     <h2 id="faq">Perguntas frequentes</h2>
 
     <div class="faq">
@@ -732,6 +860,16 @@
         <p>Não automaticamente. O art. 477, §2º, do CPC impõe ao perito o dever de esclarecer, em 15 dias, ponto divergente ou duvidoso apontado pelas partes, pelo juiz, pelo Ministério Público ou no parecer do assistente técnico — mas o CPC não abre, depois dessa juntada, nova janela de manifestação para a parte. O que o §3º prevê é um requerimento: persistindo a necessidade de esclarecimento, a parte pede ao juiz que mande intimar o perito ou o assistente técnico a comparecer à audiência, formulando desde logo as perguntas sob forma de quesitos. Como o §4º exige intimação eletrônica com pelo menos 10 dias de antecedência da audiência, quem espera aparecer no andamento um “prazo para se manifestar sobre os esclarecimentos” tende a chegar à audiência sem pergunta nenhuma protocolada.</p>
       </div>
     <!-- seo048:faq:end -->
+    <!-- seo062:faq:start -->
+      <div>
+        <h3>O laudo do laboratório tem o símbolo de acreditação. Isso valida a conclusão do laudo pericial?</h3>
+        <p>Não. A acreditação cobre o ensaio que está dentro do escopo acreditado daquele laboratório — o resultado de medição, com o método e a incerteza declarados — e, quando o próprio laboratório colhe a amostra, também a amostragem. Ela não cobre a interpretação: o DOQ-Cgcre-087 (Revisão 00 – MAR/2018), da Coordenação Geral de Acreditação do Inmetro, registra que “A Cgcre não faz acreditação para opiniões e interpretações, exceto para programas de acreditação específicos”. O número é acreditado; a frase que diz o que o número significa para o caso, não. Quem assume essa interpretação é o perito, pelo art. 473, III e §1º, do CPC — e o laudo que a transfere ao laboratório deixou de fundamentar.</p>
+      </div>
+      <div>
+        <h3>O relatório diz que a amostra está “conforme”. Dá para conferir isso?</h3>
+        <p>Dá, e é a conferência mais produtiva e a menos feita. Declarar conformidade não é opinião: é declaração regulada. Pela ABNT NBR ISO/IEC 17025:2017, item 7.8.6.1, “o laboratório deve documentar a regra de decisão empregada, considerando o nível de risco (como falsa aceitação e falsa rejeição e pressupostos estatísticos) associado à regra de decisão empregada, e aplicar a regra de decisão”, e o item 7.8.6.2 exige que a declaração identifique para quais resultados se aplica; o atendimento ou não às especificações, normas ou suas partes; e a regra de decisão. Regra de decisão é, na definição do item 3.7, “regra que descreve como a incerteza de medição é considerada ao declarar a conformidade com um requisito especificado”. Na prática: um “conforme” sem regra de decisão declarada não diz se a incerteza foi considerada — e, quando o resultado está perto do limite, é a regra de decisão que decide o caso, não o ensaio.</p>
+      </div>
+    <!-- seo062:faq:end -->
     <!-- faqintake:start -->
       <div>
         <h3>O que enviar para uma análise preliminar de laudo pericial?</h3>

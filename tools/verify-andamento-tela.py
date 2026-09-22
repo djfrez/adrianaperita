@@ -10,8 +10,11 @@ andamento, que:
   3. a pergunta e a resposta visíveis são idênticas, caractere a caractere,
      às da fonte (`tools/build/andamento_tela.py`);
   4. a MESMA resposta está no `FAQPage`, sem entidade HTML;
-  5. a entrada nova é a **penúltima** do `mainEntity` — a última é
-     contratualmente a de intake da SEO-046 (invariante da SEO-047);
+  5. a entrada nova vem **antes** da última do `mainEntity` — a última é
+     contratualmente a de intake da SEO-046 (invariante da SEO-047). Até
+     20/09/2026 esta checagem exigia a posição *penúltima*; a SEO-062
+     acrescentou entradas depois dela e mostrou que a posição fixa era proxy
+     de um invariante que, esse sim, continua valendo;
   6. a contagem de perguntas visíveis bate com a do schema;
   7. os links recíprocos apontam para âncoras que existem de fato;
   8. os códigos de movimento do CNJ na página `/cpc-prova-pericial/` são
@@ -82,8 +85,13 @@ for slug, (anchor, rows) in sorted(PAGES.items()):
         idx = names.index(qq)
         if entries[idx]["acceptedAnswer"]["text"] != aa:
             bad(slug, "resposta do JSON-LD difere da visível")
-        if idx != len(entries) - 2:
-            bad(slug, f"entrada nova não é a penúltima (índice {idx} de {len(entries)})")
+        # Era "tem de ser a penúltima". Deixou de ser verdade em 21/09/2026,
+        # quando a SEO-062 acrescentou duas entradas legítimas depois desta em
+        # /laudo-pericial/. A posição penúltima era PROXY do invariante real —
+        # a de intake é a última —, e proxy que envelhece vira falso positivo.
+        # O invariante real fica; a posição fixa sai.
+        if idx >= len(entries) - 1:
+            bad(slug, f"entrada nova não está antes da de intake (índice {idx} de {len(entries)})")
     if "primeira mensagem" not in names[-1] and "enviar" not in names[-1].lower():
         bad(slug, f"a última entrada não parece ser a de intake: {names[-1][:50]}…")
     visible = len(re.findall(r"<h3>", doc[doc.find('<div class="faq">'):]))
@@ -114,5 +122,5 @@ if fails:
     for f in fails:
         print("  ·", f)
     sys.exit(1)
-print(f"OK — {len(PAGES)} páginas, paridade visível×schema, penúltima posição e "
+print(f"OK — {len(PAGES)} páginas, paridade visível×schema, posição antes da de intake e "
       f"{len(MOVIMENTOS)} códigos do CNJ conferidos contra a fonte")

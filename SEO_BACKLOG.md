@@ -2042,14 +2042,80 @@ A página tinha "três armadilhas de vigência". Ganhou a quarta, e ela não sai
 - **ANVISA (CP 1.362/2025) e CONAMA 430/2011**: reconferidas, **nada mudou** — a norma final da ANVISA segue não publicada e a 430/2011 segue em revisão. Registrado como resultado, não omitido. O número da consulta do CONAMA (nº 10/2025) apareceu em fonte secundária e **não entrou**, por não ter sido confirmado no sítio do conselho.
 - **ABNT NBR 10004:2024**: catálogo pago, não reaberto. A página **declara** que essa linha mantém a conferência de 18/08/2026.
 
+### SEO-062 — A regra de decisão: o que a acreditação do laboratório não cobre *(executada em 2026-09-21)*
+- **URL:** `/laudo-pericial/#laboratorio` · **Categoria:** Prioridade 1 + 4 (maior página livre de janela; cobertura semântica ausente; AI citation)
+- **Impacto:** 8 · **Esforço:** 5 · **Confiança:** 8 · **Valor de negócio:** 9 · **Priority Score:** 115 · **Status:** done · **Descoberto/Concluído:** 2026-09-21
+
+#### Por que esta página
+`seo-report deploy` rodou primeiro, como manda o handoff: **0 commits pendentes** — a SEO-061 chegou ao ar. Não se repetiu 20/09.
+
+`/laudo-pericial/`: **106 impressões · posição 8,7 · 0 cliques** em 28 dias. É a **maior página livre**; todas as maiores estão sob janela (`/assistente-tecnica/` 689 · `/quesitos-periciais/` 584 · `/honorarios-pericia-judicial/` 162 · `/cpc-prova-pericial/` 115 · `/normas-tecnicas-pericia/` 114 · `/pericia-contaminacao-alimentos/` 53).
+
+**Não foi execução de snippet, e isso foi escolha.** SEO-057 (title+description) e SEO-058 (só description) estão em medição exatamente para dizer qual é a alavanca. Uma terceira variante antes de 30/09–02/10 não replicaria nada — produziria um terceiro ponto não controlado. A tese do item 5 do handoff manda o contrário para páginas médias: conteúdo de precisão.
+
+#### O que a medição corrigiu antes de uma linha ser escrita
+A hipótese de partida era larga — "o site não fala de acreditação de laboratório". A contagem sobre as 21 páginas a desmontou:
+
+| termo | ocorrências | páginas | veredito |
+|---|---|---|---|
+| `17025` | 11 | 7 | já coberto |
+| `incerteza de medição` | 15 | 6 | já coberto |
+| `limite de quantificação` | 32 | 12 | já coberto |
+| `Cgcre` | 4 | 3 | já coberto |
+| **`regra de decisão`** | **0** | — | **o buraco** |
+| **`RBLE`** | **0** | — | **o buraco** |
+
+O site já mandava conferir "se o ensaio está dentro do escopo acreditado" (item 15 do roteiro) e **nunca dizia como se faz isso**, nem o que a acreditação deixa de fora. *Medir antes evitou escrever 1.000 palavras de duplicata.*
+
+#### O ativo da execução
+1. **Interpretação não é acreditada.** Item 7.8.7: “A Cgcre não faz acreditação para opiniões e interpretações, exceto para programas de acreditação específicos”. O **número** é acreditado; a **frase que diz o que o número significa para o caso**, não. Laudo que escreve “conforme atesta o laudo laboratorial” não fundamentou — **delegou**, e a fundamentação é dever do perito pelo art. 473, III e §1º.
+2. **“Conforme” é declaração regulada, não opinião** — e é o ativo próprio, **ausente do material brasileiro sobre prova pericial**. Item 7.8.6.1: “o laboratório deve documentar a regra de decisão empregada, considerando o nível de risco (como falsa aceitação e falsa rejeição e pressupostos estatísticos) … e aplicar a regra de decisão”; 7.8.6.2 exige que a declaração identifique a quais resultados se aplica, o atendimento ou não à especificação **e a regra de decisão**; 7.1.3 antecipa a exigência à contratação. Regra de decisão é, pelo 3.7, “regra que descreve como a incerteza de medição é considerada ao declarar a conformidade com um requisito especificado”. **Limite 0,10 mg/kg, resultado 0,09, incerteza 20%: “conforme” por uma regra, “não conclusivo” pela outra.** Regra não declarada torna indecifrável a palavra que o laudo pericial reproduz como se fosse o resultado.
+3. **A ressalva do 7.4.3** — “o laboratório deve incluir uma ressalva no relatório, indicando quais resultados podem estar afetados pelo desvio”, com exemplo, no próprio DOQ, de amostra recebida em temperatura elevada. É **o defeito de cadeia de custódia escrito pelo próprio laboratório**, em geral no rodapé e em corpo menor: o achado mais barato da conferência.
+4. **Onde conferir, de graça.** Catálogo público da **RBLE** (inmetro.gov.br/laboratorios/rble/), escopo listado **ensaio por ensaio**, com matriz e método.
+
+**A escolha de fonte é parte do conteúdo:** a ABNT NBR ISO/IEC 17025:2017 é **paga**, e uma página que manda conferir não pode apontar para um documento que o leitor não consegue abrir. Todas as citações saem do **DOQ-Cgcre-087 (Revisão 00 – MAR/2018)** — documento **oficial e gratuito** da Coordenação Geral de Acreditação do Inmetro, que explica requisito a requisito. É a mesma disciplina da SEO-061 sobre a NBR 10004:2024, aplicada com desfecho melhor: aqui houve fonte aberta equivalente.
+
+#### Também implementado
+- Seção `#laboratorio` (~1.040 palavras): tabela de **seis linhas** coberto × não coberto, quadro da regra de decisão com o exemplo numérico, quadro de **três quesitos complementares** que não discutem o ensaio e só pedem o que a norma já obriga o laboratório a ter.
+- **Duas FAQ** (10 → 12 + intake = 13), visível e JSON-LD **geradas da mesma fonte** (15ª aplicação do método da SEO-037); a de intake segue contratualmente última.
+- Links contextuais para `/analise-microbiologica-alimentos/`, `/pericia-contaminacao-alimentos/`, `/quesitos-periciais/` e `/impugnacao-laudo-pericial/`.
+- `dateModified`, `<time>` visível, `sitemap.xml` e `llms.txt`. **Title e description intocados** — ver acima.
+
+#### Verificação
+- **`tools/verify-laboratorio.py` (novo, 15º da suíte): 62 checagens**, com os **sete trechos citados procurados no PDF do DOQ baixado a cada execução**. Sem rede, sai com 1 **dizendo que foi a rede** — que é diferente de reprovar.
+- **`pdftotext -layout` reprovava duas citações literalmente corretas.** O DOQ é tabela de duas colunas: com `-layout`, o rótulo da coluna esquerda cai **dentro** da citação da direita (“…falsa **conformidade** aceitação…”). Em modo bruto o texto de cada célula sai contíguo. *Extração de PDF é parte da cadeia de evidência: a ferramenta errada produz reprovação falsa tão bem quanto aprovação falsa.*
+- **Doze controles negativos — e os dois primeiros expuseram falhas do próprio verificador:**
+  1. **Citação adulterada em UMA cópia → NÃO foi pega.** `trecho in página` só prova que *alguma* cópia confere, e cada citação aparece na prosa e de novo na FAQ. Corrigido para um invariante melhor: **toda vez que a abertura da citação aparece, o que vem depois tem de ser a citação inteira**. Reteste: reprovou nomeando `1 de 3 cópias`. ✔
+  2. **Resposta divergente só no JSON-LD → NÃO foi pega.** Só as **perguntas** eram comparadas entre as duas pontas — e é o JSON-LD que o buscador lê. Corrigido para comparação **par a par, pergunta E resposta**. Reteste: reprovou nomeando a resposta 12. ✔
+  3. FAQ visível intrusa depois da de intake → reprovou (`14 × 13`). ✔
+  4. Exemplo numérico com incerteza de 2% → reprovou: as duas regras de decisão dariam o mesmo resultado e o quadro deixaria de demonstrar o que afirma. ✔
+  5. `dateModified` adiantado sobre a página antiga → reprovou. ✔
+  6. `sitemap` dessincronizado → reprovou. ✔
+  7. `llms.txt` sem a seção nova → reprovou. ✔
+  8. Citação que a fonte primária **não** sustenta (7.8.7 invertido) → reprovou na fonte. ✔
+  9. Revisão do DOQ inexistente → reprovou. ✔
+  10. **Seção inteira removida → saiu com 1 por `ValueError`, não por FAIL.** `doc.index('id="faq"')` sem guarda. **É a lição de 20/09 se repetindo no primeiro dia seguinte** — e só a leitura do traceback expôs; a linha de FAIL, conferida, não existia. Guardado e refeito: reprovou nomeando as citações ausentes e a âncora. ✔
+  11. Link da RBLE trocado → reprovou. ✔
+  12. Entrada de intake deslocada do último lugar → reprovou nos **dois** verificadores. ✔
+- **Regressão real pega pela suíte, e não pelo verificador novo:** `verify-andamento-tela.py` exigia que a entrada da SEO-048 fosse a **penúltima** do `mainEntity`. As duas entradas novas a empurraram para o índice 9 de 13, e o verificador reprovou — **corretamente, contra um invariante que havia envelhecido**. A posição penúltima era *proxy* do invariante real (a de intake é a última), que continua valendo e continua conferido. Trocada a posição fixa pela relação (`idx < último`), com o porquê no arquivo, e controle negativo 12 confirmando que a proteção real sobreviveu. *Proxy posicional envelhece; invariante relacional, não.*
+- **Idempotência:** `laboratorio_build.py` devolve "sem mudança" na segunda execução.
+- Suíte completa (**15 verificadores**) e `seo-report valid` (21 páginas) em **ALL PASS**. `ALL PASS` passou durante os dois defeitos do verificador novo — 13ª confirmação de que não prova conteúdo.
+
+#### O que ficou deliberadamente de fora
+- **Title e description intocados**, para não contaminar a leitura conjunta de SEO-057 e SEO-058.
+- **Holding time / prazo de preservação da amostra**: já está no item 16 do roteiro, e a fonte aberta e citável (Guia Nacional de Coleta e Preservação de Amostras) não foi aberta nesta execução. Fica como candidata, não como afirmação.
+- **NIE-Cgcre-009** (regras de uso do símbolo de acreditação) aparece citada *dentro* do DOQ, mas **não foi baixada**; por isso a página não afirma nada que dependa só dela.
+
 ### Próxima execução — o que checar primeiro
-1. **Rodar `seo-report deploy` ANTES de qualquer trabalho.** Em 20/09 ele pegou a SEO-060 inteira sem push. É a checagem de maior valor por segundo de todo o ferramental.
-2. **Git e `/usr/bin/python3` exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`** (licença do Xcode não aceita). Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador.
-3. **Controle negativo só conta com o exit code E a linha de FAIL conferidos.** Um verificador copiado para fora de `tools/` sai com 1 por `FileNotFoundError` e parece reprovar. Aconteceu em 20/09; a regra de 19/09 (conferir o exit code) era necessária e **não suficiente**.
-4. **Quatro janelas em medição, ler juntas:** SEO-057 (title+description, `/cpc-prova-pericial/`, base 114 impr · pos 8,8 · 0 cliques, ~30/09) · SEO-058 (só description, `/honorarios-pericia-judicial/`, base 161 impr · pos 10,0 · 2 cliques, ~02/10) · SEO-060 (`/pericia-contaminacao-alimentos/`, base 51 impr · CTR 4,3%, ~03/10) · **SEO-061 (`/normas-tecnicas-pericia/`, base 115 impr · pos 8,1 · 1 clique · CTR 0,9%, janela a partir de ~04/10).** Não tocar nenhuma delas.
-5. **A tese de 19/09 continua de pé e ganhou um teste a mais:** as duas maiores páginas convertem a 0,2–0,3% e as pequenas de problema concreto a 4–5%. `/normas-tecnicas-pericia/` está no meio (0,9% em pos 8,1) — se a reconferência a mover, o caminho é conteúdo de precisão normativa, não snippet.
-6. **SEO-059:** as três URLs seguem "Detectada, mas não indexada", nunca buscadas pelo Googlebot. Executar os links contextuais a partir de ~29/09, quando `/quesitos-periciais/` e `/assistente-tecnica/` saírem de janela.
-7. `/impugnacao-laudo-pericial/` livre (60 impr · pos 12,1 · 0 cliques) — pos 12,1 é 2ª página, onde snippet rende pouco; candidata a **conteúdo**.
-8. **Manutenção com data marcada, nova:** o **E32 vale 180 dias a partir de 01/08/2026 — vence por volta de 28/01/2027**, prorrogável uma vez. É a linha do quadro com maior chance de envelhecer mal; revisar em janeiro. Acompanhar também o **B16**, que depende de deliberação do CNPE ainda em 2026.
-9. **404s com impressão residual:** `/assistencia-tecnica/` (2 impr) e `/aline-rezende/` (1 impr). Volume desprezível.
-10. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega — vigésima nona execução como nota de rodapé.
+1. **Rodar `seo-report deploy` ANTES de qualquer trabalho.** Em 20/09 pegou a SEO-060 inteira sem push. Em 21/09 acusou 0 pendentes em segundos. Continua sendo a checagem de maior valor por segundo do ferramental.
+2. **O GSC exige `/usr/bin/python3`** (3.9.6) — é o único interpretador da máquina com `googleapiclient`. O `python3` do Homebrew roda todo o resto. Git e ambos exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`. Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador.
+3. **Controle negativo só conta com o exit code E a linha de FAIL conferidos — e isso falhou de novo em 21/09** (controle 10: `ValueError` saindo com 1 e parecendo reprovação). A regra de 19/09 era necessária, a de 20/09 não foi suficiente: **quando o controle negativo remove estrutura, conferir também que o script não explodiu.**
+4. **Extração de PDF é parte da cadeia de evidência.** `pdftotext -layout` em documento de duas colunas intercala o rótulo da esquerda na citação da direita e reprova trecho literalmente correto. Em tabela, usar modo bruto.
+5. **Cinco janelas em medição, ler juntas:** SEO-057 (title+description, `/cpc-prova-pericial/`, base 115 impr · pos 8,8 · 0 cliques, ~30/09) · SEO-058 (só description, `/honorarios-pericia-judicial/`, base 162 impr · pos 10,2 · 2 cliques, ~02/10) · SEO-060 (`/pericia-contaminacao-alimentos/`, base 53 impr · CTR 3,8%, ~03/10) · SEO-061 (`/normas-tecnicas-pericia/`, base 114 impr · pos 8,1 · CTR 0,9%, ~04/10) · **SEO-062 (`/laudo-pericial/`, base 106 impr · pos 8,7 · 0 cliques · CTR 0%, janela a partir de ~05/10).** Não tocar nenhuma delas.
+6. **SEO-057 e SEO-058 vencem primeiro, e é a leitura mais importante do trimestre.** Se só a com title mexer no CTR, a alavanca é o title e há 4 páginas em posição 8–11 com CTR 0% esperando o mesmo tratamento. Se nenhuma mexer, a tese do item 8 se fortalece e o caminho é conteúdo, não snippet.
+7. **SEO-059:** as três URLs (`/dano-motor-combustivel/`, `/auto-infracao-ambiental/`, `/producao-antecipada-prova/`) seguem **"Detectada, mas não indexada"** na inspeção de 21/09 — nunca buscadas pelo Googlebot. `/quesitos-periciais/` e `/assistente-tecnica/` saem de janela em ~28–29/09: **executar os links contextuais então.** `/laudo-pericial/` já linka duas das três.
+8. **A tese continua de pé, com mais um ponto:** as duas maiores páginas convertem a 0,2–0,3%; as pequenas de problema concreto a 3,6–4,5% (`/pericia-combustiveis/` 3,6% · `/pericia-contaminacao-alimentos/` 3,8% · `/pericia-industria-quimica/` 4,5%). As médias — `/normas-tecnicas-pericia/` 0,9%, `/laudo-pericial/` 0% — estão no meio, e são justamente as que receberam conteúdo de precisão em 20 e 21/09. **Outubro dirá se a precisão normativa move a faixa média.**
+9. **Livres de janela, por ordem de impressão:** `/impugnacao-laudo-pericial/` (58 impr · pos 10,7 · 0 cliques) · `/pericia-ambiental/` (27 · 7,3) · `/analise-microbiologica-alimentos/` (26 · **15,5** — 2ª página, precisa de conteúdo, não de snippet) · `/classificacao-fiscal-ncm/` (25 · 7,2) · `/pericia-industria-quimica/` (22 · 10,2) · `/produtos-quimicos-controlados/` (19 · 6,1). **`/impugnacao-laudo-pericial/` é a próxima candidata natural** — maior intenção comercial do domínio e zero consulta nominal visível no GSC, o que sugere cauda anônima, não ausência de demanda.
+10. **Manutenção com data marcada:** o **E32 vale 180 dias a partir de 01/08/2026 — vence por volta de 28/01/2027**, prorrogável uma vez; revisar em janeiro. Acompanhar o **B16** (deliberação do CNPE ainda em 2026) e a norma final da ANVISA que sucederá a RDC 275/2002.
+11. **404s com impressão residual:** `/assistencia-tecnica/` (2 impr) e `/aline-rezende/` (1). Volume desprezível. Novo: `/im-pugnacao-laudo-pericial-as-tres-vias-e-qual-usar` (1 impr) — hifenização espúria de terceiro, não ação nossa.
+12. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega — trigésima execução como nota de rodapé.
