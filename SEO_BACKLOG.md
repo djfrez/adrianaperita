@@ -2126,3 +2126,95 @@ O site já mandava conferir "se o ensaio está dentro do escopo acreditado" (ite
 10. **Manutenção com data marcada:** o **E32 vale 180 dias a partir de 01/08/2026 — vence por volta de 28/01/2027**, prorrogável uma vez; revisar em janeiro. Acompanhar o **B16** (deliberação do CNPE ainda em 2026) e a norma final da ANVISA que sucederá a RDC 275/2002.
 11. **404s com impressão residual:** `/assistencia-tecnica/` (2 impr) e `/aline-rezende/` (1). Volume desprezível. Novo: `/im-pugnacao-laudo-pericial-as-tres-vias-e-qual-usar` (1 impr) — hifenização espúria de terceiro, não ação nossa.
 12. Decisão pendente com a cliente (desde 04/09): prazo de retorno declarado e/ou triagem sem custo. Google Ads segue sem entrega — trigésima execução como nota de rodapé.
+
+## Execução de 2026-09-22 — o instrumento que o site nunca nomeou
+
+**Estado da medição (GSC, 28 dias findos em 22/09/2026):** 2.191 impressões · 13 cliques · CTR 0,6%. `/assistente-tecnica/` 734 (pos 11,1 · 2) · `/quesitos-periciais/` 573 (11,7 · 1) · `/honorarios-pericia-judicial/` 163 (10,3 · 2) · `/laudo-pericial/` 113 (8,6 · 0) · `/cpc-prova-pericial/` 112 (8,8 · 0) · `/normas-tecnicas-pericia/` 107 (8,4 · 1) · `/prazo-validade-alimentos/` 77 (7,1 · **2**) · `/impugnacao-laudo-pericial/` 60 (11,6 · 0) · `/pericia-combustiveis/` 55 (5,7 · **2**) · `/pericia-contaminacao-alimentos/` 53 (6,4 · **2**) · `/pericia-industria-quimica/` 21 (10,5 · 1).
+
+`seo-report deploy` rodou **primeiro**, como manda o handoff: **0 commits pendentes** — a SEO-062 chegou ao ar. Indexação: as mesmas três URLs fora do índice; `/auto-infracao-ambiental/` e `/dano-motor-combustivel/` voltaram para **"O Google não reconhece o URL"** e `/producao-antecipada-prova/` segue em "Detectada, mas não indexada" — a oscilação da Inspection API já registrada em 07/09, 10/09 e 11/09, não sinal novo.
+
+### SEO-063 — Quando o problema é o perito, e não o laudo *(executada em 2026-09-22)*
+- **URL:** `/impugnacao-laudo-pericial/#recusa` · **Categoria:** Prioridade 2 + 4 (página 5–20 de maior intenção comercial do domínio; cobertura semântica ausente; AI citation)
+- **Impacto:** 8 · **Esforço:** 5 · **Confiança:** 8 · **Valor de negócio:** 10 · **Priority Score:** 128 · **Status:** done · **Descoberto/Concluído:** 2026-09-22
+
+#### Por que esta página
+É a **maior página livre de janela** e a de maior intenção comercial. Todas as maiores estão embargadas: `/assistente-tecnica/` (SEO-056 ~29/09) · `/quesitos-periciais/` (SEO-048 ~28/09) · `/honorarios-pericia-judicial/` (SEO-058 ~02/10) · `/laudo-pericial/` (SEO-062 ~05/10) · `/cpc-prova-pericial/` (SEO-057 ~30/09) · `/normas-tecnicas-pericia/` (SEO-061 ~04/10) · `/prazo-validade-alimentos/` (SEO-055 ~28/09) · `/pericia-contaminacao-alimentos/` (SEO-060 ~03/10).
+
+**Não foi execução de snippet, e isso foi escolha** — mesma razão da SEO-062. SEO-057 e SEO-058 vencem em 30/09 e 02/10; uma terceira variante antes disso produziria um ponto não controlado.
+
+**O cruzamento `page × query` confirmou que não há vocabulário para decodificar aqui:** `/impugnacao-laudo-pericial/` tem **uma única consulta atribuída** em 28 dias (`como fazer impunação ao laudo pericial`, 1 impr, pos 55). As 60 impressões são cauda anonimizada. O método das SEO-044/048/049/050/051 não se aplica; o caminho é cobertura semântica verificável.
+
+#### A medição que descartou duas hipóteses antes de uma linha ser escrita
+
+| termo | ocorrências | páginas | veredito |
+|---|---|---|---|
+| `art. 473` | 76 | 11 | **hipótese descartada** — `/laudo-pericial/` tem uma tabela inteira |
+| `art. 466, §2º` | — | — | **hipótese descartada** — já está nesta página, no quadro da SEO-050 |
+| `art. 158` | — | 1 | coberto em `/cpc-prova-pericial/` |
+| **`art. 148`** | **0** | — | **o buraco** |
+| **`art. 144`** | **0** | — | **o buraco** |
+| **`art. 145`** | **0** | — | **o buraco** |
+| **`em apartado`** | **0** | — | **o buraco** |
+| **`auxiliares da justiça`** | **0** | — | **o buraco** |
+
+*Duas hipóteses de partida caíram na medição.* A primeira era tentadora: a página sobre o que torna um laudo atacável nunca cita o artigo que lista o que o laudo deve conter. Mas `/laudo-pericial/` já dedica uma tabela inteira ao art. 473, e escrevê-lo aqui seria duplicata. A segunda era o art. 466, §2º — e ele já está nesta página, a dois parágrafos do ponto onde eu ia inseri-lo. **Medir evitou duas duplicatas em uma execução só.**
+
+#### O ativo
+O buraco não é temático, é de **encaixe**: `/cpc-prova-pericial/` ensina que impedimento e suspeição do perito se arguem em **15 dias contados da intimação da nomeação** (art. 465, §1º, I) — e o site **nunca disse o que acontece quando o motivo só aparece no laudo**, que é exatamente a situação de quem chega nesta página. Lido isoladamente, o site sugeria que o prazo venceu e não há o que fazer.
+
+1. **O que reabre.** O **art. 148, II** manda aplicar os motivos de impedimento e de suspeição **aos auxiliares da justiça**, e o perito é auxiliar da justiça pelo **art. 149**, que o nomeia expressamente na lista. O **§1º** fixa o marco: arguição “em petição fundamentada e devidamente instruída, **na primeira oportunidade em que lhe couber falar nos autos**”.
+2. **“Primeira oportunidade” não é prazo em dias — e isso é mais severo, não mais generoso.** Como não há período fixo a consumir, qualquer espera precisa ser justificada, e a arguição tem de carregar **quando e como o fato foi conhecido**, não apenas o fato.
+3. **Mas não dentro da manifestação.** O **§2º** manda processar o incidente “em separado e sem suspensão do processo”. Peça própria, no mesmo dia, em autos diferentes — e é o que reconcilia a seção com o erro nº 1 da própria página (“atacar o perito, não o laudo”), que continua valendo **dentro** da manifestação.
+4. **As duas armadilhas do art. 145, §2º:** alegação provocada por quem a alega, e parte que praticou ato de manifesta aceitação do arguido. A segunda é a que mais derruba arguição em perícia — quem conhecia o vínculo, apresentou quesitos, acompanhou a diligência e só arguiu depois do laudo desfavorável.
+5. **A assimetria, e é o ativo próprio da página:** **art. 466, §1º** — “Os assistentes técnicos são de confiança da parte e não estão sujeitos a impedimento ou suspeição.” A parte contrária não tem, contra o assistente, o instrumento que a parte tem contra o perito do juízo; resta-lhe atacar o parecer pelo conteúdo. É argumento comercial direto: indicar assistente técnico não abre frente de recusa.
+
+**Fonte:** texto oficial da Lei nº 13.105/2015 no Planalto, baixado e conferido na execução. **Cada artigo citado tem uma única ocorrência no arquivo** (arts. 144, 145, 148, 149, 465, 466, 467, 468, 477) — não há redação alterada a desempatar, que é a armadilha da regra “todas as ocorrências, ficar com a última”; aqui ela virou **guarda ativa no verificador**: se algum deles passar a aparecer duas vezes, o verificador reprova e manda reconferir à mão.
+
+**O que NÃO se afirmou:** nenhuma tese jurisprudencial sobre aplicação analógica do prazo de 15 dias do art. 146 ao perito. O texto se limita ao que o Código diz e extrai daí a consequência prática. Inventar prazo seria o erro que a SEO-002 pegou na multa de 1%.
+
+#### Também implementado
+- Seção `#recusa` (~1.560 palavras; a página foi de 4.149 para 6.037): tabela de **8 motivos** lidos para a perícia técnica — dizendo onde o inciso é **literal demais para ser esticado** (o art. 144, VII vale só para instituição de ensino; o VI alcança o *empregador*, não o empregado) — e tabela de **3 instrumentos que não se substituem** (arguição do art. 467 c/c 148 · substituição do art. 468, I · substituição do art. 468, II, com a restituição em 15 dias sob pena de impedimento por 5 anos, citada literalmente).
+- **Duas FAQ** (10 → 12 + intake = 13), visível e JSON-LD **geradas da mesma fonte** (16ª aplicação do método da SEO-037); a de intake segue contratualmente última.
+- Links contextuais para `/cpc-prova-pericial/`, `/laudo-pericial/` e `/assistente-tecnica/`.
+- `dateModified`, `<time>`, `sitemap.xml` e `llms.txt`. **Title e description intocados** — para não contaminar SEO-057/058.
+
+#### Verificação
+- **`tools/verify-recusa.py` (novo, 16º da suíte): 99 checagens**, com as **nove citações procuradas no texto do Planalto baixado a cada execução**. Sem rede, sai com 1 **dizendo que foi a rede** — que é diferente de reprovar.
+- **Doze controles negativos, todos reprovando com exit 1, sem traceback e nomeando o defeito:** citação adulterada em uma só cópia (1) · resposta divergente só no JSON-LD (2) · FAQ visível intrusa depois da de intake (3) · intake deslocada do último lugar (4) · seção inteira removida — **FAIL, não `ValueError`** (5) · linha da tabela de motivos removida (6) · `dateModified` adiantado (7) · `lastmod` dessincronizado (8) · `llms.txt` sem a seção (9) · citação que a fonte primária não sustenta (10) · guarda de redação alterada no Planalto (11) · âncora `id` removida (12).
+- **O primeiro defeito encontrado foi do próprio verificador, e o segundo também.** O verificador reprovou duas vezes na primeira execução: uma citação estava parafraseada na tabela (corrigido citando o art. 468, §2º **literalmente** — melhor conteúdo, não só verificador feliz) e o **detector da FAQ de intake foi escrito por palavra-chave adivinhada** (`"enviar" in nome`), que não casava com a pergunta real. Trocado por detecção **derivada do marcador `faqintake`** que a SEO-046 deixou no arquivo: o invariante passa a ser lido da fonte, não adivinhado.
+- **O controle negativo 2 não alterou o arquivo na primeira tentativa** — o alvo que eu escrevera não existia (o JSON-LD sai com `ensure_ascii=False`, sem escapes `\u`). A guarda “controle que não altera o arquivo não é controle” (SEO-062) **pegou isso em vez de deixar passar um PASS falso**. Segunda aplicação dessa regra, e a primeira em que ela rendeu.
+
+#### A regressão que a suíte pegou — e a lição de 21/09 que ninguém foi aplicar nos outros arquivos
+`verify-nulidade.py` exigia que a entrada da SEO-050 fosse a **penúltima** do `mainEntity`. As duas entradas novas a empurraram para 9 de 13, e o verificador reprovou **corretamente, contra um invariante que havia envelhecido**.
+
+**É literalmente a mesma falha que a SEO-062 corrigiu em `verify-andamento-tela.py` um dia antes.** Lá ela foi corrigida no arquivo em que apareceu, com a regra escrita no handoff — *“proxy posicional envelhece; invariante relacional, não”* — e **ninguém foi procurar o mesmo proxy nos outros catorze verificadores**. Corrigir onde dói e não onde o padrão está é o que garante que ele volte no dia seguinte, e voltou em exatamente 24 horas.
+
+Trocada a posição fixa pela relação (`i < último`), com o porquê no arquivo, **e o controle negativo 13 confirma que a proteção real sobreviveu nos dois verificadores**: deslocada a de intake do último lugar, `verify-nulidade` e `verify-recusa` reprovam, cada um nomeando o defeito.
+
+**Ação de dívida registrada:** os demais verificadores da suíte precisam ser varridos atrás de posição fixa em `mainEntity` — **antes** que a próxima execução que acrescente FAQ os quebre de novo. Ver SEO-064.
+
+- **Idempotência:** `recusa_build.py` devolve “sem mudança” na segunda execução.
+- Suíte completa (**16 verificadores**) e `seo-report valid` (21 páginas) em **ALL PASS**. `ALL PASS` passou durante os dois defeitos do verificador novo — **14ª confirmação de que não prova conteúdo**.
+- **`seo-report deploy` rodado de novo ao FIM, depois do push, e a checagem da SEO-062 rendeu no primeiro dia de vida:** acusou `/impugnacao-laudo-pericial/` **publicado em 2026-09-09 com o repositório em 2026-09-22** — build do Pages em curso. Só depois de a URL servir `id="recusa"` e 70.012 bytes ao vivo (contra 53.538 do build anterior) a execução foi dada por concluída, com `deploy` e `valid` em ALL PASS.
+
+### SEO-064 — Varredura de proxy posicional nos 16 verificadores *(descoberta em 2026-09-22, não executada)*
+- **Descrição:** Dois verificadores já reprovaram por exigir **posição fixa** de uma entrada no `mainEntity` (penúltima), quando o invariante real é relacional (a de intake é a última). `verify-andamento-tela.py` em 21/09, `verify-nulidade.py` em 22/09. **É um padrão, não dois incidentes** — e cada execução que acrescenta FAQ dispara o próximo.
+- **URL:** `tools/verify-*.py` · **Categoria:** Prioridade 6 (ferramental) · **Impacto:** 4 · **Esforço:** 2 · **Confiança:** 9 · **Valor de negócio:** 4 · **Priority Score:** 72 · **Status:** open
+- **O que fazer:** `grep` por `len(ents) - 2`, `-2]`, `penúltim` e equivalentes nos 16 verificadores; trocar cada ocorrência por `i < len(ents) - 1` **mantendo** a checagem de que a última é a de intake; um controle negativo por arquivo tocado.
+- **Por que não hoje:** o mandato é uma mudança por execução, e a de hoje já tocou `verify-nulidade.py` por necessidade. Varrer os outros catorze é trabalho de ferramental sem urgência — mas com data marcada pelo próprio padrão: **antes da próxima execução que acrescente FAQ**.
+
+### Próxima execução — o que checar primeiro
+1. **Rodar `seo-report deploy` ANTES de qualquer trabalho, e de novo ao FIM, depois do push.** Hoje a checagem de `dateModified` publicado × repositório (acrescentada pela SEO-062) pegou o build em curso no primeiro dia em que existiu. Push feito não é conteúdo no ar; commit feito não é push feito (SEO-021).
+2. **O GSC exige `/usr/bin/python3`** (3.9.6) — único interpretador com `googleapiclient`. Git e ambos exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`. Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador. **E `timeout(1)` não existe nesta máquina** — não usar em script de verificação.
+3. **A seção `[gsc]` leva mais de 2 minutos** (inspeção de 21 URLs, uma a uma). Rodar redirecionando para arquivo, não em foreground curto.
+4. **SEO-064 antes da próxima FAQ.** Se a próxima execução acrescentar entrada de FAQ sem varrer os proxies posicionais, o mesmo falso positivo volta pela terceira vez.
+5. **Seis janelas em medição, ler juntas:** SEO-055 (`/prazo-validade-alimentos/`, ~28/09) · SEO-048 (`/quesitos-periciais/`, ~28/09) · SEO-056 (`/assistente-tecnica/`, ~29/09) · SEO-057 (title+description, `/cpc-prova-pericial/`, base 112 impr · pos 8,8 · 0 cliques, ~30/09) · SEO-058 (só description, `/honorarios-pericia-judicial/`, base 163 · 10,3 · 2 cliques, ~02/10) · SEO-060 (~03/10) · SEO-061 (~04/10) · SEO-062 (~05/10) · **SEO-063 (`/impugnacao-laudo-pericial/`, base 60 impr · pos 11,6 · 0 cliques · CTR 0%, janela a partir de ~06/10).** Não tocar nenhuma.
+6. **SEO-057 e SEO-058 vencem primeiro, e é a leitura mais importante do trimestre.** Se só a com title mexer no CTR, a alavanca é o title e há páginas em posição 8–11 com CTR 0% esperando o mesmo tratamento. Se nenhuma mexer, a tese do item 9 se fortalece e o caminho é conteúdo, não snippet.
+7. **SEO-059:** as três URLs seguem fora do índice, hoje duas delas de volta em “O Google não reconhece o URL”. `/quesitos-periciais/` e `/assistente-tecnica/` saem de janela em ~28–29/09: **executar os links contextuais então**, que é o único item com data e sem bloqueio.
+8. **O cluster definicional que ninguém atacou, e que está todo em uma página embargada:** `/quesitos-periciais/` acumula ~30 impressões de intenção puramente definicional em posições 22–61 — `quesitos` (13 · 35,6), `o que é quesito` (4 · 24,5), `o que é quesitos` (3 · 32,0), `o que significa quesito` (3 · 47,7), `quesitos significado` (2 · 49,5), `quesitação significado` (2 · 49,0), `significado de quesitos` (1 · 44,0), `quesito o que é` (1 · 22,0), `o que sao quesitos` (1 · 61,0). A página tem ~8.000 palavras sobre **como redigir** quesitos e o Google não a casa com **o que é** um quesito. É a maior oportunidade de cauda decodificável do site. **Liberada em ~28/09.**
+9. **A tese continua de pé:** as duas maiores páginas convertem a 0,2–0,3%; as pequenas de problema concreto a 3,6–4,8% (`/pericia-industria-quimica/` 4,8% · `/pericia-contaminacao-alimentos/` 3,8% · `/pericia-combustiveis/` 3,6% · `/prazo-validade-alimentos/` 2,6%). As médias — `/normas-tecnicas-pericia/` 0,9%, `/laudo-pericial/` 0%, `/impugnacao-laudo-pericial/` 0% — receberam conteúdo de precisão em 20, 21 e 22/09. **Outubro dirá se a precisão normativa move a faixa média.**
+10. **Livres de janela depois desta execução, por ordem de impressão:** `/pericia-ambiental/` (27 · 7,3) · `/analise-microbiologica-alimentos/` (26 · **15,5** — 2ª página, precisa de conteúdo, não de snippet) · `/classificacao-fiscal-ncm/` (25 · 7,2) · `/pericia-industria-quimica/` (21 · 10,5) · `/produtos-quimicos-controlados/` (19 · 6,1) · `/` (14 · 7,6).
+11. **Regras que seguem valendo:** medir a cobertura **antes** de escrever — hoje isso matou duas duplicatas · `ALL PASS` não prova conteúdo (14ª) · JSON-LD por parse, nunca por indentação · Planalto: todas as ocorrências, ficar com a última — **e transformar a contagem em guarda no verificador** · visível e JSON-LD da mesma fonte (16ª) · controle negativo só conta com exit code **e** linha de FAIL **e** ausência de traceback · **controle que não altera o arquivo não é controle** (2ª aplicação, e a 1ª que rendeu) · **invariante lido da fonte, nunca adivinhado por palavra-chave** (regra nova) · proxy posicional envelhece; invariante relacional, não — **e corrigir o padrão, não só o arquivo em que ele doeu** (regra nova) · execução que acrescenta conteúdo mexe em `dateModified` e `<time>`; a que não acrescenta, não mexe.
+12. **Manutenção com data marcada:** E32 vence por volta de **28/01/2027**, prorrogável uma vez — revisar em janeiro. Acompanhar o **B16** (deliberação do CNPE ainda em 2026) e a norma final da ANVISA que sucederá a RDC 275/2002.
+13. **404s com impressão residual:** `/assistencia-tecnica/` (2) · `/aline-rezende/` (1) · `/im-pugnacao-laudo-pericial-as-tres-vias-e-qual-usar` (1) · `/post/elaboracao-de-quesitos/` (1, novo — legado do domínio, SEO-010). Volume desprezível, nenhuma ação.
+14. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. Maior ganho de conversão restante; não é decisão de SEO. **Google Ads segue sem entrega — trigésima primeira execução como nota de rodapé.**
