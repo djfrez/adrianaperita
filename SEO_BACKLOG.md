@@ -2101,13 +2101,20 @@ O site já mandava conferir "se o ensaio está dentro do escopo acreditado" (ite
 - **Idempotência:** `laboratorio_build.py` devolve "sem mudança" na segunda execução.
 - Suíte completa (**15 verificadores**) e `seo-report valid` (21 páginas) em **ALL PASS**. `ALL PASS` passou durante os dois defeitos do verificador novo — 13ª confirmação de que não prova conteúdo.
 
+#### A falha que a própria execução expôs no ferramental
+`seo-report deploy` deu **ALL PASS logo após o push** — e `/laudo-pericial/` ainda servia o build anterior, byte por byte (52.670 bytes, `dateModified` em 07/09). A seção conferia push pendente, conjunto de URLs do sitemap e resposta 200; **nenhuma dessas três prova que o conteúdo publicado é o do repositório.** O build do Pages levava minutos — e um build que falha nunca publica, respondendo 200 com a versão velha para sempre.
+
+É a **SEO-021 um nível abaixo**: lá a pergunta esquecida era “empurrei?”; aqui é “**está no ar?**”. Acrescentada ao `deploy` a comparação do `dateModified` **publicado × repositório** nas 21 páginas, com mensagem que distingue build em curso de build falho. Controle negativo 13: repositório adiantado para 30/09 → reprovou nomeando as duas datas. ✔
+
+*A execução só foi dada por concluída depois de `id="laboratorio"` responder ao vivo.*
+
 #### O que ficou deliberadamente de fora
 - **Title e description intocados**, para não contaminar a leitura conjunta de SEO-057 e SEO-058.
 - **Holding time / prazo de preservação da amostra**: já está no item 16 do roteiro, e a fonte aberta e citável (Guia Nacional de Coleta e Preservação de Amostras) não foi aberta nesta execução. Fica como candidata, não como afirmação.
 - **NIE-Cgcre-009** (regras de uso do símbolo de acreditação) aparece citada *dentro* do DOQ, mas **não foi baixada**; por isso a página não afirma nada que dependa só dela.
 
 ### Próxima execução — o que checar primeiro
-1. **Rodar `seo-report deploy` ANTES de qualquer trabalho.** Em 20/09 pegou a SEO-060 inteira sem push. Em 21/09 acusou 0 pendentes em segundos. Continua sendo a checagem de maior valor por segundo do ferramental.
+1. **Rodar `seo-report deploy` ANTES de qualquer trabalho.** Em 20/09 pegou a SEO-060 inteira sem push. Em 21/09 acusou 0 pendentes em segundos. Continua sendo a checagem de maior valor por segundo do ferramental. **E agora confere também o `dateModified` publicado × repositório nas 21 páginas** — em 21/09 ela deu ALL PASS com a página do dia ainda no build anterior. Rodar de novo ao FIM, depois do push: push feito não é conteúdo no ar.
 2. **O GSC exige `/usr/bin/python3`** (3.9.6) — é o único interpretador da máquina com `googleapiclient`. O `python3` do Homebrew roda todo o resto. Git e ambos exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`. Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador.
 3. **Controle negativo só conta com o exit code E a linha de FAIL conferidos — e isso falhou de novo em 21/09** (controle 10: `ValueError` saindo com 1 e parecendo reprovação). A regra de 19/09 era necessária, a de 20/09 não foi suficiente: **quando o controle negativo remove estrutura, conferir também que o script não explodiu.**
 4. **Extração de PDF é parte da cadeia de evidência.** `pdftotext -layout` em documento de duas colunas intercala o rótulo da esquerda na citação da direita e reprova trecho literalmente correto. Em tabela, usar modo bruto.

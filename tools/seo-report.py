@@ -166,6 +166,31 @@ def section_deploy():
     if not bad:
         ok(f"{len(live)} URLs respondendo 200 ao vivo")
 
+    # Push feito + sitemap em dia + 200 ao vivo NÃO provam que o conteúdo
+    # publicado é o do repositório. Em 21/09/2026 esta seção deu ALL PASS com
+    # /laudo-pericial/ ainda servindo o build anterior — o GitHub Pages leva
+    # minutos, e um build que falha nunca publica. É a SEO-021 um nível abaixo:
+    # a pergunta certa não é "empurrei?", é "está no ar?".
+    stale = []
+    for page in sorted(repo):
+        local = os.path.join(ROOT, page.strip("/"), "index.html") if page != "/" \
+            else os.path.join(ROOT, "index.html")
+        try:
+            want = re.search(r'"dateModified": "(\d{4}-\d{2}-\d{2})"', read(local))
+            _, served = get(SITE + page)
+            got = re.search(r'"dateModified": "(\d{4}-\d{2}-\d{2})"', served)
+        except Exception as e:
+            fail("deploy", f"{page}: não foi possível comparar publicado × repositório — {e}")
+            continue
+        if want and got and want.group(1) != got.group(1):
+            stale.append(f"{page} publicado em {got.group(1)}, repositório em {want.group(1)}")
+    for line in stale:
+        fail("deploy", f"conteúdo publicado defasado: {line}")
+    if stale:
+        print("        → build do Pages em curso ou falho; reconferir antes de dar o dia por concluído")
+    else:
+        ok("conteúdo publicado confere com o repositório (dateModified)")
+
 
 # --------------------------------------------------------------------------
 # [valid]
