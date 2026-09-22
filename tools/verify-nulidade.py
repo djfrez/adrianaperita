@@ -11,9 +11,9 @@ O que ele garante, e por que cada checagem existe:
   3. As transcrições literais do CPC usadas fora das tabelas, e a tese do Tema 988.
   4. Pergunta e resposta visíveis idênticas, caractere a caractere, à fonte.
   5. A **mesma** resposta no JSON-LD, sem tag e sem entidade HTML.
-  6. Posição **penúltima** da entrada nova no `FAQPage` — a última é
-     contratualmente a de intake da SEO-046 — e paridade de contagem
-     visível × schema.
+  6. Posição da entrada nova no `FAQPage`: **antes** da de intake da SEO-046,
+     que é contratualmente a última — e paridade de contagem visível × schema.
+     Era "penúltima" até 22/09/2026; ver o comentário no ponto da checagem.
   7. Os três links internos da seção.
   8. **Os números afirmados no texto, recontados na fonte** (Planalto): as duas
      expressões que a página diz não existirem no CPC, o número de incisos do
@@ -112,8 +112,16 @@ if faq:
     check(plain(QUESTION) in names, "pergunta ausente do JSON-LD")
     if plain(QUESTION) in names:
         i = names.index(plain(QUESTION))
-        check(i == len(ents) - 2,
-              f"entrada nova em posição {i + 1}/{len(ents)} — esperava penúltima")
+        # Era "tem de ser a penúltima". Deixou de ser verdade em 22/09/2026,
+        # quando a SEO-063 acrescentou duas entradas legítimas depois desta.
+        # É a MESMA falha que a SEO-062 corrigiu em verify-andamento-tela.py um
+        # dia antes, e que ninguém foi procurar nos outros verificadores: a
+        # posição penúltima era PROXY do invariante real — a de intake é a
+        # última —, e proxy posicional envelhece. O invariante relacional fica;
+        # a posição fixa sai. A checagem da de intake logo abaixo é a que
+        # sempre importou, e continua valendo.
+        check(i < len(ents) - 1,
+              f"entrada nova não está antes da de intake (índice {i} de {len(ents)})")
         check(ents[i]["acceptedAnswer"]["text"] == plain(ANSWER),
               "resposta do JSON-LD difere da visível")
     check(names[-1] == plain(intake_question("impugnacao-laudo-pericial")),
