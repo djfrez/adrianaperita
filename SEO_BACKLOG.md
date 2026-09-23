@@ -2113,8 +2113,72 @@ O site já mandava conferir "se o ensaio está dentro do escopo acreditado" (ite
 - **Holding time / prazo de preservação da amostra**: já está no item 16 do roteiro, e a fonte aberta e citável (Guia Nacional de Coleta e Preservação de Amostras) não foi aberta nesta execução. Fica como candidata, não como afirmação.
 - **NIE-Cgcre-009** (regras de uso do símbolo de acreditação) aparece citada *dentro* do DOQ, mas **não foi baixada**; por isso a página não afirma nada que dependa só dela.
 
+## Execução de 2026-09-23 — corrigir o padrão, não o arquivo em que ele doeu
+
+**Estado da medição (GSC, 28 dias findos em 23/09/2026):** 2.346 impressões · 16 cliques · CTR 0,7% — **+155 impressões e +3 cliques sobre ontem**. `/assistente-tecnica/` 820 (pos 10,8 · 3) · `/quesitos-periciais/` 586 (11,6 · 1) · `/honorarios-pericia-judicial/` 165 (9,8 · 2) · `/laudo-pericial/` 130 (8,9 · 0) · `/cpc-prova-pericial/` 119 (8,7 · 0) · `/normas-tecnicas-pericia/` 104 (8,8 · 1) · `/prazo-validade-alimentos/` 83 (7,2 · 2) · `/impugnacao-laudo-pericial/` 68 (11,1 · **1 — o primeiro clique da página**) · `/pericia-combustiveis/` 65 (5,0 · 2) · `/pericia-contaminacao-alimentos/` 55 (6,2 · 2) · `/analise-microbiologica-alimentos/` 27 (**17,5** · 1).
+
+`seo-report deploy` rodou **primeiro**: **ALL PASS** nos quatro controles — 0 commits pendentes, sitemap em dia, 21 URLs em 200 e `dateModified` publicado conferindo com o repositório. A SEO-063 chegou ao ar.
+
+**Indexação:** as três URLs da SEO-059 agora leem **todas** "Detectada, mas não indexada" — ontem duas estavam em "O Google não reconhece o URL". Estado mais consistente, não indexação. Segue para ~28–29/09, quando `/quesitos-periciais/` e `/assistente-tecnica/` saem de janela.
+
+### SEO-064 — Varredura de proxy posicional nos 16 verificadores *(executada em 2026-09-23)*
+- **URL:** `tools/verify-amb-normas.py`, `tools/verify-honorarios-final.py` · **Categoria:** Prioridade 6 (ferramental)
+- **Impacto:** 4 · **Esforço:** 2 · **Confiança:** 9 · **Valor de negócio:** 4 · **Priority Score:** 72 · **Status:** done · **Descoberto:** 2026-09-22 · **Concluído:** 2026-09-23
+
+#### Por que esta, e não a de maior score
+Não é a de maior Priority Score — **é a que tinha data marcada, e a data era hoje.** O handoff de ontem (item 4) condicionou: *"SEO-064 antes da próxima FAQ."* Todas as páginas de maior impressão seguem sob janela de medição (SEO-048 ~28/09 · SEO-055 ~28/09 · SEO-056 ~29/09 · SEO-057 ~30/09 · SEO-058 ~02/10 · SEO-060 ~03/10 · SEO-061 ~04/10 · SEO-062 ~05/10 · SEO-063 ~06/10), e **qualquer execução de conteúdo nas livres acrescentaria FAQ** — que é exatamente o gatilho do defeito. Fazer conteúdo hoje era garantir a terceira recorrência em 72 horas.
+
+#### A varredura: o padrão estava em dois arquivos, não em catorze
+`grep` por `len(ents) - 2`, `[-2]`, `.index(`, `penúltim` nos 16 verificadores. Seis arquivos citavam a posição penúltima; **quatro já estavam corrigidos** (`verify-nulidade`, `verify-andamento-tela`, `verify-vocabulario`, `verify-elegibilidade` — os dois últimos corrigidos lá atrás pela SEO-056, fato que o handoff de ontem não registrava). **Dois estavam vivos:**
+
+| arquivo | linha | forma | a de intake era checada à parte? |
+|---|---|---|---|
+| `verify-honorarios-final.py` | 104 | `check(i == len(ents) - 2, …)` | **sim** — proxy era pura dívida |
+| `verify-amb-normas.py` | 87 | `if names.index(FAQ_Q) != len(names) - 2` | **não** — o invariante real nunca foi implementado |
+
+O segundo é o caso interessante: **o docstring do arquivo já afirmava** que ele conferia "que a entrada de intake da SEO-046 continua sendo a última do FAQPage" — e o código nunca conferiu isso. Conferia o proxy e descrevia o invariante. Hoje o docstring passou a ser verdade.
+
+#### O que foi feito
+1. Proxy posicional → **relacional** nos dois: `índice < len - 1` (vem antes da de intake).
+2. Em `verify-amb-normas.py`, acrescentada a checagem que faltava — a última **é** a de intake —, com a pergunta **lida da fonte** (`faq_intake.question(SLUG)`), nunca adivinhada por palavra-chave. É a regra nova da SEO-063 aplicada pela primeira vez fora do arquivo que a originou.
+3. Docstring de `verify-honorarios-final.py` corrigido: descrevia "posição penúltima" como contrato.
+
+#### Verificação — seis controles negativos, e um deles é o que importa
+Harness em cópia da página; cada controle exige exit code **e** linha de FAIL **e** ausência de traceback.
+
+| # | controle | esperado | resultado |
+|---|---|---|---|
+| 1 | de intake deixa de ser a última (nos dois arquivos) | FAIL | ✅ exit 1, sem traceback |
+| 2 | entrada verificada passa **depois** da de intake (nos dois) | FAIL | ✅ exit 1, sem traceback |
+| 3 | **FAQ legítima nova antes da de intake (nos dois)** | **PASS** | ✅ exit 0 |
+
+**O controle 3 é a SEO-064 inteira**, e sozinho não provava nada: um controle que passa depois da mudança só vale se tiver reprovado antes dela. Então o código antigo foi restaurado via `git stash` e o controle 3 **rodado de novo contra ele** — e reprovou nos dois arquivos:
+
+```
+verify-amb-normas.py        FALHOU: a pergunta nova não é a penúltima
+verify-honorarios-final.py  FAIL entrada nova em posição 9/11 — esperava penúltima
+```
+
+**A terceira recorrência não era hipótese: estava carregada nos dois arquivos, esperando a próxima FAQ.** A regra "controle que não altera o arquivo não é controle" (SEO-062) ganha aqui uma irmã: **controle de regressão que nunca foi rodado contra o código antigo não é controle de regressão** — é uma afirmação sobre o passado sem medição.
+
+- Suíte completa (**16 verificadores**): ALL PASS. `seo-report valid` (21 páginas): ALL PASS.
+- **Nenhuma página foi tocada.** Execução de ferramental: `dateModified`, `<time>`, `sitemap.xml` e `llms.txt` **intocados**, como manda a regra (execução que não acrescenta conteúdo não mexe em data). Nenhuma janela de medição contaminada.
+
 ### Próxima execução — o que checar primeiro
-1. **Rodar `seo-report deploy` ANTES de qualquer trabalho.** Em 20/09 pegou a SEO-060 inteira sem push. Em 21/09 acusou 0 pendentes em segundos. Continua sendo a checagem de maior valor por segundo do ferramental. **E agora confere também o `dateModified` publicado × repositório nas 21 páginas** — em 21/09 ela deu ALL PASS com a página do dia ainda no build anterior. Rodar de novo ao FIM, depois do push: push feito não é conteúdo no ar.
+1. **Rodar `seo-report deploy` ANTES de qualquer trabalho, e de novo ao FIM, depois do push.** Push feito não é conteúdo no ar; commit feito não é push feito (SEO-021).
+2. **O caminho está livre para conteúdo com FAQ.** A SEO-064 era o único bloqueio de ferramental; os 16 verificadores estão sem proxy posicional. Se um novo verificador for escrito, **nascer relacional** — a posição fixa é a armadilha que voltou três vezes.
+3. **O GSC exige `/usr/bin/python3`** (3.9.6). Git e ele exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`. Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador. `timeout(1)` não existe nesta máquina. A seção `[gsc]` leva >2 min — redirecionar para arquivo.
+4. **Nove janelas em medição, ler juntas:** SEO-048 e SEO-055 (~28/09) · SEO-056 (~29/09) · SEO-057 (~30/09) · SEO-058 (~02/10) · SEO-060 (~03/10) · SEO-061 (~04/10) · SEO-062 (~05/10) · SEO-063 (~06/10). **Não tocar nenhuma.**
+5. **SEO-057 × SEO-058 vencem primeiro (30/09 e 02/10) e é a leitura mais importante do trimestre.** Se só a com title mexer no CTR, a alavanca é o title, e há páginas em posição 8–11 com CTR 0% esperando o mesmo tratamento (`/laudo-pericial/` 130 impr · 8,9 · 0 · `/cpc-prova-pericial/` 119 · 8,7 · 0).
+6. **Livres de janela agora, por ordem de impressão:** `/pericia-ambiental/` (29 · 7,1 · 0 cliques) · `/analise-microbiologica-alimentos/` (27 · **17,5** — 2ª página, precisa de conteúdo, não de snippet) · `/classificacao-fiscal-ncm/` (25 · 6,8 · 0) · `/pericia-industria-quimica/` (22 · 10,5) · `/produtos-quimicos-controlados/` (21 · 5,8 · 0) · `/` (14 · 7,6).
+7. **A maior oportunidade de cauda decodificável do site segue embargada até ~28/09:** o cluster definicional de `/quesitos-periciais/` — `quesitos` (11 impr · pos 36,0), `o que é quesito` (4 · 24,5), `apresentação de quesitos` (5 · 47,0), `quesitos para perícia` (4 · 43,0), `quesitos pericia` (4 · 42,0). A página tem ~8.000 palavras sobre **como redigir** quesitos e o Google não a casa com **o que é**. Liberada em ~28/09.
+8. **SEO-059:** as três URLs agora leem todas "Detectada, mas não indexada" — estado mais consistente que ontem, mas fora do índice. `/quesitos-periciais/` e `/assistente-tecnica/` saem de janela em ~28–29/09: **executar os links contextuais então.** É o único item com data e sem bloqueio.
+9. **Sinal novo a vigiar:** `/impugnacao-laudo-pericial/` registrou **o primeiro clique de sua história** (68 impr · pos 11,1) no dia seguinte à SEO-063. Um clique não é tendência — **não tocar a página**; a janela vai até ~06/10.
+10. **A tese continua de pé:** as duas maiores páginas convertem a 0,2–0,4%; as pequenas de problema concreto a 3,1–4,5% (`/pericia-industria-quimica/` 4,5% · `/analise-microbiologica-alimentos/` 3,7% · `/pericia-contaminacao-alimentos/` 3,6% · `/pericia-combustiveis/` 3,1%). **Outubro dirá se a precisão normativa de 20–22/09 move a faixa média.**
+11. **Regras que seguem valendo:** medir a cobertura **antes** de escrever · `ALL PASS` não prova conteúdo (15ª) · JSON-LD por parse, nunca por indentação · Planalto: todas as ocorrências, ficar com a última, e transformar a contagem em guarda · visível e JSON-LD da mesma fonte · controle negativo só conta com exit code **e** linha de FAIL **e** ausência de traceback · controle que não altera o arquivo não é controle · **controle de regressão não rodado contra o código antigo não é controle de regressão** (regra nova) · invariante lido da fonte, nunca adivinhado · **invariante relacional, nunca proxy posicional — e varrer o padrão inteiro, não só o arquivo em que doeu** (aplicada hoje) · execução que acrescenta conteúdo mexe em `dateModified` e `<time>`; a que não acrescenta, não mexe.
+12. **Manutenção com data marcada:** E32 vence por volta de **28/01/2027** — revisar em janeiro. Acompanhar o **B16** (CNPE, ainda em 2026) e a norma final da ANVISA que sucederá a RDC 275/2002.
+13. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. Maior ganho de conversão restante; não é decisão de SEO. **Google Ads segue sem entrega — trigésima segunda execução como nota de rodapé.**
+ de qualquer trabalho.** Em 20/09 pegou a SEO-060 inteira sem push. Em 21/09 acusou 0 pendentes em segundos. Continua sendo a checagem de maior valor por segundo do ferramental. **E agora confere também o `dateModified` publicado × repositório nas 21 páginas** — em 21/09 ela deu ALL PASS com a página do dia ainda no build anterior. Rodar de novo ao FIM, depois do push: push feito não é conteúdo no ar.
 2. **O GSC exige `/usr/bin/python3`** (3.9.6) — é o único interpretador da máquina com `googleapiclient`. O `python3` do Homebrew roda todo o resto. Git e ambos exigem `DEVELOPER_DIR=/Library/Developer/CommandLineTools`. Resolver de vez: `sudo xcodebuild -license`, pela cliente/operador.
 3. **Controle negativo só conta com o exit code E a linha de FAIL conferidos — e isso falhou de novo em 21/09** (controle 10: `ValueError` saindo com 1 e parecendo reprovação). A regra de 19/09 era necessária, a de 20/09 não foi suficiente: **quando o controle negativo remove estrutura, conferir também que o script não explodiu.**
 4. **Extração de PDF é parte da cadeia de evidência.** `pdftotext -layout` em documento de duas colunas intercala o rótulo da esquerda na citação da direita e reprova trecho literalmente correto. Em tabela, usar modo bruto.
@@ -2197,9 +2261,9 @@ Trocada a posição fixa pela relação (`i < último`), com o porquê no arquiv
 - Suíte completa (**16 verificadores**) e `seo-report valid` (21 páginas) em **ALL PASS**. `ALL PASS` passou durante os dois defeitos do verificador novo — **14ª confirmação de que não prova conteúdo**.
 - **`seo-report deploy` rodado de novo ao FIM, depois do push, e a checagem da SEO-062 rendeu no primeiro dia de vida:** acusou `/impugnacao-laudo-pericial/` **publicado em 2026-09-09 com o repositório em 2026-09-22** — build do Pages em curso. Só depois de a URL servir `id="recusa"` e 70.012 bytes ao vivo (contra 53.538 do build anterior) a execução foi dada por concluída, com `deploy` e `valid` em ALL PASS.
 
-### SEO-064 — Varredura de proxy posicional nos 16 verificadores *(descoberta em 2026-09-22, não executada)*
+### SEO-064 — Varredura de proxy posicional nos 16 verificadores *(descoberta em 2026-09-22 — **executada em 2026-09-23**, ver abaixo)*
 - **Descrição:** Dois verificadores já reprovaram por exigir **posição fixa** de uma entrada no `mainEntity` (penúltima), quando o invariante real é relacional (a de intake é a última). `verify-andamento-tela.py` em 21/09, `verify-nulidade.py` em 22/09. **É um padrão, não dois incidentes** — e cada execução que acrescenta FAQ dispara o próximo.
-- **URL:** `tools/verify-*.py` · **Categoria:** Prioridade 6 (ferramental) · **Impacto:** 4 · **Esforço:** 2 · **Confiança:** 9 · **Valor de negócio:** 4 · **Priority Score:** 72 · **Status:** open
+- **URL:** `tools/verify-*.py` · **Categoria:** Prioridade 6 (ferramental) · **Impacto:** 4 · **Esforço:** 2 · **Confiança:** 9 · **Valor de negócio:** 4 · **Priority Score:** 72 · **Status:** done
 - **O que fazer:** `grep` por `len(ents) - 2`, `-2]`, `penúltim` e equivalentes nos 16 verificadores; trocar cada ocorrência por `i < len(ents) - 1` **mantendo** a checagem de que a última é a de intake; um controle negativo por arquivo tocado.
 - **Por que não hoje:** o mandato é uma mudança por execução, e a de hoje já tocou `verify-nulidade.py` por necessidade. Varrer os outros catorze é trabalho de ferramental sem urgência — mas com data marcada pelo próprio padrão: **antes da próxima execução que acrescente FAQ**.
 

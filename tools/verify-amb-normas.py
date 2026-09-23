@@ -18,6 +18,9 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools", "build"))
 from ambiental_normas import ROWS, ENTRY_ID, ENTRY_TITLE, ENTRY_PARAS, FAQ_Q, FAQ_A, NOTA
+from faq_intake import question as intake_question
+
+SLUG = "normas-tecnicas-pericia"
 
 PAGE = os.path.join(ROOT, "normas-tecnicas-pericia", "index.html")
 AMB = os.path.join(ROOT, "auto-infracao-ambiental", "index.html")
@@ -84,8 +87,21 @@ else:
     if FAQ_Q not in names:
         bad("pergunta nova ausente do FAQPage")
     else:
-        if names.index(FAQ_Q) != len(names) - 2:
-            bad("a pergunta nova não é a penúltima — a de intake tem de ser a última")
+        # Era "tem de ser a penúltima". Posição fixa é PROXY: vale enquanto esta
+        # for a entrada mais recente e deixa de valer na primeira execução que
+        # acrescentar outra FAQ depois dela — foi o que reprovou
+        # verify-andamento-tela.py em 21/09/2026 e verify-nulidade.py em
+        # 22/09/2026, contra páginas corretas. O invariante durável é
+        # relacional: a de intake é a última, e esta vem antes dela. A checagem
+        # da de intake, logo abaixo, é a que sempre importou — e o docstring
+        # deste arquivo já a descrevia, embora o código nunca a tivesse feito.
+        if names.index(FAQ_Q) >= len(names) - 1:
+            bad(f"pergunta nova não está antes da de intake "
+                f"(índice {names.index(FAQ_Q)} de {len(names)})")
+        # Invariante lido da FONTE (faq_intake), nunca adivinhado por
+        # palavra-chave — regra da SEO-063.
+        if names[-1] != html.unescape(re.sub(r"<[^>]+>", "", intake_question(SLUG))):
+            bad(f"última entrada não é a de intake da SEO-046: {names[-1]!r}")
         got = entries[names.index(FAQ_Q)]["acceptedAnswer"]["text"]
         if got != html.unescape(re.sub(r"<[^>]+>", "", FAQ_A)):
             bad("texto da resposta no JSON-LD != fonte")

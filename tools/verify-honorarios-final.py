@@ -10,7 +10,8 @@ Roda:  /usr/bin/python3 tools/verify-honorarios-final.py
      renderização, não só no dado (regra da SEO-050).
   4. As transcrições literais do CPC e da CLT na seção.
   5. FAQ nova: visível idêntica à fonte; a mesma resposta no JSON-LD sem tag nem
-     entidade; posição penúltima; a última é a de intake da SEO-046
+     entidade; posicionada ANTES da de intake (relacional, não posição fixa —
+     ver SEO-064); a última é a de intake da SEO-046
      (conferida chamando `faq_intake.question`, não por heurística); paridade.
   6. A correção da resposta de reembolso: texto novo no visível e no JSON-LD,
      texto antigo em lugar nenhum (página e `llms.txt`), célula da tabela corrigida.
@@ -101,7 +102,13 @@ if faq:
     check(plain(QUESTION) in names, "pergunta ausente do JSON-LD")
     if plain(QUESTION) in names:
         i = names.index(plain(QUESTION))
-        check(i == len(ents) - 2, f"entrada nova em posição {i + 1}/{len(ents)} — esperava penúltima")
+        # Era "i == len(ents) - 2". Posição fixa é PROXY do invariante real e
+        # envelhece na primeira execução que acrescentar FAQ depois desta —
+        # verify-andamento-tela.py (21/09/2026) e verify-nulidade.py
+        # (22/09/2026) reprovaram páginas corretas por isso. Fica o relacional;
+        # a checagem de que a última é a de intake, abaixo, é a que importa.
+        check(i < len(ents) - 1,
+              f"entrada nova não está antes da de intake (índice {i} de {len(ents)})")
         check(by[plain(QUESTION)] == plain(ANSWER), "resposta do JSON-LD difere da visível")
     check(by.get(REEMBOLSO_Q) == REEMBOLSO_NEW, "reembolso no JSON-LD difere do visível")
     check(names[-1] == plain(intake_question(SLUG)),
