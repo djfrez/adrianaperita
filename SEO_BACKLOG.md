@@ -2344,3 +2344,51 @@ Consulta-alvo: quem pergunta se precisa declarar, quando vence e quanto custa er
 12. **Manutenção com data marcada:** E32 vence por volta de **28/01/2027**, prorrogável uma vez — revisar em janeiro. Acompanhar o **B16** (deliberação do CNPE ainda em 2026), a norma final da ANVISA que sucederá a RDC 275/2002, a **CP 1.400/2026** de rotulagem (contribuições até 19/10/2026) e, novo hoje, os **limiares da CPAQ**: se a CGBS publicar formulário com camada de texto, os números podem entrar na página com fonte.
 13. **404s com impressão residual:** `/assistencia-tecnica/` (2) · `/aline-rezende/` (1) · `/im-pugnacao-laudo-pericial-as-tres-vias-e-qual-usar` (1) · `/post/elaboracao-de-quesitos/` (1). Volume desprezível, nenhuma ação. Curiosidade sem valor: `ballet adriana rezende` e `medica` seguem trazendo impressão — homonímia, SEO-010.
 14. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. Maior ganho de conversão restante; não é decisão de SEO. **Google Ads segue sem entrega — trigésima segunda execução como nota de rodapé.**
+
+## Execução de 2026-09-25 — o lote que dois laboratórios leram diferente
+
+`seo-report deploy valid` rodou primeiro: **ALL PASS, 0 commits pendentes** — a SEO-065 está no ar. A seção `[gsc]` do `seo-report` **travou** (≈20 min, 0,3 s de CPU: socket sem timeout); foi morta e a leitura feita por script com `socket.setdefaulttimeout(30)`. Mesmo assim, duas das quatro chamadas à API expiraram — a rede da API do Google esteve instável na execução inteira.
+
+### SEO-066 — Lote recusado: quando o certificado do fornecedor e o laboratório do cliente discordam *(executada em 2026-09-25)*
+- **URL:** `/pericia-industria-quimica/#lote-recusado` · **Categoria:** Prioridade 2 + 4 (página em posição 10,7 · faixa 5–20; subtema inteiro ausente do site)
+- **Impacto:** 7 · **Esforço:** 4 · **Confiança:** 7 · **Valor de negócio:** 9 · **Priority Score:** 110 · **Status:** done · **Descoberto/Concluído:** 2026-09-25
+
+#### Por que esta página
+Todas as páginas com consulta nominal relevante estão sob janela (ver handoff de 24/09, item 6). Livres hoje: `/pericia-combustiveis/` (74 · 4,8 · 3 cliques — a melhor do site, e não se mexe no que funciona sem motivo), **`/pericia-industria-quimica/` (22 · 10,7 · 1 clique)**, `/` (14 · 7,9), `/sobre/` (4 · 3,8), `/rotulagem-alimentos/` (3 · 5,0). As consultas das páginas livres vêm **anonimizadas** pelo GSC (0 linhas por página), então a escolha foi por posição e por valor de negócio: a industrial é a única livre na faixa 5–20 e o seu público é B2B com litígio de valor alto.
+
+**SEO-059 reconsiderada e não executada:** a hipótese era levar link contextual às três páginas fora do índice. Medido hoje: **as três já recebem link da home** e de 5–7 páginas cada. Link não é o gargalo; mais link não muda a fila de rastreamento. Continua aberta como medição, não como ação.
+
+#### O que a medição corrigiu antes de escrever
+Contagem de termos nas 21 páginas: `repetibilidade` 0 · `reprodutibilidade` 0 · `5725` 0 · `art. 445` 0 · `decadência` 1 (fora do tema) · `Código Civil` só em `/prazo-validade-alimentos/`. A página já nomeava a família "desvio de lote" e o "certificado de análise" 7 vezes, mas **não respondia à disputa que essa família gera**: CoA do fornecedor "conforme" × laboratório do comprador "fora". Candidatos descartados por medição: diesel/biodiesel/borra (já cobertos em `/dano-motor-combustivel/`) e regra de decisão (já é a SEO-062 em `/laudo-pericial/#laboratorio` — linkada, não duplicada).
+
+#### Verificação factual
+- **Código Civil**, texto compilado baixado do Planalto: arts. 441, 442, 443, 445 (caput e § 1º) e 446, **uma ocorrência cada** — sem redação alterada a desempatar. Literal: 30 dias da entrega efetiva (móvel); até 180 dias da ciência quando o vício só pode ser conhecido mais tarde; na vigência de garantia, denúncia em 30 dias do descobrimento sob pena de decadência.
+- **ISO 5725**: r = 2,8·σr, R = 2,8·σR (1,96·√2); ISO 5725-6 — com um resultado por laboratório, a diferença absoluta é comparada com R e, se não o excede, os resultados concordam e a média pode ser o resultado final. **A norma é paga e o texto integral não foi lido** — conferido no resumo publicado.
+- **O que NÃO se afirmou, por decisão:** (1) o procedimento da ISO 5725-6 quando a diferença excede R — não lido na fonte; a página recomenda laboratório árbitro no contrato, como recomendação e não citação; (2) nenhum valor de r ou R — são do método, e o verificador reprova se um aparecer; (3) nenhuma tese jurisprudencial sobre CDC × Código Civil entre empresas — "costuma" é deliberado, e a qualificação jurídica é explicitamente deixada ao advogado.
+
+#### O que foi implementado
+- Seção `#lote-recusado` (entre "Os documentos que decidem o caso" e a FDS): r e R explicados para advogado; **tabela de leitura da divergência em 4 situações** (≤ R e conforme · ≤ R com um resultado de cada lado do limite · > R · métodos diferentes) com a consequência para a disputa; **os quatro pontos do contrato** (método nomeado com versão, ponto de amostragem, amostra retida, laboratório árbitro); **o relógio do Código Civil**; caixa **"Onde a perícia entra no prazo"** — a perícia fornece a *data* (laudo de recebimento) e a *detectabilidade* (o parâmetro seria medido no recebimento usual?), que são os dois fatos de que o § 1º do art. 445 depende.
+- **Duas FAQs** (8 → 10 com a de intake por último), visível e JSON-LD da mesma fonte.
+- **Links contextuais:** `/laudo-pericial/#laboratorio`, `/quesitos-periciais/` e **`/producao-antecipada-prova/`** (amostra retida perto do fim da guarda — encaixe temático real para uma das três páginas fora do índice).
+- `dateModified`/`<time>` 2026-09-25, `sitemap.xml` e `llms.txt`. **Title e description intocados** (SEO-057/058 em medição).
+
+#### Ferramental e controles
+- `tools/build/lote.py` (conteúdo + proveniência) e `tools/build/lote_build.py` — **a maquinaria de JSON-LD agora é importada de `cpaq_build.py`, não copiada** (primeira vez; as seis anteriores copiavam). Idempotente: segunda execução "sem mudança".
+- `tools/verify-lote.py` (19º da suíte): **54 checagens**, Código Civil rebaixado a cada execução, guarda de ocorrência única por artigo, guarda contra valor de r/R, intake lida dos marcadores `faqintake`.
+- **Nove controles negativos, todos alterando o arquivo, exit 1, linha de FAIL certa, sem traceback:** prazo adulterado (30→90) · resposta divergente só no JSON-LD · valor de R inventado · link removido · linha da tabela removida · sitemap dessincronizado · FAQ intrusa depois da de intake · âncora removida · pergunta visível duplicada.
+- **O controle 1 justificou uma guarda que eu quase não escrevi:** a checagem de presença (`"trinta dias da entrega efetiva" in vis`) **passaria** com a seção adulterada, porque a mesma frase segue intacta na FAQ. Quem reprovou foi a guarda negativa (`noventa|sessenta|quinze dias da entrega`). Terceira confirmação de "presença não é guarda".
+- Suíte: **18 de 19 verificadores em OK** e `seo-report valid` ALL PASS. **`verify-surto.py` não concluiu** — travou baixando o PDF do Ministério da Saúde (gov.br), sem timeout efetivo; foi encerrado. Ele confere `/pericia-contaminacao-alimentos/`, que esta execução não tocou, então não é regressão — mas é o mesmo defeito do item 2 do handoff (rede sem timeout) e entra na mesma correção de ferramental.
+- O verificador passou 54/54 na primeira execução — e por isso os controles vieram antes de qualquer conclusão.
+
+#### Impacto esperado e como ler
+Linha de base para ~09/10: **22 impressões · posição 10,7 · 1 clique**. Não tocar a página até lá. Sinal mais informativo: aparecer consulta com "certificado de análise", "lote", "fora de especificação", "reprodutibilidade" ou "vício oculto" — hoje inexistentes no site.
+
+### Próxima execução — o que checar primeiro
+1. **`seo-report deploy` antes e depois do push** (terceira execução seguida em que o build do Pages pode estar em curso ao final).
+2. **`[gsc]` do `seo-report` não tem timeout de socket e travou hoje.** Correção de uma linha (`socket.setdefaulttimeout(60)` em `section_gsc`) — fazer na próxima execução de ferramental; até lá, rodar por script no scratchpad com timeout.
+3. **~28/09 liberam `/quesitos-periciais/` (SEO-048) e `/prazo-validade-alimentos/` (SEO-055); ~29/09 `/assistente-tecnica/` (SEO-056).** Ler as janelas antes de mexer. O cluster definicional de quesitos (~26 impressões em pos 22–61 para "o que é quesito") segue sendo a maior oportunidade de cauda — **uma** execução, depois de ler a SEO-048.
+4. **~26/09 libera `/pericia-ambiental/` (31 · 7,1 · 0 cliques); ~27/09 `/classificacao-fiscal-ncm/` (28 · 6,5 · 0).** Ambas são candidatas ao tratamento de title **se** SEO-057/058 (30/09–02/10) mostrarem que o title é a alavanca. Não antecipar.
+5. **SEO-059:** as três seguem fora do índice; link já não é hipótese (medido hoje: home + 5–7 páginas cada). Se continuarem fora em ~09/10, a próxima hipótese é qualidade agregada — não técnica.
+6. **Janelas em medição:** as do handoff de 24/09 + **SEO-066 (`/pericia-industria-quimica/`, base 22 · 10,7 · 1 clique, ~09/10).**
+7. Regras que seguem valendo: medir cobertura antes de escrever · `ALL PASS` não prova conteúdo · visível e JSON-LD da mesma fonte · invariante lido da fonte · presença não é guarda; **guarda negativa** para o número que se afirma · não publicar número não conferido · norma paga lida só no resumo: afirmar apenas o que o resumo sustenta, e dizê-lo no docstring.
+8. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. SEO-009 (Google Business) segue bloqueado por verificação de identidade. Google Ads sem entrega.
