@@ -532,6 +532,8 @@ def section_gsc(days=28):
     from googleapiclient.discovery import build
 
     import datetime
+    import socket
+    socket.setdefaulttimeout(60)  # ponytail: sem isto a chamada trava para sempre em rede instável (25/09)
     sc = build("searchconsole", "v1", credentials=creds, cache_discovery=False)
     site = gsc_property(sc)
     if not site:

@@ -143,29 +143,29 @@ def apply_section(doc):
     return doc.replace(ANCHOR, SECTION + ANCHOR, 1)
 
 
-def apply_visible_faq(doc):
-    doc = strip_marks(doc, FAQ_A, FAQ_B, eat_indent=True)
+def apply_visible_faq(doc, faqs=FAQS, fa=FAQ_A, fb=FAQ_B, slug=SLUG):
+    doc = strip_marks(doc, fa, fb, eat_indent=True)
     i = doc.find(INTAKE_A)
     if i == -1:
-        raise SystemExit(f"{SLUG}: bloco de intake da SEO-046 não encontrado")
+        raise SystemExit(f"{slug}: bloco de intake da SEO-046 não encontrado")
     bol = doc.rfind("\n", 0, i) + 1
     ind = doc[bol:i]
     inner = "".join(
         f"{ind}  <div>\n{ind}    <h3>{q}</h3>\n{ind}    <p>{a}</p>\n{ind}  </div>\n"
-        for q, a in FAQS)
-    return doc[:i] + f"{FAQ_A}\n{inner}{ind}{FAQ_B}\n{ind}" + doc[i:]
+        for q, a in faqs)
+    return doc[:i] + f"{fa}\n{inner}{ind}{fb}\n{ind}" + doc[i:]
 
 
-def apply_json_faq(doc):
+def apply_json_faq(doc, faqs=FAQS, slug=SLUG):
     i = doc.find('"@type": "FAQPage"')
     if i == -1:
-        raise SystemExit(f"{SLUG}: FAQPage não encontrado")
+        raise SystemExit(f"{slug}: FAQPage não encontrado")
     end_script = doc.find("</script>", i)
     block = doc[i:end_script]
     open_at, close_at = span_of_array(block, block.index('"mainEntity"'))
     arr = block[open_at + 1:close_at]
 
-    for q, _ in FAQS:  # remove reaplicações anteriores
+    for q, _ in faqs:  # remove reaplicações anteriores
         name = json.dumps(_plain(q), ensure_ascii=False)
         for a, b in object_spans(arr):
             if f'"name": {name}' in arr[a:b]:
@@ -181,7 +181,7 @@ def apply_json_faq(doc):
     last = spans[-1][0]
     indent = arr[arr.rfind("\n", 0, last) + 1:last]
     entries = ""
-    for q, a in FAQS:
+    for q, a in faqs:
         entries += (f"{indent}{{\n"
                     f"{indent}  \"@type\": \"Question\",\n"
                     f"{indent}  \"name\": {json.dumps(_plain(q), ensure_ascii=False)},\n"
