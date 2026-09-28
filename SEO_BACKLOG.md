@@ -2492,3 +2492,58 @@ Sem linha de base — a página entrou no índice hoje. Janela até **~11/10**. 
 8. Regras que seguem valendo: medir cobertura antes de escrever · ler a página inteira antes de acrescentar · `ALL PASS` não prova conteúdo · visível e JSON-LD da mesma fonte · guarda negativa para o número afirmado · testar a guarda contra a página certa antes dos controles · não publicar número não conferido (hoje: salário mínimo) · **FONAJE: ler pelo CNJ, o site da AMB bloqueia** (novo) · DOU: UA de navegador completo.
 9. **Manutenção com data:** E32 (~28/01/2027), B16/CNPE, sucessora da RDC 275/2002, CP 1.400/2026 (até 19/10/2026), limiares da CPAQ. Os enunciados do FONAJE são revistos a cada encontro — `verify-juizado.py` acusa se o 12 ou o 54 mudarem de redação.
 10. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. SEO-009 bloqueado por verificação de identidade. Google Ads sem entrega.
+
+## Execução de 2026-09-28 — a pergunta que a página pressupunha e não respondia
+
+`seo-report deploy valid` rodou primeiro: **ALL PASS, 0 commits pendentes** — a SEO-068 está no ar. **Achado de ambiente:** a seção `[gsc]` quebrou com `ModuleNotFoundError: googleapiclient` — o `python3` do Homebrew (`/opt/homebrew/bin`, primeiro no PATH) perdeu a biblioteca; o `/usr/bin/python3` do sistema a tem. `[gsc]` rodado com `/usr/bin/python3` concluiu. Indexação: seguem fora `/auto-infracao-ambiental/` e `/producao-antecipada-prova/` ("Detectada, mas não indexada").
+
+### Leitura da SEO-048 — veredito pela regra escrita em 07/09
+- `emitir despacho - sem quesitos` → `/quesitos-periciais/`: **pos 8,9 (07/09) → 6,1 (28 d findos hoje) · 9 impressões · 0 clique.** Subiu 2,8 posições, **não chegou ao top 5**. `anexo juntado: apresentação de esclarecimentos ao laudo pericial` não aparece entre as consultas com impressão. As outras cinco consultas de andamento do handoff de 03/09 **não apareceram**.
+- **A regra pré-registrada era "top 5 → replicar nos clusters administrativos; nada até ~28/09 → a hipótese de andamento cai por inteiro, incluindo a SEO-044". Aplicada sem suavizar: a hipótese cai.** Consequência prática: **não** se replica a decodificação de andamento em autuação fiscal, ambiental ou sanitária. O conteúdo das SEO-044/048 fica (é correto e útil para quem chega), mas deixa de ser linha de investimento. A melhora de 2,8 posições é compatível com a página inteira ganhando força, não com a forma "vocabulário de tela".
+
+### SEO-069 — "O que é quesito — e o que significa quesitação" em `/quesitos-periciais/` *(executada em 2026-09-28)*
+- **URL:** `/quesitos-periciais/#o-que-e-quesito` · **Categoria:** Prioridade 2 (página em pos 11,3 com 704 impressões, faixa 5–20) + Prioridade 4 (conceito-base ausente) + AI citation (definição citável)
+- **Impacto:** 8 · **Esforço:** 3 · **Confiança:** 7 · **Valor de negócio:** 8 · **Priority Score:** 149 · **Status:** done · **Descoberto/Concluído:** 2026-09-28
+
+#### Por que esta página, hoje
+A SEO-048 liberou a página hoje, e o handoff de 27/09 a apontava como candidata natural. É a segunda página do site em impressões (**704 · pos 11,3 · 2 cliques · CTR 0,3%** em 28 d), e o maior bloco de consultas sem resposta do site é definicional e cai nela: `quesitos` 10 · 37,1; `o que é quesito` 6 · 25,0; `o que significa quesito` 5 · 47,0; `quesitos para perícia` 5 · 42,4; `quesitos pericia` 5 · 39,2; `o que é quesitos` 4 · 32,5; `apresentação de quesitos` 4 · 45,8. A página, contudo, **começava pressupondo o conceito**: o standfirst diz o que o quesito *faz*, nunca o que *é*. Contagem antes de escrever: `o que é quesito` **0** · `quesitação` **0** · `Júri` **0** · `482` **0** · `art. 361` **0** no site inteiro. `/assistente-tecnica/` (libera amanhã) e `/pericia-ambiental/` e `/classificacao-fiscal-ncm/` (reservadas para SEO-057/058) não foram tocadas.
+
+#### A hipótese de intenção que decidiu a forma
+"O que significa quesito" em pos 47 é, em boa parte, **gente vinda do Tribunal do Júri** — onde "quesito" é a pergunta aos jurados, não ao perito. Uma definição que ignorasse isso responderia só metade das buscas e deixaria a outra metade concluir que o site não é sobre o assunto. Daí o quadro de desambiguação, com o Júri como quarta figura, e uma FAQ própria para ele. Não é conteúdo para ranquear em Júri — é para que quem chega pelo termo ambíguo saia sabendo em qual dos dois sentidos está.
+
+#### Verificação factual — tudo baixado nesta execução
+- **CPC/2015**, Planalto (trechos tachados removidos): art. 465, § 1º, III · art. 469 · art. 470, I e II · art. 473, IV · art. 477, § 3º ("sob forma de quesitos") · art. 361, I ("quesitos de esclarecimentos"). Uma ocorrência cada.
+- **CPP**, Planalto (**Windows-1252**, não ISO-8859-1 — o travessão dos incisos é o byte 0x96; achado de ferramental): art. 159, § 3º · art. 160 · art. 176 · art. 482 e parágrafo único · art. 483, I–III.
+- **`quesitação`: 0 ocorrência no CPC e no CPP.** Por isso a página a trata como uso forense, e **afirma** que a palavra não está nas leis — o verificador reprova se ela passar a ocorrer.
+- **O que NÃO se afirmou, por decisão** (docstring de `tools/build/quesito_def.py`): nenhuma etimologia (não se conferiu dicionário — há guarda negativa); nada sobre Justiça do Trabalho (CLT não conferida); do art. 483 do CPP só a ordem dos incisos I–III.
+
+#### O que foi implementado
+- Seção `#o-que-e-quesito` **logo depois do box do art. 473, IV, e antes das três janelas** — a definição vem antes de tudo o que a pressupõe. Primeiro parágrafo em forma de definição citável (≈60 palavras: o que é, quem formula, a obrigação de resposta, e o que é quesitação).
+- **Quadro das quatro figuras que usam a palavra** × quem formula e quando × o que a lei exige da resposta: perícia cível · quesito de esclarecimento · perícia criminal · Tribunal do Júri (dirigido aos jurados, não ao perito).
+- Parágrafo de transição ligando a definição ao resto da página (por que a redação decide).
+- **Duas FAQs** (10 → 12, intake segue última), visível e JSON-LD da mesma fonte: "O que é quesito em uma perícia judicial?" e "Quesito do Tribunal do Júri é a mesma coisa que quesito de perícia?".
+- `dateModified`/`<time>` 2026-09-28, `sitemap.xml`, `llms.txt` (bloco `#o-que-e-quesito` na entrada da página). **Title, description e H1 intocados** — o title é guardado pelo verificador enquanto SEO-057/058 estiverem em leitura. Um arquivo de conteúdo — dentro da regra de cadência.
+- **Sem links contextuais novos de saída:** a seção remete ao corpo da própria página; os links úteis (assistente técnica, laudo, CPC) já existem nela.
+
+#### Ferramental e controles
+- `tools/build/quesito_def.py` (conteúdo + proveniência) e `quesito_def_build.py` — reusa `strip_marks` e as funções de FAQ parametrizadas. Idempotente (2ª execução: "sem mudança").
+- `tools/verify-quesito-def.py` (22º da suíte): **52 checagens**, CPC e CPP **rebaixados a cada execução**; guarda de ausência de `quesitação` nas duas leis; guarda de etimologia; guarda de que a linha do Júri nunca diga "ao perito"; guarda de inciso único no art. 473; posição antes das três janelas; title inalterado.
+- **Testado contra a página correta antes dos controles** (regra de 26/09) — e reprovou quatro vezes, todas por erro do verificador, não da página: (1) CPP decodificado como latin-1 perdia o travessão; (2) a guarda do Júri casava a frase legítima "tratar o quesito do Júri como se fosse pergunta ao perito" — virou checagem restrita à linha da tabela; (3) a checagem de ordem achava "As três janelas" no `og:description`, antes do corpo — virou busca pelo `<h2>`; (4) a comparação de ordem das FAQs comparava nome cru do JSON-LD com texto visível normalizado (aspas curvas da FAQ da SEO-048). **Quinta confirmação de que guarda sem teste reprova a coisa certa.**
+- **Dez controles negativos, todos alterando o arquivo, exit 1, linha de FAIL certa, sem traceback:** art. 473, IV → III na definição · resposta divergente só no JSON-LD · Júri dito dirigido ao perito · etimologia inventada · linha da tabela removida · sitemap dessincronizado · title alterado · FAQ intrusa depois da intake · `llms.txt` sem a seção · **(1b) fonte e página adulteradas juntas (III nas duas)**.
+- **O controle 1 justificou uma guarda que não existia:** com o inciso trocado só na definição, reprovou pela divergência de fonte — mas se a *fonte* também fosse adulterada, a checagem de presença de "art. 473, IV" **passaria**, porque a mesma citação segue certa na tabela. Acrescentada a guarda negativa `set(incisos do art. 473 na seção) == {"IV"}`; o controle 1b confirmou que ela reprova o caso autoconsistente. Quarta confirmação de "presença não é guarda".
+- Renderização em 375 px: `scrollWidth` = 375 (sem overflow), quadro com 5 linhas. Suíte **22/22 OK** e `seo-report valid` **ALL PASS**.
+
+#### Impacto esperado e como ler
+Linha de base para **~12/10**: página **704 · 11,3 · 2 cliques**; `o que é quesito` 6 · 25,0; `o que significa quesito` 5 · 47,0; `o que é quesitos` 4 · 32,5; `quesitos` 10 · 37,1. Sinal de sucesso: as consultas definicionais entrarem na 1ª página (≤ 10) — é o formato que o Google usa para snippet de definição. Sinal secundário: aparecer consulta com "quesitação" ou "júri". Não tocar a página até lá. Reverter é `strip_marks` dos marcadores `seo069`.
+
+### Próxima execução — o que checar primeiro
+1. **`seo-report deploy` antes e depois do push. Rodar `[gsc]` com `/usr/bin/python3`** — o `python3` do Homebrew perdeu `googleapiclient`. Correção definitiva de uma linha (shebang ou reinstalar a lib no Homebrew) fica para uma execução de ferramental; não é bloqueio.
+2. **~29/09 libera `/assistente-tecnica/`** (SEO-056) — o cluster de cabeça "assistente técnico" é o maior volume bruto: `assistente técnico judicial` 11 · 39,1; `assistente técnico` 9 · 31,2; `assistente tecnico em pericia` 8 · 26,5; `quem pode ser assistente técnico em perícia` 4 · **63,0**. Ler a SEO-056 antes. É o mesmo padrão de hoje (definicional em pos 25–60) — se a leitura da SEO-056 mostrar que a seção dela não pegou, a forma de hoje (definição citável no topo + desambiguação) é a candidata.
+3. **SEO-057/058 vencem 30/09–02/10** — `/pericia-ambiental/` e `/classificacao-fiscal-ncm/` seguem guardadas.
+4. **SEO-048: hipótese de andamento encerrada hoje** (ver acima). Não replicar nos clusters administrativos.
+5. **SEO-059:** restam `/auto-infracao-ambiental/` e `/producao-antecipada-prova/`. Próxima hipótese em ~09/10: qualidade agregada.
+6. **Janelas em medição:** as dos handoffs de 24–27/09 + **SEO-069 (`/quesitos-periciais/`, base 704 · 11,3 · 2 cliques, ~12/10)**.
+7. **Follow-up que segue aberto:** recusa de garantia de fábrica pela concessionária alegando combustível (depois de ~11/10).
+8. Regras que seguem valendo: medir cobertura antes de escrever · ler a página inteira antes de acrescentar · `ALL PASS` não prova conteúdo · visível e JSON-LD da mesma fonte · guarda negativa para o número afirmado · testar a guarda contra a página certa antes dos controles · **controle com fonte e página adulteradas juntas** (novo — é o único que separa "consistente" de "verdadeiro") · não publicar o que não se conferiu (hoje: etimologia) · **CPP do Planalto é Windows-1252** (novo) · FONAJE pelo CNJ · DOU com UA de navegador completo.
+9. **Manutenção com data:** E32 (~28/01/2027), B16/CNPE, sucessora da RDC 275/2002, CP 1.400/2026 (até 19/10/2026), limiares da CPAQ, enunciados do FONAJE.
+10. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. SEO-009 bloqueado por verificação de identidade. Google Ads sem entrega.
