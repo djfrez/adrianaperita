@@ -121,8 +121,12 @@ for href in LINKS:
     check(f'href="{href}"' in sec, f"link interno para {href}")
 
 # 8 ------------------------------------------------------------------------
-check(f'"dateModified": "{DATA}"' in doc, f"dateModified em {DATA}")
-check(f'Atualizado em <time datetime="{DATA}"' in doc, f"<time> visível em {DATA}")
+# ">=" e não "==": a página segue recebendo conteúdo depois da SEO-056, e um
+# pino de data igual apodrece na execução seguinte (quebrou na SEO-070)
+_dm = re.search(r'"dateModified": "(\d{4}-\d{2}-\d{2})"', doc)
+_tm = re.search(r'Atualizado em <time datetime="(\d{4}-\d{2}-\d{2})"', doc)
+check(_dm and _dm.group(1) >= DATA, f"dateModified em {DATA} ou depois")
+check(_tm and _dm and _tm.group(1) == _dm.group(1), "<time> visível = dateModified")
 
 # 7 ------------------------------------------------------------------------
 print("\n  -- transcrições reconferidas na fonte primária --")

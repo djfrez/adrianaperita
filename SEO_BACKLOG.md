@@ -2547,3 +2547,61 @@ Linha de base para **~12/10**: página **704 · 11,3 · 2 cliques**; `o que é q
 8. Regras que seguem valendo: medir cobertura antes de escrever · ler a página inteira antes de acrescentar · `ALL PASS` não prova conteúdo · visível e JSON-LD da mesma fonte · guarda negativa para o número afirmado · testar a guarda contra a página certa antes dos controles · **controle com fonte e página adulteradas juntas** (novo — é o único que separa "consistente" de "verdadeiro") · não publicar o que não se conferiu (hoje: etimologia) · **CPP do Planalto é Windows-1252** (novo) · FONAJE pelo CNJ · DOU com UA de navegador completo.
 9. **Manutenção com data:** E32 (~28/01/2027), B16/CNPE, sucessora da RDC 275/2002, CP 1.400/2026 (até 19/10/2026), limiares da CPAQ, enunciados do FONAJE.
 10. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. SEO-009 bloqueado por verificação de identidade. Google Ads sem entrega.
+
+---
+
+## Execução de 2026-09-29 — o nome do serviço, que o site nunca escreveu
+
+`seo-report deploy valid` rodou primeiro: **ALL PASS, 0 commits pendentes**, e a SEO-069 está no ar. A seção `[gsc]` rodou com `/usr/bin/python3` (o `python3` do Homebrew continua sem `googleapiclient`). Na indexação continuam fora `/auto-infracao-ambiental/` e `/producao-antecipada-prova/`, ambas em "Detectada, mas não indexada".
+
+### Leitura da SEO-056 (janela vencida hoje): positiva, e forte
+| `/assistente-tecnica/` (28 d) | Impressões | Posição | Cliques | CTR |
+|---|---|---|---|---|
+| Base (15/09) | 330 | 13,5 | 1 | 0,3% |
+| Hoje (29/09) | **1.245** | **10,5** | **7** | 0,6% |
+
+A página tem hoje **41% das impressões do domínio (1.245 de 3.030)** e **7 dos 24 cliques**, e passou a ser a maior fonte de clique do site. A consulta-alvo da SEO-056, `quem pode ser assistente técnico em perícia`, subiu de 61 para **54,2**, com 5 impressões. O ganho de página foi muito maior que o ganho da consulta nomeada, o que é coerente com a regra da cauda decomposta: a página ganhou força no conjunto. Não se atribui todo o ganho à SEO-056, porque a página vinha acumulando seções (SEO-049 e a intake). O dado que dá para afirmar: nada piorou, e o salto aconteceu na janela.
+
+### SEO-070 — "Assistência técnica pericial: o serviço, momento a momento" em `/assistente-tecnica/` *(executada em 2026-09-29)*
+- **URL:** `/assistente-tecnica/#assistencia-tecnica-pericial` · **Categoria:** Prioridade 1 (a maior página do site, CTR 0,6%) + Prioridade 4 (a entidade do serviço não existia no site) + AI citation
+- **Impacto:** 8 · **Esforço:** 3 · **Confiança:** 7 · **Valor de negócio:** 9 · **Priority Score:** 168 · **Status:** done · **Descoberto/Concluído:** 2026-09-29
+
+#### O dado que a escolheu
+A **consulta nomeada nº 1 do domínio** é `assistência técnica pericial` (15 impressões, pos 37,2). Somam-se `assistência técnica judicial` (4 · 33,8), `assistencia técnica judicial` (3 · 37,3) e `assessoramento técnico` (4 · 49,8). Contei antes de escrever: `assistência técnica pericial` e `assistência técnica judicial` tinham **0 ocorrência no site inteiro**. "Assistência Técnica" só aparecia como rótulo (eyebrow e breadcrumb do schema). O site nomeava o *profissional* 100 vezes e nunca o *serviço*, que é o que a pessoa procura para contratar. As consultas definicionais do mesmo cluster (`o que é assistente técnico` 25,5; `assistente técnico` 30,4) já tinham resposta no box "Definição" da página. Faltava o substantivo do serviço.
+
+#### Verificação factual: CPC baixado nesta execução
+- **`assistência técnica`: 0 ocorrência no CPC/2015** (Planalto, trechos tachados removidos). `assessoramento`: 0. Por isso a página **afirma** que o Código nomeia só o profissional, e o verificador reprova se a expressão passar a ocorrer.
+- Dispositivos conferidos um a um: art. 465, § 1º, II e III · art. 466, § 2º · art. 469 · art. 471, § 1º · art. 472 · art. 477, §§ 1º, 2º (II) e 3º · art. 480 · art. 95.
+- **Achado usado:** o art. 477, § 2º, II, obriga o perito a esclarecer, em 15 dias, o "ponto divergente apresentado no parecer do assistente técnico da parte". É a consequência processual concreta do parecer, e a página ainda não a dizia nessa forma.
+- **O que ficou de fora de propósito** (está na docstring de `tools/build/assistencia_servico.py`): qualquer afirmação sobre frequência de uso dos sinônimos; a discussão do reembolso pelo vencido, que `/honorarios-pericia-judicial/` já trata e para onde a página já linka (nenhum link novo para ela, que está sob a janela da SEO-058); o processo penal, já tratado em `#vocabulario`.
+
+#### O que foi implementado
+- A seção fica **logo depois do box "Definição"** (o profissional) e antes da tabela perito × assistente. O primeiro parágrafo é uma definição citável do serviço, com o sinônimo "assistência técnica judicial" e a nota de que a expressão não é legal.
+- **Quadro de quatro momentos**, com o que o serviço faz em cada um e a base no CPC: antes da perícia (arts. 472 e 471, § 1º) · na nomeação (art. 465, § 1º, II e III) · nas diligências (arts. 466, § 2º, e 469) · depois do laudo (arts. 477, §§ 1º a 3º, e 480).
+- Parágrafo de fecho: quando o serviço começa decide quanto dele ainda é possível, com links para as âncoras da própria página (`#parecer-antes-da-pericia`, `#impugnacao-laudos`) e a regra do art. 95.
+- **Uma FAQ nova**, "O que é assistência técnica pericial?", com texto visível e JSON-LD saídos da mesma fonte, antes da FAQ de intake, que continua sendo a última.
+- `dateModified`/`<time>` e `lastmod` do `sitemap.xml` em 2026-09-29; a entrada do `llms.txt` cita a seção. **Title, description e H1 não foram tocados**, e o verificador guarda o title enquanto a SEO-057/058 estiver em leitura. Foi alterado um arquivo de conteúdo, dentro da regra de cadência.
+
+#### Ferramental e controles
+- `tools/build/assistencia_servico.py` (conteúdo + proveniência) e `assistencia_servico_build.py` (derivado do da SEO-069, marcadores `seo070:*`). É idempotente: a 2ª execução responde "sem mudança".
+- `tools/verify-assistencia-servico.py` (23º da suíte, **39 checagens**): baixa o CPC a cada execução, com guarda de ausência de "assistência técnica" no Código, guarda de que a página afirma **exatamente** essa ausência, prazos da seção restritos a 15 e 5 dias, art. 95 nunca invertido, **citação completa** de cada linha do quadro (artigo + parágrafo + inciso, não só o número), posição entre o box e a tabela, paridade e ordem das FAQs, datas, sitemap, `llms.txt` e title inalterado.
+- **Dez controles negativos, todos alterando o arquivo, cada um com exit 1 e a linha de FAIL certa:** prazo 15 → 10 · resposta divergente só no JSON-LD · art. 95 invertido · linha do quadro removida · sitemap dessincronizado · title alterado · `llms.txt` sem a seção · **fonte e página adulteradas juntas (§ 2º → § 3º)** · FAQ intrusa depois da intake · afirmação sobre o CPC reescrita na fonte.
+- **Dois defeitos de verificador apareceram, e os dois foram corrigidos:**
+  1. A guarda por número de artigo (`{465, 466, …}`) **deixaria passar** um § trocado com fonte e página adulteradas juntas. Passou a comparar a citação inteira. É a quinta confirmação de que presença de número não é guarda.
+  2. O controle 10 passou na primeira tentativa, e **não por mérito do verificador**: o `perl` não casou porque a frase quebra linha na fonte, então o arquivo não mudou. É a regra "controle que não altera o arquivo não é controle", pega em flagrante. Refeito com substituição em Python e `assert count == 1`, ele expôs um buraco real: a guarda do CPC protegia uma afirmação que a página podia deixar de fazer. Acrescentei a guarda de que a página afirma exatamente o que a fonte sustenta, e o controle passou a reprovar.
+- **Invariante que apodreceu, igual à "penúltima" de 15/09:** o `verify-elegibilidade.py` (SEO-056) exigia `dateModified == 2026-09-15` e reprovou quando a página recebeu conteúdo novo. Corrigido para `>= 2026-09-15`, com o `<time>` visível igual ao `dateModified`. Outros três verificadores têm pino de data igual. Em `verify-cpc-snippet.py` e `verify-honorarios-snippet.py` o pino é **deliberado**, porque garante que a página não recebeu conteúdo durante o teste de snippet, e sai quando a janela fechar. Em `verify-recusa.py` o pino vai apodrecer na próxima edição da página. Fica registrado, e não mexi.
+- Renderização em 375 px (navegador do app): `scrollWidth` da página = 375, sem overflow. O quadro rola dentro do `.table-scroll` (544 > 311), igual às tabelas existentes, com 4 linhas. Suíte **23/23 OK**, `seo-report valid` **ALL PASS**.
+
+#### Impacto esperado e como ler
+Linha de base para **~13/10**: página **1.245 · 10,5 · 7 cliques** e `assistência técnica pericial` **15 · 37,2**, `assistência técnica judicial` 4 · 33,8, `assessoramento técnico` 4 · 49,8. O sinal de sucesso é o grupo "assistência técnica" chegar a pos ≤ 20 sem a página perder cliques. O sinal secundário é aparecer consulta nova com "assistência técnica" + matéria. Se a página cair em cliques, a primeira hipótese é diluição do topo (a seção empurra a tabela perito × assistente 1 tela para baixo), e a reversão é `strip_marks` dos marcadores `seo070`.
+
+### Próxima execução — o que checar primeiro
+1. **`seo-report deploy` antes e depois do push; `[gsc]` com `/usr/bin/python3`.**
+2. **SEO-057/058 vencem 30/09–02/10.** São a leitura mais importante da semana: dizem se o title/description é a alavanca de CTR. Se for, `/assistente-tecnica/` (1.245 impr · CTR 0,6%) é **a maior oportunidade de CTR do site**. O title atual não traz "assistência técnica" e o candidato natural o incluiria. Só depois de 13/10, para não contaminar a SEO-070.
+3. **`/assistente-tecnica/` fica guardada até ~13/10.** `/quesitos-periciais/` segue guardada até ~12/10 (SEO-069).
+4. **SEO-059:** restam as duas URLs fora do índice. Próxima hipótese em ~09/10: qualidade agregada.
+5. **Follow-up aberto:** recusa de garantia pela concessionária alegando combustível (depois de ~11/10).
+6. **Ferramental:** `verify-recusa.py` tem pino `dateModified == DATA`. Corrigir para `>=` na execução que tocar a página dele, e **não antes**. Continua valendo a correção de uma linha do Homebrew `python3` (`googleapiclient`).
+7. Regras que continuam valendo: medir cobertura antes de escrever (hoje foram 0 ocorrências do nome do serviço) · a escolha sai da cauda decomposta e das consultas nomeadas de maior volume, não da posição média · visível e JSON-LD da mesma fonte · guarda negativa para o número afirmado · **guarda pela citação inteira, não pelo número do artigo** (novo) · **a guarda da fonte só vale se a página afirmar exatamente o que ela guarda** (novo) · **controle negativo com `assert count == 1` antes de rodar, porque texto que quebra linha engana o `perl`** (novo) · **invariante de data com `>=`, nunca `==`, salvo pino deliberado de janela** (novo) · testar a guarda contra a página certa antes dos controles.
+8. **Manutenção com data:** E32 (~28/01/2027), B16/CNPE, sucessora da RDC 275/2002, CP 1.400/2026 (até 19/10/2026), limiares da CPAQ, enunciados do FONAJE.
+9. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. SEO-009 continua bloqueado por verificação de identidade. Google Ads continua sem entrega.
