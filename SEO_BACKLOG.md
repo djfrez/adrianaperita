@@ -2605,3 +2605,56 @@ Linha de base para **~13/10**: página **1.245 · 10,5 · 7 cliques** e `assist�
 7. Regras que continuam valendo: medir cobertura antes de escrever (hoje foram 0 ocorrências do nome do serviço) · a escolha sai da cauda decomposta e das consultas nomeadas de maior volume, não da posição média · visível e JSON-LD da mesma fonte · guarda negativa para o número afirmado · **guarda pela citação inteira, não pelo número do artigo** (novo) · **a guarda da fonte só vale se a página afirmar exatamente o que ela guarda** (novo) · **controle negativo com `assert count == 1` antes de rodar, porque texto que quebra linha engana o `perl`** (novo) · **invariante de data com `>=`, nunca `==`, salvo pino deliberado de janela** (novo) · testar a guarda contra a página certa antes dos controles.
 8. **Manutenção com data:** E32 (~28/01/2027), B16/CNPE, sucessora da RDC 275/2002, CP 1.400/2026 (até 19/10/2026), limiares da CPAQ, enunciados do FONAJE.
 9. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno declarado e/ou triagem preliminar sem custo. SEO-009 continua bloqueado por verificação de identidade. Google Ads continua sem entrega.
+
+---
+
+## Execução de 2026-09-30 — o caminho judicial que a microbiologia ainda não nomeava
+
+`seo-report deploy valid` rodou primeiro: **ALL PASS, 0 commits pendentes**, IndexNow key live (SEO do dia 29/09). A seção `[gsc]` **não rodou**: neste ambiente não há service account em `~/.config/claude-seo/` nem `~/.config/adrianarezende/` e as libs Google não estão no interpretador — **Bloqueio: sem acesso GSC/GA4 neste ambiente**. Priorização por intent e histórico do backlog. Bing Webmaster Tools segue sem verificação pública (Daniel: Import from GSC). Hoje é **quarta**, não sexta — dia de ship on-site, não de citation-test.
+
+### Estado da medição — 2026-09-30
+- **GSC/GA4:** indisponíveis neste box. Sem totais novos de 28d/90d.
+- **Indexação (histórico):** `/dano-motor-combustivel/` entrou no índice em 27/09 (SEO-068); restam `/auto-infracao-ambiental/` e `/producao-antecipada-prova/` fora (SEO-059).
+- **SEO-057:** janela de leitura do title+description em `/cpc-prova-pericial/` vence hoje (~30/09) — **não lida** por falta de GSC. Não tocar a página; o pino deliberado de `verify-cpc-snippet.py` permanece.
+- **Janelas em medição (não tocar):** SEO-058 `/honorarios-pericia-judicial/` ~02/10 · SEO-060 `/pericia-contaminacao-alimentos/` ~03/10 · SEO-061 `/normas-tecnicas-pericia/` ~04/10 · SEO-062 `/laudo-pericial/` ~05/10 · SEO-063 `/impugnacao-laudo-pericial/` ~06/10 · SEO-065 `/produtos-quimicos-controlados/` ~08/10 · SEO-066 `/pericia-industria-quimica/` ~09/10 · SEO-067 `/pericia-combustiveis/` ~10/10 · SEO-068 `/dano-motor-combustivel/` ~11/10 · SEO-069 `/quesitos-periciais/` ~12/10 · SEO-070 `/assistente-tecnica/` ~13/10.
+
+### Por que esta tarefa
+As páginas de maior impressão estão embargadas. Livres, com histórico de posição fraca ou lacuna verificável: `/analise-microbiologica-alimentos/` (última medição ~22–23/09: **~26–27 impr · pos 15,5–17,5** — 2ª página, precisa de conteúdo, não de snippet), `/pericia-ambiental/`, `/classificacao-fiscal-ncm/`, `/prazo-validade-alimentos/`, `/rotulagem-alimentos/`. Contagem **antes** de escrever: em `/analise-microbiologica-alimentos/`, `produção antecipada` / `art. 381` / link para `/producao-antecipada-prova/` = **0**. A seção `#uma-so-chance` cobre só o rito **administrativo** (Lei 6.437/1977, art. 27). O caminho **judicial** simétrico — alimento ainda existe, ação ainda não — não estava na página. Isso também avança a SEO-059: link contextual de saída para URL ainda fora do índice, a partir de página livre e antiga (não toca quesitos/assistente, reembargadas pelas SEO-069/070).
+
+### SEO-071 — "Quando o alimento ainda existe: produção antecipada da prova microbiológica" *(executada em 2026-09-30)*
+- **URL:** `/analise-microbiologica-alimentos/#producao-antecipada`
+- **Categoria:** Prioridade 2 (página historicamente em pos ~15–17) + Prioridade 4 (cobertura semântica ausente) + Prioridade 5/SEO-059 (link contextual para URL uncrawled) + AI citation
+- **Impacto:** 7 · **Esforço:** 3 · **Confiança:** 7 · **Valor de negócio:** 8
+- **Priority Score:** 130,7
+- **Status:** done · **Descoberto/Concluído:** 2026-09-30
+
+#### Verificação factual — CPC baixado nesta execução
+- **CPC/2015**, Planalto (`l13105.htm`, latin-1): art. 381 caput e I–III · §§ 1º–5º · art. 382 caput e §§ 1º–4º. Uma ocorrência cada. Guarda: art. 381 **sem inciso IV**.
+- A seção **não reabre** a Lei nº 6.437/1977 além de contrapô-la (2 menções: abertura + box); o rito administrativo fica em `#uma-so-chance`.
+- **O que NÃO entrou:** holding time / Guia Nacional de Coleta (não aberto); frequência de uso da medida; valores/honorários/SLA; Juizado Especial (não verificado aqui); métodos ISO 6579/11290 além do que a página já sustenta via art. 9º da RDC 724/2022.
+
+#### O que foi implementado
+- Seção `#producao-antecipada` **entre `#uma-so-chance` e `#erros`**: definição citável do caso simétrico; **quadro das 3 hipóteses do art. 381** × exigência legal × situação microbiológica; parágrafo sobre não fundamentar só em urgência; h3 do art. 382 (precisão técnica do objeto: matriz, categoria IN 161, n, método RDC 724) com a consequência do § 4º (recurso só contra indeferimento total); box "Duas vias que não se substituem".
+- **Uma FAQ** ("Quando cabe produção antecipada de prova em disputa microbiológica de alimento?"), visível + JSON-LD da mesma fonte, antes da intake.
+- **Link contextual** (2× no corpo) + item na lista "Como essa prova entra no processo" → `/producao-antecipada-prova/`.
+- `dateModified`/`<time>` / sitemap `lastmod` 2026-09-30; `llms.txt` cita `#producao-antecipada`. Title/description/H1 intocados. **1 arquivo de conteúdo** (cadência ≤5).
+
+#### Ferramental e controles
+- `tools/build/micro_antecipada.py` + `micro_antecipada_build.py` (marcadores `seo071:*`, idempotente).
+- `tools/verify-micro-antecipada.py` (**39 checagens**): CPC rebaixado a cada execução; guarda de ausência de inciso IV; set de incisos da tabela == {I,II,III}; contagem exacta Lei 6.437/art. 27; FAQ antes da intake; paridade; datas; sitemap; llms; sem R$.
+- **Dez controles negativos, todos OK** (exit 1, FAIL certo, sem traceback), inclusive **fonte+página adulteradas juntas (III→IV)** — só a guarda do set de incisos pega.
+- Render Playwright 375/1280: `scrollWidth`=viewport; âncora y≈112; tabela 4 linhas; controle negativo (scroll-margin off → y≈0; bloco 3000 px → scrollWidth 3000).
+- `seo-report valid` **ALL PASS**. Suíte de conteúdo pré-existente não invalidada pelo escopo (página nova para o verificador).
+
+#### Impacto esperado e como ler
+Linha de base (última GSC conhecida, ~22–23/09): página **~26–27 impr · pos ~15–17 · ~1 clique**. Sem GSC hoje — reler em **~14/10** quando houver acesso. Sinais: consultas com "produção antecipada" + microbiologia/alimento atribuídas à página; movimento de `/producao-antecipada-prova/` para crawled/indexed; posição da página saindo da 2ª. Reverter: `strip_marks` dos marcadores `seo071`.
+
+### Próxima execução — o que checar primeiro
+1. **Conectar GSC/GA4 neste ambiente** (service account em path canônico + libs no python). Sem isso, SEO-057 (venceu 30/09) e SEO-058 (~02/10) não têm leitura — são a alavanca de CTR do trimestre.
+2. **Bing Webmaster:** Daniel Import from GSC; confirmar sitemap.
+3. **`/assistente-tecnica/` até ~13/10** · `/quesitos-periciais/` até ~12/10. Se SEO-057/058 mostrarem que title move CTR, a maior oportunidade de snippet do site é `/assistente-tecnica/` (1.245 impr · CTR 0,6%) — só depois de 13/10.
+4. **SEO-059:** falta indexar `/auto-infracao-ambiental/` e `/producao-antecipada-prova/`. Hoje entrou link contextual da microbiologia; hipótese de qualidade agregada ~09/10.
+5. **Follow-up aberto:** recusa de garantia pela concessionária alegando combustível (depois de ~11/10).
+6. **`llms.txt` ~96 KB** — acima da regra de ~50 KB; mover detalhe longo para `llms-full.txt` numa execução de ferramental.
+7. **Ferramental:** `verify-recusa.py` ainda tem pino `dateModified == DATA` — corrigir para `>=` só na execução que tocar essa página.
+8. **Decisão pendente com a cliente** (desde 04/09): prazo de retorno / triagem sem custo. SEO-009 bloqueado (GBP). Google Ads sem entrega.
